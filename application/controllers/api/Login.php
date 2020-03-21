@@ -38,7 +38,7 @@ class Login extends REST_Controller {
            
             'email' => $this->post('email'),
             'password' => $this->post('password'),
-            
+             'role' => $this->post('role'),
         ];
         $str = $this->Common_model->Login_check($message);
     
