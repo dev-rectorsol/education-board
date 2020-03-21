@@ -1,8 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
-
+class Course extends CI_Controller {
 
 	public function __construct()
         {
@@ -14,8 +13,8 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$data= array();
-		$data['page'] ='Dashboard';
-		$data['main_content']= $this->load->view('home',$data, true);
+		$data['page'] ='Course';
+		$data['main_content']= $this->load->view('course/addCourse',$data, true);
 		$this->load->view('index',$data);
 	}
 

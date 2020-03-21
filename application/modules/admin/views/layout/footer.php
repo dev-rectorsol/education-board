@@ -73,6 +73,9 @@
 <!-- tawk chat JS
 ============================================ -->
 <script src="<?php echo base_url('assets')?>/js/tawk-chat.js"></script>
+<!-- Dropzone
+============================================ -->
+<script src="<?php echo base_url('assets')?>/js/dropzone/dropzone.js"></script>
 </body>
 
 </html>
