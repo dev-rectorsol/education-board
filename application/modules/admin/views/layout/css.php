@@ -62,6 +62,13 @@
       <!-- dropzone CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/dropzone/dropzone.css">
+     <!-- modals CSS
+		============================================ -->
+    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/modals.css">
+    <!-- normalize CSS
+		============================================ -->
+    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/data-table/bootstrap-table.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/data-table/bootstrap-editable.css">
     <!-- modernizr JS
 		============================================ -->
     <script src="<?php echo base_url('assets')?>/js/vendor/modernizr-2.8.3.min.js"></script>

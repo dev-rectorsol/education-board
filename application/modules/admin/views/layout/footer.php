@@ -76,6 +76,16 @@
 <!-- Dropzone
 ============================================ -->
 <script src="<?php echo base_url('assets')?>/js/dropzone/dropzone.js"></script>
+<!-- data table JS
+		============================================ -->
+    <script src="<?php echo base_url('assets')?>/js/data-table/bootstrap-table.js"></script>
+    <script src="<?php echo base_url('assets')?>/js/data-table/tableExport.js"></script>
+    <script src="<?php echo base_url('assets')?>/js/data-table/data-table-active.js"></script>
+    <script src="<?php echo base_url('assets')?>/js/data-table/bootstrap-table-editable.js"></script>
+    <script src="<?php echo base_url('assets')?>/js/data-table/bootstrap-editable.js"></script>
+    <script src="<?php echo base_url('assets')?>/js/data-table/bootstrap-table-resizable.js"></script>
+    <script src="<?php echo base_url('assets')?>/js/data-table/colResizable-1.5.source.js"></script>
+    <script src="<?php echo base_url('assets')?>/js/data-table/bootstrap-table-export.js"></script>
 </body>
 
 </html>
