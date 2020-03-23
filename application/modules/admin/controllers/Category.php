@@ -15,6 +15,7 @@ class Category extends CI_Controller {
 	{
 		$data= array();
         $data['page'] ='Category';
+        $data['tag']=  $this->Common_model->select('tags'); 
         $data['aim']=  $this->Common_model->select('category'); 
 		$data['main_content']= $this->load->view('category/add',$data, true);
 		$this->load->view('index',$data);
@@ -28,6 +29,18 @@ class Category extends CI_Controller {
             'parent' => $_POST['parent'],
         ];
             $this->Common_model->insert($aim,'category');
+            redirect(base_url() . 'admin/Category', 'refresh');
+    }
+    
+      public function AddTag()
+	{
+
+       
+         $tag=[
+            'title' => $_POST['name'],
+           
+        ];
+            $this->Common_model->insert($tag,'tags');
             redirect(base_url() . 'admin/Category', 'refresh');
 	}
  public function Delete($id)

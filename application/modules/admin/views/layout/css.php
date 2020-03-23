@@ -65,12 +65,18 @@
      <!-- modals CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/modals.css">
+    <!-- select2 CSS
+		============================================ -->
+    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/select2/select2.min.css">
     <!-- normalize CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/data-table/bootstrap-table.css">
     <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/data-table/bootstrap-editable.css">
     <!-- modernizr JS
 		============================================ -->
+     <!-- summernote CSS
+		============================================ -->
+    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/summernote/summernote.css">
     <script src="<?php echo base_url('assets')?>/js/vendor/modernizr-2.8.3.min.js"></script>
    
 </head>

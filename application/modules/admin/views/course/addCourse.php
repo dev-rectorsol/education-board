@@ -42,46 +42,46 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
                                                 <div id="dropzone1" class="pro-ad addcoursepro">
-                                                    <form action="/upload" class="dropzone dropzone-custom needsclick addcourse" id="demo1-upload">
+                                                    <form action="<?php echo base_url('admin/Course/Add')?>" method="POST" >
                                                         <div class="row">
-                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                          
                                                                 <div class="form-group">
+                                                                <label class="login2">Course Name</label>
                                                                     <input name="coursename" type="text" class="form-control" placeholder="Course Name">
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <input name="review" id="review" type="text" class="form-control" placeholder="Review">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input name="count" type="text" class="form-control" placeholder="Review Count">
-                                                                </div>
                                                                
-                                                                <div class="form-group alert-up-pd">
-                                                                    <div class="dz-message needsclick download-custom">
-                                                                        <i class="fa fa-download edudropnone" aria-hidden="true"></i>
-                                                                        <h2 class="edudropnone">Drop image here or click to upload.</h2>
-                                                                        <p class="edudropnone"><span class="note needsclick">(This is just a demo dropzone. Selected image is <strong>not</strong> actually uploaded.)</span>
-                                                                        </p>
-                                                                        <input name="imageico" class="hd-pro-img" type="file" />
+                                                               
+                                                                <div class="form-group res-mg-t-15">
+                                                                <label class="login2">Course Category</label>
+                                                                    <select class="select2_demo_2 form-control" name='category[]' data-placeholder="Choose a Category..." multiple="multiple">
+                                                                    <?php foreach($category as $row){ ?>
+                                                                    <option value="<?php echo $row['id'] ?>"> <?php echo $row['name'] ?> </option>
+                                                                    <?php } ?>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group res-mg-t-15">
+                                                                <label class="login2">Course Tag</label>
+                                                                    <select class="select2_demo_2 form-control" name='tag[]' data-placeholder="Choose a Tags..." multiple="multiple">
+                                                                    <?php foreach($tag as $row){ ?>
+                                                                    <option value="<?php echo $row['id'] ?>"> <?php echo $row['title'] ?> </option>
+                                                                    <?php } ?>
+                                                                    </select>
+                                                                </div>
+                                                                 <div class="form-group">
+                                                                 <label class="login2">Course Description</label>
+                                                                    <textarea name="description" id="summernote1" >Add a Description here</textarea>
+                                                                </div>
+                                                                 <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="payment-adress">
+                                                                            <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                <div class="form-group res-mg-t-15">
-                                                                    <input name="category" type="text" class="form-control" placeholder="Category">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <textarea name="description" placeholder="Description"></textarea>
-                                                                </div>
-                                                               
-                                                            </div>
+                                                        
+                                                            
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <div class="payment-adress">
-                                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                       
                                                     </form>
                                                 </div>
                                             </div>

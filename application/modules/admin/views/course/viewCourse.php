@@ -32,69 +32,7 @@
 
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-							<div class="product-status-wrap drp-lst">
-								<form action="<?php echo base_url('admin/Category/AddTag')?>" method="POST">
-									<h4>Add Tag </h4>
-									<div class="form-group">
-										<input name="name" type="text" class="form-control" placeholder="TAG Name">
-									</div>
-
-									<div class="payment-adress">
-										<input type="hidden" name="<?=$this->security->get_csrf_token_name();?>"
-											value="<?=$this->security->get_csrf_hash();?>" />
-										<button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
-
-									</div>
-
-								</form>
-							</div>
-						</div>
-
-						<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-							<div class="product-status-wrap drp-lst">
-								<form action="<?php echo base_url('admin/Category/Add')?>" method="POST">
-									<h4>Add Category </h4>
-									<div class="form-group">
-										<input name="name" type="text" class="form-control" placeholder="Name">
-									</div>
-									<div class="form-group">
-										<input name="parent" type="text" class="form-control" placeholder="Parent">
-									</div>
-									<div class="payment-adress">
-										<input type="hidden" name="<?=$this->security->get_csrf_token_name();?>"
-											value="<?=$this->security->get_csrf_hash();?>" />
-										<button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
-
-									</div>
-
-								</form>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-							<div class="product-status-wrap drp-lst">
-								<h4> Tags </h4>
-								<p>
-									<?php 
-							$str=array('primary','info','warning','success','danger');
-							
-							foreach($tag as $row) { $i=array_rand($str);?>
-									<span class="label label-<?php echo $str[$i] ?>">#<?php echo $row['title'] ?></span>
-
-									<?php } ?>
-
-
-								</p>
-
-							</div>
-						</div>
-
-						<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+						
 							<div class="product-status-wrap drp-lst">
 								<table class="table table-striped table-bordered " id="table" data-toggle="table"
 									data-pagination="true" data-search="true" data-show-columns="true"
@@ -103,24 +41,24 @@
 									data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true"
 									data-toolbar="#toolbar">
 									<caption>
-										<h4> Category List</h4>
+										<h4> Course List</h4>
 									</caption>
 									<tr>
 										<th>S.No</th>
 										<th>Id</th>
 
 										<th>Name</th>
-										<th>Parent</th>
+										<th>Description</th>
 										<th>Setting</th>
 									</tr>
 									<?php
                                             $i=1;
-                                        foreach($aim as $row){?>
+                                        foreach($course as $row){?>
 									<tr>
 										<td> <?php echo $i ?></td>
 										<td><?php echo $row['id'] ?></td>
 										<td><?php echo $row['name'] ?></td>
-										<td><?php echo $row['parent'] ?></td>
+										<td><?php echo $row['description'] ?></td>
 										<td> <a data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip"
 												data-toggle="modal" data-original-title="Edit"><i
 													class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
@@ -149,10 +87,16 @@
 																<label class="control-label col-sm-3">Name</label>
 																<div class="col-sm-9">
 																	<input type="text" class="form-control" name="name"
-																		value="<?php echo $row['title'] ?>" id="required">
+																		value="<?php echo $row['name'] ?>" id="required">
 																</div>
 															</div>
-
+                                                            <div class="form-group row">
+																<label class="control-label col-sm-3">Description</label>
+																<div class="col-sm-9">
+																	<textarea name="description" id="summernote1"  ><?php echo $row['description'] ?></textarea>
+																		
+																</div>
+															</div>
 														</div>
 													</div>
 													<div class="modal-footer">
@@ -171,8 +115,8 @@
                                                                     }?>
 								</table>
 							</div>
-						</div>
-					</div>
+						
+					
 				</div>
 			</div>
 		</div>

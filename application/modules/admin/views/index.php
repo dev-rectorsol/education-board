@@ -39,7 +39,9 @@
 					<li>
 						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Courses</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Courses" href="all-courses.html"><span class="mini-sub-pro">All Courses</span></a></li>
+							<li><a title="All Courses" href="<?php echo base_url('admin/Course/ViewCourse')?>"><span class="mini-sub-pro">All Courses List </span></a></li>
+							<li><a title="All Courses" href="<?php echo base_url('admin/Course/ViewCourseGrid')?>"><span class="mini-sub-pro">All Courses Grid </span></a></li>
+
 							<li><a title="Add Courses" href="<?php echo base_url('admin/Course')?>"><span class="mini-sub-pro">Add Course</span></a></li>
 							<li><a title="Edit Courses" href="edit-course.html"><span class="mini-sub-pro">Edit Course</span></a></li>
 							<li><a title="Courses Profile" href="course-info.html"><span class="mini-sub-pro">Courses Info</span></a></li>
