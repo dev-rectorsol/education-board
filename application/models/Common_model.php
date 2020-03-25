@@ -11,7 +11,7 @@ public function __construct()
     }
 
     public function Login_check($data){
-        $condition = "email =" . "'" . $data['email'] . "' AND " . "password =" . "'" . $data['password'] . "'AND role='s'" ;
+        $condition = "email =" . "'" . $data['email'] . "' AND " . "password =" . "'" . $data['password'] . "'AND role='".$data['role']."'" ;
             $this->db->select('*');
             $this->db->from('logme');
             $this->db->where($condition);

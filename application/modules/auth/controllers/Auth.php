@@ -27,8 +27,15 @@ class Auth extends CI_Controller {
             if($result !='Not Found'){
               // echo "<pre>";
               // echo print_r($query);exit;
+               $data = array();
+               $i=1;
                 foreach($result as $row){
-                    $data = array(
+                   
+                   if($i>1){
+                   break;
+                   }
+                   else{
+                    $data = [
                         'id' => $row->logid,
                         'phone' => $row->phone ,
                         'email' => $row->email ,
@@ -36,14 +43,19 @@ class Auth extends CI_Controller {
                         'role' => $row->role,
                         'lang' =>$row->language,
                         
-                    );
-                   
+                    ];
+                   }
+                    
+                    $i++;
+                }
+            //          echo "<pre>";
+            //  echo print_r($data);exit;
                    
                   $this->session->set_userdata($data);
                    $url = 'admin/dashboard';
                  
                     
-                }
+                
 				 redirect(base_url() . $url, 'refresh');
             }else{
                redirect(base_url() . 'auth', 'refresh');
@@ -75,7 +87,8 @@ class Auth extends CI_Controller {
     curl_setopt($curl_handle, CURLOPT_POST, 1);
     curl_setopt($curl_handle, CURLOPT_POSTFIELDS, array(
         'email'     => $email,
-        'password'  => $pass
+        'password'  => $pass,
+        'role'      => 'a'
     ));
      
     // Optional, delete this line if your API is open
