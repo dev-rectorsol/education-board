@@ -15,27 +15,15 @@
 							<span class="mini-click-non">Dashboard</span>
 						</a>
 					</li>
+					<!-- Media -->
 					<li>
-						<a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Event</span></a>
-					</li>
-					<li>
-						<a class="has-arrow" href="all-professors.html" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Professors</span></a>
+						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Media</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Professors" href="all-professors.html"><span class="mini-sub-pro">All Professors</span></a></li>
-							<li><a title="Add Professor" href="add-professor.html"><span class="mini-sub-pro">Add Professor</span></a></li>
-							<li><a title="Edit Professor" href="edit-professor.html"><span class="mini-sub-pro">Edit Professor</span></a></li>
-							<li><a title="Professor Profile" href="professor-profile.html"><span class="mini-sub-pro">Professor Profile</span></a></li>
+							<li><a title="All Courses" href="<?php echo base_url('admin/media/add')?>"><span class="mini-sub-pro">Add New</span></a></li>
+							<li><a title="All Courses" href="<?php echo base_url('admin/media/')?>"><span class="mini-sub-pro">All Media</span></a></li>
 						</ul>
 					</li>
-					<li>
-						<a class="has-arrow" href="all-students.html" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Students</span></a>
-						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Students" href="all-students.html"><span class="mini-sub-pro">All Students</span></a></li>
-							<li><a title="Add Students" href="add-student.html"><span class="mini-sub-pro">Add Student</span></a></li>
-							<li><a title="Edit Students" href="edit-student.html"><span class="mini-sub-pro">Edit Student</span></a></li>
-							<li><a title="Students Profile" href="student-profile.html"><span class="mini-sub-pro">Student Profile</span></a></li>
-						</ul>
-					</li>
+					<!-- Courses -->
 					<li>
 						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Courses</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
@@ -48,6 +36,7 @@
 							<li><a title="Product Payment" href="course-payment.html"><span class="mini-sub-pro">Courses Payment</span></a></li>
 						</ul>
 					</li>
+					<!-- library -->
 					<li>
 						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Library</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
@@ -56,17 +45,11 @@
 							<li><a title="Edit Library" href="edit-library-assets.html"><span class="mini-sub-pro">Edit Library Asset</span></a></li>
 						</ul>
 					</li>
+					<!-- Students -->
 					<li>
-						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Departments</span></a>
+						<a class="has-arrow" href="all-students.html" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Students</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="Departments List" href="departments.html"><span class="mini-sub-pro">Departments List</span></a></li>
-							<li><a title="Add Departments" href="add-department.html"><span class="mini-sub-pro">Add Departments</span></a></li>
-							<li><a title="Edit Departments" href="edit-department.html"><span class="mini-sub-pro">Edit Departments</span></a></li>
-						</ul>
-					</li>
-					<li>
-						<a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-message icon-wrap"></span> <span class="mini-click-non">Mailbox</span></a>
-						<ul class="submenu-angle" aria-expanded="false">
+<<<<<<< Updated upstream
 							<li><a title="Inbox" href="mailbox.html"><span class="mini-sub-pro">Inbox</span></a></li>
 							<li><a title="View Mail" href="mailbox-view.html"><span class="mini-sub-pro">View Mail</span></a></li>
 							<li><a title="Compose Mail" href="mailbox-compose.html"><span class="mini-sub-pro">Compose Mail</span></a></li>
@@ -82,6 +65,35 @@
 					</li>
 					
 					
+=======
+							<li><a title="All Students" href="all-students.html"><span class="mini-sub-pro">All Students</span></a></li>
+							<li><a title="Add Students" href="add-student.html"><span class="mini-sub-pro">Add Student</span></a></li>
+							<li><a title="Edit Students" href="edit-student.html"><span class="mini-sub-pro">Edit Student</span></a></li>
+							<li><a title="Students Profile" href="student-profile.html"><span class="mini-sub-pro">Student Profile</span></a></li>
+						</ul>
+					</li>
+					<!-- Events -->
+					<li>
+						<a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Event</span></a>
+					</li>
+					<li>
+						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Departments</span></a>
+						<ul class="submenu-angle" aria-expanded="false">
+							<li><a title="Departments List" href="departments.html"><span class="mini-sub-pro">Departments List</span></a></li>
+							<li><a title="Add Departments" href="add-department.html"><span class="mini-sub-pro">Add Departments</span></a></li>
+							<li><a title="Edit Departments" href="edit-department.html"><span class="mini-sub-pro">Edit Departments</span></a></li>
+						</ul>
+					</li>
+					<li>
+						<a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-settings icon-wrap"></span> <span class="mini-click-non">Settings</span></a>
+						<ul class="submenu-angle" aria-expanded="false">
+							<li><a title="Aim" href="<?php echo base_url('admin/Aim')?>"><span class="mini-sub-pro">Add Aim</span></a></li>
+							<li><a title="View Mail" href="<?php echo base_url('admin/Category')?>"><span class="mini-sub-pro">Add Category</span></a></li>
+						</ul>
+					</li>
+
+
+>>>>>>> Stashed changes
 				</ul>
 			</nav>
 		</div>
@@ -260,7 +272,11 @@
 													</li>
 												</ul>
 											</li>
+<<<<<<< Updated upstream
 											
+=======
+
+>>>>>>> Stashed changes
 										</ul>
 									</div>
 								</div>
@@ -279,9 +295,13 @@
 							<nav id="dropdown">
 								<ul class="mobile-menu-nav">
 									<li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+<<<<<<< Updated upstream
 										
+=======
+
+>>>>>>> Stashed changes
 									</li>
-									<li><a href="events.html">Event</a></li>
+									<li><a href="#">Event</a></li>
 									<li><a data-toggle="collapse" data-target="#demoevent" href="#">Professors <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
 										<ul id="demoevent" class="collapse dropdown-header-top">
 											<li><a href="all-professors.html">All Professors</a>
@@ -340,7 +360,7 @@
 											</li>
 										</ul>
 									</li>
-									<li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+									<!-- <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon edu-icon edu-down-arrow"></span></a> -->
 										<ul id="demo" class="collapse dropdown-header-top">
 											<li><a href="mailbox.html">Inbox</a>
 											</li>
@@ -350,7 +370,11 @@
 											</li>
 										</ul>
 									</li>
+<<<<<<< Updated upstream
 									
+=======
+
+>>>>>>> Stashed changes
 								</ul>
 							</nav>
 						</div>
@@ -359,7 +383,11 @@
 			</div>
 		</div>
 		<!-- Mobile Menu end -->
+<<<<<<< Updated upstream
 	
+=======
+
+>>>>>>> Stashed changes
 <?php echo	$main_content ?>
 
 <?php include('layout/footer.php'); ?>
