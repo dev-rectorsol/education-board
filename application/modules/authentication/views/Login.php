@@ -18,7 +18,7 @@
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">×</span>
 								</button>
-								<strong>Faild!</strong> <?php echo $this->session->flashdata('failed') ?>.
+								<strong>Failed!</strong> <?php echo $this->session->flashdata('failed') ?>.
 							</div>
 						<?php endif; ?>
 						<form action="<?php echo base_url('authentication')?>" Method="POST">
@@ -33,10 +33,12 @@
 							<div class="checkbox login-checkbox">
 								<label>
 									<input type="checkbox" class="i-checks"> Remember me </label>
-								<p class="help-block small">(if this is a private computer)</p>
+								<p class="help-block small"><a class="btn btn-default pull-right" href="<?php echo base_url('Authentication/resetView')?>">forget password</a></p>
+								
 							</div>
-							<button class="btn btn-success btn-block loginbtn">Login</button>
-
+							<input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
+							<button class="btn btn-success btn-block loginbtn" type="submit">Login</button>
+							<a class="btn btn-default btn-block" href="<?php echo base_url('register')?>">Register</a>
 						</form>
 					</div>
 				</div>

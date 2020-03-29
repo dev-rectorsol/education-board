@@ -58,11 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-<<<<<<< Updated upstream
-$autoload['libraries'] = array('session');
-=======
 $autoload['libraries'] = array(['session']);
->>>>>>> Stashed changes
 
 /*
 | -------------------------------------------------------------------

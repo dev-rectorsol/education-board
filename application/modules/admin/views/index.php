@@ -25,7 +25,7 @@
 					</li>
 					<!-- Courses -->
 					<li>
-						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Courses</span></a>
+						<a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Courses</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
 							<li><a title="All Courses" href="<?php echo base_url('admin/Course/ViewCourse')?>"><span class="mini-sub-pro">All Courses List </span></a></li>
 							<li><a title="All Courses" href="<?php echo base_url('admin/Course/ViewCourseGrid')?>"><span class="mini-sub-pro">All Courses Grid </span></a></li>
@@ -34,6 +34,24 @@
 							<li><a title="Edit Courses" href="edit-course.html"><span class="mini-sub-pro">Edit Course</span></a></li>
 							<li><a title="Courses Profile" href="course-info.html"><span class="mini-sub-pro">Courses Info</span></a></li>
 							<li><a title="Product Payment" href="course-payment.html"><span class="mini-sub-pro">Courses Payment</span></a></li>
+						</ul>
+					</li>
+					<!-- Subject -->
+					<li>
+						<a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Subject</span></a>
+						<ul class="submenu-angle" aria-expanded="false">
+							<li><a title="All Courses" href="<?php echo base_url('admin/Subject/View')?>"><span class="mini-sub-pro">All Subject List </span></a></li>
+							<li><a title="Add Courses" href="<?php echo base_url('admin/Subject')?>"><span class="mini-sub-pro">Add Subject</span></a></li>
+							
+						</ul>
+					</li>
+					<!-- Lesson -->
+					<li>
+						<a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Lesson</span></a>
+						<ul class="submenu-angle" aria-expanded="false">
+							<li><a title="All Courses" href="<?php echo base_url('admin/Lesson/View')?>"><span class="mini-sub-pro">All Lesson List </span></a></li>
+							<li><a title="Add Courses" href="<?php echo base_url('admin/Lesson')?>"><span class="mini-sub-pro">Add Lesson</span></a></li>
+							
 						</ul>
 					</li>
 					<!-- library -->
@@ -49,23 +67,6 @@
 					<li>
 						<a class="has-arrow" href="all-students.html" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Students</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-<<<<<<< Updated upstream
-							<li><a title="Inbox" href="mailbox.html"><span class="mini-sub-pro">Inbox</span></a></li>
-							<li><a title="View Mail" href="mailbox-view.html"><span class="mini-sub-pro">View Mail</span></a></li>
-							<li><a title="Compose Mail" href="mailbox-compose.html"><span class="mini-sub-pro">Compose Mail</span></a></li>
-						</ul>
-					</li>
-					<li>
-						<a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-settings icon-wrap"></span> <span class="mini-click-non">Settings</span></a>
-						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="Aim" href="<?php echo base_url('admin/Aim')?>"><span class="mini-sub-pro">Add Aim</span></a></li>
-							<li><a title="View Mail" href="<?php echo base_url('admin/Category')?>"><span class="mini-sub-pro">Add Category</span></a></li>
-							
-						</ul>
-					</li>
-					
-					
-=======
 							<li><a title="All Students" href="all-students.html"><span class="mini-sub-pro">All Students</span></a></li>
 							<li><a title="Add Students" href="add-student.html"><span class="mini-sub-pro">Add Student</span></a></li>
 							<li><a title="Edit Students" href="edit-student.html"><span class="mini-sub-pro">Edit Student</span></a></li>
@@ -93,7 +94,6 @@
 					</li>
 
 
->>>>>>> Stashed changes
 				</ul>
 			</nav>
 		</div>
@@ -272,11 +272,6 @@
 													</li>
 												</ul>
 											</li>
-<<<<<<< Updated upstream
-											
-=======
-
->>>>>>> Stashed changes
 										</ul>
 									</div>
 								</div>
@@ -295,11 +290,6 @@
 							<nav id="dropdown">
 								<ul class="mobile-menu-nav">
 									<li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-<<<<<<< Updated upstream
-										
-=======
-
->>>>>>> Stashed changes
 									</li>
 									<li><a href="#">Event</a></li>
 									<li><a data-toggle="collapse" data-target="#demoevent" href="#">Professors <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
@@ -370,11 +360,6 @@
 											</li>
 										</ul>
 									</li>
-<<<<<<< Updated upstream
-									
-=======
-
->>>>>>> Stashed changes
 								</ul>
 							</nav>
 						</div>
@@ -383,11 +368,6 @@
 			</div>
 		</div>
 		<!-- Mobile Menu end -->
-<<<<<<< Updated upstream
-	
-=======
-
->>>>>>> Stashed changes
 <?php echo	$main_content ?>
 
 <?php include('layout/footer.php'); ?>

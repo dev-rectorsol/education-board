@@ -4,15 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Aim extends CI_Controller {
 
 	public function __construct()
-<<<<<<< Updated upstream
-        {
-                parent::__construct();
-                 $this->load->model('Common_model');
-			if($this->session->userdata('role')!="a"){
-          redirect(base_url() . 'auth', 'refresh');
-        }
-        }
-=======
 	{
 			parent::__construct();
 			if(check()){
@@ -23,36 +14,26 @@ class Aim extends CI_Controller {
 			}
 			$this->load->model('Common_model');
 	}
->>>>>>> Stashed changes
 	public function index()
 	{
 		$data= array();
         $data['page'] ='Aim';
-<<<<<<< Updated upstream
-        $data['aim']=  $this->Common_model->select('aim'); 
-=======
         $data['aim']=  $this->Common_model->select('aim');
->>>>>>> Stashed changes
 		$data['main_content']= $this->load->view('Aim/add',$data, true);
 		$this->load->view('index',$data);
 	}
     public function Add()
 	{
-
-<<<<<<< Updated upstream
-       
-         $aim=[
-            'title' => $_POST['name'],
-        
-=======
+	if($_POST){
+			 $data1=$this->security->xss_clean($_POST);
 
          $aim=[
-            'title' => $_POST['name'],
+            'title' => $data1['name'],
 
->>>>>>> Stashed changes
         ];
             $this->Common_model->insert($aim,'aim');
-            redirect(base_url() . 'admin/Aim', 'refresh');
+			redirect(base_url() . 'admin/Aim', 'refresh');
+	}
 	}
  public function Delete($id)
 	{
@@ -62,15 +43,13 @@ class Aim extends CI_Controller {
     }
     public function Edit($id)
 	{
-             $aim=[
-            'title' => $_POST['name'],
-<<<<<<< Updated upstream
-        
-=======
-
->>>>>>> Stashed changes
+		if($_POST){
+			 $data1=$this->security->xss_clean($_POST);
+		$aim=[
+            'title' => $data1['name'],
         ];
            $this->Common_model->update($aim,'id',$id,'aim');
-            redirect(base_url() . 'admin/Aim', 'refresh');
+			redirect(base_url() . 'admin/Aim', 'refresh');
+	}
 	}
 }

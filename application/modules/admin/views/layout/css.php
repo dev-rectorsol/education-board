@@ -78,11 +78,6 @@
 		============================================ -->
     <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/summernote/summernote.css">
     <script src="<?php echo base_url('assets')?>/js/vendor/modernizr-2.8.3.min.js"></script>
-<<<<<<< Updated upstream
-   
-=======
-
->>>>>>> Stashed changes
 </head>
 
 <body>
