@@ -23,7 +23,7 @@ class Aim extends REST_Controller {
     {
         // Construct the parent class
         parent::__construct();
-       
+
         $this->load->helper('date');
          $this->load->model('Common_model');
         $this->load->helper('url');
@@ -32,22 +32,22 @@ class Aim extends REST_Controller {
 
  public function index_get($id=NULL)
     {
-         $id= $this->get('id');
+        $id= $this->get('id');
       if ($id === NULL)
         {
 
-           $aim=  $this->Common_model->select('aim'); 
+           $aim=  $this->Common_model->select('aim');
            if (!empty($aim))
-        {
-            $this->response($aim, REST_Controller::HTTP_CREATED); // CREATED (201) being the HTTP response code
-        }
+            {
+                $this->response($aim, REST_Controller::HTTP_CREATED); // CREATED (201) being the HTTP response code
+            }
         else
         {
             $this->response([
                 'status' => FALSE,
                 'message' => 'No data found'
             ], REST_Controller::HTTP_INTERNAL_SERVER_ERROR); // INTERNAL_SERVER_ERROR (500) being the HTTP response code
-        }     
+        }
          }
          else
         {
@@ -69,11 +69,11 @@ class Aim extends REST_Controller {
     public function index_post()
     {
         $title= $this->post('title');
-        
-         
+
+
           if (!$title)
         {
-           
+
             $this->response([
                 'status' => FALSE,
                 'message' => 'Invalid parameter'
@@ -83,7 +83,7 @@ class Aim extends REST_Controller {
         {
              $aim=[
             'title' => $title,
-        
+
         ];
             if ($this->Common_model->insert($aim,'aim'))
         {
@@ -101,7 +101,7 @@ class Aim extends REST_Controller {
         }
      }
         // Insert the new key
-       
+
     }
 //Update User Address
     public function index_put($id=0)
@@ -113,7 +113,7 @@ class Aim extends REST_Controller {
          $id= $this->put('id');
           if (!$id)
         {
-         
+
             $this->response([
                 'status' => FALSE,
                 'message' => 'Invalid Id'
@@ -137,7 +137,7 @@ class Aim extends REST_Controller {
         }
         }
         // Insert the new key
-       
+
     }
     //Delete User Address
     public function index_delete($id=0)
@@ -155,16 +155,16 @@ class Aim extends REST_Controller {
         }
         $data1=['id'=> $id];
        $this->Common_model->delete($data1,'aim');
-        
+
         // $this->some_model->delete_something($id);
         $message = [
             'id' => $id,
             'message' => 'Deleted the resource'
         ];
 
-        $this->set_response($message, REST_Controller::HTTP_OK); 
+        $this->set_response($message, REST_Controller::HTTP_OK);
     }
-    
+
 
 
 

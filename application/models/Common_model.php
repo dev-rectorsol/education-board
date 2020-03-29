@@ -38,6 +38,21 @@ public function __construct()
             return false;
             }
         }
+         public function check_user($data){
+       
+            $this->db->select('*');
+            $this->db->from('logme');
+            $this->db->where('email',$data['username']);
+            $this->db->or_where('phone',$data['username']);
+            $this->db->limit(1);
+            $query = $this->db->get();
+        //    echo $this->db->last_query();exit;
+            if ($query->num_rows() == 1) {
+            return $query->result_array();
+            } else {
+            return false;
+            }
+        }
         public function get_otp($data){
       
             $this->db->select('*');

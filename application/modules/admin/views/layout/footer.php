@@ -72,7 +72,7 @@
 <script src="<?php echo base_url('assets')?>/js/main.js"></script>
 <!-- tawk chat JS
 ============================================ -->
-<script src="<?php echo base_url('assets')?>/js/tawk-chat.js"></script>
+<!-- <script src="<?php //echo base_url('assets')?>/js/tawk-chat.js"></script> -->
 <!-- Dropzone
 ============================================ -->
 <script src="<?php echo base_url('assets')?>/js/dropzone/dropzone.js"></script>
@@ -94,6 +94,7 @@
     <script src="<?php echo base_url('assets')?>/js/data-table/bootstrap-table-resizable.js"></script>
     <script src="<?php echo base_url('assets')?>/js/data-table/colResizable-1.5.source.js"></script>
     <script src="<?php echo base_url('assets')?>/js/data-table/bootstrap-table-export.js"></script>
+    <?php include("__media.php"); ?>
 </body>
 
 </html>

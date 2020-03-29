@@ -23,7 +23,7 @@ class Login extends REST_Controller {
     {
         // Construct the parent class
         parent::__construct();
-       
+
         $this->load->helper('date');
          $this->load->model('Common_model');
         $this->load->helper('url');
@@ -35,17 +35,21 @@ class Login extends REST_Controller {
     {
         // $this->some_model->update_user( ... );
         $message = [
-           
+
             'email' => $this->post('email'),
             'password' => $this->post('password'),
+<<<<<<< Updated upstream
              'role' => $this->post('role'),
+=======
+
+>>>>>>> Stashed changes
         ];
         $str = $this->Common_model->Login_check($message);
-    
-        if($str) 
-       
+
+        if($str)
+
             {
-                
+
                 $str['message'] = 'User Found';
                 $data=[
                     'user_id'=> $str[0]['logid'],
@@ -58,25 +62,25 @@ class Login extends REST_Controller {
          else{
               $this->set_response("User Not Found", REST_Controller::HTTP_NO_CONTENT);
          }
-     
-       
+
+
     }
   public function mobile_post()
     {
-        
+
         $message = [
-           
+
             'mobile' => $this->post('mobile'),
-         
+
         ];
-        
+
         $str = $this->Common_model->Login_check_mobile($message);
-    
-        if($str==false) 
-       
+
+        if($str==false)
+
             {
                 $this->set_response("User Not Found", REST_Controller::HTTP_NO_CONTENT);
-               
+
             }
          else{
               $str['message'] = 'User Found';
@@ -85,15 +89,15 @@ class Login extends REST_Controller {
                     'ip' => $this->post('ip'),
                     'lastlog' => date('Y-m-d:h-m-s')
                 ];
-                
+
                  $this->Common_model->insert($data,'log');
-                
+
                  $str['otp'] =$data['code'];
-                $this->set_response($str, REST_Controller::HTTP_CREATED); // CREATED (201) being the HTTP response code 
+                $this->set_response($str, REST_Controller::HTTP_CREATED); // CREATED (201) being the HTTP response code
          }
-     
-       
+
+
     }
-   
+
 
 }

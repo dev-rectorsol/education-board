@@ -68,14 +68,14 @@
 									</tr>
 
 									<div id="<?php echo $row['id'] ; ?>"
-										class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
+										class="modal  default-popup-PrimaryModal fade" role="dialog">
 										<div class="modal-dialog" role="document ">
 											<div class="modal-content">
 												<form class="form-horizontal" method="post"
 													action="<?php echo base_url('admin/Category/Edit/').$row['id'] ?>"
 													name="basic_validate" id="basic_validate" novalidate="novalidate">
 													<div class="modal-header header-color-modal bg-color-1 ">
-														<h4 class="modal-title">Edit Aim</h4>
+														<h6 class="modal-title">Edit Aim</h6>
 														<div class="modal-close-area modal-close-df">
 															<a class="close" data-dismiss="modal" href="#"><i
 																	class="fa fa-close"></i></a>
@@ -83,19 +83,19 @@
 													</div>
 													<div class="modal-body">
 														<div class="widget-content nopadding">
-															<div class="form-group row">
-																<label class="control-label col-sm-3">Name</label>
-																<div class="col-sm-9">
+															<div class="form-group ">
+																<label class="control-label ">Name</label>
+																
 																	<input type="text" class="form-control" name="name"
 																		value="<?php echo $row['name'] ?>" id="required">
-																</div>
+																
 															</div>
-                                                            <div class="form-group row">
-																<label class="control-label col-sm-3">Description</label>
-																<div class="col-sm-9">
+                                                            <div class="form-group">
+																<label class="control-label ">Description</label>
+															
 																	<textarea name="description" id="summernote1"  ><?php echo $row['description'] ?></textarea>
 																		
-																</div>
+																
 															</div>
 														</div>
 													</div>
