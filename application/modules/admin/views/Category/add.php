@@ -63,6 +63,19 @@
 									<div class="form-group">
 										<input name="parent" type="text" class="form-control" placeholder="Parent">
 									</div>
+									<div class="form-group">
+										<select name="icon" id="icon" class="form-control">
+										<option value="">Select icon</option>
+										<option value="book">Book</option>
+										<option value="assignment">assignment</option>
+										<option value="computer">Computer</option>
+										<option value="school">School</option>
+										<option value="alarm">Alarm</option>
+										<option value="bookmarks">Bookmarks</option>
+										<option value="settings">Settings</option>
+
+										</select>
+									</div>
 									<div class="payment-adress">
 										<input type="hidden" name="<?=$this->security->get_csrf_token_name();?>"
 											value="<?=$this->security->get_csrf_hash();?>" />

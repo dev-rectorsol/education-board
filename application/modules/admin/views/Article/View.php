@@ -48,19 +48,17 @@
 										<th>Id</th>
 
 										<th>Name</th>
-										
-										<th>Description</th>
+										<th>Content</th>
 										<th>Setting</th>
 									</tr>
 									<?php
                                             $i=1;
-                                        foreach($subject as $row){?>
+                                        foreach($article as $row){?>
 									<tr>
 										<td> <?php echo $i ?></td>
 										<td><?php echo $row['id'] ?></td>
-										<td><?php echo $row['name'] ?></td>
-										
-										<td><?php echo $row['description'] ?></td>
+										<td><?php echo $row['title'] ?></td>
+										<td><?php echo $row['content'] ?></td>
 										<td> <a data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip"
 												data-toggle="modal" data-original-title="Edit"><i
 													class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
@@ -74,10 +72,10 @@
 										<div class="modal-dialog" role="document ">
 											<div class="modal-content">
 												<form class="form-horizontal" method="post"
-													action="<?php echo base_url('admin/Subject/Update/').$row['id'] ?>"
+													action="<?php echo base_url('admin/Article/Edit/').$row['id'] ?>"
 													name="basic_validate" id="basic_validate" novalidate="novalidate">
 													<div class="modal-header header-color-modal bg-color-1 ">
-														<h6 class="modal-title">Edit Subject</h6>
+														<h6 class="modal-title">Edit Aim</h6>
 														<div class="modal-close-area modal-close-df">
 															<a class="close" data-dismiss="modal" href="#"><i
 																	class="fa fa-close"></i></a>
@@ -86,19 +84,18 @@
 													<div class="modal-body">
 														<div class="widget-content nopadding">
 															<div class="form-group ">
-																<label >Name</label>
+																<label class="control-label ">title</label>
 																
 																	<input type="text" class="form-control" name="name"
-																		value="<?php echo $row['name'] ?>" id="required">
+																		value="<?php echo $row['title'] ?>" id="required">
 																
 															</div>
-															
                                                             <div class="form-group">
-																<label >Description</label>
-																
-																	<textarea name="description" id="summernote1"  ><?php echo $row['description'] ?></textarea>
-																		
+																<label class="control-label ">Content</label>
 															
+																	<textarea name="content" id="summernote1"><?php echo $row['content'] ?></textarea>
+																		
+																
 															</div>
 														</div>
 													</div>
@@ -137,7 +134,7 @@
 				if (del == true) {
 					var sureDel = confirm("Are you sure want to delete");
 					if (sureDel == true) {
-						window.location = "<?php echo base_url()?>admin/Category/Delete/" + id;
+						window.location = "<?php echo base_url()?>admin/Article/Delete/" + id;
 					}
 
 				}

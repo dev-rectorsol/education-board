@@ -10,77 +10,38 @@
 			<nav class="sidebar-nav left-sidebar-menu-pro">
 				<ul class="metismenu" id="menu1">
 					<li class="active">
-						<a href="<?php echo base_url('admin/dashboard') ?>">
+						<a href="<?php echo base_url('board/dashboard') ?>">
 							<span class="educate-icon educate-home icon-wrap"></span>
 							<span class="mini-click-non">Dashboard</span>
 						</a>
 					</li>
-					<!-- Article -->
-					<li>
-						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Article</span></a>
-						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Courses" href="<?php echo base_url('admin/Article/')?>"><span class="mini-sub-pro">Add New</span></a></li>
-							<li><a title="All Courses" href="<?php echo base_url('admin/Article/view')?>"><span class="mini-sub-pro">Published</span></a></li>
-						<li><a title="All Courses" href="<?php echo base_url('admin/Article/viewDraft')?>"><span class="mini-sub-pro">Draft</span></a></li>
-						<li><a title="All Courses" href="<?php echo base_url('admin/Article/viewDeleted')?>"><span class="mini-sub-pro">Deleted</span></a></li>
-						</ul>
-					</li>
-					<!-- Media -->
-					<li>
-						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Media</span></a>
-						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Courses" href="<?php echo base_url('admin/media/add')?>"><span class="mini-sub-pro">Add New</span></a></li>
-							<li><a title="All Courses" href="<?php echo base_url('admin/media/')?>"><span class="mini-sub-pro">All Media</span></a></li>
-						</ul>
-					</li>
+					
 					<!-- Courses -->
 					<li>
 						<a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Courses</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
 							<li><a title="All Courses" href="<?php echo base_url('admin/Course/ViewCourse')?>"><span class="mini-sub-pro">All Courses List </span></a></li>
-							<li><a title="All Courses" href="<?php echo base_url('admin/Course/ViewCourseGrid')?>"><span class="mini-sub-pro">All Courses Grid </span></a></li>
+							<li><a title="All Courses" href="<?php echo base_url('admin/Course/ViewCourseGrid')?>"><span class="mini-sub-pro">My Class Room</span></a></li>
 
-							<li><a title="Add Courses" href="<?php echo base_url('admin/Course')?>"><span class="mini-sub-pro">Add Course</span></a></li>
-							<li><a title="Edit Courses" href="edit-course.html"><span class="mini-sub-pro">Edit Course</span></a></li>
-							<li><a title="Courses Profile" href="course-info.html"><span class="mini-sub-pro">Courses Info</span></a></li>
-							<li><a title="Product Payment" href="course-payment.html"><span class="mini-sub-pro">Courses Payment</span></a></li>
-						</ul>
-					</li>
-					<!-- Subject -->
-					<li>
-						<a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Subject</span></a>
-						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Courses" href="<?php echo base_url('admin/Subject/View')?>"><span class="mini-sub-pro">All Subject List </span></a></li>
-							<li><a title="Add Courses" href="<?php echo base_url('admin/Subject')?>"><span class="mini-sub-pro">Add Subject</span></a></li>
 							
 						</ul>
 					</li>
-					<!-- Lesson -->
-					<li>
-						<a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Lesson</span></a>
-						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Courses" href="<?php echo base_url('admin/Lesson/View')?>"><span class="mini-sub-pro">All Lesson List </span></a></li>
-							<li><a title="Add Courses" href="<?php echo base_url('admin/Lesson')?>"><span class="mini-sub-pro">Add Lesson</span></a></li>
-							
-						</ul>
-					</li>
+					
 					<!-- library -->
 					<li>
 						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Library</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
 							<li><a title="All Library" href="library-assets.html"><span class="mini-sub-pro">Library Assets</span></a></li>
-							<li><a title="Add Library" href="add-library-assets.html"><span class="mini-sub-pro">Add Library Asset</span></a></li>
-							<li><a title="Edit Library" href="edit-library-assets.html"><span class="mini-sub-pro">Edit Library Asset</span></a></li>
+							
 						</ul>
 					</li>
-					<!-- Students -->
+					<!-- Profile -->
 					<li>
-						<a class="has-arrow" href="all-students.html" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Students</span></a>
+						<a class="has-arrow" href="all-students.html" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Profile</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Students" href="all-students.html"><span class="mini-sub-pro">All Students</span></a></li>
-							<li><a title="Add Students" href="add-student.html"><span class="mini-sub-pro">Add Student</span></a></li>
-							<li><a title="Edit Students" href="edit-student.html"><span class="mini-sub-pro">Edit Student</span></a></li>
-							<li><a title="Students Profile" href="student-profile.html"><span class="mini-sub-pro">Student Profile</span></a></li>
+							
+							<li><a title="Edit Students" href="edit-student.html"><span class="mini-sub-pro">Edit Profile</span></a></li>
+						
 						</ul>
 					</li>
 					<!-- Events -->
@@ -88,18 +49,14 @@
 						<a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Event</span></a>
 					</li>
 					<li>
-						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Departments</span></a>
-						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="Departments List" href="departments.html"><span class="mini-sub-pro">Departments List</span></a></li>
-							<li><a title="Add Departments" href="add-department.html"><span class="mini-sub-pro">Add Departments</span></a></li>
-							<li><a title="Edit Departments" href="edit-department.html"><span class="mini-sub-pro">Edit Departments</span></a></li>
-						</ul>
+						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Live Class</span></a>
+						
 					</li>
 					<li>
-						<a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-settings icon-wrap"></span> <span class="mini-click-non">Settings</span></a>
+						<a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-settings icon-wrap"></span> <span class="mini-click-non">Support</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="Aim" href="<?php echo base_url('admin/Aim')?>"><span class="mini-sub-pro">Add Aim</span></a></li>
-							<li><a title="View Mail" href="<?php echo base_url('admin/Category')?>"><span class="mini-sub-pro">Add Category</span></a></li>
+							<li><a title="Aim" href="<?php echo base_url('admin/Aim')?>"><span class="mini-sub-pro">Order History</span></a></li>
+							<li><a title="View Mail" href="<?php echo base_url('admin/Category')?>"><span class="mini-sub-pro">Terms and Conditions</span></a></li>
 						</ul>
 					</li>
 
@@ -266,7 +223,7 @@
 											<li class="nav-item">
 												<a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
 													<img src="<?php echo base_url('assets')?>/img/product/pro4.jpg" alt="" />
-													<span class="admin-name">Prof.Anderson</span>
+													<span class="admin-name"><?php echo $_SESSION['username']?></span>
 													<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
 												</a>
 												<ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
@@ -302,72 +259,43 @@
 									<li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
 									</li>
 									<li><a href="#">Event</a></li>
-									<li><a data-toggle="collapse" data-target="#demoevent" href="#">Professors <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-										<ul id="demoevent" class="collapse dropdown-header-top">
-											<li><a href="all-professors.html">All Professors</a>
-											</li>
-											<li><a href="add-professor.html">Add Professor</a>
-											</li>
-											<li><a href="edit-professor.html">Edit Professor</a>
-											</li>
-											<li><a href="professor-profile.html">Professor Profile</a>
-											</li>
-										</ul>
-									</li>
-									<li><a data-toggle="collapse" data-target="#demopro" href="#">Students <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-										<ul id="demopro" class="collapse dropdown-header-top">
-											<li><a href="all-students.html">All Students</a>
-											</li>
-											<li><a href="add-student.html">Add Student</a>
-											</li>
-											<li><a href="edit-student.html">Edit Student</a>
-											</li>
-											<li><a href="student-profile.html">Student Profile</a>
-											</li>
-										</ul>
-									</li>
+									
 									<li><a data-toggle="collapse" data-target="#democrou" href="#">Courses <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
 										<ul id="democrou" class="collapse dropdown-header-top">
 											<li><a href="all-courses.html">All Courses</a>
 											</li>
-											<li><a href="<?php echo base_url('admin/Course')?>">Add Course</a>
+											<li><a href="<?php echo base_url('admin/Course')?>">My Class Room</a>
 											</li>
-											<li><a href="edit-course.html">Edit Course</a>
-											</li>
-											<li><a href="course-profile.html">Courses Info</a>
-											</li>
-											<li><a href="course-payment.html">Courses Payment</a>
-											</li>
+											
 										</ul>
 									</li>
 									<li><a data-toggle="collapse" data-target="#demolibra" href="#">Library <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
 										<ul id="demolibra" class="collapse dropdown-header-top">
 											<li><a href="library-assets.html">Library Assets</a>
 											</li>
-											<li><a href="add-library-assets.html">Add Library Asset</a>
-											</li>
-											<li><a href="edit-library-assets.html">Edit Library Asset</a>
-											</li>
+											
 										</ul>
 									</li>
-									<li><a data-toggle="collapse" data-target="#demodepart" href="#">Departments <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+									<li><a data-toggle="collapse" data-target="#demodepart" href="#">Profile <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
 										<ul id="demodepart" class="collapse dropdown-header-top">
-											<li><a href="departments.html">Departments List</a>
-											</li>
-											<li><a href="add-department.html">Add Departments</a>
-											</li>
-											<li><a href="edit-department.html">Edit Departments</a>
+											
+											<li><a href="edit-department.html">Edit Profile</a>
 											</li>
 										</ul>
 									</li>
-									<!-- <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon edu-icon edu-down-arrow"></span></a> -->
-										<ul id="demo" class="collapse dropdown-header-top">
-											<li><a href="mailbox.html">Inbox</a>
+									<li><a data-toggle="collapse" data-target="#demo" href="#">Event <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+										
+									</li>
+									<li><a data-toggle="collapse" data-target="#demo" href="#">Live Class <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+										
+									</li>
+									<li><a data-toggle="collapse" data-target="#demodepart" href="#">Support <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+										<ul id="demodepart" class="collapse dropdown-header-top">
+											<li><a href="departments.html">Order History</a>
 											</li>
-											<li><a href="mailbox-view.html">View Mail</a>
+											<li><a href="add-department.html">Terms and Conditions</a>
 											</li>
-											<li><a href="mailbox-compose.html">Compose Mail</a>
-											</li>
+											
 										</ul>
 									</li>
 								</ul>

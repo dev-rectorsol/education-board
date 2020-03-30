@@ -12,7 +12,7 @@ class Subject extends CI_Controller {
 	{
 		$data= array();
 		$data['page'] ='Subject';
-		$data['course']=  $this->Common_model->select('course');
+	
 		
 		$data['main_content']= $this->load->view('Subject/addSubject',$data, true);
 		$this->load->view('index',$data);
@@ -22,7 +22,7 @@ class Subject extends CI_Controller {
 		$data= array();
 		$data['page'] ='Course';
 		$data['subject']=  $this->Common_model->select('subject');
-        $data['course']=  $this->Common_model->select('course');
+       
 		$data['main_content']= $this->load->view('Subject/view',$data, true);
 		$this->load->view('index',$data);
 	}
@@ -33,7 +33,7 @@ class Subject extends CI_Controller {
 			 $data1=$this->security->xss_clean($_POST);
          $subject=[
              'name' => $data1['name'],
-            'course' => $data1['course'],
+            
             'description' => $data1['description'],
         ];
 		  $this->Common_model->insert($subject,'subject');
@@ -48,7 +48,7 @@ class Subject extends CI_Controller {
 			 $data1=$this->security->xss_clean($_POST);
          $subject=[
              'name' => $data1['name'],
-            'course' => $data1['course'],
+           
             'description' => $data1['description'],
         ];
 		  $this->Common_model->update($subject,'id',$id,'subject');

@@ -50,16 +50,6 @@
                                                                     <input name="name" type="text" class="form-control" placeholder="Subject Name">
                                                                 </div>
                                                                
-                                                               
-                                                                <div class="form-group res-mg-t-15">
-                                                                <label class="login2">Course</label>
-                                                                    <select class="select2_demo_2 form-control" name='course' data-placeholder="Choose a Course..." multiple="multiple">
-                                                                    <?php foreach($course as $row){ ?>
-                                                                    <option value="<?php echo $row['id'] ?>"> <?php echo $row['name'] ?> </option>
-                                                                    <?php } ?>
-                                                                    </select>
-                                                                </div>
-                                                                
                                                                  <div class="form-group">
                                                                  <label class="login2">Subject Description</label>
                                                                     <textarea name="description" id="summernote1" >Add a Description here</textarea>

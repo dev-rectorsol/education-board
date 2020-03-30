@@ -165,10 +165,34 @@ function getMaxUserId(){
         return $query;
     }
 
-   
-   
+   public  function select_published(){
+        $this->db->select();
+        $this->db->from('article');
+        $this->db->where('is_publish','1');
+        $this->db->order_by('id','ASC');
+        $query = $this->db->get();
+        $query = $query->result_array();
+        return $query;
+    }
+   public  function select_draft(){
+        $this->db->select();
+        $this->db->from('article');
+        $this->db->where('is_publish','0');
+        $this->db->order_by('id','ASC');
+        $query = $this->db->get();
+        $query = $query->result_array();
+        return $query;
+    }
     
-
+public  function select_deleted(){
+        $this->db->select();
+        $this->db->from('article');
+        $this->db->where('deleted','1');
+        $this->db->order_by('id','ASC');
+        $query = $this->db->get();
+        $query = $query->result_array();
+        return $query;
+    }
     
    
 

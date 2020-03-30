@@ -90,14 +90,7 @@
 																		value="<?php echo $row['name'] ?>" id="required">
 																
 															</div>
-															<div class="form-group ">
-                                                                <label >Lesson Subject</label>
-                                                                    <select class="form-control" name='subject' data-placeholder="Choose a Subject..." >
-                                                                    <?php foreach($subject as $row){ ?>
-                                                                    <option value="<?php echo $row['id'] ?>"> <?php echo $row['name'] ?> </option>
-                                                                    <?php } ?>
-                                                                    </select>
-                                                                </div>
+															
                                                             <div class="form-group ">
 																<label >Description</label>
 																

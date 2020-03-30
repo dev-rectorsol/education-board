@@ -25,21 +25,28 @@ class Category extends CI_Controller {
 	}
     public function Add()
 		{
+			if($_POST){
+			 $data1=$this->security->xss_clean($_POST);
 			$aim=[
-			'name' => $_POST['name'],
-			'parent' => $_POST['parent'],
+			'name' => $data1['name'],
+			'parent' => $data1['parent'],
+			'icon' => $data1['icon'],
 			];
 			$this->Common_model->insert($aim,'category');
 			redirect(base_url() . 'admin/Category', 'refresh');
+			}
 		}
 
       public function AddTag()
 			{
+				if($_POST){
+			 $data1=$this->security->xss_clean($_POST);
 		         $tag=[
-		            'title' => $_POST['name'],
+		            'title' => $data1['name'],
 		        ];
             $this->Common_model->insert($tag,'tags');
-            redirect(base_url() . 'admin/Category', 'refresh');
+			redirect(base_url() . 'admin/Category', 'refresh');
+				}
 			}
  public function Delete($id)
 	{
@@ -49,11 +56,14 @@ class Category extends CI_Controller {
     }
     public function Edit($id)
 	{
+		if($_POST){
+			 $data1=$this->security->xss_clean($_POST);
              $aim=[
-            'name' => $_POST['name'],
-            'parent' => $_POST['parent'],
+            'name' => $data1['name'],
+            'parent' => $data1['parent'],
         ];
            $this->Common_model->update($aim,'id',$id,'category');
-            redirect(base_url() . 'admin/Category', 'refresh');
+			redirect(base_url() . 'admin/Category', 'refresh');
+	}
 	}
 }
