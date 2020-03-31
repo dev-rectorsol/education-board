@@ -56,23 +56,23 @@
                                         foreach($course as $row){?>
 									<tr>
 										<td> <?php echo $i ?></td>
-										<td><?php echo $row['id'] ?></td>
+										<td><?php echo $row['courseid'] ?></td>
 										<td><?php echo $row['name'] ?></td>
 										<td><?php echo $row['description'] ?></td>
-										<td> <a data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip"
+										<td> <a data-target="<?php echo '#'.$row['courseid']; ?>" class="text-center tip"
 												data-toggle="modal" data-original-title="Edit"><i
 													class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 											<a title="Trash" class="pd-setting-ed"
-												onclick="delete_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-trash-o"
+												onclick="delete_detail(<?php echo $row['courseid'] ;?>)"><i class="fa fa-trash-o"
 													aria-hidden="true"></i></a></td>
 									</tr>
 
-									<div id="<?php echo $row['id'] ; ?>"
+									<div id="<?php echo $row['courseid'] ; ?>"
 										class="modal  default-popup-PrimaryModal fade" role="dialog">
 										<div class="modal-dialog" role="document ">
 											<div class="modal-content">
 												<form class="form-horizontal" method="post"
-													action="<?php echo base_url('admin/Category/Edit/').$row['id'] ?>"
+													action="<?php echo base_url('admin/Category/Edit/').$row['courseid'] ?>"
 													name="basic_validate" id="basic_validate" novalidate="novalidate">
 													<div class="modal-header header-color-modal bg-color-1 ">
 														<h6 class="modal-title">Edit Aim</h6>

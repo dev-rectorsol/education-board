@@ -7,6 +7,7 @@ class Course extends CI_Controller {
 	{
 			parent::__construct();
 			$this->load->model('Common_model');
+			$this->load->model('Course_model');
 	}
 	public function index()
 	{
@@ -21,7 +22,7 @@ class Course extends CI_Controller {
 	{
 		$data= array();
 		$data['page'] ='Course';
-		$data['course']=  $this->Common_model->select('course');
+		$data['course']=  $this->Course_model->select('course');
 
 		$data['main_content']= $this->load->view('course/viewCourse',$data, true);
 		$this->load->view('index',$data);
@@ -30,7 +31,7 @@ class Course extends CI_Controller {
 	{
 		$data= array();
 		$data['page'] ='Course';
-		$data['course']=  $this->Common_model->select('course');
+		$data['course']=  $this->Course_model->select('course');
 
 		$data['main_content']= $this->load->view('course/viewCourseGrid',$data, true);
 		$this->load->view('index',$data);
@@ -39,8 +40,11 @@ class Course extends CI_Controller {
 	{
 		if($_POST){
 			 $data1=$this->security->xss_clean($_POST);
-		
+		 $max= $this->Course_model->getMaxId();
+           $max =(int)substr($max,1);
+           $id= "C".($max+1);
          $course=[
+			   'courseid' =>$id,
             'name' => $data1['coursename'],
             'description' => $data1['description'],
         ];

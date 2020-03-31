@@ -41,7 +41,7 @@
 									data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true"
 									data-toolbar="#toolbar">
 									<caption>
-										<h4> Course List</h4>
+										<h4> Draft List</h4>
 									</caption>
 									<tr>
 										<th>S.No</th>
@@ -56,26 +56,26 @@
                                         foreach($article as $row){?>
 									<tr>
 										<td> <?php echo $i ?></td>
-										<td><?php echo $row['id'] ?></td>
+										<td><?php echo $row['postid'] ?></td>
 										<td><?php echo $row['title'] ?></td>
 										<td><?php echo $row['content'] ?></td>
-										<td> <a data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip"
+										<td> <a data-target="<?php echo '#'.$row['postid']; ?>" class="text-center tip"
 												data-toggle="modal" data-original-title="Edit"><i
 													class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 											<a title="Trash" class="pd-setting-ed"
-												onclick="delete_detail(<?php echo $row['id'] ;?>)"><i class="fa fa-trash-o"
+												onclick="delete_detail(<?php echo $row['postid'] ;?>)"><i class="fa fa-trash-o"
 													aria-hidden="true"></i></a></td>
 									</tr>
 
-									<div id="<?php echo $row['id'] ; ?>"
+									<div id="<?php echo $row['postid'] ; ?>"
 										class="modal  default-popup-PrimaryModal fade" role="dialog">
 										<div class="modal-dialog" role="document ">
 											<div class="modal-content">
 												<form class="form-horizontal" method="post"
-													action="<?php echo base_url('admin/Article/Edit/').$row['id'] ?>"
+													action="<?php echo base_url('admin/Article/Edit/').$row['postid'] ?>"
 													name="basic_validate" id="basic_validate" novalidate="novalidate">
 													<div class="modal-header header-color-modal bg-color-1 ">
-														<h6 class="modal-title">Edit Aim</h6>
+														<h6 class="modal-title">Publish Draft</h6>
 														<div class="modal-close-area modal-close-df">
 															<a class="close" data-dismiss="modal" href="#"><i
 																	class="fa fa-close"></i></a>
