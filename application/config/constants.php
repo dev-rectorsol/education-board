@@ -87,4 +87,6 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 // custom by omie date: 26/03/2020
 
-defined('ROLE_ADMIN')      OR define('ROLE_ADMIN', 1); // highest automatically-assigned error code
+defined('ROLE_ADMIN')      OR define('ROLE_ADMIN', 1); // Admin role id
+defined('ROLE_STUDENT')      OR define('ROLE_STUDENT', 2); // student role id
+defined('UPLOAD_FILE')      OR define('UPLOAD_FILE', 'uploads'); // Upload folder path

@@ -2,7 +2,7 @@
     <div class="se-pre-con"></div>
     <!-- Preloader Ends -->
 
-    <!-- Start Header Top 
+    <!-- Start Header Top
     ============================================= -->
     <div class="top-bar-area address-two-lines bg-dark text-light">
         <div class="container">
@@ -23,10 +23,10 @@
                     </div>
                 </div>
                 <div class="user-login text-right col-md-4">
-                    <a class="popup-with-form" href="#register-form">
+                    <a href="<?php echo base_url('join') ?>">
                         <i class="fas fa-edit"></i> Register
                     </a>
-                    <a  class="popup-with-form" href="#login-form">
+                    <a href="<?php echo base_url('authentication') ?>">
                         <i class="fas fa-user"></i> Login
                     </a>
                 </div>
@@ -35,7 +35,7 @@
     </div>
     <!-- End Header Top -->
 
-    <!-- Header 
+    <!-- Header
     ============================================= -->
     <header id="home">
 
@@ -51,7 +51,7 @@
                                 <input type="text" name="text" class="form-control" placeholder="Search">
                                 <button type="submit">
                                     <i class="fas fa-search"></i>
-                                </button>  
+                                </button>
                             </form>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                     <ul>
                         <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
                     </ul>
-                </div>        
+                </div>
                 <!-- End Atribute Navigation -->
 
                 <!-- Start Header Navigation -->
@@ -74,9 +74,8 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand" style="color: #002147; padding-top: 35px;" href="<?php echo base_url('home') ?>">
-                        <!-- <img src="<?php echo base_url('assets/web')?>/img/logo.png" class="logo" alt="Logo"> -->
-                        EDUCATION BOARD
+                    <a class="navbar-brand" style="color: #002147;" href="<?php echo base_url('home') ?>">
+                        <img src="<?php echo base_url('assets')?>/img/logo/logo_trans_black.png" class="logo" alt="Logo">
                     </a>
                 </div>
                 <!-- End Header Navigation -->
@@ -145,7 +144,7 @@
                             <a href="<?php echo base_url('courses') ?>" class="active">Courses</a>
                         </li>
                         <li class="dropdown">
-                            <a href="<?php echo base_url('faq')?>" class="active">faq</a>  
+                            <a href="<?php echo base_url('faq')?>" class="active">faq</a>
                         </li>
                         <li class="dropdown">
                             <a href="<?php echo base_url('event') ?>" class="active">Event</a>
@@ -174,7 +173,7 @@
     </header>
     <!-- End Header -->
 
-    <!-- Start Login Form 
+    <!-- Start Login Form
     ============================================= -->
     <form action="#" id="login-form" class="mfp-hide white-popup-block">
         <div class="col-md-4 login-social">
@@ -231,7 +230,7 @@
     </form>
     <!-- End Login Form -->
 
-    <!-- Start Register Form 
+    <!-- Start Register Form
     ============================================= -->
     <form action="#" id="register-form" class="mfp-hide white-popup-block">
         <div class="col-md-4 login-social">

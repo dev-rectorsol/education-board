@@ -19,7 +19,7 @@ class Aim extends CI_Controller {
 		$data= array();
         $data['page'] ='Aim';
         $data['aim']=  $this->Common_model->select('aim');
-		$data['main_content']= $this->load->view('Aim/add',$data, true);
+		$data['main_content']= $this->load->view('aim/add',$data, true);
 		$this->load->view('index',$data);
 	}
     public function Add()
@@ -32,14 +32,14 @@ class Aim extends CI_Controller {
 
         ];
             $this->Common_model->insert($aim,'aim');
-			redirect(base_url() . 'admin/Aim', 'refresh');
+			redirect(base_url() . 'admin/aim', 'refresh');
 	}
 	}
  public function Delete($id)
 	{
             $data1=['id'=> $id];
             $this->Common_model->delete($data1,'aim');
-            redirect(base_url() . 'admin/Aim', 'refresh');
+            redirect(base_url() . 'admin/aim', 'refresh');
     }
     public function Edit($id)
 	{
@@ -49,7 +49,7 @@ class Aim extends CI_Controller {
             'title' => $data1['name'],
         ];
            $this->Common_model->update($aim,'id',$id,'aim');
-			redirect(base_url() . 'admin/Aim', 'refresh');
+			redirect(base_url() . 'admin/aim', 'refresh');
 	}
 	}
 }

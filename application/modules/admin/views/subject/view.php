@@ -48,7 +48,7 @@
 										<th>Id</th>
 
 										<th>Name</th>
-										<th>Course</th>
+										
 										<th>Description</th>
 										<th>Setting</th>
 									</tr>
@@ -59,7 +59,7 @@
 										<td> <?php echo $i ?></td>
 										<td><?php echo $row['id'] ?></td>
 										<td><?php echo $row['name'] ?></td>
-										<td><?php echo $row['course'] ?></td>
+										
 										<td><?php echo $row['description'] ?></td>
 										<td> <a data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip"
 												data-toggle="modal" data-original-title="Edit"><i
@@ -92,18 +92,7 @@
 																		value="<?php echo $row['name'] ?>" id="required">
 																
 															</div>
-															<div class="form-group ">
-																<label >Course</label>
-																
-																	
-                                                                    <select class="form-control" name='course' data-placeholder="Choose a Course..." >
-                                                                    <?php foreach($course as $row){ ?>
-                                                                    <option value="<?php echo $row['id'] ?>"> <?php echo $row['name'] ?> </option>
-                                                                    <?php } ?>
-                                                                    </select>
-																		
 															
-															</div>
                                                             <div class="form-group">
 																<label >Description</label>
 																

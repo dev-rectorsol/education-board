@@ -1,62 +1,79 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html lang="en">
 
+
+<!-- Mirrored from demo.foxthemes.net/courseplusv3.3/default/form-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 16 Mar 2020 12:32:48 GMT -->
 <head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <title>Courseplus Learning HTML Template</title>
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login | Kiaalap - Kiaalap Admin Template</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- favicon
-		============================================ -->
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('assets')?>/img/favicon.ico">
-    <!-- Google Fonts
-		============================================ -->
-    <link href="https://fonts.googleapis.com/css?family=Play:400,700" rel="stylesheet">
-    <!-- Bootstrap CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/bootstrap.min.css">
-    <!-- Bootstrap CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/font-awesome.min.css">
-    <!-- owl.carousel CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/owl.carousel.css">
-    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/owl.theme.css">
-    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/owl.transitions.css">
-    <!-- animate CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/animate.css">
-    <!-- normalize CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/normalize.css">
-    <!-- main CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/main.css">
-    <!-- morrisjs CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/morrisjs/morris.css">
-    <!-- mCustomScrollbar CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/scrollbar/jquery.mCustomScrollbar.min.css">
-    <!-- metisMenu CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/metisMenu/metisMenu.min.css">
-    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/metisMenu/metisMenu-vertical.css">
-    <!-- calendar CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/calendar/fullcalendar.min.css">
-    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/calendar/fullcalendar.print.min.css">
-    <!-- forms CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/form/all-type-forms.css">
-    <!-- style CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('assets')?>/style.css">
-    <!-- responsive CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/responsive.css">
-    <!-- modernizr JS
-		============================================ -->
-    <script src="<?php echo base_url('assets')?>/js/vendor/modernizr-2.8.3.min.js"></script>
+    <meta name="description" content="Courseplus - Professional Learning Management HTML Template">
+
+    <!-- Favicon -->
+    <link href="<?php echo base_url() ?>/assets/images/favicon.png" rel="icon" type="image/png">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/night-mode.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/framework.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/bootstrap.css">
+
+    <!-- icons
+    ================================================== -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/icons.css">
+
+
+
+    <!-- javaScripts
+    ================================================== -->
+    <script src="<?php echo base_url() ?>/assets/js/framework.js"></script>
+    <script src="<?php echo base_url() ?>/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="<?php echo base_url() ?>/assets/js/simplebar.js"></script>
+    <script src="<?php echo base_url() ?>/assets/js/main.js"></script>
+    <script src="<?php echo base_url() ?>/assets/js/bootstrap-select.min.js"></script>
+
+
+    <!-- For Night mode -->
+    <script>
+        (function (window, document, undefined) {
+            'use strict';
+            if (!('localStorage' in window)) return;
+            var nightMode = localStorage.getItem('gmtNightMode');
+            if (nightMode) {
+                document.documentElement.className += ' night-mode';
+            }
+        })(window, document);
+
+
+        (function (window, document, undefined) {
+
+            'use strict';
+
+            // Feature test
+            if (!('localStorage' in window)) return;
+
+            // Get our newly insert toggle
+            var nightMode = document.querySelector('#night-mode');
+            if (!nightMode) return;
+
+            // When clicked, toggle night mode on or off
+            nightMode.addEventListener('click', function (event) {
+                event.preventDefault();
+                document.documentElement.classList.toggle('night-mode');
+                if (document.documentElement.classList.contains('night-mode')) {
+                    localStorage.setItem('gmtNightMode', true);
+                    return;
+                }
+                localStorage.removeItem('gmtNightMode');
+            }, false);
+
+        })(window, document);
+    </script>
+
 </head>
+
+<body>

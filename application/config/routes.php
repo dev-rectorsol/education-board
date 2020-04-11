@@ -55,6 +55,8 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'authentication';
 $route['auth'] = 'authentication';
 $route['auth/logout'] = 'authentication/logout';
+$route['join'] = 'authentication/register';
+$route['forget'] = 'authentication/resetView';
 
 // Website ROUTING
 
@@ -65,6 +67,7 @@ $route['courseDetails'] = 'web/home/courseDetails';
 $route['event'] = 'web/home/event';
 $route['faq'] = 'web/home/faq';
 $route['contact'] = 'web/home/contact';
+$route['file_upload'] = 'file_upload';
 
 
 //  Admin Routing vai Admin
@@ -74,4 +77,4 @@ $route['admin'] = 'admin/dashboard';
 
 // Board Routing vie User
 
-$route['board'] = 'board/dashboard';
+$route['app'] = 'web/dashboard';

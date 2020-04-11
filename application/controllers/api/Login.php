@@ -38,11 +38,7 @@ class Login extends REST_Controller {
 
             'email' => $this->post('email'),
             'password' => $this->post('password'),
-<<<<<<< Updated upstream
              'role' => $this->post('role'),
-=======
-
->>>>>>> Stashed changes
         ];
         $str = $this->Common_model->Login_check($message);
 

@@ -12,7 +12,7 @@ class Lesson extends CI_Controller {
 	{
 		$data= array();
 		$data['page'] ='Lesson';
-		$data['subject']=  $this->Common_model->select('subject');
+		
 		
 		$data['main_content']= $this->load->view('Lesson/addLesson',$data, true);
 		$this->load->view('index',$data);
@@ -22,18 +22,18 @@ class Lesson extends CI_Controller {
 		$data= array();
 		$data['page'] ='Course';
 		$data['lesson']=  $this->Common_model->select('lesson');
-        $data['subject']=  $this->Common_model->select('subject');
+        
 		$data['main_content']= $this->load->view('Lesson/view',$data, true);
 		$this->load->view('index',$data);
 	}
 
 	 public function Add()
 	{
-if($_POST){
+		if($_POST){
 			 $data1=$this->security->xss_clean($_POST);
          $lesson=[
              'name' => $data1['name'],
-            'subject' => $data1['subject'],
+            
             'description' => $data1['description'],
         ];
 		 $this->Common_model->insert($lesson,'lesson');
@@ -47,7 +47,7 @@ if($_POST){
 			 $data1=$this->security->xss_clean($_POST);
          $lesson=[
              'name' => $data1['name'],
-            'subject' => $data1['subject'],
+            
             'description' => $data1['description'],
         ];
 		 $this->Common_model->update($lesson,'id',$id,'lesson');

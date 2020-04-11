@@ -25,7 +25,7 @@ class Aim extends REST_Controller {
         parent::__construct();
 
         $this->load->helper('date');
-         $this->load->model('Common_model');
+        $this->load->model('Common_model');
         $this->load->helper('url');
 
     }

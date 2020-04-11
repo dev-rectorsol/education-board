@@ -18,7 +18,7 @@ class Authentication extends CI_Controller {
       }
       if($_POST){
         $temp = $this->auth->login($_POST);
-        if($temp['status'] == true){
+        if($temp['status']){
           redirect(base_url(), 'refresh');
         }else{
           $this->session->set_flashdata($temp);
@@ -31,13 +31,13 @@ class Authentication extends CI_Controller {
 
     public function resetView() {
       $this->load->view('resetPass');
-    
     }
-public function resetPass() {
-     $pass = self::randomPassword();
-       $data =  array('email' => $_POST['email']);
-     self::send_email($data['email'],  $pass);
-    
+    public function resetPass() {
+      $pass = self::randomPassword();
+      $data =  array('email' => $_POST['email']);
+      $data = $this->
+      self::send_email($data['email'],  $pass);
+
     }
     function logout(){
         $this->session->sess_destroy();
@@ -46,13 +46,13 @@ public function resetPass() {
      public function send_email($email = '', $password = '') {
          $data=array();
         $data['email']=$email;
-      
+
         $data['password']=$password;
         //  echo print_r($data['value']);
         //  echo print_r($email);exit;
         //   $email = $email;
            $subject = 'Password Reset!!';
-      
+
           $config = Array(
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -71,7 +71,7 @@ public function resetPass() {
           $this->email->subject($subject);
           $this->email->set_mailtype('html');
          // $msg=$this->load->view('join/email');
-          $this->email->message($this->load->view('email',$data,TRUE)); 
+          $this->email->message($this->load->view('email',$data,TRUE));
           $this->email->send();
     }
     function randomPassword() {

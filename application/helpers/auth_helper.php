@@ -21,6 +21,21 @@ if(! function_exists("isAdmin")) {
    		}
  	  }
 }
+if(! function_exists("isStudent")) {
+
+    /**
+     * Check if current user is logged in.
+     *
+     * @return bool
+     */
+    function isStudent($role) {
+   		if ($role == ROLE_STUDENT) {
+   			return true;
+   		} else {
+   			return false;
+   		}
+ 	  }
+}
 
 if(! function_exists("pre")) {
 

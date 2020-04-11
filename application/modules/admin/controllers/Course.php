@@ -39,7 +39,7 @@ class Course extends CI_Controller {
 	{
 		if($_POST){
 			 $data1=$this->security->xss_clean($_POST);
-		
+
          $course=[
             'name' => $data1['coursename'],
             'description' => $data1['description'],
@@ -49,9 +49,9 @@ class Course extends CI_Controller {
 		  foreach($tag as $row){
 			$data=[
             'root' => $id,
-			'port' => $row,
-			'type' =>'tag'
-        ];
+						'port' => $row,
+						'type' =>'tag'
+					];
 		 $this->Common_model->insert($data,'indexing');
 		  }
 		    $category=$_POST['category'];

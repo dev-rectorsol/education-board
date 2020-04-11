@@ -10,7 +10,7 @@ class Home extends CI_Controller {
         if(isAdmin($this->session->userdata('roles')))
           redirect(base_url() . 'admin', 'refresh' );
         else
-          redirect(base_url() . 'board', 'refresh' );
+          redirect(base_url() . 'app', 'refresh' );
       }else {
         redirect(base_url() . 'home', 'refresh' );
       }

@@ -3,8 +3,8 @@
 <div class="left-sidebar-pro">
 	<nav id="sidebar" class="">
 		<div class="sidebar-header">
-			<a href="index.html"><img class="main-logo" src="<?php echo base_url('assets')?>/img/logo/logo.png" alt="" /></a>
-			<strong><a href="index.html"><img src="<?php echo base_url('assets')?>/img/logo/logosn.png" alt="" /></a></strong>
+			<a href="index.html"><img class="main-logo" src="<?php echo base_url('optimum')?>/img/logo/logo12.jpg" alt="" /></a>
+			<strong><a href="index.html"><img src="<?php echo base_url('optimum')?>/img/logo/logosn.png" alt="" /></a></strong>
 		</div>
 		<div class="left-custom-menu-adp-wrap comment-scrollbar">
 			<nav class="sidebar-nav left-sidebar-menu-pro">
@@ -17,10 +17,18 @@
 					</li>
 					<!-- Media -->
 					<li>
-						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Media</span></a>
+						<a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Media</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
 							<li><a title="All Courses" href="<?php echo base_url('admin/media/add')?>"><span class="mini-sub-pro">Add New</span></a></li>
 							<li><a title="All Courses" href="<?php echo base_url('admin/media/')?>"><span class="mini-sub-pro">All Media</span></a></li>
+						</ul>
+					</li>
+					<!-- Article -->
+					<li>
+						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Article</span></a>
+						<ul class="submenu-angle" aria-expanded="false">
+							<li><a title="All Courses" href="<?php echo base_url('admin/article/view')?>"><span class="mini-sub-pro">All Post</span></a></li>
+							<li><a title="All Courses" href="<?php echo base_url('admin/article/')?>"><span class="mini-sub-pro">Add New</span></a></li>
 						</ul>
 					</li>
 					<!-- Courses -->
@@ -42,7 +50,7 @@
 						<ul class="submenu-angle" aria-expanded="false">
 							<li><a title="All Courses" href="<?php echo base_url('admin/Subject/View')?>"><span class="mini-sub-pro">All Subject List </span></a></li>
 							<li><a title="Add Courses" href="<?php echo base_url('admin/Subject')?>"><span class="mini-sub-pro">Add Subject</span></a></li>
-							
+
 						</ul>
 					</li>
 					<!-- Lesson -->
@@ -51,16 +59,16 @@
 						<ul class="submenu-angle" aria-expanded="false">
 							<li><a title="All Courses" href="<?php echo base_url('admin/Lesson/View')?>"><span class="mini-sub-pro">All Lesson List </span></a></li>
 							<li><a title="Add Courses" href="<?php echo base_url('admin/Lesson')?>"><span class="mini-sub-pro">Add Lesson</span></a></li>
-							
+
 						</ul>
 					</li>
 					<!-- library -->
 					<li>
 						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Library</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Library" href="library-assets.html"><span class="mini-sub-pro">Library Assets</span></a></li>
-							<li><a title="Add Library" href="add-library-assets.html"><span class="mini-sub-pro">Add Library Asset</span></a></li>
-							<li><a title="Edit Library" href="edit-library-assets.html"><span class="mini-sub-pro">Edit Library Asset</span></a></li>
+							<li><a title="All Library" href="library-optimum.html"><span class="mini-sub-pro">Library optimum</span></a></li>
+							<li><a title="Add Library" href="add-library-optimum.html"><span class="mini-sub-pro">Add Library Asset</span></a></li>
+							<li><a title="Edit Library" href="edit-library-optimum.html"><span class="mini-sub-pro">Edit Library Asset</span></a></li>
 						</ul>
 					</li>
 					<!-- Students -->
@@ -106,7 +114,7 @@
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="logo-pro">
-					<a href="index.html"><img class="main-logo" src="<?php echo base_url('assets')?>/img/logo/logo.png" alt="" /></a>
+					<a href="index.html"><img class="main-logo" src="<?php echo base_url('optimum')?>/img/logo/logo.png" alt="" /></a>
 				</div>
 			</div>
 		</div>
@@ -130,143 +138,20 @@
 								<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 									<div class="header-right-info">
 										<ul class="nav navbar-nav mai-top-nav header-right-menu">
-											<li class="nav-item dropdown">
-												<a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-message edu-chat-pro" aria-hidden="true"></i><span
-													  class="indicator-ms"></span></a>
-												<div role="menu" class="author-message-top dropdown-menu animated zoomIn">
-													<div class="message-single-top">
-														<h1>Message</h1>
-													</div>
-													<ul class="message-menu">
-														<li>
-															<a href="#">
-																<div class="message-img">
-																	<img src="<?php echo base_url('assets')?>/img/contact/1.jpg" alt="">
-																</div>
-																<div class="message-content">
-																	<span class="message-date">16 Sept</span>
-																	<h2>Advanda Cro</h2>
-																	<p>Please done this project as soon possible.</p>
-																</div>
-															</a>
-														</li>
-														<li>
-															<a href="#">
-																<div class="message-img">
-																	<img src="<?php echo base_url('assets')?>/img/contact/4.jpg" alt="">
-																</div>
-																<div class="message-content">
-																	<span class="message-date">16 Sept</span>
-																	<h2>Sulaiman din</h2>
-																	<p>Please done this project as soon possible.</p>
-																</div>
-															</a>
-														</li>
-														<li>
-															<a href="#">
-																<div class="message-img">
-																	<img src="<?php echo base_url('assets')?>/img/contact/3.jpg" alt="">
-																</div>
-																<div class="message-content">
-																	<span class="message-date">16 Sept</span>
-																	<h2>Victor Jara</h2>
-																	<p>Please done this project as soon possible.</p>
-																</div>
-															</a>
-														</li>
-														<li>
-															<a href="#">
-																<div class="message-img">
-																	<img src="<?php echo base_url('assets')?>/img/contact/2.jpg" alt="">
-																</div>
-																<div class="message-content">
-																	<span class="message-date">16 Sept</span>
-																	<h2>Victor Jara</h2>
-																	<p>Please done this project as soon possible.</p>
-																</div>
-															</a>
-														</li>
-													</ul>
-													<div class="message-view">
-														<a href="#">View All Messages</a>
-													</div>
-												</div>
-											</li>
-											<li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-bell" aria-hidden="true"></i><span
-													  class="indicator-nt"></span></a>
-												<div role="menu" class="notification-author dropdown-menu animated zoomIn">
-													<div class="notification-single-top">
-														<h1>Notifications</h1>
-													</div>
-													<ul class="notification-menu">
-														<li>
-															<a href="#">
-																<div class="notification-icon">
-																	<i class="educate-icon educate-checked edu-checked-pro admin-check-pro" aria-hidden="true"></i>
-																</div>
-																<div class="notification-content">
-																	<span class="notification-date">16 Sept</span>
-																	<h2>Advanda Cro</h2>
-																	<p>Please done this project as soon possible.</p>
-																</div>
-															</a>
-														</li>
-														<li>
-															<a href="#">
-																<div class="notification-icon">
-																	<i class="fa fa-cloud edu-cloud-computing-down" aria-hidden="true"></i>
-																</div>
-																<div class="notification-content">
-																	<span class="notification-date">16 Sept</span>
-																	<h2>Sulaiman din</h2>
-																	<p>Please done this project as soon possible.</p>
-																</div>
-															</a>
-														</li>
-														<li>
-															<a href="#">
-																<div class="notification-icon">
-																	<i class="fa fa-eraser edu-shield" aria-hidden="true"></i>
-																</div>
-																<div class="notification-content">
-																	<span class="notification-date">16 Sept</span>
-																	<h2>Victor Jara</h2>
-																	<p>Please done this project as soon possible.</p>
-																</div>
-															</a>
-														</li>
-														<li>
-															<a href="#">
-																<div class="notification-icon">
-																	<i class="fa fa-line-chart edu-analytics-arrow" aria-hidden="true"></i>
-																</div>
-																<div class="notification-content">
-																	<span class="notification-date">16 Sept</span>
-																	<h2>Victor Jara</h2>
-																	<p>Please done this project as soon possible.</p>
-																</div>
-															</a>
-														</li>
-													</ul>
-													<div class="notification-view">
-														<a href="#">View All Notification</a>
-													</div>
-												</div>
-											</li>
 											<li class="nav-item">
 												<a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-													<img src="<?php echo base_url('assets')?>/img/product/pro4.jpg" alt="" />
-													<span class="admin-name">Prof.Anderson</span>
+													<?php if ($this->session->userdata('thumb') != ""): ?>
+														<img src="<?php echo base_url() . $this->session->userdata('thumb'); ?>" alt="" class="header-profile-icon">
+													<?php else: ?>
+														<img src="<?php echo base_url()?>assets/images/avatars/default.png" alt="" class="header-profile-icon">
+													<?php endif; ?>
+													<span class="admin-name"><?php echo $this->session->userdata('username'); ?></span>
 													<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
 												</a>
 												<ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
-													<li><a href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>My Account</a>
+													<li><a href="<?php echo base_url('admin/profile') ?>"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
 													</li>
-													<li><a href="#"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
-													</li>
-													<li><a href="#"><span class="edu-icon edu-money author-log-ic"></span>User Billing</a>
-													</li>
-													<li><a href="#"><span class="edu-icon edu-settings author-log-ic"></span>Settings</a>
+													<li><a href="<?php echo base_url('admin/setting') ?>"><span class="edu-icon edu-settings author-log-ic"></span>Settings</a>
 													</li>
 													<li><a href="<?php echo base_url('auth/logout')?>"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
 													</li>
@@ -332,11 +217,11 @@
 									</li>
 									<li><a data-toggle="collapse" data-target="#demolibra" href="#">Library <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
 										<ul id="demolibra" class="collapse dropdown-header-top">
-											<li><a href="library-assets.html">Library Assets</a>
+											<li><a href="library-optimum.html">Library optimum</a>
 											</li>
-											<li><a href="add-library-assets.html">Add Library Asset</a>
+											<li><a href="add-library-optimum.html">Add Library Asset</a>
 											</li>
-											<li><a href="edit-library-assets.html">Edit Library Asset</a>
+											<li><a href="edit-library-optimum.html">Edit Library Asset</a>
 											</li>
 										</ul>
 									</li>

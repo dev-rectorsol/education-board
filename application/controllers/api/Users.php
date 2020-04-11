@@ -23,7 +23,7 @@ class Users extends REST_Controller {
     {
         // Construct the parent class
         parent::__construct();
-       
+
         $this->load->helper('date');
          $this->load->model('Common_model');
         $this->load->helper('url');
@@ -33,13 +33,13 @@ class Users extends REST_Controller {
     public function index_get()
     {
         // Users from a data store e.g. database
-       
+
         $id = $this->get('id');
 
         // If the id parameter doesn't exist return all the users
 
         if ($id === NULL)
-        { 
+        {
             $users = $this->Common_model->select_user();
 
             // Check if the users data store contains users (in case the database result returns NULL)
@@ -54,13 +54,12 @@ class Users extends REST_Controller {
                    'Role' =>$key['role'],
                     'Status' =>$key['status'],
                     'JoinDate' =>$key['joindate'],
-                    'Name' =>$key['name'], 
-                    
-                     'Details' =>$key['details'],
+                    'Name' =>$key['name'],
+                    'Details' =>$key['details'],
                     'Mobile' =>$key['mobile'],
                ];
                 }
-              
+
                 $this->response($message, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
             }
             else
@@ -92,7 +91,7 @@ class Users extends REST_Controller {
 
         $user = $this->Common_model->select_user_option($id);
 
-       
+
 
         if (!empty($user))
         {
@@ -105,8 +104,8 @@ class Users extends REST_Controller {
                    'Role' =>$user[0]['role'],
                     'Status' =>$user[0]['status'],
                     'JoinDate' =>$user[0]['joindate'],
-                    'Name' =>$user[0]['name'], 
-                    
+                    'Name' =>$user[0]['name'],
+
                      'Details' =>$user[0]['details'],
                     'Mobile' =>$user[0]['mobile'],
                ];
@@ -124,18 +123,18 @@ class Users extends REST_Controller {
     public function index_post($id=0)
     {
         $message = [
-            
+
             'name' => $this->post('name'),
-           
+
             'mobile' => $this->post('mobile'),
             'details' => $this->post('details'),
             'user_id' => $this->post('id'),
-           
+
         ];
         $str = $this->Common_model->insert($message,'user_details');
-    
-        if($str) 
-       
+
+        if($str)
+
             {
                 $this->set_response("Data Inserted", REST_Controller::HTTP_CREATED); // CREATED (201) being the HTTP response code
             }
@@ -146,7 +145,7 @@ class Users extends REST_Controller {
                 'message' => 'OOps Something went wrong'
             ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
         }
-       
+
     }
 //Delete new User Details
     public function Index_delete($id=0)
@@ -170,30 +169,30 @@ class Users extends REST_Controller {
         $data2=['logid'=> $id];
         $str = $this->Common_model->delete($data2,'logme');
         // $this->some_model->delete_something($id);
-       
+
 
         $this->set_response([
             'id' => $id,
             'message' => 'Deleted the resource'
-        ], REST_Controller::HTTP_OK); 
+        ], REST_Controller::HTTP_OK);
         }else{
              $this->response([
                     'status' => FALSE,
                     'message' => 'Invalid User Id'
                 ], REST_Controller::HTTP_BAD_REQUEST); // BAD_REQUEST (400) being the HTTP response code
         }
-        } 
+        }
     }
     //Update new User Details
     public function index_put($id=0)
     {
          $data = [
-            
+
             'name' => $this->put('name'),
-            
+
             'mobile' => $this->put('mobile'),
             'details' => $this->put('details'),
-           
+
         ];
         $id= $this->put('id');
         // Insert the new key
@@ -226,19 +225,19 @@ class Users extends REST_Controller {
 //Get User Address
     public function address_get($id=0)
     {
-      
+
         $id= $this->get('id');
-       
+
        if (!$id)
         {
             $this->response([
                 'status' => FALSE,
                 'message' => 'Invalid Parameter'
             ], REST_Controller::HTTP_INTERNAL_SERVER_ERROR); // INTERNAL_SERVER_ERROR (500) being the HTTP response code
-       
-       
+
+
         // Insert the new key
-      
+
          }
          else
         {
@@ -260,19 +259,19 @@ class Users extends REST_Controller {
     public function address_post($id=0)
     {
         $id= $this->post('id');
-        
-         
+
+
           if (!$id)
         {
-         
-            
+
+
             $this->response([
                 'status' => FALSE,
                 'message' => 'Invalid Id'
             ], REST_Controller::HTTP_INTERNAL_SERVER_ERROR); // INTERNAL_SERVER_ERROR (500) being the HTTP response code
         }
-       
-        
+
+
         else
         {
              $address=[
@@ -302,7 +301,7 @@ class Users extends REST_Controller {
         }
      }
         // Insert the new key
-       
+
     }
 //Update User Address
     public function address_put($id=0)
@@ -320,14 +319,14 @@ class Users extends REST_Controller {
          $id= $this->put('id');
           if (!$id)
         {
-         
+
             $this->response([
                 'status' => FALSE,
                 'message' => 'Invalid Id'
             ], REST_Controller::HTTP_INTERNAL_SERVER_ERROR); // INTERNAL_SERVER_ERROR (500) being the HTTP response code
         }
-       
-        
+
+
         else
         {
             if ($this->Common_model->update($address,'user_id',$id,'address'))
@@ -346,7 +345,7 @@ class Users extends REST_Controller {
         }
         }
         // Insert the new key
-       
+
     }
     //Delete User Address
     public function address_delete($id=0)
@@ -361,7 +360,7 @@ class Users extends REST_Controller {
         }
         $data1=['user_id'=> $id];
         $str = $this->Common_model->delete($data1,'address');
-        
+
         // $this->some_model->delete_something($id);
         $message = [
             'id' => $id,
@@ -373,17 +372,17 @@ class Users extends REST_Controller {
 //Get User Aim
     public function aim_get($id=0)
     {
-      
+
         $id= $this->get('id');
-       
+
        if (!$id)
         {
             $this->response([
                 'status' => FALSE,
                 'message' => 'Invalid Parameter'
             ], REST_Controller::HTTP_INTERNAL_SERVER_ERROR); // INTERNAL_SERVER_ERROR (500) being the HTTP response code
-       
-       
+
+
          }
          else
         {
@@ -405,11 +404,11 @@ class Users extends REST_Controller {
     public function aim_post($id=0)
     {
         $id= $this->post('id');
-        
-         
+
+
           if (!$id)
         {
-           
+
             $this->response([
                 'status' => FALSE,
                 'message' => 'Invalid Id'
@@ -438,7 +437,7 @@ class Users extends REST_Controller {
         }
      }
         // Insert the new key
-       
+
     }
 //Update User Address
     public function aim_put($id=0)
@@ -450,7 +449,7 @@ class Users extends REST_Controller {
          $id= $this->put('id');
           if (!$id)
         {
-         
+
             $this->response([
                 'status' => FALSE,
                 'message' => 'Invalid Id'
@@ -474,7 +473,7 @@ class Users extends REST_Controller {
         }
         }
         // Insert the new key
-       
+
     }
     //Delete User Address
     public function aim_delete($id=0)
@@ -489,7 +488,7 @@ class Users extends REST_Controller {
         }
         $data1=['user_id'=> $id];
         $str = $this->Common_model->delete($data1,'user_aim');
-        
+
         // $this->some_model->delete_something($id);
         $message = [
             'id' => $id,

@@ -148,14 +148,23 @@ class Auth
             "email" => $this->user->email,
             "phone" => $this->user->phone,
             "roles" => $this->getUserRoles(),
-            "loginStatus" => true
+            "thumb" => $this->get_userProfileImage(),
+            "image" => $this->get_userProfileImage(),
+            "loginStatus" => 1
         ));
-        $this->error['status'] = true;
+        $this->error['status'] = 1;
         return $this->error;
     }
 
     protected function get_userName(){
       return $this->CI->db->get_where("user_details", array("user_id" => $this->user->logid))->row(0)->name;
+    }
+
+    protected function get_userProfileImage(){
+      return $this->CI->db->get_where("thumbnail", array("root" => $this->user->logid))->row(0)->image;
+    }
+    protected function get_userProfileThumb(){
+      return $this->CI->db->get_where("thumbnail", array("root" => $this->user->logid))->row(0)->thumb;
     }
 
     /**

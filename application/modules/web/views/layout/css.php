@@ -1,45 +1,132 @@
-<!DOCTYPE html>
-<html lang="en">
+  <!doctype html>
+  <html lang="en">
 
 
-<!-- Mirrored from thememine.net/themeforest/examin/index-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 16 Mar 2020 12:02:22 GMT -->
-<head>
-    <!-- ========== Meta Tags ========== -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Examin - Education and LMS Template">
+  <!-- Mirrored from demo.foxthemes.net/courseplusv3.3/default/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 16 Mar 2020 12:31:46 GMT -->
+  <head>
 
-    <!-- ========== Page Title ========== -->
-    <title><?php echo $page; ?></title>
+      <!-- Basic Page Needs
+      ================================================== -->
+      <title>Courseplus Learning HTML Template</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Courseplus - Professional Learning Management HTML Template">
 
-    <!-- ========== Favicon Icon ========== -->
-    <link rel="shortcut icon" href="<?php echo base_url('assets/web') ?>/img/favicon.png" type="image/x-icon">
+      <!-- Favicon -->
+      <link href="<?php echo base_url() ?>/assets/images/favicon.png" rel="icon" type="image/png">
 
-    <!-- ========== Start Stylesheet ========== -->
-    <link href="<?php echo base_url('assets/web') ?>/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="<?php echo base_url('assets/web') ?>/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="<?php echo base_url('assets/web') ?>/css/flaticon-set.css" rel="stylesheet" />
-    <link href="<?php echo base_url('assets/web') ?>/css/magnific-popup.css" rel="stylesheet" />
-    <link href="<?php echo base_url('assets/web') ?>/css/owl.carousel.min.css" rel="stylesheet" />
-    <link href="<?php echo base_url('assets/web') ?>/css/owl.theme.default.min.css" rel="stylesheet" />
-    <link href="<?php echo base_url('assets/web') ?>/css/animate.css" rel="stylesheet" />
-    <link href="<?php echo base_url('assets/web') ?>/css/bootsnav.css" rel="stylesheet" />
-    <link href="<?php echo base_url('assets/web') ?>/style.css" rel="stylesheet">
-    <link href="<?php echo base_url('assets/web') ?>/css/responsive.css" rel="stylesheet" />
-    <!-- ========== End Stylesheet ========== -->
+      <!-- CSS
+      ================================================== -->
+      <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/style.css">
+      <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/night-mode.css">
+      <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/framework.css">
+      <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/bootstrap.css">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="<?php echo base_url('assets/web') ?>/js/html5/html5shiv.min.js"></script>
-      <script src="<?php echo base_url('assets/web') ?>/js/html5/respond.min.js"></script>
-    <![endif]-->
+      <!-- icons
+      ================================================== -->
+      <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/icons.css">
 
-    <!-- ========== Google Fonts ========== -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800" rel="stylesheet">
+      <script src="<?php echo base_url() ?>/assets/js/framework.js"></script>
+      <script src="<?php echo base_url() ?>/assets/js/jquery-3.3.1.min.js"></script>
+      <script src="<?php echo base_url() ?>/assets/js/simplebar.js"></script>
+      <script src="<?php echo base_url() ?>/assets/js/main.js"></script>
+      <script src="<?php echo base_url() ?>/assets/js/bootstrap-select.min.js"></script>
 
-</head>
+      <!-- For Night mode -->
+      <script>
+          (function (window, document, undefined) {
+              'use strict';
+              if (!('localStorage' in window)) return;
+              var nightMode = localStorage.getItem('gmtNightMode');
+              if (nightMode) {
+                  document.documentElement.className += ' night-mode';
+              }
+          })(window, document);
 
-<body>
+
+          (function (window, document, undefined) {
+
+              'use strict';
+
+              // Feature test
+              if (!('localStorage' in window)) return;
+
+              // Get our newly insert toggle
+              var nightMode = document.querySelector('#night-mode');
+              if (!nightMode) return;
+
+              // When clicked, toggle night mode on or off
+              nightMode.addEventListener('click', function (event) {
+                  event.preventDefault();
+                  document.documentElement.classList.toggle('night-mode');
+                  if (document.documentElement.classList.contains('night-mode')) {
+                      localStorage.setItem('gmtNightMode', true);
+                      return;
+                  }
+                  localStorage.removeItem('gmtNightMode');
+              }, false);
+
+          })(window, document);
+      </script>
+      <style>
+          .flex-wrapper {
+              display: flex;
+              flex-flow: row nowrap;
+          }
+
+          .single-chart {
+              width: 33%;
+              justify-content: space-around;
+          }
+
+          .circular-chart {
+              display: block;
+              margin: 10px auto;
+              max-width: 80%;
+              max-height: 250px;
+          }
+
+          .circle-bg {
+              fill: none;
+              stroke: #eee;
+              stroke-width: 3.8;
+          }
+
+          .circle {
+              fill: none;
+              stroke-width: 2.8;
+              stroke-linecap: round;
+              animation: progress 1s ease-out forwards;
+          }
+
+          @keyframes progress {
+              0% {
+                  stroke-dasharray: 0 100;
+              }
+          }
+
+          .circular-chart.orange .circle {
+              stroke: #ff9f00;
+          }
+
+          .circular-chart.green .circle {
+              stroke: #4CC790;
+          }
+
+          .circular-chart.blue .circle {
+              stroke: #3c9ee5;
+          }
+
+          .percentage {
+              fill: #666;
+              font-family: sans-serif;
+              font-size: 0.5em;
+              text-anchor: middle;
+          }
+      </style>
+
+  </head>
+
+  <body>
+
+    
