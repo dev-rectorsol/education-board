@@ -5,19 +5,18 @@ class Article_model extends CI_Model {
           $this->load->database();
         }
 
-        public function getArticleMaxId(){
-          $query = $this->db->select("MAX(postid) AS postid")->from('article')->get()->row()->postid;
-          if ($query) {
-            return $query;
-          }else {
-            return '001';
-          }
+        function select_by_id($id){
+            $this->db->select("*");
+            $this->db->from('article');
+            $this->db->where('postid', $id);
+            $query = $this->db->get();
+            return $query->row();
         }
-        public function select_published(){
+
+        public function select_published() {
              $this->db->select("*");
-             $this->db->from('article');
+             $this->db->from('article_view');
              $this->db->where('is_publish','1');
-             $this->db->order_by('created_at','ASC');
              $query = $this->db->get();
              $query = $query->result_array();
              return $query;

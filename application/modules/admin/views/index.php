@@ -15,6 +15,15 @@
 							<span class="mini-click-non">Dashboard</span>
 						</a>
 					</li>
+					<!-- Mata Data -->
+					<li>
+						<a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-cloud icon-wrap"></span> <span class="mini-click-non">Default</span></a>
+						<ul class="submenu-angle" aria-expanded="false">
+							<li><a title="Aim" href="<?php echo base_url('admin/aim')?>"><span class="mini-sub-pro">Add Aim</span></a></li>
+							<li><a title="Category" href="<?php echo base_url('admin/category')?>"><span class="mini-sub-pro">Add Categorys</span></a></li>
+							<li><a title="Category" href="<?php echo base_url('admin/tag')?>"><span class="mini-sub-pro">Add tags</span></a></li>
+						</ul>
+					</li>
 					<!-- Media -->
 					<li>
 						<a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Media</span></a>
@@ -25,9 +34,9 @@
 					</li>
 					<!-- Article -->
 					<li>
-						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Article</span></a>
+						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-star icon-wrap"></span> <span class="mini-click-non">Article</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Courses" href="<?php echo base_url('admin/article/view')?>"><span class="mini-sub-pro">All Post</span></a></li>
+							<li><a title="All Courses" href="<?php echo base_url('admin/article/view')?>"><span class="mini-sub-pro">All List</span></a></li>
 							<li><a title="All Courses" href="<?php echo base_url('admin/article/')?>"><span class="mini-sub-pro">Add New</span></a></li>
 						</ul>
 					</li>
@@ -35,64 +44,45 @@
 					<li>
 						<a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Courses</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Courses" href="<?php echo base_url('admin/Course/ViewCourse')?>"><span class="mini-sub-pro">All Courses List </span></a></li>
-							<li><a title="All Courses" href="<?php echo base_url('admin/Course/ViewCourseGrid')?>"><span class="mini-sub-pro">All Courses Grid </span></a></li>
-
-							<li><a title="Add Courses" href="<?php echo base_url('admin/Course')?>"><span class="mini-sub-pro">Add Course</span></a></li>
-							<li><a title="Edit Courses" href="edit-course.html"><span class="mini-sub-pro">Edit Course</span></a></li>
-							<li><a title="Courses Profile" href="course-info.html"><span class="mini-sub-pro">Courses Info</span></a></li>
-							<li><a title="Product Payment" href="course-payment.html"><span class="mini-sub-pro">Courses Payment</span></a></li>
+							<li><a title="All Courses" href="<?php echo base_url('admin/course/ViewCourse')?>"><span class="mini-sub-pro">All Courses List </span></a></li>
+							<li><a title="Add Courses" href="<?php echo base_url('admin/course')?>"><span class="mini-sub-pro">Add Course</span></a></li>
 						</ul>
 					</li>
 					<!-- Subject -->
 					<li>
-						<a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Subject</span></a>
+						<a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Subject</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Courses" href="<?php echo base_url('admin/Subject/View')?>"><span class="mini-sub-pro">All Subject List </span></a></li>
-							<li><a title="Add Courses" href="<?php echo base_url('admin/Subject')?>"><span class="mini-sub-pro">Add Subject</span></a></li>
+							<li><a title="All Courses" href="<?php echo base_url('admin/subject/View')?>"><span class="mini-sub-pro">All Subject List </span></a></li>
+							<li><a title="Add Courses" href="<?php echo base_url('admin/subject')?>"><span class="mini-sub-pro">Add Subject</span></a></li>
 
 						</ul>
 					</li>
 					<!-- Lesson -->
 					<li>
-						<a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Lesson</span></a>
+						<a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Lesson</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Courses" href="<?php echo base_url('admin/Lesson/View')?>"><span class="mini-sub-pro">All Lesson List </span></a></li>
-							<li><a title="Add Courses" href="<?php echo base_url('admin/Lesson')?>"><span class="mini-sub-pro">Add Lesson</span></a></li>
+							<li><a title="All Courses" href="<?php echo base_url('admin/lesson/View')?>"><span class="mini-sub-pro">All Lesson List </span></a></li>
+							<li><a title="Add Courses" href="<?php echo base_url('admin/lesson')?>"><span class="mini-sub-pro">Add Lesson</span></a></li>
 
 						</ul>
 					</li>
-					<!-- library -->
+					<!-- Products -->
 					<li>
-						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Library</span></a>
+						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-menu icon-wrap"></span> <span class="mini-click-non">Products</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Library" href="library-optimum.html"><span class="mini-sub-pro">Library optimum</span></a></li>
-							<li><a title="Add Library" href="add-library-optimum.html"><span class="mini-sub-pro">Add Library Asset</span></a></li>
-							<li><a title="Edit Library" href="edit-library-optimum.html"><span class="mini-sub-pro">Edit Library Asset</span></a></li>
+							<li><a title="All Product" href="<?php echo base_url('admin/product/list'); ?>"><span class="mini-sub-pro">All Products</span></a></li>
+							<li><a title="Add Product" href="<?php echo base_url('admin/product/'); ?>"><span class="mini-sub-pro">Add Products</span></a></li>
 						</ul>
 					</li>
-					<!-- Students -->
+					<!-- Commerce -->
 					<li>
-						<a class="has-arrow" href="all-students.html" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Students</span></a>
+						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-project icon-wrap"></span> <span class="mini-click-non">Commerce</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Students" href="all-students.html"><span class="mini-sub-pro">All Students</span></a></li>
-							<li><a title="Add Students" href="add-student.html"><span class="mini-sub-pro">Add Student</span></a></li>
-							<li><a title="Edit Students" href="edit-student.html"><span class="mini-sub-pro">Edit Student</span></a></li>
-							<li><a title="Students Profile" href="student-profile.html"><span class="mini-sub-pro">Student Profile</span></a></li>
+							<li><a title="Edit Library" href="edit-library-optimum.html"><span class="mini-sub-pro">All Order</span></a></li>
+							<li><a title="Edit Library" href="edit-library-optimum.html"><span class="mini-sub-pro">Add Order</span></a></li>
 						</ul>
 					</li>
-					<!-- Events -->
-					<li>
-						<a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Event</span></a>
-					</li>
-					<li>
-						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Departments</span></a>
-						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="Departments List" href="departments.html"><span class="mini-sub-pro">Departments List</span></a></li>
-							<li><a title="Add Departments" href="add-department.html"><span class="mini-sub-pro">Add Departments</span></a></li>
-							<li><a title="Edit Departments" href="edit-department.html"><span class="mini-sub-pro">Edit Departments</span></a></li>
-						</ul>
-					</li>
+
 					<li>
 						<a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-settings icon-wrap"></span> <span class="mini-click-non">Settings</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
@@ -253,6 +243,48 @@
 			</div>
 		</div>
 		<!-- Mobile Menu end -->
-<?php echo	$main_content ?>
-
-<?php include('layout/footer.php'); ?>
+		<div class="breadcome-area">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="breadcome-list">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<div class="breadcome-heading">
+										<form role="search" class="sr-input-func">
+											<input type="text" placeholder="Search..." class="search-int form-control">
+											<a href="#"><i class="fa fa-search"></i></a>
+										</form>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<ul class="breadcome-menu">
+										<li><a href="#">Home</a> <span class="bread-slash">/</span>
+										</li>
+										<li><span class="bread-blod"><?php echo	isset($page) ? $page : '';  ?></span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<?php echo	$main_content ?>
+		<!-- footer Start -->
+	<div class="footer-copyright-area">
+  	<div class="container-fluid">
+  		<div class="row">
+  			<div class="col-lg-12">
+  				<div class="footer-copy-right">
+  					<p>Copyright © 2018. All rights reserved. Template by <a href="">Rectorsol</a></p>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+<!-- End Welcome area -->
+</div>
+<?php include('layout/js.php'); ?>

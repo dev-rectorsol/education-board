@@ -66,6 +66,14 @@
      <!-- modals CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/modals.css">
+
+    <!-- notifications CSS
+		============================================ -->
+    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/notifications/Lobibox.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/notifications/notifications.css">
+
+    <link href="<?php echo base_url('optimum') ?>/js/toastr/build/toastr.min.css" rel="stylesheet">
+
     <!-- select2 CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/select2/select2.min.css">
@@ -79,6 +87,11 @@
 		============================================ -->
     <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/summernote/summernote.css">
     <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/__media.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/icons.css">
+
+    <!-- jquery
+    ============================================ -->
+    <script src="<?php echo base_url('optimum')?>/js/vendor/jquery-1.12.4.min.js"></script>
 </head>
 
 <body>

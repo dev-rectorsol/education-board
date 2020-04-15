@@ -10,9 +10,8 @@ if(! function_exists("getFileInfo")) {
 
   function getFileInfo($filename = '') {
     if (file_exists($filename)) {
-      $file = array();
-      $file['status'] = 1;
       $file = pathinfo($filename);
+      $file['status'] = 1;
       $file['last_modified'] = date ("F d Y H:i:s.", filemtime($filename));
       $file['size'] = filesize($filename);
       if (getimagesize($filename)) {
@@ -43,7 +42,7 @@ if(! function_exists("getDuration")) {
         $timehours = explode(".", $timehours);
         $timeminutes = explode(".", $timeminutes);
         $timeseconds = explode(".", $timeseconds);
-        $filedata['duration'] = $timehours[0]. ":" . $timeminutes[0]. ":" . $timeseconds[0];}
+        $filedata = $timehours[0]. ":" . $timeminutes[0]. ":" . $timeseconds[0];}
         return $filedata;
       } else {
         return false;

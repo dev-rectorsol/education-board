@@ -9,6 +9,11 @@ public function __construct()
         $this->db->insert($table,$data);
         return $this->db->insert_id();
     }
+    public function get_last_id($table){
+      return $this->db->select('MAX(id) AS id')
+      ->from($table)
+      ->get()->row()->id;
+    }
 
     public function Login_check($data){
         $condition = "email =" . "'" . $data['email'] . "' AND " . "password =" . "'" . $data['password'] . "'AND role='".$data['role']."'" ;
@@ -99,6 +104,11 @@ public function check_otp($data){
     function delete($data,$table){
 
         $this->db->delete($table, $data);
+        return;
+    }
+
+    function deleteindex($data){
+        $this->db->delete('indexing', $data);
         return;
     }
 
@@ -259,25 +269,194 @@ function getMaxUserId(){
     }
 
     public function indexing($data, $rootid) {
-      $temp = array();
-      $table = 'indexing';
-      if (is_array($data['tag'])) {
+      if ( isset($data['tag']) ||  isset($data['category']) ) {
+        $temp = array();
+        $table = 'indexing';
+        if (is_array($data['tag'])) {
           foreach ($data['tag'] as $value) {
             $temp['root'] = $rootid;
             $temp['port'] = $value;
             $temp['type'] = 'tag';
             $this->db->insert($table, $temp);
           }
-      }
-      if (is_array($data['category'])) {
-        foreach ($data['category'] as $value) {
-          $temp['root'] = $rootid;
-          $temp['port'] = $value;
-          $temp['type'] = 'category';
-          $this->db->insert($table, $temp);
         }
-      } 
+        if (is_array($data['category'])) {
+          foreach ($data['category'] as $value) {
+            $temp['root'] = $rootid;
+            $temp['port'] = $value;
+            $temp['type'] = 'category';
+            $this->db->insert($table, $temp);
+          }
+        }
+        return;
+      }else {
+        return;
+      }
+    }
+    public function updateIndexing($data, $rootid) {
+      if ( isset($data['tag']) ||  isset($data['category']) ) {
+        $temp = array();
+        $table = 'indexing';
+        $this->db->delete($table, array('root' => $rootid));
+        if ( is_array($data['tag']) ) {
+          foreach ($data['tag'] as $value) {
+            $temp['root'] = $rootid;
+            $temp['port'] = $value;
+            $temp['type'] = 'tag';
+            $this->db->insert($table, $temp);
+          }
+        }
+        if ( is_array($data['category']) ) {
+          foreach ($data['category'] as $value) {
+            $temp['root'] = $rootid;
+            $temp['port'] = $value;
+            $temp['type'] = 'category';
+            $this->db->insert($table, $temp);
+          }
+        }
+        return;
+      }else{
+        return;
+      }
+    }
+
+    public function addLacture($data, $rootid){
+        $table = 'videos';
+        foreach ($data as $value) {
+          $temp = getFileInfo($value);
+          if ($temp['status']) {
+            $video = [
+              'videoid' => getUniqidId('W'),
+              'nodeid' => $rootid,
+              'type' => 'paid',
+              'name' => $temp['basename'],
+              'url' => $value,
+              'size' => $temp['size'],
+              'videotype' => $temp['extension'],
+              'time' => getDuration($value)
+            ];
+            $this->db->insert($table, $video);
+          }
+        }
+        return true;
     }
 
 
+    public function addThumb($data, $rootid){
+      $table = 'thumbnail';
+      $data = [
+        'root' => $rootid,
+        'thumb' => $data,
+        'image' => $data,
+      ];
+      return $this->db->insert($table, $data);
+    }
+    public function updateThumb($data, $rootid){
+      $table = 'thumbnail';
+      $this->db->delete($table, array('root' => $rootid));
+      $data = [
+        'root' => $rootid,
+        'thumb' => $data,
+        'image' => $data,
+      ];
+      return $this->db->insert($table, $data);
+    }
+
+    public function getThumByRoot($id){
+      $this->db->select('thumb', 'image');
+      return $this->db->get_where("thumbnail", array('root' => $id))->row();
+    }
+
+    public function getVideoByRoot($id){
+      return $this->db->select('videoid, nodeid, name, url, size, videotype')
+      ->from("videos")
+      ->where('nodeid', $id)
+      ->get()
+      ->result_array();
+    }
+
+
+
+    public function getIndexCategorys($root){
+      $data = array();
+      $this->db->select('port');
+      $this->db->from('indexing');
+      $this->db->WHERE('root', $root);
+      $this->db->WHERE('type', 'category');
+      $query = $this->db->get();
+      $query = $query->result_array();
+      foreach ($query as $value) {
+        $data[] = $value['port'];
+      }
+      return $data;
+    }
+
+    public function getIndexTags($root){
+      $data = array();
+      $this->db->select('port');
+      $this->db->from('indexing');
+      $this->db->WHERE('root', $root);
+      $this->db->WHERE('type', 'tag');
+      $query = $this->db->get();
+      $query = $query->result_array();
+      foreach ($query as $value) {
+        $data[] = $value['port'];;
+      }
+      return $data;
+    }
+
+    // public function getIndexCategorys($root){
+    //   $sql = 'SELECT indexing.port FROM indexing
+    //           INNER JOIN category ON indexing.port = category.id AND indexing.type = "category"
+    //           WHERE indexing.root = "'.$root.'"';
+    //   $result = $this->db->query($sql);
+    //   return $result->row();
+    // }
+    //
+    // public function getIndexTags($root){
+    //   $sql = 'SELECT indexing.port FROM indexing
+    //           INNER JOIN tags ON indexing.port = tags.id AND indexing.type = "tag"
+    //           WHERE indexing.root = "'.$root.'"';
+    //   $result = $this->db->query($sql);
+    //   return $result->row();
+    // }
+
+
+    // Category SDO_DAS_DataObject
+
+    public function select_category_name_by_id($id){
+      return $this->db->get_where('category', array('id' => $id))->row()->name;
+    }
+    public function get_subcategory($id){
+      return $this->db->get_where('category', array('parent' => $id))->result();
+    }
+
+
+    // Product
+
+    public function product_mata($data, $rootid) {
+      $temp = array();
+      $table = 'product_meta';
+      if ( is_array($data['courses']) ) {
+          foreach ($data['courses'] as $value) {
+            $temp['product_id'] = $rootid;
+            $temp['source'] = $value;
+            $this->db->insert($table, $temp);
+          }
+      }
+      return;
+    }
+    public function update_product_mata($data, $rootid) {
+      $temp = array();
+      $table = 'product_meta';
+      $this->db->delete($table, array('product_id' => $rootid));
+      if ( is_array($data['courses']) ) {
+          foreach ($data['courses'] as $value) {
+            $temp['product_id'] = $rootid;
+            $temp['source'] = $value;
+            $this->db->insert($table, $temp);
+          }
+      }
+      return;
+    }
 }

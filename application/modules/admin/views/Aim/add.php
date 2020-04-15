@@ -1,151 +1,82 @@
-		<div class="breadcome-area">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="breadcome-list">
-							<div class="row">
-								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-									<div class="breadcome-heading">
-										<form role="search" class="sr-input-func">
-											<input type="text" placeholder="Search..." class="search-int form-control">
-											<a href="#"><i class="fa fa-search"></i></a>
-										</form>
-									</div>
-								</div>
-								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-									<ul class="breadcome-menu">
-										<li><a href="#">Home</a> <span class="bread-slash">/</span>
-										</li>
-										<li><span class="bread-blod"><?php echo	$page ?></span>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		</div>
+
 
 		<div class="container-fluid">
-
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
 					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 							<div class="product-status-wrap drp-lst">
 								<form action="<?php echo base_url('admin/Aim/Add')?>" method="POST">
 									<h4>Add Aim </h4>
 									<div class="form-group">
 										<input name="name" type="text" class="form-control" placeholder="Aim Title">
 									</div>
-
 									<div class="payment-adress">
-                                     <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
+										<input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
 										<button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
-
 									</div>
-							
-							</form>
-                            </div>
+
+
+								</form>
+							</div>
 						</div>
 
-						<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-							<div class="product-status-wrap drp-lst">
-								<table class="table table-striped table-bordered " id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
-                                        data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
-									<caption>
-										<h4>Aim List</h4>
-									</caption>
-									<tr>
-										<th>S.No</th>
-										<th>Id</th>
-
-										<th>Title</th>
-
-										<th>Setting</th>
-									</tr>
-									<?php
-                                            $i=1;
-                                        foreach($aim as $row){?>
-									<tr>
-										<td> <?php echo $i ?></td>
-										<td><?php echo $row['id'] ?></td>
-										<td><?php echo $row['title'] ?></td>
-
-										<td> <a  data-target="<?php echo '#'.$row['id']; ?>" class="text-center tip" data-toggle="modal" data-original-title="Edit"><i
-													class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
-											<a  title="Trash" class="pd-setting-ed"  onclick="delete_detail(<?php echo $row['id'] ;?>)"><i
-													class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-									</tr>
-                                    
-                    <div id="<?php echo $row['id'] ; ?>" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
-                    	<div class="modal-dialog" role="document ">
-                    		<div class="modal-content">
-                    			<form class="form-horizontal" method="post"
-                    				action="<?php echo base_url('admin/Aim/Edit/').$row['id'] ?>"
-                    				name="basic_validate" id="basic_validate" novalidate="novalidate">
-                    				<div class="modal-header header-color-modal bg-color-1 ">
-                                        <h4 class="modal-title">Edit Aim</h4>
-                                        <div class="modal-close-area modal-close-df">
-                                            <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
-                                        </div>
-                                    </div>
-                    				<div class="modal-body">
-                    					<div class="widget-content nopadding">
-                    						<div class="form-group row">
-                    							<label class="control-label col-sm-3">Name</label>
-                    							<div class="col-sm-9">
-                    								<input type="text" class="form-control" name="name"
-                    									value="<?php echo $row['title'] ?>" id="required">
-                    							</div>
-                    						</div>
-
-                    					</div>
-                    				</div>
-                    				<div class="modal-footer">
-                    					<input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>"
-                    						value="<?php echo $this->security->get_csrf_hash();?>">
-                    					<input type="submit" value="Update" class="btn btn-primary">
-                    					<a data-dismiss="modal" class="btn" href="#">Cancel</a>
-                    				</div>
-                    			</form>
-                    		</div>
-                    	</div>
-                    </div>
-									<?php
-                                                                    $i++ ;
-                                                                    }?>
-								</table>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+							<div class="sparkline13-list">
+								<div class="sparkline13-hd">
+									<div class="main-sparkline13-hd">
+										<h1>Aim <span class="table-project-n">Data</span> List</h1>
+									</div>
+								</div>
+								<div class="sparkline13-graph">
+									<div class="datatable-dashv1-list custom-datatable-overright">
+										<div id="toolbar">
+											<select class="form-control dt-tb">
+												<option value="">Delete All</option>
+												<option value="all">Save To Draft</option>
+											</select>
+										</div>
+										<table id="table" data-toggle="table" data-pagination="true" data-search="true" data-click-to-select="true" data-toolbar="#toolbar">
+											<thead>
+												<tr>
+													<th data-field="state" data-checkbox="true"></th>
+													<th>Name</th>
+													<th data-field="action">Action</th>
+												</tr>
+											</thead>
+											<tbody>
+												<?php foreach ($aim as $value): ?>
+												<tr>
+													<td></td>
+													<td><?php echo $value['title'] ?></td>
+													<td>
+														<a href="#"> <button type="button" class="btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> </a>
+														<button type="button" onclick="delete_detail('<?php echo $value['id']; ?>')" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+													</td>
+												</tr>
+												<?php endforeach; ?>
+											</tbody>
+										</table>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	
 
 
 
+		<script>
+			function delete_detail(id) {
+				var del = confirm("Do you want to Delete");
+				if (del == true) {
+					var sureDel = confirm("Are you sure want to delete");
+					if (sureDel == true) {
+						window.location = "<?php echo base_url()?>admin/aim/delete/" + id;
+					}
 
-		</div>
-		</div>
-		</div>
-        <script>
-function delete_detail(id)
-{
-  var del = confirm("Do you want to Delete");
-  if (del == true)
-  {
-    var sureDel = confirm("Are you sure want to delete");
-    if (sureDel == true)
-    {
-      window.location="<?php echo base_url()?>admin/Aim/Delete/"+id;
-    }
-
-  }
-}
-
-</script>
+				}
+			}
+		</script>

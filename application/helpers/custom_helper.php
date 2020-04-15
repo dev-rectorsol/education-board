@@ -11,6 +11,19 @@
 	    }
 	}
 
+
+	if (!function_exists('pre')) {
+	    function pre($data) {
+				if (is_array($data)) {
+					return '<pre>'.$data.'</pre>';
+				}else{
+					echo "Variable is not array";
+				}
+	    }
+	}
+
+
+
 	if(!function_exists('check_power')){
 	    function check_power($type){
 	        $ci = get_instance();
@@ -45,23 +58,23 @@ if(!function_exists('objectToArray')){
 	}
 
 
-if(!function_exists('objectToArray')){
-
-	function arrayToObject($d) {
-        if (is_array($d)) {
-            /*
-            * Return array converted to object
-            * Using __FUNCTION__ (Magic constant)
-            * for recursive call
-            */
-            return (object) array_map(__FUNCTION__, $d);
-        }
-        else {
-            // Return object
-            return $d;
-        }
-    }
-	}
+// if(!function_exists('objectToArray')){
+//
+// 	function arrayToObject($d) {
+//         if (is_array($d)) {
+//             /*
+//             * Return array converted to object
+//             * Using __FUNCTION__ (Magic constant)
+//             * for recursive call
+//             */
+//             return (object) array_map(__FUNCTION__, $d);
+//         }
+//         else {
+//             // Return object
+//             return $d;
+//         }
+//     }
+// 	}
 	//-- current date time function
 	if(!function_exists('current_datetime')){
 	    function current_datetime(){
@@ -110,16 +123,14 @@ if(!function_exists('objectToArray')){
 	    }
 	}
 
-	if(!function_exists('getCustomId')) {
-	    function getCustomId($slug=""){
+	if(!function_exists('getUniqidId')) {
+	    function getUniqidId($slug=""){
 				return uniqid($slug);
 	    }
 	}
-	// if(!function_exists('getCustomId')) {
-	//     function getCustomId($max, $slug=""){
-	// 			$lenth = strlen($slug);
-	// 			$max = (int)substr($max, $lenth);
-	// 			$text = $slug . ($max + 1);
-	// 			return $text;
-	//     }
-	// }
+	if(!function_exists('getCustomId')) {
+	    function getCustomId($max, $slug=""){
+				$text = $slug . ($max + 1);
+				return $text;
+	    }
+	}

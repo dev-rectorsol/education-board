@@ -44,7 +44,7 @@
     var url = obj.attr('src');
     var path = obj.attr('data-path');
     var html = '<img src=" '+url+'" >';
-    html += '<input type="hidden" name="featureImage" value=" '+path+'" >';
+    html += '<input type="hidden" name="featureImage" value="'+path+'" >';
     preview.html("");
     preview.html(html);
     $('.modal').hide();

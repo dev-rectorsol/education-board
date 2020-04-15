@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 31, 2020 at 11:21 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- Host: 127.0.0.1:3306
+-- Generation Time: Apr 11, 2020 at 01:59 PM
+-- Server version: 5.7.24
+-- PHP Version: 7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,8 +28,9 @@ SET time_zone = "+00:00";
 -- Table structure for table `address`
 --
 
-CREATE TABLE `address` (
-  `address_id` int(5) NOT NULL,
+DROP TABLE IF EXISTS `address`;
+CREATE TABLE IF NOT EXISTS `address` (
+  `address_id` int(5) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(10) DEFAULT NULL,
   `house` varchar(32) DEFAULT NULL,
   `post` varchar(32) DEFAULT NULL,
@@ -37,8 +38,9 @@ CREATE TABLE `address` (
   `state` varchar(12) DEFAULT NULL,
   `city` varchar(12) DEFAULT NULL,
   `country` varchar(6) DEFAULT NULL,
-  `pincode` varchar(6) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `pincode` varchar(6) DEFAULT NULL,
+  PRIMARY KEY (`address_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `address`
@@ -56,10 +58,12 @@ INSERT INTO `address` (`address_id`, `user_id`, `house`, `post`, `dist`, `state`
 -- Table structure for table `aim`
 --
 
-CREATE TABLE `aim` (
-  `id` int(11) NOT NULL,
-  `title` varchar(32) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `aim`;
+CREATE TABLE IF NOT EXISTS `aim` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `aim`
@@ -77,11 +81,14 @@ INSERT INTO `aim` (`id`, `title`) VALUES
 -- Table structure for table `answers`
 --
 
-CREATE TABLE `answers` (
+DROP TABLE IF EXISTS `answers`;
+CREATE TABLE IF NOT EXISTS `answers` (
   `ansid` char(32) NOT NULL,
   `question` char(32) NOT NULL,
   `answers` text NOT NULL,
-  `userid` char(32) NOT NULL
+  `userid` char(32) NOT NULL,
+  PRIMARY KEY (`ansid`),
+  KEY `question` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -90,16 +97,32 @@ CREATE TABLE `answers` (
 -- Table structure for table `article`
 --
 
-CREATE TABLE `article` (
-  `postid` char(6) NOT NULL,
-  `title` text NOT NULL,
-  `slug` varchar(128) NOT NULL,
-  `content` text NOT NULL,
-  `public_at` datetime NOT NULL,
+DROP TABLE IF EXISTS `article`;
+CREATE TABLE IF NOT EXISTS `article` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `postid` char(6) CHARACTER SET utf8 NOT NULL,
+  `title` text CHARACTER SET utf8 NOT NULL,
+  `slug` varchar(128) CHARACTER SET utf8 DEFAULT NULL,
+  `created_by` varchar(32) NOT NULL,
+  `content` text CHARACTER SET utf8,
+  `public_at` datetime DEFAULT NULL,
   `is_publish` tinyint(1) NOT NULL,
   `deleted` tinyint(1) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`postid`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `article`
+--
+
+INSERT INTO `article` (`id`, `postid`, `title`, `slug`, `created_by`, `content`, `public_at`, `is_publish`, `deleted`, `created_at`) VALUES
+(1, 'P10', 'Article 4', NULL, '', 'Add a content here', '2020-03-31 08:03:04', 1, 0, '2020-03-31 02:33:04'),
+(2, 'P4', 'Artricle1', NULL, '', 'Add a content here', NULL, 0, 0, '2020-03-29 19:33:53'),
+(3, 'P6', 'Article 2', NULL, '', '<p>Add a content here</p>', '2020-03-30 01:03:37', 1, 0, '2020-03-29 19:33:37'),
+(4, 'P9', 'Article 3', NULL, '', 'Add a content here hi this is ritweek', '2020-03-30 01:03:08', 0, 1, '2020-03-29 19:33:08'),
+(9, 'POST9', 'Article 4s', 'sdf', 'AKIASZ001', 'Add a content heredf', '2020-04-11 01:04:56', 1, 0, '2020-04-10 19:34:56');
 
 -- --------------------------------------------------------
 
@@ -107,18 +130,22 @@ CREATE TABLE `article` (
 -- Table structure for table `category`
 --
 
-CREATE TABLE `category` (
-  `id` int(5) NOT NULL,
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE IF NOT EXISTS `category` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
-  `parent` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `parent` varchar(32) NOT NULL,
+  `icon` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id`, `name`, `parent`) VALUES
-(1, 'Category1', 'none');
+INSERT INTO `category` (`id`, `name`, `parent`, `icon`) VALUES
+(2, 'catrgory 1', 'none', 'home'),
+(3, 'Lesson 3', '', 'book');
 
 -- --------------------------------------------------------
 
@@ -126,14 +153,55 @@ INSERT INTO `category` (`id`, `name`, `parent`) VALUES
 -- Table structure for table `course`
 --
 
-CREATE TABLE `course` (
+DROP TABLE IF EXISTS `course`;
+CREATE TABLE IF NOT EXISTS `course` (
   `course_id` char(32) NOT NULL,
   `name` varchar(64) NOT NULL,
   `category` char(4) NOT NULL,
   `review` decimal(5,2) NOT NULL,
   `review_counter` int(11) NOT NULL,
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  PRIMARY KEY (`course_id`),
+  KEY `category` (`category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`course_id`, `name`, `category`, `review`, `review_counter`, `description`) VALUES
+('C4', 'Course1', '', '0.00', 0, 'Add a Description here'),
+('C5', 'Course 2', '', '0.00', 0, 'Add a Description here'),
+('C6', 'Course 3', '', '0.00', 0, 'Add a Description here');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course_meta`
+--
+
+DROP TABLE IF EXISTS `course_meta`;
+CREATE TABLE IF NOT EXISTS `course_meta` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `course_id` char(32) NOT NULL,
+  `subid` varchar(32) NOT NULL,
+  `serial` int(4) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `course_meta`
+--
+
+INSERT INTO `course_meta` (`id`, `course_id`, `subid`, `serial`) VALUES
+(1, 'C6', '2', 1),
+(2, 'C6', '3', 2),
+(3, 'C6', '4', 3),
+(4, 'C5', '4', 1),
+(5, 'C5', '5', 2),
+(6, 'C4', '4', 1),
+(7, 'C4', '5', 2),
+(8, 'C6', '6', 4);
 
 -- --------------------------------------------------------
 
@@ -141,7 +209,8 @@ CREATE TABLE `course` (
 -- Table structure for table `docfile`
 --
 
-CREATE TABLE `docfile` (
+DROP TABLE IF EXISTS `docfile`;
+CREATE TABLE IF NOT EXISTS `docfile` (
   `docid` char(32) NOT NULL,
   `nodeid` char(32) NOT NULL,
   `type` enum('free','paid') NOT NULL,
@@ -149,7 +218,9 @@ CREATE TABLE `docfile` (
   `url` text NOT NULL,
   `size` varchar(32) NOT NULL,
   `doctype` varchar(32) NOT NULL,
-  `download` tinyint(1) NOT NULL
+  `download` tinyint(1) NOT NULL,
+  PRIMARY KEY (`docid`),
+  KEY `nodeid` (`nodeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -158,11 +229,36 @@ CREATE TABLE `docfile` (
 -- Table structure for table `indexing`
 --
 
-CREATE TABLE `indexing` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `indexing`;
+CREATE TABLE IF NOT EXISTS `indexing` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `root` varchar(32) NOT NULL,
-  `port` varchar(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `port` varchar(6) NOT NULL,
+  `type` enum('tag','category') NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `root` (`root`),
+  KEY `port` (`port`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `indexing`
+--
+
+INSERT INTO `indexing` (`id`, `root`, `port`, `type`) VALUES
+(5, 'C4', '6', 'tag'),
+(6, 'C4', '7', 'tag'),
+(7, 'C4', '2', 'category'),
+(8, 'P10', '7', 'tag'),
+(9, 'P10', '8', 'tag'),
+(10, 'P10', '2', 'category'),
+(11, 'C5', '9', 'tag'),
+(12, 'C5', '10', 'tag'),
+(13, 'C5', '3', 'category'),
+(14, '0', '11', 'tag'),
+(15, '0', '2', 'category'),
+(22, 'POST9', '1', 'tag'),
+(23, 'POST9', '2', 'tag'),
+(24, 'POST9', '2', 'category');
 
 -- --------------------------------------------------------
 
@@ -170,15 +266,17 @@ CREATE TABLE `indexing` (
 -- Table structure for table `keys`
 --
 
-CREATE TABLE `keys` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `keys`;
+CREATE TABLE IF NOT EXISTS `keys` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `key` varchar(40) NOT NULL,
   `level` int(2) NOT NULL,
-  `ignore_limits` tinyint(1) NOT NULL DEFAULT 0,
-  `is_private_key` tinyint(1) NOT NULL DEFAULT 0,
-  `ip_addresses` text DEFAULT NULL,
-  `date_created` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `ignore_limits` tinyint(1) NOT NULL DEFAULT '0',
+  `is_private_key` tinyint(1) NOT NULL DEFAULT '0',
+  `ip_addresses` text,
+  `date_created` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `keys`
@@ -193,13 +291,27 @@ INSERT INTO `keys` (`id`, `key`, `level`, `ignore_limits`, `is_private_key`, `ip
 -- Table structure for table `lesson`
 --
 
-CREATE TABLE `lesson` (
+DROP TABLE IF EXISTS `lesson`;
+CREATE TABLE IF NOT EXISTS `lesson` (
   `lesson_id` char(32) NOT NULL,
   `name` text NOT NULL,
   `subject` char(32) NOT NULL,
   `serial` varchar(4) NOT NULL,
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`lesson_id`),
+  KEY `subject` (`subject`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lesson`
+--
+
+INSERT INTO `lesson` (`lesson_id`, `name`, `subject`, `serial`, `description`, `created_at`, `updated_at`) VALUES
+('1', 'Lesson 1', '1', '', 'Add a Description here', '2020-04-11 12:36:58', NULL),
+('2', 'Lesson 2', '', '', 'Add a Description here', '2020-04-11 12:36:58', NULL),
+('3', 'Lesson 3', '', '', '<p>Add a Description here</p><p><br></p><table class=\"table table-bordered\"><tbody><tr><td>hdgh</td><td>dfhdfh</td></tr><tr><td>dfdfh</td><td>dhgf</td></tr></tbody></table><p><br></p>', '2020-04-11 12:36:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -207,12 +319,15 @@ CREATE TABLE `lesson` (
 -- Table structure for table `library`
 --
 
-CREATE TABLE `library` (
+DROP TABLE IF EXISTS `library`;
+CREATE TABLE IF NOT EXISTS `library` (
   `libid` char(32) NOT NULL,
   `user_id` char(32) NOT NULL,
   `resources` char(32) NOT NULL,
   `resourcestype` enum('course','video','test','doc') NOT NULL,
-  `validity` datetime NOT NULL
+  `validity` datetime NOT NULL,
+  PRIMARY KEY (`libid`),
+  KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -221,12 +336,15 @@ CREATE TABLE `library` (
 -- Table structure for table `log`
 --
 
-CREATE TABLE `log` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `log`;
+CREATE TABLE IF NOT EXISTS `log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` char(32) NOT NULL,
   `ip` varchar(24) NOT NULL,
-  `lastlog` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `lastlog` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=245 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `log`
@@ -303,7 +421,8 @@ INSERT INTO `log` (`id`, `user_id`, `ip`, `lastlog`) VALUES
 -- Table structure for table `logme`
 --
 
-CREATE TABLE `logme` (
+DROP TABLE IF EXISTS `logme`;
+CREATE TABLE IF NOT EXISTS `logme` (
   `logid` char(9) NOT NULL,
   `phone` varchar(10) DEFAULT NULL,
   `email` varchar(32) DEFAULT NULL,
@@ -311,8 +430,10 @@ CREATE TABLE `logme` (
   `language` enum('english','hindi') DEFAULT NULL,
   `role` char(5) NOT NULL,
   `status` enum('active','deactive') NOT NULL,
-  `joindate` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `joindate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`logid`),
+  KEY `role` (`role`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -329,18 +450,20 @@ INSERT INTO `logme` (`logid`, `phone`, `email`, `password`, `language`, `role`, 
 -- Table structure for table `logs`
 --
 
-CREATE TABLE `logs` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `logs`;
+CREATE TABLE IF NOT EXISTS `logs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `uri` varchar(255) NOT NULL,
   `method` varchar(6) NOT NULL,
-  `params` text DEFAULT NULL,
+  `params` text,
   `api_key` varchar(40) NOT NULL,
   `ip_address` varchar(45) NOT NULL,
   `time` int(11) NOT NULL,
   `rtime` float DEFAULT NULL,
   `authorized` varchar(1) NOT NULL,
-  `response_code` smallint(3) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `response_code` smallint(3) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `logs`
@@ -436,12 +559,14 @@ INSERT INTO `logs` (`id`, `uri`, `method`, `params`, `api_key`, `ip_address`, `t
 -- Table structure for table `message`
 --
 
-CREATE TABLE `message` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE IF NOT EXISTS `message` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `key` varchar(64) NOT NULL,
   `code` varchar(6) NOT NULL,
-  `time` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `message`
@@ -461,12 +586,15 @@ INSERT INTO `message` (`id`, `key`, `code`, `time`) VALUES
 -- Table structure for table `orders`
 --
 
-CREATE TABLE `orders` (
-  `orderid` int(6) NOT NULL,
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE IF NOT EXISTS `orders` (
+  `orderid` int(6) NOT NULL AUTO_INCREMENT,
   `userid` char(32) NOT NULL,
   `totalprice` double(5,2) NOT NULL,
   `discount` double(5,2) NOT NULL,
-  `modeid` char(6) NOT NULL
+  `modeid` char(6) NOT NULL,
+  PRIMARY KEY (`orderid`),
+  KEY `userid` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -475,12 +603,16 @@ CREATE TABLE `orders` (
 -- Table structure for table `order_meta`
 --
 
-CREATE TABLE `order_meta` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `order_meta`;
+CREATE TABLE IF NOT EXISTS `order_meta` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` char(6) NOT NULL,
   `order_id` char(32) NOT NULL,
   `price` double(5,2) NOT NULL,
-  `discount_price` double(5,2) NOT NULL
+  `discount_price` double(5,2) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `product_id` (`product_id`),
+  KEY `order_id` (`order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -489,13 +621,17 @@ CREATE TABLE `order_meta` (
 -- Table structure for table `payments`
 --
 
-CREATE TABLE `payments` (
+DROP TABLE IF EXISTS `payments`;
+CREATE TABLE IF NOT EXISTS `payments` (
   `payment` char(32) NOT NULL,
   `transaction` varchar(64) NOT NULL,
   `userid` char(32) NOT NULL,
   `orderid` varchar(32) NOT NULL,
   `created_date` datetime NOT NULL,
-  `status` enum('1','2','3','4') NOT NULL
+  `status` enum('1','2','3','4') NOT NULL,
+  PRIMARY KEY (`payment`),
+  KEY `userid` (`userid`),
+  KEY `orderid` (`orderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -504,15 +640,18 @@ CREATE TABLE `payments` (
 -- Table structure for table `permissions`
 --
 
-CREATE TABLE `permissions` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `permissions`;
+CREATE TABLE IF NOT EXISTS `permissions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
   `display_name` varchar(100) DEFAULT NULL,
-  `description` tinytext DEFAULT NULL,
-  `status` tinyint(1) DEFAULT 1,
+  `description` tinytext,
+  `status` tinyint(1) DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -521,9 +660,11 @@ CREATE TABLE `permissions` (
 -- Table structure for table `permission_roles`
 --
 
-CREATE TABLE `permission_roles` (
+DROP TABLE IF EXISTS `permission_roles`;
+CREATE TABLE IF NOT EXISTS `permission_roles` (
   `role_id` int(11) NOT NULL,
-  `permission_id` int(11) NOT NULL
+  `permission_id` int(11) NOT NULL,
+  PRIMARY KEY (`role_id`,`permission_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -532,13 +673,16 @@ CREATE TABLE `permission_roles` (
 -- Table structure for table `products`
 --
 
-CREATE TABLE `products` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `product` char(32) NOT NULL,
   `source` char(32) NOT NULL,
   `price` double(5,2) NOT NULL,
   `discount` double(5,2) NOT NULL,
-  `tax_id` varchar(6) NOT NULL
+  `tax_id` varchar(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `product` (`product`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -547,13 +691,16 @@ CREATE TABLE `products` (
 -- Table structure for table `questions`
 --
 
-CREATE TABLE `questions` (
+DROP TABLE IF EXISTS `questions`;
+CREATE TABLE IF NOT EXISTS `questions` (
   `qusid` char(32) NOT NULL,
   `test` char(32) NOT NULL,
   `type` int(11) NOT NULL,
   `title` text NOT NULL,
   `answer` varchar(2) NOT NULL,
-  `values` int(11) NOT NULL
+  `values` int(11) NOT NULL,
+  PRIMARY KEY (`qusid`),
+  KEY `test` (`test`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -562,12 +709,15 @@ CREATE TABLE `questions` (
 -- Table structure for table `question_meta`
 --
 
-CREATE TABLE `question_meta` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `question_meta`;
+CREATE TABLE IF NOT EXISTS `question_meta` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `ques` char(32) NOT NULL,
   `option` text NOT NULL,
   `count` varchar(2) NOT NULL,
-  `title` text NOT NULL
+  `title` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ques` (`ques`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -576,14 +726,18 @@ CREATE TABLE `question_meta` (
 -- Table structure for table `results`
 --
 
-CREATE TABLE `results` (
-  `result_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `results`;
+CREATE TABLE IF NOT EXISTS `results` (
+  `result_id` int(11) NOT NULL AUTO_INCREMENT,
   `test_id` char(32) NOT NULL,
   `user_id` char(32) NOT NULL,
   `obtained` int(6) NOT NULL,
   `attemptq` int(6) NOT NULL,
   `correctq` int(6) NOT NULL,
-  `wrongq` int(6) NOT NULL
+  `wrongq` int(6) NOT NULL,
+  PRIMARY KEY (`result_id`),
+  KEY `test_id` (`test_id`),
+  KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -592,16 +746,19 @@ CREATE TABLE `results` (
 -- Table structure for table `roles`
 --
 
-CREATE TABLE `roles` (
-  `id` smallint(5) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
   `display_name` varchar(30) DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT 1,
+  `status` tinyint(1) DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC;
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_user_roles_role_Name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `roles`
@@ -617,9 +774,11 @@ INSERT INTO `roles` (`id`, `name`, `display_name`, `description`, `status`, `cre
 -- Table structure for table `roles_users`
 --
 
-CREATE TABLE `roles_users` (
+DROP TABLE IF EXISTS `roles_users`;
+CREATE TABLE IF NOT EXISTS `roles_users` (
   `user_id` char(9) NOT NULL,
-  `role_id` int(11) NOT NULL
+  `role_id` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`,`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -636,12 +795,15 @@ INSERT INTO `roles_users` (`user_id`, `role_id`) VALUES
 -- Table structure for table `setting`
 --
 
-CREATE TABLE `setting` (
-  `setting_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `setting`;
+CREATE TABLE IF NOT EXISTS `setting` (
+  `setting_id` int(11) NOT NULL AUTO_INCREMENT,
   `setting_name` varchar(128) NOT NULL,
   `setting_value` longtext NOT NULL,
-  `autoload` varchar(8) NOT NULL DEFAULT 'yes'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `autoload` varchar(8) NOT NULL DEFAULT 'yes',
+  PRIMARY KEY (`setting_id`),
+  KEY `setting_name` (`setting_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `setting`
@@ -657,12 +819,51 @@ INSERT INTO `setting` (`setting_id`, `setting_name`, `setting_value`, `autoload`
 -- Table structure for table `subject`
 --
 
-CREATE TABLE `subject` (
+DROP TABLE IF EXISTS `subject`;
+CREATE TABLE IF NOT EXISTS `subject` (
   `subject_id` char(32) NOT NULL,
   `name` varchar(64) NOT NULL,
   `description` text NOT NULL,
-  `course` varchar(32) NOT NULL
+  `course` varchar(32) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`subject_id`),
+  KEY `course` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `subject`
+--
+
+INSERT INTO `subject` (`subject_id`, `name`, `description`, `course`, `created_at`) VALUES
+('1', 'Subject 12', 'Add a Description here', '4', '2020-04-11 12:38:10'),
+('2', 'Biology 1', 'Add a Description here', '0', '2020-04-11 12:38:10'),
+('3', 'History1', 'Add a Description here', '0', '2020-04-11 12:38:10'),
+('4', 'chemistry1', 'Add a Description here', '0', '2020-04-11 12:38:10'),
+('5', 'physics 1', 'Add a Description here', '0', '2020-04-11 12:38:10'),
+('6', 'Maths 1', 'Add a Description here', '0', '2020-04-11 12:38:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subject_meta`
+--
+
+DROP TABLE IF EXISTS `subject_meta`;
+CREATE TABLE IF NOT EXISTS `subject_meta` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `subject_id` varchar(32) NOT NULL,
+  `Lesson_id` varchar(32) NOT NULL,
+  `Serial` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `subject_meta`
+--
+
+INSERT INTO `subject_meta` (`id`, `subject_id`, `Lesson_id`, `Serial`) VALUES
+(1, '6', '2', 1),
+(2, '6', '3', 2);
 
 -- --------------------------------------------------------
 
@@ -670,10 +871,13 @@ CREATE TABLE `subject` (
 -- Table structure for table `tags`
 --
 
-CREATE TABLE `tags` (
-  `id` int(5) NOT NULL,
-  `title` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `tags`;
+CREATE TABLE IF NOT EXISTS `tags` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `title` varchar(128) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `tag` (`title`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tags`
@@ -692,14 +896,16 @@ INSERT INTO `tags` (`id`, `title`) VALUES
 -- Table structure for table `tests`
 --
 
-CREATE TABLE `tests` (
+DROP TABLE IF EXISTS `tests`;
+CREATE TABLE IF NOT EXISTS `tests` (
   `testid` char(32) NOT NULL,
   `nodeid` char(32) NOT NULL,
   `title` text NOT NULL,
   `duration` varchar(12) NOT NULL,
   `nofqus` int(6) NOT NULL,
   `totalno` int(6) NOT NULL,
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  PRIMARY KEY (`testid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -708,12 +914,15 @@ CREATE TABLE `tests` (
 -- Table structure for table `thumbnail`
 --
 
-CREATE TABLE `thumbnail` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `thumbnail`;
+CREATE TABLE IF NOT EXISTS `thumbnail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `root` char(32) NOT NULL,
-  `thumb` text DEFAULT NULL,
-  `image` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `thumb` text,
+  `image` text,
+  PRIMARY KEY (`id`),
+  KEY `root` (`root`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `thumbnail`
@@ -721,7 +930,9 @@ CREATE TABLE `thumbnail` (
 
 INSERT INTO `thumbnail` (`id`, `root`, `thumb`, `image`) VALUES
 (1, 'EDO100100', 'uploads/thumb/avatar-1.jpg', 'uploads/image/avatar-1.jpg'),
-(2, 'AKIASZ001', NULL, NULL);
+(2, 'AKIASZ001', NULL, NULL),
+(7, 'POST9', NULL, NULL),
+(8, 'POST9', NULL, ' uploads/images/9.png');
 
 -- --------------------------------------------------------
 
@@ -729,11 +940,13 @@ INSERT INTO `thumbnail` (`id`, `root`, `thumb`, `image`) VALUES
 -- Table structure for table `user_aim`
 --
 
-CREATE TABLE `user_aim` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `user_aim`;
+CREATE TABLE IF NOT EXISTS `user_aim` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(10) NOT NULL,
-  `aim_id` int(2) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `aim_id` int(2) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_aim`
@@ -749,14 +962,17 @@ INSERT INTO `user_aim` (`id`, `user_id`, `aim_id`) VALUES
 -- Table structure for table `user_details`
 --
 
-CREATE TABLE `user_details` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `user_details`;
+CREATE TABLE IF NOT EXISTS `user_details` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(10) NOT NULL,
   `name` varchar(32) NOT NULL,
   `mobile` varchar(13) DEFAULT NULL,
-  `details` text DEFAULT NULL,
-  `updated_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `details` text,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_details`
@@ -772,7 +988,8 @@ INSERT INTO `user_details` (`id`, `user_id`, `name`, `mobile`, `details`, `updat
 -- Table structure for table `videos`
 --
 
-CREATE TABLE `videos` (
+DROP TABLE IF EXISTS `videos`;
+CREATE TABLE IF NOT EXISTS `videos` (
   `videoid` char(32) NOT NULL,
   `nodeid` char(32) NOT NULL,
   `type` enum('free','paid') NOT NULL,
@@ -784,361 +1001,10 @@ CREATE TABLE `videos` (
   `rating` int(5) NOT NULL,
   `rate_count` int(11) NOT NULL,
   `download` tinyint(1) NOT NULL,
-  `time` varchar(32) NOT NULL
+  `time` varchar(32) NOT NULL,
+  PRIMARY KEY (`videoid`),
+  KEY `nodeid` (`nodeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `address`
---
-ALTER TABLE `address`
-  ADD PRIMARY KEY (`address_id`);
-
---
--- Indexes for table `aim`
---
-ALTER TABLE `aim`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `answers`
---
-ALTER TABLE `answers`
-  ADD PRIMARY KEY (`ansid`),
-  ADD KEY `question` (`question`);
-
---
--- Indexes for table `article`
---
-ALTER TABLE `article`
-  ADD PRIMARY KEY (`postid`);
-
---
--- Indexes for table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `course`
---
-ALTER TABLE `course`
-  ADD PRIMARY KEY (`course_id`),
-  ADD KEY `category` (`category`);
-
---
--- Indexes for table `docfile`
---
-ALTER TABLE `docfile`
-  ADD PRIMARY KEY (`docid`),
-  ADD KEY `nodeid` (`nodeid`);
-
---
--- Indexes for table `indexing`
---
-ALTER TABLE `indexing`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `root` (`root`),
-  ADD KEY `port` (`port`);
-
---
--- Indexes for table `keys`
---
-ALTER TABLE `keys`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `lesson`
---
-ALTER TABLE `lesson`
-  ADD PRIMARY KEY (`lesson_id`),
-  ADD KEY `subject` (`subject`);
-
---
--- Indexes for table `library`
---
-ALTER TABLE `library`
-  ADD PRIMARY KEY (`libid`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `log`
---
-ALTER TABLE `log`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id` (`user_id`);
-
---
--- Indexes for table `logme`
---
-ALTER TABLE `logme`
-  ADD PRIMARY KEY (`logid`),
-  ADD KEY `role` (`role`);
-
---
--- Indexes for table `logs`
---
-ALTER TABLE `logs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `message`
---
-ALTER TABLE `message`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`orderid`),
-  ADD KEY `userid` (`userid`);
-
---
--- Indexes for table `order_meta`
---
-ALTER TABLE `order_meta`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `order_id` (`order_id`);
-
---
--- Indexes for table `payments`
---
-ALTER TABLE `payments`
-  ADD PRIMARY KEY (`payment`),
-  ADD KEY `userid` (`userid`),
-  ADD KEY `orderid` (`orderid`);
-
---
--- Indexes for table `permissions`
---
-ALTER TABLE `permissions`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `permission_roles`
---
-ALTER TABLE `permission_roles`
-  ADD PRIMARY KEY (`role_id`,`permission_id`);
-
---
--- Indexes for table `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `product` (`product`);
-
---
--- Indexes for table `questions`
---
-ALTER TABLE `questions`
-  ADD PRIMARY KEY (`qusid`),
-  ADD KEY `test` (`test`);
-
---
--- Indexes for table `question_meta`
---
-ALTER TABLE `question_meta`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `ques` (`ques`);
-
---
--- Indexes for table `results`
---
-ALTER TABLE `results`
-  ADD PRIMARY KEY (`result_id`),
-  ADD KEY `test_id` (`test_id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UK_user_roles_role_Name` (`name`);
-
---
--- Indexes for table `roles_users`
---
-ALTER TABLE `roles_users`
-  ADD PRIMARY KEY (`user_id`,`role_id`);
-
---
--- Indexes for table `setting`
---
-ALTER TABLE `setting`
-  ADD PRIMARY KEY (`setting_id`),
-  ADD KEY `setting_name` (`setting_name`);
-
---
--- Indexes for table `subject`
---
-ALTER TABLE `subject`
-  ADD PRIMARY KEY (`subject_id`),
-  ADD KEY `course` (`course`);
-
---
--- Indexes for table `tags`
---
-ALTER TABLE `tags`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `tag` (`title`);
-
---
--- Indexes for table `tests`
---
-ALTER TABLE `tests`
-  ADD PRIMARY KEY (`testid`);
-
---
--- Indexes for table `thumbnail`
---
-ALTER TABLE `thumbnail`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `root` (`root`);
-
---
--- Indexes for table `user_aim`
---
-ALTER TABLE `user_aim`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user_details`
---
-ALTER TABLE `user_details`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `videos`
---
-ALTER TABLE `videos`
-  ADD PRIMARY KEY (`videoid`),
-  ADD KEY `nodeid` (`nodeid`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `address`
---
-ALTER TABLE `address`
-  MODIFY `address_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `aim`
---
-ALTER TABLE `aim`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `category`
---
-ALTER TABLE `category`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `keys`
---
-ALTER TABLE `keys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `log`
---
-ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
-
---
--- AUTO_INCREMENT for table `logs`
---
-ALTER TABLE `logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
-
---
--- AUTO_INCREMENT for table `message`
---
-ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
-
---
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `orderid` int(6) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `order_meta`
---
-ALTER TABLE `order_meta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `permissions`
---
-ALTER TABLE `permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `products`
---
-ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `question_meta`
---
-ALTER TABLE `question_meta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `results`
---
-ALTER TABLE `results`
-  MODIFY `result_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `roles`
---
-ALTER TABLE `roles`
-  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `setting`
---
-ALTER TABLE `setting`
-  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tags`
---
-ALTER TABLE `tags`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `thumbnail`
---
-ALTER TABLE `thumbnail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `user_aim`
---
-ALTER TABLE `user_aim`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `user_details`
---
-ALTER TABLE `user_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
