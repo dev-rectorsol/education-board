@@ -25,4 +25,12 @@ class Lesson_model extends CI_Model {
     public function select_by_id($id){
       return $this->db->get_where('lesson', array('lesson_id' => $id))->row();
     }
+
+    public function get_lesson_by_name($name){
+      $this->db->select('lesson_id AS id, name AS text');
+      $this->db->from('lesson');
+      $this->db->where('name LIKE', $name.'%');
+      $result = $this->db->get();
+      return $result->result();
+    }
 }

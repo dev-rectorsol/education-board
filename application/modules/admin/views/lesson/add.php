@@ -19,14 +19,36 @@
 							</div>
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 								<div class="product-status-wrap drp-lst">
-									<span id="addfeaturepreview"></span>
-									<button id="removepreview" type="button" class="btn btn-link hide">remove</button>
-									<button id="addlectureimage" type="button" class="btn btn-link" name="button">Add Video file</button>
 									<div class="payment-adress">
 										<input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
 										<button type="submit" name='submit' value="save" class="btn btn-primary ">SAVE</button>
 										<button type="submit" name="submit" value="publish" class="btn btn-primary pull-right ">Publish</button>
 									</div>
+									<div class="form-group res-mg-t-15">
+										<label class="login2">Course Category</label>
+										<select class="select2_demo_2 form-control" name='category[]' data-placeholder="Choose a Category..." multiple="multiple">
+											<?php foreach($category as $row){ ?>
+											<option value="<?php echo $row['id'] ?>"> <?php echo $row['name'] ?> </option>
+											<?php } ?>
+										</select>
+									</div>
+									<div class="form-group res-mg-t-15">
+										<label class="login2">Course Tag</label>
+										<select class="select2_demo_2 form-control" name='tag[]' data-placeholder="Choose a Tags..." multiple="multiple">
+											<?php foreach($tag as $row){ ?>
+											<option value="<?php echo $row['id'] ?>"> <?php echo $row['title'] ?> </option>
+											<?php } ?>
+										</select>
+									</div>
+									<hr>
+									<span id="addfeaturepreview">
+									</span>
+									<button id="removepreview" type="button" class="btn btn-link hide">remove</button>
+									<button id="addfeatureimage" type="button" class="btn btn-link" name="button">Add feature image</button>
+									<hr>
+									<span id="addlecturepreview"></span>
+									<button id="lectureremovepreview" type="button" class="btn btn-link hide">remove</button>
+									<button id="addlectureimage" type="button" class="btn btn-link" name="button">Add Video file</button>
 								</div>
 							</div>
 						</form>

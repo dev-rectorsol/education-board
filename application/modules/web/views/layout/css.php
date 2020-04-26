@@ -17,57 +17,28 @@
 
       <!-- CSS
       ================================================== -->
-      <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/style.css">
-      <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/night-mode.css">
-      <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/framework.css">
-      <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/bootstrap.css">
+      <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
+      <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/night-mode.css">
+      <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/framework.css">
+      <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap.css">
 
       <!-- icons
       ================================================== -->
-      <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/icons.css">
+      <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/icons.css">
 
-      <script src="<?php echo base_url() ?>/assets/js/framework.js"></script>
-      <script src="<?php echo base_url() ?>/assets/js/jquery-3.3.1.min.js"></script>
-      <script src="<?php echo base_url() ?>/assets/js/simplebar.js"></script>
-      <script src="<?php echo base_url() ?>/assets/js/main.js"></script>
-      <script src="<?php echo base_url() ?>/assets/js/bootstrap-select.min.js"></script>
+      <!-- JQuery -->
 
-      <!-- For Night mode -->
-      <script>
-          (function (window, document, undefined) {
-              'use strict';
-              if (!('localStorage' in window)) return;
-              var nightMode = localStorage.getItem('gmtNightMode');
-              if (nightMode) {
-                  document.documentElement.className += ' night-mode';
-              }
-          })(window, document);
+      <script src="<?php echo base_url() ?>assets/js/jquery-3.3.1.min.js"></script>
 
 
-          (function (window, document, undefined) {
+      <!-- Anguler Js
+        ================================================ -->
 
-              'use strict';
+      <script src="<?php echo base_url('assets/js/angular.min.js'); ?>" charset="utf-8"></script>
 
-              // Feature test
-              if (!('localStorage' in window)) return;
 
-              // Get our newly insert toggle
-              var nightMode = document.querySelector('#night-mode');
-              if (!nightMode) return;
 
-              // When clicked, toggle night mode on or off
-              nightMode.addEventListener('click', function (event) {
-                  event.preventDefault();
-                  document.documentElement.classList.toggle('night-mode');
-                  if (document.documentElement.classList.contains('night-mode')) {
-                      localStorage.setItem('gmtNightMode', true);
-                      return;
-                  }
-                  localStorage.removeItem('gmtNightMode');
-              }, false);
 
-          })(window, document);
-      </script>
       <style>
           .flex-wrapper {
               display: flex;
@@ -123,10 +94,31 @@
               font-size: 0.5em;
               text-anchor: middle;
           }
+          .blur-up {
+            -webkit-filter: blur(5px);
+            filter: blur(5px);
+            transition: filter 400ms, -webkit-filter 400ms;
+          }
+
+          .blur-up.lazyloaded {
+            -webkit-filter: blur(0);
+            filter: blur(0);
+          }
       </style>
+
+      <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/preloder.css">
+
+      <script type="text/javascript">
+          setTimeout(function(){
+            $('body').addClass('loaded');
+          }, 1200);
+      </script>
 
   </head>
 
   <body>
-
-    
+    <div class="loader-wrapper">
+     <div class="loader"></div>
+     <div class="loader-section section-left"></div>
+     <div class="loader-section section-right"></div>
+   </div>

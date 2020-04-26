@@ -27,6 +27,18 @@
 							</span>
 							<button id="removepreview" type="button" class="btn btn-link hide">remove</button>
 							<button id="addfeatureimage" type="button" class="btn btn-link" name="button">Add feature image</button>
+							<div class="form-group">
+								<label class="login2">Slug</label>
+								<input name="slug" type="text" class="form-control" placeholder="slug">
+							</div>
+							<div class="form-group res-mg-t-15">
+								<label class="login2">Course Level</label>
+								<select class="form-control" name='course_type' data-placeholder="Choose a Level..." required>
+									<option selected value="beginner">Beginner</option>
+									<option value="entermidate">Entermidate</option>
+									<option value="expert">Expert</option>
+								</select>
+							</div>
 							<div class="form-group res-mg-t-15">
 								<label class="login2">Course Category</label>
 								<select class="select2_demo_2 form-control" name='category[]' data-placeholder="Choose a Category..." multiple="multiple">
@@ -47,10 +59,7 @@
 								<input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
 								<button type="submit" name='submit' value="save" class="btn btn-primary ">SAVE</button>
 								<button type="submit" name="submit" value="publish" class="btn btn-primary pull-right ">Publish</button>
-
 							</div>
-
-
 						</div>
 					</div>
 				</form>

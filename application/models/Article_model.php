@@ -51,4 +51,26 @@ class Article_model extends CI_Model {
              return $query;
          }
 
+         public function featured_article(){
+             $sql = 'SELECT * FROM article_view
+                      WHERE postid IN (
+                        SELECT indexing.root FROM indexing
+                        INNER JOIN category ON indexing.port = category.id AND indexing.type = "category"
+                        WHERE category.name = "FEATURED"
+                        ORDER BY indexing.id DESC
+                      )
+                      LIMIT 5';
+            $query = $this->db->query($sql);
+            return $query->result_array();
+         }
+
+         public function article_single_view($id){
+           $this->db->select('*');
+           $this->db->from('article_view');
+           $this->db->where('postid', $id);
+           $query = $this->db->get();
+           $query = $query->row();
+           return $query;
+         }
+
 }

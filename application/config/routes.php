@@ -61,13 +61,21 @@ $route['forget'] = 'authentication/resetView';
 // Website ROUTING
 
 $route['home'] = 'web/home/index';
+$route['paths'] = 'web/home/paths';
+$route['blogs'] = 'web/home/blogs';
+$route['single/(:any)'] = 'web/home/blog_single_view/$1';
 $route['about'] = 'web/home/about';
-$route['courses'] = 'web/home/courses';
-$route['courseDetails'] = 'web/home/courseDetails';
+$route['contact'] = 'web/home/contact';
+$route['courses'] = 'web/courses';
+$route['courses/get_list'] = 'web/courses/get_list';
+$route['courses/get_single/(:any)'] = 'web/courses/get_single/$1';
+$route['courses/course_curriculum/(:any)'] = 'web/courses/course_curriculum/$1';
+$route['course/(:any)'] = 'web/courses/intro/$1';
 $route['event'] = 'web/home/event';
 $route['faq'] = 'web/home/faq';
 $route['contact'] = 'web/home/contact';
 $route['file_upload'] = 'file_upload';
+$route['privacy'] = 'web/home/privacy';
 
 
 //  Admin Routing vai Admin

@@ -13,6 +13,8 @@ class Lesson extends CI_Controller {
 	{
 		$data= array();
 		$data['page'] ='Add Lesson';
+		$data['tag']=  $this->common_model->select('tags');
+		$data['category']=  $this->common_model->select('category');
 		$data['main_content']= $this->load->view('lesson/add',$data, true);
 		$this->load->view('index',$data);
 	}
@@ -46,9 +48,17 @@ class Lesson extends CI_Controller {
 		 			];
 		 		}
 		 		if ($this->common_model->insert($lesson, 'lesson')) {
+
+					$this->common_model->indexing($_POST, $lesson['lesson_id']);
+
+					if ( isset($_POST['featureImage']) ) {
+						// if added feature image
+						$this->common_model->addThumb($_POST['featureImage'], $lesson['lesson_id']);
+					}
+
 					if ( isset($data['lactureVideo']) ) {
 						// if Added video lacture
-						$this->common_model->addLacture($data['lactureVideo'], $data['lesson_id']);
+						$this->common_model->addLacture($data['lactureVideo'], $lesson['lesson_id']);
 					}
 		 			$this->session->set_flashdata(array('error' => 0, 'msg' => 'Lesson Create Done'));
 		 			redirect(base_url('admin/lesson/edit/').$lesson['lesson_id'], 'refresh');
@@ -66,8 +76,13 @@ class Lesson extends CI_Controller {
 			if ($id != '') {
 				$data= array();
 				$data['page'] ='Edit Lesson';
+				$data['tag']=  $this->common_model->select('tags');
+				$data['category']=  $this->common_model->select('category');
 				$data['data']=  $this->lesson_model->select_by_id($id);
 				$data['video']=  $this->common_model->getVideoByRoot($id);
+				$data['image'] = $this->common_model->getThumByRoot($id);
+				$data['indexcategory'] = $this->common_model->getIndexCategorys($id);
+				$data['indextags'] = $this->common_model->getIndexTags($id);
 				$data['main_content']= $this->load->view('lesson/edit-view',$data, true);
 				$this->load->view('index',$data);
 			}else {
@@ -102,6 +117,13 @@ class Lesson extends CI_Controller {
 						];
 					}
 					if ( $this->common_model->update($lesson, 'lesson_id', $data['lesson_id'], 'lesson') ) {
+
+						$this->common_model->indexing($_POST, $data['lesson_id']);
+
+						if ( isset($_POST['featureImage']) ) {
+							// if added feature image
+							$this->common_model->addThumb($_POST['featureImage'], $data['lesson_id']);
+						}
 						if ( isset($data['lactureVideo']) ) {
 								// if Added + new video lacture
 							$this->common_model->addLacture($data['lactureVideo'], $data['lesson_id']);
@@ -129,5 +151,13 @@ class Lesson extends CI_Controller {
 			$data1 = [ 'videoid'=> $id ];
 			$this->common_model->delete($data1,'videos');
 			redirect($_SERVER['HTTP_REFERER'], 'refresh');
+		}
+
+		public function get_lesson(){
+			if ($_POST) {
+				$subject=$this->security->xss_clean($_POST);
+				$data = $this->lesson_model->get_lesson_by_name($subject['search']);
+				echo json_encode($data);
+			}
 		}
 }

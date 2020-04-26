@@ -28,7 +28,6 @@ public function __construct()
         $this->db->from('subject');
         $this->db->where('subject_id',$id);
         $query = $this->db->get();
-
         return $query->row();
     }
     function select_Lesson_by_id($id){
@@ -50,10 +49,28 @@ public function __construct()
     }
 
     public function get_sujcect_by_name($name){
-      $this->db->select('subject_id, name');
+      $this->db->select('subject_id AS id, name AS text');
       $this->db->from('subject');
       $this->db->where('name LIKE', $name.'%');
       $result = $this->db->get();
       return $result->result();
+    }
+
+    public function select_subject_curriculum_by_id($id){
+      $this->db->select('subject_meta.*, lesson.name');
+      $this->db->from('subject_meta');
+      $this->db->join('lesson', 'subject_meta.lesson_id = lesson.lesson_id', 'INNER');
+      $this->db->where('subject_meta.subject_id', $id);
+      $this->db->order_by('subject_meta.serial', 'ASC');
+      $query = $this->db->get();
+      return $query->result_array();
+    }
+
+    public function check_curriculum($id){
+      $data = [
+        'subject_id' => $id,
+      ];
+      $this->db->delete('subject_meta', $data);
+      return;
     }
   }

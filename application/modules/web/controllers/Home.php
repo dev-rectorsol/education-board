@@ -6,20 +6,75 @@ class Home extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		//Do your magic here
+		$this->load->model('article_model');
 	}
 
 	public function index(){
         $data = array();
-        $data['page'] = 'Education Board';
-        $data['main_content'] = $this->load->view('home', $data, true);
-        $this->load->view('index', $data);
+
+				$data['homeSlider'] = 1;
+
+				$slider_value = !empty($this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value : '';
+
+				$data['slider'] = json_decode($slider_value, true);
+
+				$data['category'] = $this->common_model->home_category();
+
+				$data['trending'] = $this->common_model->home_trending();
+
+				$data['main_content'] = $this->load->view('home', $data, true);
+
+				$this->load->view('index', $data);
     }
+
+		public function paths(){
+			$data = array();
+			$data['breadcrumbs'] = [array('url' => base_url('paths'), 'name' => 'Paths')];
+			$data['main_content'] = $this->load->view('course-path', $data, true);
+			$this->load->view('index', $data);
+		}
+
+
+		public function blogs(){
+			$data = array();
+			$data['breadcrumbs'] = [array('url' => base_url('blogs'), 'name' => 'Blogs')];
+			$data['featured'] = $this->article_model->featured_article();
+			$data['main_content'] = $this->load->view('blogs/blogs', $data, true);
+			$this->load->view('index', $data);
+		}
+
+		public function blog_single_view($id){
+			$data = array();
+			$blog = $this->article_model->article_single_view($id);
+			$data['breadcrumbs'] = [
+				array('url' => base_url('blogs'), 'name' => 'Blogs'),
+				array('url' => base_url('single') . '/' . $id, 'name' => $blog->title)
+			];
+			$data['user'] = $this->common_model->get_user_view_by_id($blog->user_id);
+			$data['category'] = $this->common_model->get_category_name_by_blogid($blog->postid);
+			$data['blog'] = $blog;
+			$data['main_content'] = $this->load->view('blogs/blog-single', $data, true);
+			$this->load->view('index', $data);
+		}
 
     public function about(){
         $data = array();
-        $data['page'] = 'About Us';
-        $data['main_content'] = $this->load->view('about', $data, true);
+				$data['breadcrumbs'] = [array('url' => base_url('about'), 'name' => 'About Us')];
+				$data['main_content'] = $this->load->view('about', $data, true);
+        $this->load->view('index', $data);
+    }
+
+    public function contact() {
+        $data = array();
+				$data['breadcrumbs'] = [array('url' => base_url('contact'), 'name' => 'Contact Us')];
+				$data['main_content'] = $this->load->view('contact', $data, true);
+        $this->load->view('index', $data);
+    }
+
+    public function privacy(){
+        $data = array();
+        $data['breadcrumbs'] = [array('url' => base_url('privacy'), 'name' => 'Privacy')];
+        $data['main_content'] = $this->load->view('privacy', $data, true);
         $this->load->view('index', $data);
     }
 
@@ -44,12 +99,6 @@ class Home extends CI_Controller {
         $this->load->view('index', $data);
     }
 
-    public function contact(){
-        $data = array();
-        $data['page'] = 'contact';
-        $data['main_content'] = $this->load->view('contact', $data, true);
-        $this->load->view('index', $data);
-    }
 
     public function faq(){
         $data = array();

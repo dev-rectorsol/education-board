@@ -86,8 +86,7 @@
 					<li>
 						<a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-settings icon-wrap"></span> <span class="mini-click-non">Settings</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="Aim" href="<?php echo base_url('admin/Aim')?>"><span class="mini-sub-pro">Add Aim</span></a></li>
-							<li><a title="View Mail" href="<?php echo base_url('admin/Category')?>"><span class="mini-sub-pro">Add Category</span></a></li>
+							<li><a title="View Mail" href="<?php echo base_url('admin/setting/slider')?>"><span class="mini-sub-pro">Add Slider</span></a></li>
 						</ul>
 					</li>
 

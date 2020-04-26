@@ -72,6 +72,35 @@ public function __construct()
             return false;
             }
         }
+
+
+
+
+        public function get_user_view_by_id($id)
+        {
+          $this->db->select('*');
+          $this->db->from('user_view');
+          $this->db->where('logid', $id);
+          $this->db->limit(1);
+          $query = $this->db->get();
+          if ($query->num_rows() == 1) {
+            return $query->row();
+          } else {
+            return false;
+          }
+        }
+
+        public function get_category_name_by_blogid($id)
+        {
+          $sql = 'SELECT category.name FROM indexing
+                  INNER JOIN category ON indexing.port = category.id AND indexing.type = "category"
+                  GROUP BY category.id';
+
+          $query = $this->db->query($sql);
+          return $query->row();
+        }
+
+
 public function check_otp($data){
 
             $this->db->select('*');
@@ -458,5 +487,31 @@ function getMaxUserId(){
           }
       }
       return;
+    }
+
+    public function home_category(){
+      $sql = 'SELECT category.*, COUNT(indexing.id) AS course FROM category
+              LEFT JOIN indexing ON indexing.port = category.id AND indexing.type = "category"
+              GROUP BY category.id
+              ORDER BY category.id DESC';
+      $result = $this->db->query($sql);
+      return $result->result_array();
+    }
+
+    public function home_trending(){
+      $sql = 'SELECT lesson.*, thumbnail.thumb AS thumb, thumbnail.image AS image FROM lesson
+              INNER JOIN thumbnail ON thumbnail.root = lesson.lesson_id
+              WHERE lesson_id IN (
+                SELECT indexing.root AS trending FROM category
+                LEFT JOIN indexing ON indexing.port = category.id AND indexing.type = "category"
+                WHERE category.name = "TRENDING"
+              )
+              ORDER BY lesson_id DESC';
+      $result = $this->db->query($sql);
+      return $result->result_array();
+    }
+
+    public function get_username($id){
+      return $this->db->get_where('user_details', array('user_id' => $id))->row()->name;
     }
 }

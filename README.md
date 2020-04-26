@@ -26,4 +26,14 @@ Admin	- Login Module
 		-view
 Register   -Register
 	   -User
-	   
+
+
+
+
+		 DB : mGov1YydXqG{
+
+
+			 <!-- Rector SERVER -->
+			 User: mcfojotc_education
+			 Database: mcfojotc_education
+			 DB: VV3Ha=QRq(gf

@@ -1077,7 +1077,7 @@ INSERT INTO `videos` (`videoid`, `nodeid`, `type`, `name`, `url`, `size`, `video
 --
 DROP TABLE IF EXISTS `article_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `article_view`  AS  select `article`.`id` AS `id`,`article`.`postid` AS `postid`,`article`.`title` AS `title`,`article`.`slug` AS `slug`,`article`.`created_by` AS `created_by`,`article`.`content` AS `content`,`article`.`public_at` AS `public_at`,`article`.`is_publish` AS `is_publish`,`article`.`deleted` AS `deleted`,`article`.`created_at` AS `created_at`,`user_details`.`name` AS `name`,`thumbnail`.`thumb` AS `thumb`,`thumbnail`.`image` AS `image` from ((`article` left join `user_details` on(`article`.`created_by` = `user_details`.`user_id`)) left join `thumbnail` on(`article`.`postid` = `thumbnail`.`root`)) group by `article`.`postid` order by `article`.`created_at` desc ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mcfojotc`@`localhost` SQL SECURITY DEFINER VIEW `article_view`  AS  select `article`.`id` AS `id`,`article`.`postid` AS `postid`,`article`.`title` AS `title`,`article`.`slug` AS `slug`,`article`.`created_by` AS `created_by`,`article`.`content` AS `content`,`article`.`public_at` AS `public_at`,`article`.`is_publish` AS `is_publish`,`article`.`deleted` AS `deleted`,`article`.`created_at` AS `created_at`,`user_details`.`name` AS `name`,`thumbnail`.`thumb` AS `thumb`,`thumbnail`.`image` AS `image` from ((`article` left join `user_details` on(`article`.`created_by` = `user_details`.`user_id`)) left join `thumbnail` on(`article`.`postid` = `thumbnail`.`root`)) group by `article`.`postid` order by `article`.`created_at` desc ;
 
 --
 -- Indexes for dumped tables

@@ -1,4 +1,4 @@
-	
+
 		<!-- Static Table Start -->
 		<div class="data-table-area mg-b-15">
 			<div class="container-fluid">
@@ -47,6 +47,9 @@
 												<td>
 													<button type="button" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
 													<button type="button" onclick="delete_detail(<?php echo $value['subject_id'] ?>)" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+													<a href="<?php echo base_url('admin/subject/curriculum/').$value['subject_id']; ?>">
+														<button type="button" class="btn btn-default" name="button">Add Curriculum</button>
+													</a>
 												</td>
 											</tr>
 											<?php endforeach; ?>

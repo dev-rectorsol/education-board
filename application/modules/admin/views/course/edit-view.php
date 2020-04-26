@@ -37,6 +37,28 @@
                 <button id="addfeatureimage" type="button" class="btn btn-link" name="button">Add feature image</button>
               <?php endif; ?>
               <div class="form-group">
+								<label class="login2">Slug</label>
+								<input name="slug" type="text" class="form-control" placeholder="slug" value="<?php echo  $course->slug; ?>">
+							</div>
+              <div class="form-group res-mg-t-15">
+                <label class="login2">Course Level</label>
+                <select class="form-control" name='course_type' data-placeholder="Choose a Level..." required>
+                  <?php if($course->course_type == 'beginner'): ?>
+                  <option selected value="beginner">Beginner</option>
+                  <option value="entermidate">Entermidate</option>
+                  <option value="expert">Expert</option>
+                <?php elseif($course->course_type == 'entermidate'): ?>
+                  <option value="beginner">Beginner</option>
+                  <option selected value="entermidate">Entermidate</option>
+                  <option value="expert">Expert</option>
+                <?php else: ?>
+                  <option value="beginner">Beginner</option>
+                  <option value="entermidate">Entermidate</option>
+                  <option selected value="expert">Expert</option>
+                <?php endif; ?>
+                </select>
+              </div>
+              <div class="form-group">
                 <label class="login2">Course Category</label>
                 <select class="select2_demo_2 form-control" name='category[]' data-placeholder="Choose a Category..." multiple="multiple">
                   <?php foreach($category as $row){ ?>

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Media extends CI_Controller {
 
-
+ private $filedata = array();
 	public function __construct()
   {
     parent::__construct();
@@ -18,13 +18,49 @@ class Media extends CI_Controller {
   }
 
 
+	// public function index()
+	// {
+	// 			$map = directory_map(UPLOAD_FILE, FALSE, TRUE);
+	// 			$files = self::Concatenate_Filepaths($map);
+	// 			$fileData = self::getFileWithExt($files);
+	// 			$data['main_content'] = $this->load->view('media/list-view', $fileData, TRUE);
+	// 			$this->load->view('index', $data);
+	// }
+
 	public function index()
 	{
+			$fileData['file'] = readJSON();
+			$data['main_content'] = $this->load->view('media/lazy-loading', $fileData, TRUE);
+			$this->load->view('index', $data);
+	}
+	public function videos()
+	{
+			$fileData['file'] = readJSON();
+			$data['main_content'] = $this->load->view('media/lazy-loading-video', $fileData, TRUE);
+			$this->load->view('index', $data);
+	}
+
+ public function get_file_refrace(){
+    $map = directory_map(UPLOAD_FILE, FALSE, TRUE);
+    $files = self::Concatenate_Filepaths($map);
+    $fileData = self::getFileWithInfo($files);
+    $json_data = json_encode($fileData);
+    $info = writeJSON($fileData);
+    if ($info) {
+      redirect(base_url('admin/media/'), 'refresh');
+    }else{
+      echo base_url('admin/media/get_file_refrace');
+    }
+ }
+	public function get_load()
+	{
+			if ($_POST) {
 				$map = directory_map(UPLOAD_FILE, FALSE, TRUE);
 				$files = self::Concatenate_Filepaths($map);
 				$fileData = self::getFileWithExt($files);
-				$data['main_content'] = $this->load->view('media/list-view', $fileData, TRUE);
-				$this->load->view('index', $data);
+				pre($_POST);
+			}
+
 	}
 
 
@@ -68,13 +104,32 @@ class Media extends CI_Controller {
 	public function getFileWithExt($path)
 	{
 		$filedata = array();
+
+		usort($path, function($x, $y) {
+			return filemtime($x) < filemtime($y);
+		});
+
 		foreach ($path as $value) {
 			if ( preg_match('/(\.jpg|\.jpeg|\.png|\.bmp|\.gif)$/i', $value) )
-				$filedata['image'][] = $value;
+				$filedata['image'][] = getFileInfo($value);
 			else if( preg_match('/(\.mp4|\.mkv|\.avi|\.webm)$/i', $value ) )
 				$filedata['video'][] = $value;
 			else
 				$filedata['other'][] = $value;
+		}
+		return $filedata;
+	}
+
+	public function getFileWithInfo($path)
+	{
+		$filedata = array();
+
+		usort($path, function($x, $y) {
+			return filemtime($x) < filemtime($y);
+		});
+
+		foreach ($path as $value) {
+			$filedata[] = getFileInfo($value);
 		}
 		return $filedata;
 	}

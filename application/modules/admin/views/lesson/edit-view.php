@@ -19,6 +19,18 @@
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <div class="product-status-wrap drp-lst">
+              <?php if (!empty($image)): ?>
+                <span id="addfeaturepreview">
+                  <img src="<?php echo base_url().$image->thumb; ?>" alt="">
+                  <input type="hidden" name="featureImage" value="<?php echo $image->thumb; ?>">
+                </span>
+                <?php else: ?>
+                  <span id="addfeaturepreview">
+									</span>
+              <?php endif; ?>
+              <button id="removepreview" type="button" class="btn btn-link">remove</button>
+              <button id="addfeatureimage" type="button" class="btn btn-link" name="button">change feature image</button>
+
               <div class="form-group">
                 <label class="login2">Create Date:</label>
                 <span><?php echo my_date_show_time($data->created_at); ?></span>
@@ -30,6 +42,30 @@
                 <?php else: ?>
                   <span>Save in Draft</span>
                 <?php endif; ?>
+              </div>
+              <div class="form-group">
+                <label class="login2">Course Category</label>
+                <select class="select2_demo_2 form-control" name='category[]' data-placeholder="Choose a Category..." multiple="multiple">
+                  <?php foreach($category as $row){ ?>
+                    <?php if(in_array($row['id'], $indexcategory)): ?>
+                      <option selected value="<?php echo $row['id'] ?>"> <?php echo $row['name'] ?> </option>
+                    <?php else: ?>
+                      <option value="<?php echo $row['id'] ?>"> <?php echo $row['name'] ?> </option>
+                    <?php endif; ?>
+                  <?php } ?>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="login2">Course Tag</label>
+                <select class="select2_demo_2 form-control" name='tag[]' data-placeholder="Choose a Tags..." multiple="multiple">
+                  <?php foreach($tag as $row){ ?>
+                    <?php if(in_array($row['id'], $indextags)): ?>
+                      <option selected value="<?php echo $row['id'] ?>"> <?php echo $row['title'] ?> </option>
+                    <?php else: ?>
+                      <option value="<?php echo $row['id'] ?>"> <?php echo $row['title'] ?> </option>
+                    <?php endif; ?>
+                  <?php } ?>
+                </select>
               </div>
               <div class="payment-adress">
                 <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
@@ -70,10 +106,8 @@
                   </div>
                 </div>
               </div>
-              <span id="addfeaturepreview">
-
-              </span>
-              <button id="removepreview" type="button" class="btn btn-link">remove</button>
+              <span id="addlecturepreview"></span>
+              <button id="lectureremovepreview" type="button" class="btn btn-link hide">remove</button>
               <button id="addlectureimage" type="button" class="btn btn-link" name="button">Add Video file</button>
             </div>
           </div>
@@ -86,9 +120,9 @@
 <script type="text/javascript">
 
   function lactureRemove(id){
-    var del = confirm("Do you want to Delete");
+    var del = confirm("Do you want to Remove");
     if (del == true) {
-      var sureDel = confirm("Are you sure want to delete");
+      var sureDel = confirm("Are you sure want to Remove");
       if (sureDel == true) {
         window.location = "<?php echo base_url()?>admin/lesson/lactureRemove/" + id;
       }

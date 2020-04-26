@@ -58,3 +58,52 @@ if(! function_exists("convertToReadableSize")) {
     return round(pow(1024, $base - floor($base)), 1) . $suffix[$f_base];
   }
 }
+
+if(! function_exists("writeJSON")) {
+  function writeJSON($formdata){
+    try
+    {
+      if (is_file(FILE_JSON_INFO)) {
+        //Get form data
+   	   //Get data from existing json file
+   	   $jsondata = file_get_contents(FILE_JSON_INFO);
+
+   	   // converts json data into array
+   	   $arr_data = json_decode($jsondata, true);
+   	   // Push user data to array
+   	   array_push($arr_data, $formdata);
+
+          //Convert updated array to JSON
+   	   $jsondata = json_encode($formdata, JSON_PRETTY_PRINT);
+   	   //write json data into file-data.json file
+   	   if(file_put_contents(FILE_JSON_INFO, $jsondata))
+   	        return true;
+   	   else
+   	        return false;
+
+      }else {
+        // If file Is Not Exist
+        $jsondata = json_encode($formdata, JSON_PRETTY_PRINT);
+        //write json data into file-data.json file
+        if(file_put_contents(FILE_JSON_INFO, $jsondata))
+             return true;
+        else
+             return false;
+      }
+
+     }
+     catch (Exception $e) {
+              echo 'Caught exception: ',  $e->getMessage(), "\n";
+     }
+ }
+}
+
+if(! function_exists("readJSON")) {
+  function readJSON(){
+    if (is_file(FILE_JSON_INFO)) {
+      return file_get_contents(FILE_JSON_INFO);
+    }else{
+      redirect(base_url('admin/media/get_file_refrace'));
+    }
+  }
+}

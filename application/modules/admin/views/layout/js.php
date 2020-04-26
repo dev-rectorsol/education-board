@@ -95,6 +95,10 @@
 
     <?php include("__media.php"); ?>
     <?php include("__notification.php"); ?>
+
+    <?php if(isset($script)):
+        echo $script;
+     endif; ?>
 </body>
 
 </html>

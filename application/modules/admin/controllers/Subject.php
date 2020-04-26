@@ -17,10 +17,10 @@ class Subject extends CI_Controller {
 		$this->load->view('index',$data);
 	}
 
-	public function get_sujcect(){
+	public function get_subject(){
 		if ($_POST) {
 			$subject=$this->security->xss_clean($_POST);
-			$data = $this->subject_model->get_sujcect_by_name($subject['name']);
+			$data = $this->subject_model->get_sujcect_by_name($subject['search']);
 			echo json_encode($data);
 		}
 	}
@@ -156,4 +156,55 @@ class Subject extends CI_Controller {
             $this->Common_model->delete($data1,'subject');
             redirect(base_url() . 'admin/Category', 'refresh');
     }
+
+
+		// Subject curriculum
+
+		public function curriculum($id){
+			$data = array();
+			$data['page'] = 'Edit Subject';
+			$data['subject'] = $this->subject_model->select_by_id($id);
+			$data['curriculum'] = $this->subject_model->select_subject_curriculum_by_id($id);
+			$data['main_content'] = $this->load->view('subject/add-curriculum', $data, true);
+			$data['script'] = $this->load->view('layout/__curriculum_sub.php', $data, true);
+			$this->load->view('index',$data);
+		}
+
+		public function add_curriculum() {
+			if($_POST){
+				$data=$this->security->xss_clean($_POST);
+				// Check Data Is Already apc_exists
+				$this->subject_model->check_curriculum($data['subject_id']);
+
+				if ($data['submit'] == 'publish') {
+					$course = [
+						 'subject_id' => $data['subject_id'],
+						 'subject' => $data['subject']
+					];
+					if (count($course['subject']) > 0) {
+						foreach ($course['subject'] as $key => $value) {
+							$temp = [
+								'subject_id' => $course['subject_id'],
+								'lesson_id' => $value,
+								'serial' => $key
+							];
+							$id = $this->common_model->insert($temp, 'subject_meta');
+						}
+						if ($id) {
+							$this->session->set_flashdata(array('error' => 0, 'msg' => 'Subject Curriculum Update Done'));
+							redirect(base_url('admin/subject/curriculum/').$data['subject_id'], 'refresh');
+					 } else {
+							$this->session->set_flashdata(array('error' => 1, 'msg' => 'Subject Curriculum Update Failed'));
+							redirect(base_url('admin/subject/curriculum/').$data['subject_id'], 'refresh');
+					 }
+					} else {
+						$this->session->set_flashdata(array('error' => 1, 'msg' => 'Choose at least one Subject'));
+					 redirect(base_url('admin/subject/curriculum/').$data['subject_id'], 'refresh');
+					}
+			 }
+			}else{
+				$this->session->set_flashdata(array('error' => 1, 'msg' => 'Request not Allowed'));
+				redirect($_SERVER['HTTP_REFERER'], 'refresh');
+			}
+	 }
 }

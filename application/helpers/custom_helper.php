@@ -97,6 +97,29 @@ if(!function_exists('objectToArray')){
 	    }
 	}
 
+	//-- show current date & time with custom format
+	if(!function_exists('time_diff')){
+	    function time_diff($date){
+				$start_date = new DateTime($date);
+				$since_start = $start_date->diff(new DateTime(current_datetime()));
+				if ($since_start->y) {
+					return $since_start->y. " Year";
+				}elseif ($since_start->m) {
+					return $since_start->m. " Month";
+				}elseif ($since_start->d) {
+					return $since_start->d. " Day";
+				}elseif ($since_start->h) {
+					return $since_start->h. " Hour";
+				}elseif ($since_start->i) {
+					return $since_start->i. " Minute";
+				}else{
+					return;
+				}
+	    }
+	}
+
+
+
 	if(!function_exists('my_date_show_time')){
 	    function my_date_show($date){
 	        if($date != ''){
@@ -128,9 +151,18 @@ if(!function_exists('objectToArray')){
 				return uniqid($slug);
 	    }
 	}
+
 	if(!function_exists('getCustomId')) {
 	    function getCustomId($max, $slug=""){
 				$text = $slug . ($max + 1);
 				return $text;
+	    }
+	}
+
+	if(!function_exists('get_footer')) {
+	    function get_footer(){
+				$ci = get_instance();
+				$var = $ci->load->view('web/footer');
+				return $var;
 	    }
 	}
