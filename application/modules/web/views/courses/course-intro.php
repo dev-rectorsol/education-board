@@ -67,24 +67,19 @@
 
                 <ul class="course-curriculum" uk-accordion="multiple: true" ng-controller="curriculumController">
 
-                  <li class="uk-open" ng-repeat='curriculum in curriculums'>
+                  <li ng-repeat='curriculum in curriculums' repeat-done="layoutDone()">
                     <a class="uk-accordion-title" href="#"> {{curriculum.subject_name}} </a>
                     <div class="uk-accordion-content">
 
                       <!-- course-video-list -->
-                      <ul class="course-curriculum-list">
-                        <li> What is HTML <span> 23 min </span> </li>
-                        <li> What is a Web page? <span> 23 min </span> </li>
-                        <li> Your First Web Page <a href="#trailer-modal" uk-toggle> Preview
+                      <ul class="course-curriculum-list" ng-repeat='subculum in curriculum.subject_curriculum'>
+                        <li> {{subculum.lesson_name}}
                           </a> <span> 23 min </span>
                         </li>
-                        <li> Brain Streak <span> 23 min </span> </li>
                       </ul>
 
                     </div>
                   </li>
-
-
 
                 </ul>
 
@@ -578,7 +573,13 @@
 
     <script type="text/javascript">
 
-    var app = angular.module('educationbourd', []);
+
+    var app = angular.module('educationbourd', [])
+    .directive('repeatDone', function() {
+        return function() {
+            $('.course-curriculum li:first').addClass('uk-open');
+        }
+    });
 
     app.controller('curriculumController', function($scope, $http){
         $scope.curriculums = [];
@@ -588,6 +589,13 @@
           });
     });
     app.controller('courseController', function($scope, $http){
+        $scope.courses = [];
+          $http.get('<?php echo base_url('courses/get_single/').$course->course_id; ?>')
+          .then(function($data){
+            $scope.courses = $data.data;
+          });
+    });
+    app.controller('productController', function($scope, $http){
         $scope.courses = [];
           $http.get('<?php echo base_url('courses/get_single/').$course->course_id; ?>')
           .then(function($data){

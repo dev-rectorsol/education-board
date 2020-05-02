@@ -45,8 +45,8 @@
 												</td>
 												<td><?php echo my_date_show($value['created_at']) ?></td>
 												<td>
-													<button type="button" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-													<button type="button" onclick="delete_detail(<?php echo $value['subject_id'] ?>)" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+													<a href="<?php echo base_url('admin/subject/edit/').$value['subject_id']; ?>"><button type="button" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+													<button type="button" onclick="delete_detail('<?php echo $value['subject_id'] ?>')" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
 													<a href="<?php echo base_url('admin/subject/curriculum/').$value['subject_id']; ?>">
 														<button type="button" class="btn btn-default" name="button">Add Curriculum</button>
 													</a>
@@ -70,7 +70,7 @@
 				if (del == true) {
 					var sureDel = confirm("Are you sure want to delete");
 					if (sureDel == true) {
-						window.location = "<?php echo base_url()?>admin/Category/Delete/" + id;
+						window.location = "<?php echo base_url()?>admin/subject/delete/" + id;
 					}
 
 				}

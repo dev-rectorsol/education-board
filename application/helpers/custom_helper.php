@@ -166,3 +166,45 @@ if(!function_exists('objectToArray')){
 				return $var;
 	    }
 	}
+
+	if(!function_exists('get_sidebar')) {
+	    function get_sidebar($path = ''){
+				$ci = get_instance();
+				$var = $ci->load->view($path);
+				return $var;
+	    }
+	}
+
+	if(!function_exists('get_section')) {
+	    function get_section($path = ''){
+				$ci = get_instance();
+				$var = $ci->load->view($path);
+				return $var;
+	    }
+	}
+
+	if(!function_exists('get_related')) {
+	    function get_related($type = '', $node = '', $path = '') {
+				$ci = get_instance();
+				$data['type'] = $type;
+				$data['node'] = $node;
+				$var = $ci->load->view($path, $data);
+				return $var;
+	    }
+	}
+
+	if(!function_exists('get_player')) {
+	    function get_player($node) {
+				$ci = get_instance();
+				$data['node'] = $node;
+				$var = $ci->load->view('web/layout/embedded-player', $data);
+				return $var;
+	    }
+	}
+
+	if(!function_exists('isJson')) {
+		function isJson($string) {
+			json_decode($string);
+			return (json_last_error() == JSON_ERROR_NONE);
+		}
+	}

@@ -38,9 +38,6 @@ class Courses extends CI_Controller {
 
 	public function get_single($id) {
 			$output = array();
-
-
-
 			$this->output->set_content_type('application/json')->set_output(json_encode($output));
 	}
 
@@ -57,6 +54,37 @@ class Courses extends CI_Controller {
 
 			$data['main_content'] = $this->load->view('courses/course-intro', $data, true);
 			$this->load->view('index', $data);
+		} else {
+			$this->output->set_content_type('application/json')->set_output(json_encode(array('error' => 1, 'msg' => 'Course details Not Found!')));
+		}
+	}
+
+	public function resume($id){
+		$data = array();
+		$output = $this->course_model->select_by_id($id);
+		if ($output) {
+			$data['breadcrumbs'] = [
+				array('url' => base_url('courses'), 'name' => 'Courses'),
+				array('url' => base_url('resume') . "/" .$id , 'name' => $output->name)
+			];
+			$data['course'] = $this->course_model->select_course_single($id);
+			$data['main_content'] = $this->load->view('courses/resume-course-list', $data, true);
+			$this->load->view('index', $data);
+		} else {
+			$this->output->set_content_type('application/json')->set_output(json_encode(array('error' => 1, 'msg' => 'Course details Not Found!')));
+		}
+	}
+
+	public function demo($id){
+		$data = array();
+		$output = $this->course_model->select_by_id($id);
+		if ($output) {
+			$data['breadcrumbs'] = [
+				array('url' => base_url('courses'), 'name' => 'Courses'),
+				array('url' => base_url('resume') . "/" .$id , 'name' => $output->name)
+			];
+			$data['course'] = $this->course_model->select_course_single($id);
+			$this->load->view('lacture/lacture-play-page', $data);
 		} else {
 			$this->output->set_content_type('application/json')->set_output(json_encode(array('error' => 1, 'msg' => 'Course details Not Found!')));
 		}

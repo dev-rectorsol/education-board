@@ -24,4 +24,16 @@ class Product_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function select_product_by_course_id($id){
+
+    }
+
+    public function delete_product($id) {
+      $sql = "DELETE products, product_meta FROM products
+              LEFT join product_meta ON products.product_id = product_meta.product_id
+              WHERE products.product_id = '{$id}'";
+              $result = $this->db->query($sql);
+              return $result;
+    }
 }

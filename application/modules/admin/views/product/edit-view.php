@@ -34,7 +34,6 @@
               <?php else: ?>
                 <span id="addfeaturepreview">
                 </span>
-                <button id="removepreview" type="button" class="btn btn-link hide">remove</button>
                 <button id="addfeatureimage" type="button" class="btn btn-link" name="button">Add feature image</button>
               <?php endif; ?>
               <div class="form-group res-mg-t-15">

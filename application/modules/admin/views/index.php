@@ -3,7 +3,7 @@
 <div class="left-sidebar-pro">
 	<nav id="sidebar" class="">
 		<div class="sidebar-header">
-			<a href="index.html"><img class="main-logo" src="<?php echo base_url('optimum')?>/img/logo/logo12.jpg" alt="" /></a>
+			<a href="<?php echo base_url('admin'); ?>"><img class="main-logo" src="<?php echo base_url('optimum')?>/img/logo/logo12.jpg" alt="" /></a>
 			<strong><a href="index.html"><img src="<?php echo base_url('optimum')?>/img/logo/logosn.png" alt="" /></a></strong>
 		</div>
 		<div class="left-custom-menu-adp-wrap comment-scrollbar">
@@ -22,6 +22,7 @@
 							<li><a title="Aim" href="<?php echo base_url('admin/aim')?>"><span class="mini-sub-pro">Add Aim</span></a></li>
 							<li><a title="Category" href="<?php echo base_url('admin/category')?>"><span class="mini-sub-pro">Add Categorys</span></a></li>
 							<li><a title="Category" href="<?php echo base_url('admin/tag')?>"><span class="mini-sub-pro">Add tags</span></a></li>
+							<li><a title="Category" href="<?php echo base_url('admin/lesson/trending_view')?>"><span class="mini-sub-pro">Add Trending</span></a></li>
 						</ul>
 					</li>
 					<!-- Media -->
@@ -38,6 +39,14 @@
 						<ul class="submenu-angle" aria-expanded="false">
 							<li><a title="All Courses" href="<?php echo base_url('admin/article/view')?>"><span class="mini-sub-pro">All List</span></a></li>
 							<li><a title="All Courses" href="<?php echo base_url('admin/article/')?>"><span class="mini-sub-pro">Add New</span></a></li>
+						</ul>
+					</li>
+					<!-- Users -->
+					<li>
+						<a class="has-arrow" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Students</span></a>
+						<ul class="submenu-angle" aria-expanded="false">
+							<li><a title="All Courses" href="<?php echo base_url('admin/student/view')?>"><span class="mini-sub-pro">All Student</span></a></li>
+							<li><a title="All Courses" href="<?php echo base_url('admin/student/')?>"><span class="mini-sub-pro">Add New</span></a></li>
 						</ul>
 					</li>
 					<!-- Courses -->

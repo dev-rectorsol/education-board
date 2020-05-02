@@ -33,4 +33,13 @@ class Lesson_model extends CI_Model {
       $result = $this->db->get();
       return $result->result();
     }
+
+
+    public function get_lecture($node) {
+      $this->db->select('*');
+      $this->db->from('videos');
+      $this->db->where('nodeid', $node);
+      $result = $this->db->get();
+      return $result->result_array();
+    }
 }

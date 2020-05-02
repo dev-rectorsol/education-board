@@ -73,4 +73,12 @@ class Article_model extends CI_Model {
            return $query;
          }
 
+         public function select_blog_list(){
+           $this->db->select('*');
+           $this->db->from('article_view');
+           $query = $this->db->get();
+           $query = $query->result_array();
+           return $query;
+         }
+
 }

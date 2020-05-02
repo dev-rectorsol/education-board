@@ -1,3 +1,7 @@
+
+<?php $application_name = $this->db->get_where('setting', array('setting_name' => 'application_name'))->row()->setting_value; ?>
+<?php $application_title = $this->db->get_where('setting', array('setting_name' => 'application_title'))->row()->setting_value; ?>
+
   <!doctype html>
   <html lang="en">
 
@@ -7,7 +11,7 @@
 
       <!-- Basic Page Needs
       ================================================== -->
-      <title>Courseplus Learning HTML Template</title>
+      <title><?php echo $application_title." || ".$application_name; ?></title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="Courseplus - Professional Learning Management HTML Template">
@@ -31,12 +35,20 @@
       <script src="<?php echo base_url() ?>assets/js/jquery-3.3.1.min.js"></script>
 
 
+      <script src="<?php echo base_url('optimum/js/google.lazy.load/lazysizes.min.js') ?>" charset="utf-8"></script>
+
+
       <!-- Anguler Js
         ================================================ -->
 
       <script src="<?php echo base_url('assets/js/angular.min.js'); ?>" charset="utf-8"></script>
 
+      <script type="text/javascript">
 
+      var app = angular.module('educationbourd', []);
+
+
+      </script>
 
 
       <style>
@@ -116,9 +128,9 @@
 
   </head>
 
-  <body>
+  <body ng-app="educationbourd">
     <div class="loader-wrapper">
      <div class="loader"></div>
      <div class="loader-section section-left"></div>
      <div class="loader-section section-right"></div>
-   </div>
+    </div>

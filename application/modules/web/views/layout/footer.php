@@ -2,7 +2,6 @@
 <script src="<?php echo base_url() ?>/assets/js/simplebar.js"></script>
 <script src="<?php echo base_url() ?>/assets/js/main.js"></script>
 <script src="<?php echo base_url() ?>/assets/js/bootstrap-select.min.js"></script>
-<script src="<?php echo base_url('optimum/js/google.lazy.load/lazysizes.min.js') ?>" charset="utf-8"></script>
 
 
 <!-- For Night mode -->

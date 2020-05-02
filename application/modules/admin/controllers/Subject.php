@@ -54,7 +54,7 @@ class Subject extends CI_Controller {
 			}
 		foreach($data1['lesson'] as $row){
 			 $course=[
-			   'subject_id' =>$id,
+			   		'subject_id' =>$id,
             'Lesson_id' => $row,
             'serial' => ++$count
 		];
@@ -78,7 +78,7 @@ class Subject extends CI_Controller {
          ];
 			}else{
 				$subject = [
-							'subject_id' => getCustomId($id, 'sub'),
+						 'subject_id' => getCustomId($id, 'sub'),
 						 'name' => $data['name'],
 						 'description' => $data['description'],
 						 'is_publish' => 0,
@@ -150,11 +150,11 @@ class Subject extends CI_Controller {
   }
 
 
-     public function Delete($id)
-	{
-            $data1=['subject_id'=> $id];
-            $this->Common_model->delete($data1,'subject');
-            redirect(base_url() . 'admin/Category', 'refresh');
+     public function delete($id)
+		 {
+        $data1=['subject_id'=> $id];
+        $this->Common_model->delete($data1,'subject');
+        redirect($_SERVER['HTTP_REFERER'], 'refresh');
     }
 
 

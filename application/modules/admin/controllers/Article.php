@@ -22,13 +22,13 @@ class Article extends CI_Controller {
 
         $data['tag']=  $this->common_model->select('tags');
 		$data['category']=  $this->common_model->select('category');
-		$data['main_content']= $this->load->view('Article/add',$data, true);
+		$data['main_content']= $this->load->view('article/add',$data, true);
 		$this->load->view('index',$data);
     }
 	  public function add()
 		{
 			if($_POST){
-				$data1=$this->security->xss_clean($_POST);
+				$data1=$_POST;
 				$id = $this->common_model->get_last_id('article');
 				if($data1['submit']=='save') {
 					$article=[
@@ -55,8 +55,8 @@ class Article extends CI_Controller {
 				if ($id) {
 				  $this->common_model->indexing($_POST, $article['postid']);
 					if ( isset($_POST['featureImage']) ) {
-						// if added feature image
-						$this->common_model->addThumb($_POST['featureImage'], $article['postid']);
+						// if added feature images
+						$this->common_model->addThumb($_POST['featureImage'], $course['course_id']);
 					}
 				 	$this->session->set_flashdata(array('error' => 0, 'msg' => 'Course Create Done'));
 				 	redirect(base_url('admin/article/edit/').$article['postid'], 'refresh');
@@ -95,7 +95,7 @@ class Article extends CI_Controller {
 
 		public function update(){
 			if($_POST){
-				$data=$this->security->xss_clean($_POST);
+				$data=$_POST;
 				if($data['submit']=='save') {
 					$article=[
 						'title' => $data['name'],
@@ -147,7 +147,7 @@ class Article extends CI_Controller {
 	 $data['page'] ='article';
 
         $data['article']=  $this->article_model->select_draft();
-        $data['main_content']= $this->load->view('Article/ViewDraft',$data, true);
+        $data['main_content']= $this->load->view('article/ViewDraft',$data, true);
 		$this->load->view('index',$data);
     }
      public function viewDeleted()
@@ -155,7 +155,7 @@ class Article extends CI_Controller {
 	 $data['page'] ='article';
 
         $data['article']=  $this->article_model->select_deleted();
-        $data['main_content']= $this->load->view('Article/ViewDeleted',$data, true);
+        $data['main_content']= $this->load->view('article/ViewDeleted',$data, true);
 		$this->load->view('index',$data);
 	}
  public function Delete($id)

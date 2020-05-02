@@ -52,7 +52,7 @@
               <div class="course-details-info">
                 <ul>
                   <li> <i class="icon-feather-sliders"></i> {{course.course_type}} level </li>
-                  <li> By <a href="user-profile-1.html"> {{course.created_by}} </a> </li>
+                  <li> By <a href=""> {{course.created_by}} </a> </li>
                   <li>
                     <div class="star-rating"><span class="avg"> 4.8 </span> <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
                     </div>

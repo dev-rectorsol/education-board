@@ -101,8 +101,6 @@ class Auth
         $this->CI->form_validation->set_rules('username', 'User Name', 'required');
         $this->CI->form_validation->set_rules('password', 'Password', 'required');
         if ($this->CI->form_validation->run() == TRUE) {
-            /*$this->userName = $request["username"];
-            $this->password = $request["password"];*/
             $this->userName = $this->CI->input->post("username", TRUE);
             $this->password = $this->CI->input->post("password", TRUE);
             return true;
@@ -124,7 +122,7 @@ class Auth
         $user = $this->CI->db->select("*")
         ->where("phone", $username)
         ->or_where("email", $username)
-        ->where("status", 1)
+        ->where("status", 'active')
         // ->where("deleted_at/, null)
         ->get('logme')
         ->row(0);

@@ -56,15 +56,15 @@
 																			<td>
 																				<?php
 																				$temp = explode(',',  $value['source']);
-																				foreach ($temp as $value){
-																					$course = 	$this->course_model->get_courseNameById($value);
+																				foreach ($temp as $source){
+																					$course = 	$this->course_model->get_courseNameById($source);
 																				?>
 																				<a href="<?php echo base_url('admin/course/edit/').$course->course_id ?>" class="btn btn-link"><?php echo $course->name ?></a>
 																			<?php } ?>
 																			</td>
 																			<td>
-																				<button type="button" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-																				<button type="button" onclick="delete_detail()" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+																				<a href="<?php echo base_url('admin/product/edit/').$value['product_id']; ?>"> <button type="button" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+																				<button type="button" onclick="delete_detail('<?php  echo $value['product_id']; ?>')" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
 																			</td>
 																		</tr>
 																	<?php endforeach; ?>
@@ -80,14 +80,14 @@
 <!-- Static Table End -->
 
 <script>
-	function delete_detail(id) {
-		var del = confirm("Do you want to Delete");
-		if (del == true) {
-			var sureDel = confirm("Are you sure want to delete");
-			if (sureDel == true) {
-				window.location = "<?php echo base_url()?>admin/Article/Delete/" + id;
-			}
-
-		}
+function delete_detail(id) {
+var del = confirm("Do you want to Delete");
+if (del == true) {
+	var sureDel = confirm("Are you sure want to delete");
+	if (sureDel == true) {
+		window.location = "<?php echo base_url()?>admin/product/delete/" + id;
 	}
+
+}
+}
 </script>

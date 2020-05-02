@@ -11440,8 +11440,8 @@
             },
 
             write: function(ref) {
-                var height = ref.height;
-
+              // updated by omie
+                var height = 460;// ref.height;
                 height > 0 && css(this.list, 'minHeight', height);
             },
 

@@ -1,5 +1,9 @@
 <?php include 'layout/css.php'; ?>
-<div id="wrapper">
+<div id="wrapper"
+<?php if(!check()): ?>
+ uk-toggle="target: #modal-sections"
+<?php endif; ?>
+>
 	<!-- Header Container
 				================================================== -->
 	<header class="header <?php echo isset($homeSlider) ? 'header-transparent uk-light' : 'uk-sticky'; ?>" uk-sticky="top:20 ; cls-active:header-sticky; <?php echo isset($homeSlider) ? 'cls-inactive: uk-light' : ''; ?>">
@@ -46,353 +50,9 @@
 				<div class="uk-navbar-right">
 
 					<div class="header-widget">
+
 						<!-- User icons close mobile-->
 						<span class="icon-feather-x icon-small uk-hidden@s" uk-toggle="target: .header-widget ; cls: is-active"> </span>
-
-						<?php if(check()): ?>
-						<a href="#" class="header-widget-icon" uk-tooltip="title: My Courses ; pos: bottom ;offset:21">
-							<i class="uil-youtube-alt"></i>
-						</a>
-
-						<!-- courses dropdown List -->
-						<div uk-dropdown="pos: top;mode:click;animation: uk-animation-slide-bottom-small" class="dropdown-notifications my-courses-dropdown">
-
-							<!-- notivication header -->
-							<div class="dropdown-notifications-headline">
-								<h4>Your Courses</h4>
-								<a href="#">
-									<i class="icon-feather-settings" uk-tooltip="title: Notifications settings ; pos: left"></i>
-								</a>
-							</div>
-
-							<!-- notification contents -->
-							<div class="dropdown-notifications-content" data-simplebar>
-
-								<!-- notiviation list -->
-								<ul>
-									<li class="notifications-not-read">
-										<a href="course-intro.html">
-											<span class="notification-image">
-												<img src="<?php echo base_url()?>/assets/images/course/1.png" alt=""> </span>
-											<span class="notification-text">
-												<span class="course-title">Ultimate Web Designer & Web Developer
-												</span>
-												<span class="course-number">6/35 </span>
-												<span class="course-progressbar">
-													<span class="course-progressbar-filler" style="width:95%"></span>
-												</span>
-											</span>
-
-											<!-- option menu -->
-											<span class="btn-option">
-												<i class="icon-feather-more-vertical"></i>
-											</span>
-											<div class="dropdown-option-nav" uk-dropdown="pos: bottom-right ;mode : hover">
-												<ul>
-													<li>
-														<span>
-															<i class="icon-material-outline-dashboard"></i>
-															Course Dashboard</span>
-													</li>
-													<li>
-														<span>
-															<i class="icon-feather-video"></i>
-															Resume Course</span>
-													</li>
-													<li>
-														<span>
-															<i class="icon-feather-x"></i>
-															Remove Course</span>
-													</li>
-												</ul>
-											</div>
-										</a>
-
-									</li>
-									<li>
-										<a href="course-intro.html">
-											<span class="notification-image">
-												<img src="<?php echo base_url()?>/assets/images/course/3.png" alt=""> </span>
-											<span class="notification-text">
-												<span class="course-title">The Complete JavaScript Course Build Real
-													Projects !</span>
-												<span class="course-number">6/35 </span>
-												<span class="course-progressbar">
-													<span class="course-progressbar-filler" style="width:95%"></span>
-												</span>
-											</span>
-
-											<!-- option menu -->
-											<span class="btn-option">
-												<i class="icon-feather-more-vertical"></i>
-											</span>
-											<div class="dropdown-option-nav" uk-dropdown="pos: bottom-right ;mode : hover">
-												<ul>
-													<li>
-														<span>
-															<i class="icon-material-outline-dashboard"></i>
-															Course Dashboard</span>
-													</li>
-													<li>
-														<span>
-															<i class="icon-feather-video"></i>
-															Resume Course</span>
-													</li>
-													<li>
-														<span>
-															<i class="icon-feather-x"></i>
-															Remove Course</span>
-													</li>
-												</ul>
-											</div>
-
-										</a>
-									</li>
-									<li>
-										<a href="course-intro.html">
-											<span class="notification-image">
-												<img src="<?php echo base_url()?>/assets/images/course/2.png" alt=""> </span>
-											<span class="notification-text">
-												<span class="course-title">Learn Angular Fundamentals From The
-													Beginning</span>
-												<span class="course-number">6/35 </span>
-												<span class="course-progressbar">
-													<span class="course-progressbar-filler" style="width:95%"></span>
-												</span>
-											</span>
-
-											<!-- option menu -->
-											<span class="btn-option">
-												<i class="icon-feather-more-vertical"></i>
-											</span>
-											<div class="dropdown-option-nav" uk-dropdown="pos: bottom-right ;mode : hover">
-												<ul>
-													<li>
-														<span>
-															<i class="icon-material-outline-dashboard"></i>
-															Course Dashboard</span>
-													</li>
-													<li>
-														<span>
-															<i class="icon-feather-video"></i>
-															Resume Course</span>
-													</li>
-													<li>
-														<span>
-															<i class="icon-feather-x"></i>
-															Remove Course</span>
-													</li>
-												</ul>
-											</div>
-										</a>
-									</li>
-									<li>
-										<a href="course-intro.html">
-											<span class="notification-image">
-												<img src="<?php echo base_url()?>/assets/images/course/1.png" alt=""> </span>
-											<span class="notification-text">
-												<span class="course-title">Ultimate Web Designer & Web Developer
-												</span>
-												<span class="course-number">6/35 </span>
-												<span class="course-progressbar">
-													<span class="course-progressbar-filler" style="width:95%"></span>
-												</span>
-											</span>
-
-											<!-- option menu -->
-											<span class="btn-option">
-												<i class="icon-feather-more-vertical"></i>
-											</span>
-											<div class="dropdown-option-nav" uk-dropdown="pos: top-right ;mode : hover">
-												<ul>
-													<li>
-														<span>
-															<i class="icon-material-outline-dashboard"></i>
-															Course Dashboard</span>
-													</li>
-													<li>
-														<span>
-															<i class="icon-feather-video"></i>
-															Resume Course</span>
-													</li>
-													<li>
-														<span>
-															<i class="icon-feather-x"></i>
-															Remove Course</span>
-													</li>
-												</ul>
-											</div>
-										</a>
-									</li>
-								</ul>
-
-							</div>
-							<div class="dropdown-notifications-footer">
-								<a href="#"> sell all</a>
-							</div>
-						</div>
-
-
-						<!-- notificiation icon  -->
-
-						<a href="#" class="header-widget-icon" uk-tooltip="title: Notificiation ; pos: bottom ;offset:21">
-							<i class="uil-bell"></i>
-							<span>4</span>
-						</a>
-
-						<!-- notificiation dropdown -->
-						<div uk-dropdown="pos: top-right;mode:click ; animation: uk-animation-slide-bottom-small" class="dropdown-notifications">
-
-							<!-- notivication header -->
-							<div class="dropdown-notifications-headline">
-								<h4>Notifications </h4>
-								<a href="#">
-									<i class="icon-feather-settings" uk-tooltip="title: Notifications settings ; pos: left"></i>
-								</a>
-							</div>
-
-							<!-- notification contents -->
-							<div class="dropdown-notifications-content" data-simplebar>
-
-								<!-- notiviation list -->
-								<ul>
-									<li class="notifications-not-read">
-										<a href="#">
-											<span class="notification-icon btn btn-soft-danger disabled">
-												<i class="icon-feather-thumbs-up"></i></span>
-											<span class="notification-text">
-												<strong>Adrian Mohani</strong> Like Your Comment On Course
-												<span class="text-primary">Javascript Introduction </span>
-												<br> <span class="time-ago"> 9 hours ago </span>
-											</span>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<span class="notification-icon btn btn-soft-primary disabled">
-												<i class="icon-feather-message-circle"></i></span>
-											<span class="notification-text">
-												<strong>Stella Johnson</strong> Replay Your Comments in
-												<span class="text-primary">Programming for Games</span>
-												<br> <span class="time-ago"> 12 hours ago </span>
-											</span>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<span class="notification-icon btn btn-soft-success disabled">
-												<i class="icon-feather-star"></i></span>
-											<span class="notification-text">
-												<strong>Alex Dolgove</strong> Added New Review In Course
-												<span class="text-primary">Full Stack PHP Developer</span>
-												<br> <span class="time-ago"> 19 hours ago </span>
-											</span>
-										</a>
-									</li>
-									<li class="notifications-not-read">
-										<a href="#">
-											<span class="notification-icon btn btn-soft-danger disabled">
-												<i class="icon-feather-share-2"></i></span>
-											<span class="notification-text">
-												<strong>Jonathan Madano</strong> Shared Your Discussion On Course
-												<span class="text-primary">Css Flex Box </span>
-												<br> <span class="time-ago"> Yesterday </span>
-											</span>
-										</a>
-									</li>
-								</ul>
-
-							</div>
-
-
-						</div>
-
-
-						<!-- Message  -->
-
-						<a href="#" class="header-widget-icon" uk-tooltip="title: Message ; pos: bottom ;offset:21">
-							<i class="uil-envelope-alt"></i>
-							<!-- <span>1</span> -->
-						</a>
-
-						<!-- Message  notificiation dropdown -->
-						<div uk-dropdown=" pos: top-right;mode:click" class="dropdown-notifications">
-
-							<!-- notivication header -->
-							<div class="dropdown-notifications-headline">
-								<h4>Messages</h4>
-								<a href="#">
-									<i class="icon-feather-settings" uk-tooltip="title: Message settings ; pos: left"></i>
-								</a>
-							</div>
-
-							<!-- notification contents -->
-							<div class="dropdown-notifications-content" data-simplebar>
-
-								<!-- notiviation list -->
-								<ul>
-									<!-- <li class="notifications-not-read">
-																						<a href="#">
-																								<span class="notification-avatar">
-																										<img src="<?php echo base_url()?>/assets/images/avatars/avatar-2.jpg" alt="">
-																								</span>
-																								<div class="notification-text notification-msg-text">
-																										<strong>Jonathan Madano</strong>
-																										<p>Okay.. Thanks for The Answer I will be waiting for your...
-																										</p>
-																										<span class="time-ago"> 2 hours ago </span>
-																								</div>
-																						</a>
-																				</li>
-																				<li>
-																						<a href="#">
-																								<span class="notification-avatar">
-																										<img src="<?php echo base_url()?>/assets/images/avatars/avatar-3.jpg" alt="">
-																								</span>
-																								<div class="notification-text notification-msg-text">
-																										<strong>Stella Johnson</strong>
-																										<p> Alex will explain you how to keep the HTML structure and all
-																												that...</p>
-																										<span class="time-ago"> 7 hours ago </span>
-																								</div>
-																						</a>
-																				</li>
-																				<li>
-																						<a href="#">
-																								<span class="notification-avatar">
-																										<img src="<?php echo base_url()?>/assets/images/avatars/avatar-1.jpg" alt="">
-																								</span>
-																								<div class="notification-text notification-msg-text">
-																										<strong>Alex Dolgove</strong>
-																										<p> Alia Joseph just joined Messenger! Be the first to send a
-																												welcome message..</p>
-																										<span class="time-ago"> 19 hours ago </span>
-																								</div>
-																						</a>
-																				</li>
-																				<li>
-																						<a href="#">
-																								<span class="notification-avatar">
-																										<img src="<?php echo base_url()?>/assets/images/avatars/avatar-4.jpg" alt="">
-																								</span>
-																								<div class="notification-text notification-msg-text">
-																										<strong>Adrian Mohani</strong>
-																										<p> Okay.. Thanks for The Answer I will be waiting for your...
-																										</p>
-																										<span class="time-ago"> Yesterday </span>
-																								</div>
-																						</a>
-																				</li> -->
-								</ul>
-
-							</div>
-							<div class="dropdown-notifications-footer">
-								<a href="#"> sell all <i class="icon-line-awesome-long-arrow-right"></i> </a>
-							</div>
-						</div>
-
-						<?php endif; ?>
-
 						<!-- profile-icon-->
 
 						<a href="#" class="header-widget-icon profile-icon">
@@ -411,7 +71,7 @@
 							<?php if(check()): ?>
 
 							<!-- User Name / Avatar -->
-							<a href="<?php echo base_url('profile') ?>">
+							<a href="<?php echo base_url() ?>">
 
 								<div class="dropdown-user-details">
 									<div class="dropdown-user-avatar">
@@ -431,20 +91,6 @@
 							<!-- User menu -->
 
 							<ul class="dropdown-user-menu">
-								<li>
-									<a href="<?php echo base_url('dashboard') ?>">
-										<i class="icon-material-outline-dashboard"></i> Dashboard</a>
-								</li>
-								<li><a href="#">
-										<i class="icon-feather-bookmark"></i> Bookmark </a>
-								</li>
-								<li><a href="#">
-										<i class="icon-feather-settings"></i> Account Settings</a>
-								</li>
-								<li class="menu-divider">
-								<li><a href="#">
-										<i class="icon-feather-help-circle"></i> Help</a>
-								</li>
 								<li><a href="<?php echo base_url('authentication/logout') ?>">
 										<i class="icon-feather-log-out"></i> Sing Out</a>
 								</li>
@@ -545,7 +191,7 @@
 
 		<!-- logo -->
 		<div class="logo uk-visible@s">
-			<a href="<?php echo base_url() ?>">
+			<a href="<?php echo base_url('home'); ?>">
 				<i class=" uil-graduation-hat"></i>
 			</a>
 		</div>
@@ -561,7 +207,7 @@
 
 															?>
 							<li>
-								<a href="<?php echo base_url(''); ?>"> <i class="<?php echo !empty($value['icon']) ? $value['icon'] : 'uil-brush-alt' ?>" style="font-size: larger"></i> <?php echo ucfirst($value['name']); ?> </a>
+								<a href="<?php echo base_url('courses'); ?>"> <i class="<?php echo !empty($value['icon']) ? $value['icon'] : 'uil-brush-alt' ?>" style="font-size: larger"></i> <?php echo ucfirst($value['name']); ?> </a>
 							</li>
 							<?php endforeach; ?>
 					</div>
@@ -580,12 +226,6 @@
 				<!-- book -->
 				<a href="<?php echo base_url('courses'); ?>"> <i class="uil-book-alt"></i> <span class="tooltips"> Courser </span> </a>
 			</li>
-			<li>
-				<!-- Episodes -->
-				<a href="#"> <i class="uil-youtube-alt"></i> <span class="tooltips"> Live Classe</span></a>
-			</li>
-
-
 			<li>
 				<a href="#" uk-toggle="target: #searchbox; cls: is-active"><i class="uil-search-alt"></i></a>
 			</li>
@@ -623,40 +263,31 @@
 					<span class="icon-feather-user"></span>
 				</a>
 				<div uk-drop="pos: right-bottom ;mode:click ; offset: 10;animation: uk-animation-slide-right-small">
-					<div class="uk-card-default rounded p-0">
-						<a href="user-profile.html" class="p-0">
+          <?php if(check()): ?>
+          <div class="uk-card-default rounded p-0">
+						<a href="<?php echo base_url() ?>" class="p-0">
 
 							<div class="dropdown-user-details">
 								<div class="dropdown-user-avatar">
-									<img src="<?php echo base_url()?>/assets/images/avatars/avatar-2.jpg" alt="">
+                  <?php if ($this->session->userdata('thumb') != ""): ?>
+                  <img src="<?php echo base_url() . $this->session->userdata('thumb'); ?>" alt="">
+                  <?php else: ?>
+                  <img src="<?php echo base_url()?>assets/images/avatars/default.png" alt="">
+                  <?php endif; ?>
 								</div>
 								<div class="dropdown-user-name">
-									Richard Ali <span>Students</span>
+										<?php echo $this->session->userdata('username'); ?> <span>Students</span>
 								</div>
 							</div>
 
 						</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="#">
-									<i class="icon-material-outline-dashboard"></i> Dashboard</a>
-							</li>
-							<li><a href="user-profile-edit.html">
-									<i class="icon-feather-settings"></i> Account Settings</a>
-							</li>
-							<li><a href="#" class="text-grey">
-									<i class="icon-feather-star"></i> Upgrade To Premium</a>
-							</li>
-							<li class="menu-divider">
-							</li>
-							<li><a href="#">
-									<i class="icon-feather-help-circle"></i> Help</a>
-							</li>
-							<li><a href="page-login.html">
-									<i class="icon-feather-log-out"></i> Sing Out</a>
-							</li>
-						</ul>
+            <ul class="dropdown-user-menu">
+              <li><a href="<?php echo base_url('authentication/logout') ?>">
+                  <i class="icon-feather-log-out"></i> Sing Out</a>
+              </li>
+            </ul>
 					</div>
+          <?php endif; ?>
 				</div>
 			</li>
 		</ul>
@@ -666,6 +297,38 @@
 
 	<!-- Main Page container Start here -->
 	<?php echo $main_content; ?>
+
+
+
+
+	<div id="modal-sections" uk-modal="" class="uk-modal" style="">
+		<div class="uk-modal-dialog">
+			<button class="uk-modal-close-default uk-icon uk-close" type="button" uk-close=""><svg width="14" height="14" viewBox="0 0 14 14" data-svg="close-icon">
+					<line fill="none" stroke="#000" stroke-width="1.1" x1="1" y1="1" x2="13" y2="13"></line>
+					<line fill="none" stroke="#000" stroke-width="1.1" x1="13" y1="1" x2="1" y2="13"></line>
+				</svg></button>
+			<div class="uk-modal-header">
+				<h2 class="uk-modal-title">Join Kalka Ias Zone</h2>
+			</div>
+			<form action="<?php echo base_url('authentication/register/subscribe'); ?>" method="post">
+				<div class="uk-modal-body">
+					<div class="uk-margin"> <input class="uk-input uk-form-danger uk-form-width-medium" type="text" name="fullname" placeholder="Your Name" required> </div>
+					<div class="uk-margin"> <input class="uk-input uk-form-danger uk-form-width-medium" type="text" name="username"  placeholder="Email or Phone" required> </div>
+					<div class="uk-margin"> <input class="uk-input uk-form-danger uk-form-width-medium" type="text" name="city" placeholder="city" required> </div>
+					<div class="uk-margin">
+						<textarea class="uk-textarea" rows="2" name="course" style="min-height: 60px;" placeholder="What Course Do You Want To Study?" required></textarea>
+					</div>
+          <div class="uk-width-expand@s">
+            <p> Already have an account <a href="<?php echo base_url('authentication') ?>">Sign In</a></p>
+          </div>
+				</div>
+				<div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default small uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary small" type="submit">Save</button>
+				</div>
+			</form>
+		</div>
+	</div>
 
 </div>
 

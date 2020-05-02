@@ -36,7 +36,7 @@ class Product extends CI_Controller {
 	  public function add()
 		{
 			if($_POST){
-				$data1=$this->security->xss_clean($_POST);
+				$data1=$_POST;
 				$id = $this->common_model->get_last_id('products');
 				if($data1['submit']=='save') {
 					$product=[
@@ -135,11 +135,8 @@ class Product extends CI_Controller {
 
  public function delete($id)
 	{
-           $article=[
-             'is_publish' => '0',
-            'deleted' => 1,];
-            $this->common_model->update($article,'postid',$id,'article');
-            redirect($_SERVER['HTTP_REFERER'], 'refresh');
+    	$this->product_model->delete_product($id);
+      redirect($_SERVER['HTTP_REFERER'], 'refresh');
   }
 
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2020 at 04:10 PM
+-- Generation Time: Apr 30, 2020 at 06:22 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -152,10 +152,13 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `parent`, `icon`) VALUES
-(14, 'SSC', NULL, 'icon-line-awesome-columns'),
-(15, 'MPPSC', NULL, 'icon-line-awesome-slideshare'),
-(16, 'NCRT', NULL, 'icon-line-awesome-mortar-board'),
-(17, 'FEATURED', NULL, 'icon-line-awesome-soundcloud');
+(17, 'FEATURED', NULL, 'icon-line-awesome-soundcloud'),
+(18, 'TRENDING', NULL, 'icon-line-awesome-houzz'),
+(19, 'SSC', NULL, 'icon-line-awesome-columns'),
+(20, 'MPPSC', NULL, 'icon-line-awesome-slideshare'),
+(21, 'NCRT', NULL, 'icon-line-awesome-mortar-board'),
+(22, 'RAILWAY', NULL, 'icon-line-awesome-train'),
+(23, 'BANK JOB', NULL, 'icon-line-awesome-bank');
 
 -- --------------------------------------------------------
 
@@ -167,10 +170,13 @@ CREATE TABLE `course` (
   `id` int(11) NOT NULL,
   `course_id` char(9) NOT NULL,
   `name` varchar(64) NOT NULL,
+  `slug` text DEFAULT NULL,
   `review` decimal(5,2) NOT NULL,
   `review_counter` int(11) NOT NULL,
   `is_publish` tinyint(1) NOT NULL DEFAULT 0,
   `description` text NOT NULL,
+  `course_type` enum('beginner','entermidate','expert') NOT NULL DEFAULT 'beginner',
+  `created_by` varchar(9) DEFAULT NULL,
   `created` datetime NOT NULL,
   `last_update` timestamp NOT NULL DEFAULT current_timestamp(),
   `deleted` tinyint(1) NOT NULL DEFAULT 0
@@ -180,23 +186,26 @@ CREATE TABLE `course` (
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`id`, `course_id`, `name`, `review`, `review_counter`, `is_publish`, `description`, `created`, `last_update`, `deleted`) VALUES
-(1, '', 'course Name', '0.00', 0, 0, 'Add a Description here', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
-(2, 'C4', 'Course1', '0.00', 0, 0, 'Add a Description here', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
-(3, 'C5', 'Course 2', '0.00', 0, 0, 'Add a Description here', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
-(4, 'C6', 'Course 3', '0.00', 0, 0, 'Add a Description here', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
-(5, '45e930ec3', 'sdsdf', '0.00', 0, 0, 'Add a Descrsdfiption here', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
-(6, '55e930fd8', 'sdfsdfsf', '0.00', 0, 1, 'Add a Description heresdfs', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
-(7, '65e93102b', 'sfdfsdf', '0.00', 0, 0, 'Add a Description heresdfsf', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
-(8, 'COKI8', 'sdfsdf', '0.00', 0, 0, 'Add a Description heresdfsdf asdsd', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
-(9, 'COKI9', 'xffsdf', '0.00', 0, 0, 'Add a Description here', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
-(10, 'COKI10', 'werwer', '0.00', 0, 0, 'Add a Description herewrewer', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
-(11, 'COKI11', 'Sbana', '0.00', 0, 0, 'Add a Description heresdfsdf', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
-(12, 'kalka12', 'sadas', '0.00', 0, 0, 'Add a Description here', '0000-00-00 00:00:00', '2020-04-13 04:25:08', 0),
-(13, 'kalka13', 'Annamna', '0.00', 0, 1, '<ol><li>Add a Description here<u> xcvdfsdf sdfsdff<b>sdfsdff sdfsdf</b></u></li><li><u><b>dfdfgdfg</b></u></li></ol>', '2020-04-13 12:42:04', '2020-04-13 06:42:04', 0),
-(14, 'kalka14', 'Annamna asddas', '0.00', 0, 1, '<ol><li>Add a Description here<u> xcvdfsdf sdfsdff<b>sdfsdff sdfsdf</b></u></li><li><u><b>dfdfgdfg</b></u></li></ol>', '2020-04-13 12:45:20', '2020-04-13 06:45:20', 0),
-(15, 'kalka15', 'Anchalna', '0.00', 0, 1, 'sdjfksdfhsdkjfsdkfjsdfsdkfdhAdd a Description here', '2020-04-13 13:51:16', '2020-04-13 07:51:16', 0),
-(16, 'kalka16', 'Hemalayan', '0.00', 0, 1, '<ol><li>asdsdadsadsasdadads</li><li>asd</li><li>asd</li><li>asd</li><li>asd</li><li>asd</li><li>asd</li><li>asd</li><li>asd</li><li>asd</li><li>assd</li><li>asd</li><li>das</li><li>as</li><li>d</li><li>asd</li><li>asd</li><li>asd</li><li>as</li><li>asd</li><li>asd</li><li>asd</li><li>as</li><li>das</li><li>da</li><li>s</li><li>asd</li><li>asd</li><li>asd</li></ol><p>asda</p><p>sda</p><p>sda</p><p>sd</p><p>asda</p><p>sd</p><table class=\"table table-bordered\"><tbody><tr><td>sasdasd</td><td>adasdasd</td><td>asdasdasd</td><td>adsasdasdasdasdasdadads</td><td>asdasdadaddasd</td></tr><tr><td>asdasdas</td><td>dasdadasd</td><td>asdasdsa</td><td>adada</td><td>dadasd</td></tr><tr><td>asdasdasdas</td><td>dasdasd</td><td>assdasdas</td><td>asdads</td><td>asdasdad</td></tr></tbody></table><p><br></p>', '2020-04-15 10:37:21', '2020-04-15 04:37:21', 0);
+INSERT INTO `course` (`id`, `course_id`, `name`, `slug`, `review`, `review_counter`, `is_publish`, `description`, `course_type`, `created_by`, `created`, `last_update`, `deleted`) VALUES
+(1, '', 'course Name', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a', '0.00', 0, 0, 'Add a Description here', 'beginner', 'AKIASZ001', '2019-04-13 09:20:48', '2020-04-13 03:51:46', 0),
+(2, 'C4', 'Course1', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a', '0.00', 0, 0, 'Add a Description here', 'beginner', 'AKIASZ001', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
+(3, 'C5', 'Course 2', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a', '0.00', 0, 0, 'Add a Description here', 'beginner', 'AKIASZ001', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
+(4, 'C6', 'Course 3', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a', '0.00', 0, 0, 'Add a Description here', 'beginner', 'AKIASZ001', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
+(5, '45e930ec3', 'sdsdf', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a', '0.00', 0, 0, 'Add a Descrsdfiption here', 'beginner', 'AKIASZ001', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
+(6, '55e930fd8', 'sdfsdfsf', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a', '0.00', 0, 1, 'Add a Description heresdfs', 'beginner', 'AKIASZ001', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
+(7, '65e93102b', 'sfdfsdf', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a', '0.00', 0, 0, 'Add a Description heresdfsf', 'beginner', 'AKIASZ001', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
+(8, 'COKI8', 'sdfsdf', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a', '0.00', 0, 0, 'Add a Description heresdfsdf asdsd', 'beginner', 'AKIASZ001', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
+(9, 'COKI9', 'xffsdf', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a', '0.00', 0, 0, 'Add a Description here', 'beginner', 'AKIASZ001', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
+(10, 'COKI10', 'werwer', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a', '0.00', 0, 0, 'Add a Description herewrewer', 'beginner', 'AKIASZ001', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
+(11, 'COKI11', 'Sbana', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a', '0.00', 0, 0, 'Add a Description heresdfsdf', 'beginner', 'AKIASZ001', '2020-04-13 09:20:48', '2020-04-13 03:51:46', 0),
+(12, 'kalka12', 'sadas', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a', '0.00', 0, 0, 'Add a Description here', 'beginner', 'AKIASZ001', '0000-00-00 00:00:00', '2020-04-13 04:25:08', 0),
+(13, 'kalka13', 'Annamna', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a', '0.00', 0, 1, '<ol><li>Add a Description here<u> xcvdfsdf sdfsdff<b>sdfsdff sdfsdf</b></u></li><li><u><b>dfdfgdfg</b></u></li></ol>', 'beginner', 'AKIASZ001', '2020-04-13 12:42:04', '2020-04-13 06:42:04', 0),
+(14, 'kalka14', 'Annamna asddas', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a', '0.00', 0, 1, '<ol><li>Add a Description here<u> xcvdfsdf sdfsdff<b>sdfsdff sdfsdf</b></u></li><li><u><b>dfdfgdfg</b></u></li></ol>', 'beginner', 'AKIASZ001', '2020-04-13 12:45:20', '2020-04-13 06:45:20', 0),
+(15, 'kalka15', 'Anchalna', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a', '0.00', 0, 1, 'sdjfksdfhsdkjfsdkfjsdfsdkfdhAdd a Description here', 'beginner', 'AKIASZ001', '2020-04-13 13:51:16', '2020-04-13 07:51:16', 0),
+(16, 'kalka16', 'Hemalayan', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a', '0.00', 0, 1, '<ol><li>asdsdadsadsasdadads</li><li>asd</li><li>asd</li><li>asd</li><li>asd</li><li>asd</li><li>asd</li><li>asd</li><li>asd</li><li>asd</li><li>assd</li><li>asd</li><li>das</li><li>as</li><li>d</li><li>asd</li><li>asd</li><li>asd</li><li>as</li><li>asd</li><li>asd</li><li>asd</li><li>as</li><li>das</li><li>da</li><li>s</li><li>asd</li><li>asd</li><li>asd</li></ol><p>asda</p><p>sda</p><p>sda</p><p>sd</p><p>asda</p><p>sd</p><table class=\"table table-bordered\"><tbody><tr><td>sasdasd</td><td>adasdasd</td><td>asdasdasd</td><td>adsasdasdasdasdasdadads</td><td>asdasdadaddasd</td></tr><tr><td>asdasdas</td><td>dasdadasd</td><td>asdasdsa</td><td>adada</td><td>dadasd</td></tr><tr><td>asdasdasdas</td><td>dasdasd</td><td>assdasdas</td><td>asdads</td><td>asdasdad</td></tr></tbody></table><p><br></p>', 'beginner', 'AKIASZ001', '2020-04-15 10:37:21', '2020-04-15 04:37:21', 0),
+(17, 'kalka17', 'MY New Course', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', '0.00', 0, 1, '<h2 xss=removed>Where can I get some?</h2><p xss=removed>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>', 'beginner', 'AKIASZ001', '2020-04-24 14:30:32', '2020-04-24 08:30:32', 0),
+(18, 'kalka18', 'My Couese II', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', '0.00', 0, 1, '<h2 xss=removed>Where does it come from?</h2><p xss=removed>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</p><p xss=removed>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>', 'entermidate', 'AKIASZ001', '2020-04-24 14:53:26', '2020-04-24 08:53:26', 0),
+(19, 'kalka19', 'My Course III', 'Where can I get some? There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form', '0.00', 0, 1, '<h2 xss=removed>Where can I get some?</h2><p xss=removed>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p><div><br></div>', 'expert', 'AKIASZ001', '2020-04-24 15:01:14', '2020-04-24 09:01:14', 0);
 
 -- --------------------------------------------------------
 
@@ -224,12 +233,17 @@ INSERT INTO `course_meta` (`id`, `course_id`, `subid`, `serial`) VALUES
 (6, 'C4', '4', 1),
 (7, 'C4', '5', 2),
 (8, 'C6', '6', 4),
-(9, 'kalka16', 'sub11', 0),
-(10, 'kalka16', '8', 1),
-(11, 'kalka16', 'sub13', 2),
-(12, 'kalka16', '6', 3),
-(13, 'kalka16', '1', 4),
-(14, 'kalka16', 'sub11', 5);
+(22, 'kalka16', 'sub11', 0),
+(23, 'kalka16', '8', 1),
+(24, 'kalka16', 'sub13', 2),
+(25, 'kalka16', '6', 3),
+(26, 'kalka16', 'sub11', 4),
+(27, 'kalka16', '8', 5),
+(28, 'kalka19', '1', 0),
+(29, 'kalka19', '8', 1),
+(30, 'kalka19', 'sub11', 2),
+(31, 'kalka19', 'sub16', 3),
+(32, 'kalka19', '6', 4);
 
 -- --------------------------------------------------------
 
@@ -271,7 +285,47 @@ INSERT INTO `indexing` (`id`, `root`, `port`, `type`) VALUES
 (200, 'post1', '17', 'category'),
 (201, 'post12', '5', 'tag'),
 (202, 'post12', '14', 'category'),
-(203, 'post12', '17', 'category');
+(203, 'post12', '17', 'category'),
+(204, 'lect25', '15', 'category'),
+(205, 'lect25', '17', 'category'),
+(206, 'lect25', '18', 'category'),
+(207, 'lect26', '5', 'tag'),
+(208, 'lect26', '15', 'category'),
+(209, 'lect26', '16', 'category'),
+(210, 'kalka16', '2', 'tag'),
+(211, 'kalka16', '19', 'category'),
+(212, 'C6', '6', 'tag'),
+(213, 'C6', '19', 'category'),
+(214, 'C6', '20', 'category'),
+(215, 'lect27', '2', 'tag'),
+(216, 'lect27', '18', 'category'),
+(217, 'lect28', '2', 'tag'),
+(218, 'lect28', '18', 'category'),
+(224, 'lect3', '5', 'tag'),
+(225, 'lect3', '18', 'category'),
+(226, 'lect3', '19', 'category'),
+(227, 'lect3', '20', 'category'),
+(228, 'kalka17', '2', 'tag'),
+(229, 'kalka17', '6', 'tag'),
+(230, 'kalka17', '17', 'category'),
+(231, 'kalka17', '18', 'category'),
+(232, 'kalka17', '20', 'category'),
+(233, 'kalka17', '21', 'category'),
+(234, 'kalka18', '5', 'tag'),
+(235, 'kalka18', '6', 'tag'),
+(236, 'kalka18', '17', 'category'),
+(237, 'kalka18', '18', 'category'),
+(238, 'kalka18', '20', 'category'),
+(239, 'kalka19', '2', 'tag'),
+(240, 'kalka19', '5', 'tag'),
+(241, 'kalka19', '17', 'category'),
+(242, 'kalka19', '18', 'category'),
+(243, 'lect29', '5', 'tag'),
+(244, 'lect29', '18', 'category'),
+(245, 'lect29', '20', 'category'),
+(246, 'lect30', '5', 'tag'),
+(247, 'lect30', '17', 'category'),
+(248, 'lect30', '18', 'category');
 
 -- --------------------------------------------------------
 
@@ -306,6 +360,8 @@ CREATE TABLE `lesson` (
   `id` int(11) NOT NULL,
   `lesson_id` char(9) NOT NULL,
   `name` text NOT NULL,
+  `slug` text DEFAULT NULL,
+  `url` text DEFAULT NULL,
   `is_publish` tinyint(1) NOT NULL DEFAULT 0,
   `description` text NOT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -317,27 +373,31 @@ CREATE TABLE `lesson` (
 -- Dumping data for table `lesson`
 --
 
-INSERT INTO `lesson` (`id`, `lesson_id`, `name`, `is_publish`, `description`, `created_at`, `updated_at`, `deleted`) VALUES
-(3, '3', 'Lesson 3', 0, '<p>Add a Description here</p><p><br></p><table class=\"table table-bordered\"><tbody><tr><td>hdgh</td><td>dfhdfh</td></tr><tr><td>dfdfh</td><td>dhgf</td></tr></tbody></table><p><br></p>', '2020-04-11 12:36:58', NULL, 0),
-(4, 'lect4', 'Lesson text 1', 1, 'Deleted Lesson', '2020-04-13 19:47:58', '2020-04-13 19:17:58', 0),
-(5, 'lect5', 'Lesson text 1', 1, 'Deleted Lesson', '2020-04-13 19:48:34', '2020-04-13 19:18:34', 0),
-(6, 'lect6', 'fdfgfdgdfg', 1, 'Add a Description heredfgdfgdfg', '2020-04-13 19:54:11', '2020-04-13 19:24:11', 0),
-(7, 'lect7', 'fdfgfdgdfg', 1, 'Add a Description heredfgdfgdfg', '2020-04-13 20:18:25', '2020-04-13 19:48:25', 0),
-(8, 'lect8', 'xddfgdfg', 1, 'Add a Description heredfgdfgdgddgdgd', '2020-04-13 20:20:21', '2020-04-13 19:50:21', 0),
-(10, 'lect10', 'sdfsdfqeqwe', 1, 'Add a Description herewqedw', '2020-04-13 20:22:13', '2020-04-13 19:52:13', 0),
-(11, 'lect11', 'sdfsdfqeqwe', 1, 'Add a Description herewqedw', '2020-04-13 20:23:38', '2020-04-13 19:53:38', 0),
-(12, 'lect12', 'sdfsdfqeqwe', 1, 'Add a Description herewqedw', '2020-04-13 20:24:03', '2020-04-13 19:54:03', 0),
-(13, 'lect13', 'sdfsdfqeqwe', 1, 'Add a Description herewqedw', '2020-04-13 20:24:18', '2020-04-13 19:54:18', 0),
-(14, 'lect14', 'sdfsdfqeqwe', 1, 'Add a Description herewqedw', '2020-04-13 20:24:49', '2020-04-13 19:54:49', 0),
-(15, 'lect15', 'sdfsdfqeqwe', 1, 'Add a Description herewqedw', '2020-04-13 20:25:02', '2020-04-13 19:55:02', 0),
-(16, 'lect16', 'sdfsdfqeqwe', 1, 'Add a Description herewqedw', '2020-04-13 20:25:12', '2020-04-13 19:55:12', 0),
-(17, 'lect17', 'Lession Add', 1, 'nndkjndfkgfdkgjdgAdd a Description here', '2020-04-13 20:26:07', '2020-04-13 19:56:07', 0),
-(18, 'lect18', 'dfsdfsdf', 1, 'Add a Description here sfsdfsdfsfdsdf', '2020-04-13 20:27:04', '2020-04-13 19:57:04', 0),
-(19, 'lect19', 'dfsdfsdf', 1, 'Add a Description here sfsdfsdfsfdsdf', '2020-04-13 20:27:38', '2020-04-13 19:57:38', 0),
-(20, 'lect20', 'dfsdfsdf', 1, 'Add a Description here sfsdfsdfsfdsdf', '2020-04-13 20:28:20', '2020-04-13 19:58:20', 0),
-(21, 'lect21', 'dfsdfsdf', 1, 'Add a Description here sfsdfsdfsfdsdf', '2020-04-13 20:29:22', '2020-04-13 19:59:22', 0),
-(22, 'lect22', 'lesson name', 1, 'Add a Description here', '2020-04-14 12:36:53', '2020-04-14 12:06:53', 0),
-(23, 'lect23', 'Hlla Bolo', 1, '<ol><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol>', '2020-04-14 12:40:34', '2020-04-14 12:10:34', 0);
+INSERT INTO `lesson` (`id`, `lesson_id`, `name`, `slug`, `url`, `is_publish`, `description`, `created_at`, `updated_at`, `deleted`) VALUES
+(4, 'lect4', 'Lesson text 1', NULL, NULL, 1, 'Deleted Lesson', '2020-04-13 19:47:58', '2020-04-13 19:17:58', 0),
+(5, 'lect5', 'Lesson text 1', NULL, NULL, 1, 'Deleted Lesson', '2020-04-13 19:48:34', '2020-04-13 19:18:34', 0),
+(6, 'lect6', 'fdfgfdgdfg', NULL, NULL, 1, 'Add a Description heredfgdfgdfg', '2020-04-13 19:54:11', '2020-04-13 19:24:11', 0),
+(7, 'lect7', 'fdfgfdgdfg', NULL, NULL, 1, 'Add a Description heredfgdfgdfg', '2020-04-13 20:18:25', '2020-04-13 19:48:25', 0),
+(8, 'lect8', 'xddfgdfg', NULL, NULL, 1, 'Add a Description heredfgdfgdgddgdgd', '2020-04-13 20:20:21', '2020-04-13 19:50:21', 0),
+(10, 'lect10', 'sdfsdfqeqwe', NULL, NULL, 1, 'Add a Description herewqedw', '2020-04-13 20:22:13', '2020-04-13 19:52:13', 0),
+(11, 'lect11', 'sdfsdfqeqwe', NULL, NULL, 1, 'Add a Description herewqedw', '2020-04-13 20:23:38', '2020-04-13 19:53:38', 0),
+(12, 'lect12', 'sdfsdfqeqwe', NULL, NULL, 1, 'Add a Description herewqedw', '2020-04-13 20:24:03', '2020-04-13 19:54:03', 0),
+(13, 'lect13', 'sdfsdfqeqwe', NULL, NULL, 1, 'Add a Description herewqedw', '2020-04-13 20:24:18', '2020-04-13 19:54:18', 0),
+(14, 'lect14', 'sdfsdfqeqwe', NULL, NULL, 1, 'Add a Description herewqedw', '2020-04-13 20:24:49', '2020-04-13 19:54:49', 0),
+(15, 'lect15', 'sdfsdfqeqwe', NULL, NULL, 1, 'Add a Description herewqedw', '2020-04-13 20:25:02', '2020-04-13 19:55:02', 0),
+(16, 'lect16', 'sdfsdfqeqwe', NULL, NULL, 1, 'Add a Description herewqedw', '2020-04-13 20:25:12', '2020-04-13 19:55:12', 0),
+(17, 'lect17', 'Lession Add', NULL, NULL, 1, 'nndkjndfkgfdkgjdgAdd a Description here', '2020-04-13 20:26:07', '2020-04-13 19:56:07', 0),
+(18, 'lect18', 'dfsdfsdf', NULL, NULL, 1, 'Add a Description here sfsdfsdfsfdsdf', '2020-04-13 20:27:04', '2020-04-13 19:57:04', 0),
+(19, 'lect19', 'dfsdfsdf', NULL, NULL, 1, 'Add a Description here sfsdfsdfsfdsdf', '2020-04-13 20:27:38', '2020-04-13 19:57:38', 0),
+(20, 'lect20', 'dfsdfsdf', NULL, NULL, 1, 'Add a Description here sfsdfsdfsfdsdf', '2020-04-13 20:28:20', '2020-04-13 19:58:20', 0),
+(21, 'lect21', 'dfsdfsdf', NULL, NULL, 1, 'Add a Description here sfsdfsdfsfdsdf', '2020-04-13 20:29:22', '2020-04-13 19:59:22', 0),
+(22, 'lect22', 'lesson name', NULL, NULL, 1, 'Add a Description here', '2020-04-14 12:36:53', '2020-04-14 12:06:53', 0),
+(23, 'lect23', 'Hlla Bolo', NULL, NULL, 1, '<ol><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol>', '2020-04-14 12:40:34', '2020-04-14 12:10:34', 0),
+(24, 'lect24', 'lesson Check', NULL, NULL, 1, 'Tranding Video', '2020-04-21 12:02:40', '2020-04-21 11:32:40', 0),
+(25, 'lect25', 'lesson Check', NULL, NULL, 1, 'Tranding Video', '2020-04-21 12:03:38', '2020-04-21 11:33:38', 0),
+(26, 'lect26', 'Address check', NULL, NULL, 1, 'Add a Description here', '2020-04-21 12:19:07', '2020-04-21 11:49:07', 0),
+(29, 'lect29', 'New Trending Video', 'Full Song: KHAIRIYAT (BONUS TRACK) | CHHICHHORE | Sushant, Shraddha | Pritam, Amitabh B|Arijit Singh', 'https://www.youtube.com/watch?v=hoNb6HuNmU0', 1, '<h1 class=\"title style-scope ytd-video-primary-info-renderer\" style=\"margin-bottom: 0px; padding: 0px; border: 0px; background: rgb(249, 249, 249); max-height: 4.8rem; overflow: hidden; font-weight: 400; line-height: 2.4rem; font-family: Roboto, Arial, sans-serif; font-size: var(--ytd-video-primary-info-renderer-title-font-size, var(--yt-navbar-title-font-size, inherit)); transform: var(--ytd-video-primary-info-renderer-title-transform, none); text-shadow: var(--ytd-video-primary-info-renderer-title-text-shadow, none);\"><yt-formatted-string force-default-style=\"\" class=\"style-scope ytd-video-primary-info-renderer\" style=\"word-break: break-word;\">Full Song: KHAIRIYAT (BONUS TRACK) | CHHICHHORE | Sushant, Shraddha | Pritam, Amitabh B|Arijit Singh</yt-formatted-string></h1>', '2020-04-28 13:45:53', '2020-04-28 13:15:53', 0),
+(30, 'lect30', 'Let us C', 'Today\'s challenges\" need \"Today\'s solutions\". The way this applies to real-word, it equally applies to programming world.', '', 1, '<span style=\"color: rgb(77, 81, 86); font-family: arial, sans-serif;\">Today\'s challenges\" need \"Today\'s solutions\". The way this applies to real-word, it equally applies to programming world. To create solutions that meet today\'s expectations, one needs to use a modern language like C# and technology like .NET. learning C#.</span>', '2020-04-30 17:22:05', '2020-04-30 16:52:05', 0);
 
 -- --------------------------------------------------------
 
@@ -442,6 +502,7 @@ INSERT INTO `log` (`id`, `user_id`, `ip`, `lastlog`) VALUES
 --
 
 CREATE TABLE `logme` (
+  `id` int(11) NOT NULL,
   `logid` char(9) NOT NULL,
   `phone` varchar(10) DEFAULT NULL,
   `email` varchar(32) DEFAULT NULL,
@@ -450,16 +511,19 @@ CREATE TABLE `logme` (
   `role` char(5) NOT NULL,
   `status` enum('active','deactive') NOT NULL,
   `joindate` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `deleted_at` datetime DEFAULT NULL,
+  `deleted` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `logme`
 --
 
-INSERT INTO `logme` (`logid`, `phone`, `email`, `password`, `language`, `role`, `status`, `joindate`, `updated_at`) VALUES
-('AKIASZ001', '7905004391', 'omie@gmail.com', '$2y$10$RiAZ5AQUiLJBlSyNagz/yOHVYzhhWv3t5LfADRTGI4TQaiAV3DUmK', 'english', 'a', 'active', '2020-03-13 00:00:00', '2020-03-18 11:43:03'),
-('EDO100100', NULL, 'b@gmail.com', '$2y$10$WZZDwTr70g3zSDXtDDflZeOPMy9veO9ZneKEL0n0R184xj46v8nTS', NULL, 's', 'active', '2020-03-30 11:03:19', '2020-03-30 15:10:19');
+INSERT INTO `logme` (`id`, `logid`, `phone`, `email`, `password`, `language`, `role`, `status`, `joindate`, `updated_at`, `deleted_at`, `deleted`) VALUES
+(100101, 'AKIASZ001', '7905004391', 'omie@gmail.com', '$2y$10$RiAZ5AQUiLJBlSyNagz/yOHVYzhhWv3t5LfADRTGI4TQaiAV3DUmK', 'english', 'a', 'active', '2020-03-13 00:00:00', '2020-03-18 11:43:03', '0000-00-00 00:00:00', 0),
+(100132, 'EDO100102', NULL, 'shera@gmail.com', '$2y$10$29mO1RFUPax4cgCXSGEfQebnp7j3EoA/Xugu/N/OYodc.FjkUnnWa', NULL, 's', 'active', '2020-04-29 13:03:39', '2020-04-29 12:33:39', NULL, 0),
+(100133, 'EDO100133', NULL, 'uttem@gmail.com', '$2y$10$Jggmu9s9XzFCzKy7c0yYjORhIEvd/Ak8SJycx26Hr2ZXgYFW1Crji', NULL, 's', 'active', '2020-04-29 13:11:34', '2020-04-29 12:41:34', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -690,7 +754,8 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`id`, `product_id`, `product`, `price`, `discount`, `is_publish`, `tax_id`, `created_at`, `last_update`, `deleted`) VALUES
 (1, 'pro1', 'First Product', 999.99, 999.99, 1, NULL, '2020-04-14 18:17:24', '2020-04-14 12:17:24', 0),
 (2, 'pro2', 'Secound Product', 100.00, 80.00, 1, NULL, '2020-04-14 19:04:53', '2020-04-14 13:04:53', 0),
-(3, 'pro3', 'Humalayan', 100.00, 99.00, 1, NULL, '2020-04-15 10:37:59', '2020-04-15 04:37:59', 0);
+(3, 'pro3', 'Humalayan', 100.00, 99.00, 1, NULL, '2020-04-15 10:37:59', '2020-04-15 04:37:59', 0),
+(4, 'pro4', 'My Product III', 999.99, 780.00, 1, NULL, '2020-04-27 15:57:03', '2020-04-27 09:57:03', 0);
 
 -- --------------------------------------------------------
 
@@ -712,7 +777,8 @@ INSERT INTO `product_meta` (`id`, `product_id`, `source`) VALUES
 (17, 'pro1', 'C4'),
 (18, 'pro2', 'C6'),
 (19, 'pro2', '55e930fd8'),
-(20, 'pro3', 'kalka16');
+(20, 'pro3', 'kalka16'),
+(21, 'pro4', 'kalka19');
 
 -- --------------------------------------------------------
 
@@ -801,7 +867,8 @@ CREATE TABLE `roles_users` (
 
 INSERT INTO `roles_users` (`user_id`, `role_id`) VALUES
 ('AKIASZ001', 1),
-('EDO100100', 2);
+('EDO100102', 2),
+('EDO100133', 2);
 
 -- --------------------------------------------------------
 
@@ -822,7 +889,8 @@ CREATE TABLE `setting` (
 
 INSERT INTO `setting` (`setting_id`, `setting_name`, `setting_value`, `autoload`) VALUES
 (1, 'application_name', 'Online Education Board', 'yes'),
-(2, 'application_title', 'Online Education Board', 'yes');
+(2, 'application_title', 'KALKA IAS ZONE', 'yes'),
+(3, 'home_slider', '{\"2\":{\"heading\":\"Heading 2\",\"details\":\"Something Added\",\"buttonUrl\":\"\",\"source\":\"uploads\\/images\\\\\\/medium\\/7_medium-1366x768.png\"},\"3\":{\"heading\":\"How to select first 10 words of a sentence?\",\"details\":\"How do I, from an output, only select the first 10 words?\",\"buttonUrl\":\"\",\"source\":\"uploads\\/WALLPAPERS\\/Jhonnyher-\\u2013Post-176.jpg\"}}', 'yes');
 
 -- --------------------------------------------------------
 
@@ -870,17 +938,38 @@ INSERT INTO `subject` (`id`, `subject_id`, `name`, `description`, `is_publish`, 
 CREATE TABLE `subject_meta` (
   `id` int(11) NOT NULL,
   `subject_id` varchar(32) NOT NULL,
-  `Lesson_id` varchar(32) NOT NULL,
-  `Serial` int(11) NOT NULL
+  `lesson_id` varchar(32) NOT NULL,
+  `serial` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `subject_meta`
 --
 
-INSERT INTO `subject_meta` (`id`, `subject_id`, `Lesson_id`, `Serial`) VALUES
+INSERT INTO `subject_meta` (`id`, `subject_id`, `lesson_id`, `serial`) VALUES
 (1, '6', '2', 1),
-(2, '6', '3', 2);
+(2, '6', '3', 2),
+(15, 'sub17', 'lect22', 5),
+(14, 'sub17', 'lect21', 4),
+(13, 'sub17', 'lect6', 3),
+(12, 'sub17', 'lect5', 2),
+(11, 'sub17', 'lect4', 1),
+(10, 'sub17', '3', 0),
+(16, '1', 'lect10', 0),
+(17, '1', 'lect11', 1),
+(18, '1', 'lect12', 2),
+(19, '1', 'lect13', 3),
+(20, '1', 'lect28', 4),
+(21, '1', 'lect4', 5),
+(22, '1', 'lect3', 6),
+(23, '1', 'lect5', 7),
+(24, '1', 'lect17', 8),
+(25, '1', 'lect22', 9),
+(26, '1', 'lect17', 10),
+(27, '8', 'lect4', 0),
+(28, '8', 'lect5', 1),
+(29, '8', 'lect22', 2),
+(30, '8', 'lect25', 3);
 
 -- --------------------------------------------------------
 
@@ -936,20 +1025,50 @@ CREATE TABLE `thumbnail` (
 --
 
 INSERT INTO `thumbnail` (`id`, `root`, `thumb`, `image`) VALUES
-(1, 'EDO100100', 'uploads/thumb/avatar-1.jpg', 'uploads/image/avatar-1.jpg'),
-(2, 'AKIASZ001', NULL, NULL),
-(8, 'POST9', NULL, ' uploads/images/9.png'),
-(9, 'kalka14', 'uploads/images/9.png', 'uploads/images/9.png'),
-(10, 'kalka15', 'uploads/Ed Sheeran.png', 'uploads/Ed Sheeran.png'),
 (11, 'post10', 'uploads/images\\/thumbnail/7_thumb-200x112.png', 'uploads/images\\/thumbnail/7_thumb-200x112.png'),
 (12, 'post11', 'uploads/Ed Sheeran.png', 'uploads/Ed Sheeran.png'),
 (13, 'pro1', 'uploads/images\\/thumbnail/7_thumb-200x112.png', 'uploads/images\\/thumbnail/7_thumb-200x112.png'),
 (14, 'pro2', 'uploads/Ed Sheeran.png', 'uploads/Ed Sheeran.png'),
-(15, 'C6', 'uploads/images\\/medium/img2_medium-780x408.jpg', 'uploads/images\\/medium/img2_medium-780x408.jpg'),
 (16, '55e930fd8', 'uploads/images\\/medium/img2_medium-780x408.jpg', 'uploads/images\\/medium/img2_medium-780x408.jpg'),
-(22, 'kalka16', 'uploads/images\\/medium/7_medium-1366x768.png', 'uploads/images\\/medium/7_medium-1366x768.png'),
 (24, 'post1', 'uploads/images\\/medium/7_medium-1366x768.png', 'uploads/images\\/medium/7_medium-1366x768.png'),
-(25, 'post12', 'uploads/images\\/medium/7_medium-1366x768.png', 'uploads/images\\/medium/7_medium-1366x768.png');
+(25, 'post12', 'uploads/images\\/medium/7_medium-1366x768.png', 'uploads/images\\/medium/7_medium-1366x768.png'),
+(26, 'kalka16', 'uploads/images\\/medium/7_medium-1366x768.png', 'uploads/images\\/medium/7_medium-1366x768.png'),
+(27, 'C6', 'uploads/images\\/medium/img2_medium-780x408.jpg', 'uploads/images\\/medium/img2_medium-780x408.jpg'),
+(28, 'lect27', 'uploads/images/9.png', 'uploads/images/9.png'),
+(29, 'lect28', 'uploads/images/9.png', 'uploads/images/9.png'),
+(33, 'lect3', 'uploads/educationaduca.png', 'uploads/educationaduca.png'),
+(34, 'kalka17', 'uploads/educationaduca.png', 'uploads/educationaduca.png'),
+(35, 'kalka18', 'uploads/WALLPAPERS/rog_asus_republic_of_gamers-2560x1440.jpg', 'uploads/WALLPAPERS/rog_asus_republic_of_gamers-2560x1440.jpg'),
+(36, 'kalka19', 'uploads/WALLPAPERS/rog_asus_republic_of_gamers-2560x1440.jpg', 'uploads/WALLPAPERS/rog_asus_republic_of_gamers-2560x1440.jpg'),
+(37, 'pro4', 'uploads/WALLPAPERS\\/GAMES WALLPAPER/ford_gt_forza_motorsport_6-7680x4320.jpg', 'uploads/WALLPAPERS\\/GAMES WALLPAPER/ford_gt_forza_motorsport_6-7680x4320.jpg'),
+(38, 'EDO1', NULL, NULL),
+(39, 'lect29', 'uploads/WALLPAPERS\\/Shirley/Cute-Shirley-Setia-Wallpaper.jpg', 'uploads/WALLPAPERS\\/Shirley/Cute-Shirley-Setia-Wallpaper.jpg'),
+(68, 'AKIASZ001', NULL, NULL),
+(69, 'EDO100102', NULL, NULL),
+(70, 'EDO100133', NULL, NULL),
+(71, 'lect30', 'uploads/educationaduca.png', 'uploads/educationaduca.png');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `users`
+-- (See below for the actual view)
+--
+CREATE TABLE `users` (
+`logid` char(9)
+,`email` varchar(32)
+,`phone` varchar(10)
+,`role` char(5)
+,`status` enum('active','deactive')
+,`joindate` datetime
+,`name` varchar(32)
+,`details` text
+,`thumb` text
+,`image` text
+,`role_id` mediumtext
+,`role_name` mediumtext
+,`deleted` tinyint(1)
+);
 
 -- --------------------------------------------------------
 
@@ -992,28 +1111,8 @@ CREATE TABLE `user_details` (
 
 INSERT INTO `user_details` (`id`, `user_id`, `name`, `mobile`, `details`, `updated_at`) VALUES
 (2, 'AKIASZ001', 'Kali', '4684655654', 'njkskdsd\nnsdksknvvnxvn\nxncvxvnmxv,cxvmxnvx,m,xcv,mx', '2020-03-18 11:42:15'),
-(24, 'EDO100100', 'bhawana', NULL, NULL, '2020-03-30 15:10:19');
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `user_view`
--- (See below for the actual view)
---
-CREATE TABLE `user_view` (
-`logid` char(9)
-,`email` varchar(32)
-,`phone` varchar(10)
-,`role` char(5)
-,`status` enum('active','deactive')
-,`joindate` datetime
-,`name` varchar(32)
-,`details` text
-,`thumb` text
-,`image` text
-,`role_id` mediumtext
-,`role_name` mediumtext
-);
+(54, 'EDO100102', 'Shara Bhai', NULL, NULL, '2020-04-29 12:33:39'),
+(55, 'EDO100133', 'Uttem Kumar', NULL, '{\"city\":\"Varanasi\",\"request_course\":\"MCA\"}', '2020-04-29 12:41:34');
 
 -- --------------------------------------------------------
 
@@ -1049,7 +1148,12 @@ INSERT INTO `videos` (`videoid`, `nodeid`, `type`, `name`, `url`, `size`, `video
 ('W5e955a0577164', 'lect22', 'paid', 'v5.mp4', 'uploads/v5.mp4', '17018265', 'mp4', NULL, NULL, NULL, 0, '3:54:33'),
 ('W5e955a05a0b60', 'lect22', 'paid', 'v9.mp4', 'uploads/v9.mp4', '17018265', 'mp4', NULL, NULL, NULL, 0, '3:54:33'),
 ('W5e9565c6a40f4', 'lect23', 'paid', 'v3.mp4', 'uploads/v3.mp4', '17018265', 'mp4', NULL, NULL, NULL, 0, '3:54:33'),
-('W5e9565c6c7e66', 'lect23', 'paid', 'v6.mp4', 'uploads/v6.mp4', '17018265', 'mp4', NULL, NULL, NULL, 0, '3:54:33');
+('W5e9565c6c7e66', 'lect23', 'paid', 'v6.mp4', 'uploads/v6.mp4', '17018265', 'mp4', NULL, NULL, NULL, 0, '3:54:33'),
+('W5e9e90753de63', 'lect26', 'paid', 'v24.mp4', 'uploads/v24.mp4', '17018265', 'mp4', NULL, NULL, NULL, 0, '3:54:33'),
+('W5e9ef323b70e0', 'lect28', 'paid', 'v6 (2).mp4', 'uploads/v6 (2).mp4', '17018265', 'mp4', NULL, NULL, NULL, 0, '3:54:33'),
+('W5e9ef323d3261', 'lect28', 'paid', 'v3.mp4', 'uploads/v3.mp4', '17018265', 'mp4', NULL, NULL, NULL, 0, '3:54:33'),
+('W5e9efdc900359', 'lect3', 'paid', 'v3.mp4', 'uploads/v3.mp4', '17018265', 'mp4', NULL, NULL, NULL, 0, '3:54:33'),
+('W5eaab4dda0b62', 'lect30', 'paid', 'v24.mp4', 'uploads/v24.mp4', '17018265', 'mp4', NULL, NULL, NULL, 0, '3:54:33');
 
 -- --------------------------------------------------------
 
@@ -1058,16 +1162,16 @@ INSERT INTO `videos` (`videoid`, `nodeid`, `type`, `name`, `url`, `size`, `video
 --
 DROP TABLE IF EXISTS `article_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`j03dso1bl3sm`@`localhost` SQL SECURITY DEFINER VIEW `article_view`  AS  select `article`.`id` AS `id`,`article`.`postid` AS `postid`,`article`.`title` AS `title`,`article`.`slug` AS `slug`,`article`.`created_by` AS `created_by`,`article`.`content` AS `content`,`article`.`public_at` AS `public_at`,`article`.`is_publish` AS `is_publish`,`article`.`deleted` AS `deleted`,`article`.`created_at` AS `created_at`,`user_details`.`user_id` AS `user_id`,`user_details`.`name` AS `name`,`thumbnail`.`thumb` AS `thumb`,`thumbnail`.`image` AS `image` from ((`article` left join `user_details` on(`article`.`created_by` = `user_details`.`user_id`)) left join `thumbnail` on(`article`.`postid` = `thumbnail`.`root`)) group by `article`.`postid` order by `article`.`created_at` desc ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`kalkaroot`@`localhost` SQL SECURITY DEFINER VIEW `article_view`  AS  select `article`.`id` AS `id`,`article`.`postid` AS `postid`,`article`.`title` AS `title`,`article`.`slug` AS `slug`,`article`.`created_by` AS `created_by`,`article`.`content` AS `content`,`article`.`public_at` AS `public_at`,`article`.`is_publish` AS `is_publish`,`article`.`deleted` AS `deleted`,`article`.`created_at` AS `created_at`,`user_details`.`user_id` AS `user_id`,`user_details`.`name` AS `name`,`thumbnail`.`thumb` AS `thumb`,`thumbnail`.`image` AS `image` from ((`article` left join `user_details` on(`article`.`created_by` = `user_details`.`user_id`)) left join `thumbnail` on(`article`.`postid` = `thumbnail`.`root`)) group by `article`.`postid` order by `article`.`created_at` desc ;
 
 -- --------------------------------------------------------
 
 --
--- Structure for view `user_view`
+-- Structure for view `users`
 --
-DROP TABLE IF EXISTS `user_view`;
+DROP TABLE IF EXISTS `users`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`j03dso1bl3sm`@`localhost` SQL SECURITY DEFINER VIEW `user_view`  AS  select `logme`.`logid` AS `logid`,`logme`.`email` AS `email`,`logme`.`phone` AS `phone`,`logme`.`role` AS `role`,`logme`.`status` AS `status`,`logme`.`joindate` AS `joindate`,`user_details`.`name` AS `name`,`user_details`.`details` AS `details`,`thumbnail`.`thumb` AS `thumb`,`thumbnail`.`image` AS `image`,group_concat(`roles_users`.`role_id` separator ',') AS `role_id`,group_concat(`roles`.`name` separator ',') AS `role_name` from ((((`logme` join `user_details` on(`logme`.`logid` = `user_details`.`user_id`)) left join `thumbnail` on(`logme`.`logid` = `thumbnail`.`root`)) left join `roles_users` on(`logme`.`logid` = `roles_users`.`user_id`)) left join `roles` on(`roles`.`id` = `roles_users`.`role_id`)) group by `logme`.`logid` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`kalkaroot`@`localhost` SQL SECURITY DEFINER VIEW `users`  AS  select `logme`.`logid` AS `logid`,`logme`.`email` AS `email`,`logme`.`phone` AS `phone`,`logme`.`role` AS `role`,`logme`.`status` AS `status`,`logme`.`joindate` AS `joindate`,`user_details`.`name` AS `name`,`user_details`.`details` AS `details`,`thumbnail`.`thumb` AS `thumb`,`thumbnail`.`image` AS `image`,group_concat(`roles_users`.`role_id` separator ',') AS `role_id`,group_concat(`roles`.`name` separator ',') AS `role_name`,`logme`.`deleted` AS `deleted` from ((((`logme` join `user_details` on(`logme`.`logid` = `user_details`.`user_id`)) left join `thumbnail` on(`logme`.`logid` = `thumbnail`.`root`)) left join `roles_users` on(`logme`.`logid` = `roles_users`.`user_id`)) left join `roles` on(`roles`.`id` = `roles_users`.`role_id`)) group by `logme`.`logid` ;
 
 --
 -- Indexes for dumped tables
@@ -1164,7 +1268,7 @@ ALTER TABLE `log`
 -- Indexes for table `logme`
 --
 ALTER TABLE `logme`
-  ADD PRIMARY KEY (`logid`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `role` (`role`);
 
 --
@@ -1350,25 +1454,25 @@ ALTER TABLE `article`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `course_meta`
 --
 ALTER TABLE `course_meta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `indexing`
 --
 ALTER TABLE `indexing`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
 
 --
 -- AUTO_INCREMENT for table `keys`
@@ -1380,13 +1484,19 @@ ALTER TABLE `keys`
 -- AUTO_INCREMENT for table `lesson`
 --
 ALTER TABLE `lesson`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
+
+--
+-- AUTO_INCREMENT for table `logme`
+--
+ALTER TABLE `logme`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100134;
 
 --
 -- AUTO_INCREMENT for table `logs`
@@ -1422,13 +1532,13 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `product_meta`
 --
 ALTER TABLE `product_meta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `question_meta`
@@ -1452,7 +1562,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `setting`
 --
 ALTER TABLE `setting`
-  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `subject`
@@ -1464,7 +1574,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `subject_meta`
 --
 ALTER TABLE `subject_meta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `tags`
@@ -1476,7 +1586,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `thumbnail`
 --
 ALTER TABLE `thumbnail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `user_aim`
@@ -1488,7 +1598,7 @@ ALTER TABLE `user_aim`
 -- AUTO_INCREMENT for table `user_details`
 --
 ALTER TABLE `user_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -9,6 +9,10 @@ class Home extends CI_Controller {
 		$this->load->model('article_model');
 	}
 
+	public function player(){
+		$this->load->view('player');
+	}
+
 	public function index(){
         $data = array();
 
@@ -26,6 +30,24 @@ class Home extends CI_Controller {
 
 				$this->load->view('index', $data);
     }
+
+		public function get_home_trending(){
+			$output = array();
+			$data = $this->common_model->home_trending();
+			foreach ($data as $value) {
+				$output[] = [
+					'trending_id' => $value['lesson_id'],
+					'name' => ucfirst($value['name']),
+					'slug' => ucfirst($value['slug']),
+					'url' => !empty($value['url']) ? $value['url'] : base_url("trending/video/").$value['lesson_id'] ,
+					'description' => $value['description'],
+					'created' => time_diff($value['created_at']),
+					'image' => !empty($value['image']) ? base_url($value['image']) : base_url('assets/images/defult_banner.jpg'),
+					'category' => $this->common_model->getIndexCategorysName($value['lesson_id']),
+				];
+			}
+			$this->output->set_content_type('application/json')->set_output(json_encode($output));
+		}
 
 		public function paths(){
 			$data = array();

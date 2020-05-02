@@ -33,7 +33,7 @@ class User extends CI_Model
      */
     public function find($id)
     {
-        return $this->db->get_where("users", array("id" => $id, "deleted_at" => null))->row(0);
+        return $this->db->get_where("users", array("logid" => $id, "deleted" => 0))->row(0);
     }
 
     /**
@@ -43,7 +43,7 @@ class User extends CI_Model
      */
     public function all()
     {
-        return $this->db->get_where("users", array("deleted_at" => null))->result();
+        return $this->db->get_where("users", array("role_name != " => "admin", "deleted" => 0))->result_array();
     }
 
     /**
@@ -67,7 +67,7 @@ class User extends CI_Model
      */
     public function edit($data)
     {
-        return $this->db->update('users', $data, array('id' => $data['id']));
+        return $this->db->update('users', $data, array('logid' => $data['id']));
     }
 
     /**
@@ -80,7 +80,7 @@ class User extends CI_Model
     {
         $data['deleted_at'] = date("Y-m-d H:i:s");
 
-        return $this->find($id) ? $this->db->update('users', $data, array('id' => $id)) : 0;
+        return $this->find($id) ? $this->db->update('logme', $data, array('logid' => $id)) : 0;
     }
 
     /**
@@ -194,6 +194,6 @@ class User extends CI_Model
      */
     public function findRole($id)
     {
-        return $this->db->get_where("roles", array("id" => $id, "deleted_at" => null))->row(0);
+        return $this->db->get_where("roles", array("id" => $id, "deleted" => null))->row(0);
     }
 }

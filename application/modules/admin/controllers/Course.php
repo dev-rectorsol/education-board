@@ -39,7 +39,7 @@ class Course extends CI_Controller {
 	public function AddSubject($id)
 	{
 		if($_POST){
-			 $data1=$this->security->xss_clean($_POST);
+			 $data1=$_POST;
 			$count= $this->course_model->getMaxSerial($id);
 			if($count == NULL){
 				$count=0;
@@ -57,7 +57,7 @@ class Course extends CI_Controller {
 	}
 	 public function Add() {
 		if($_POST){
-			 $data=$this->security->xss_clean($_POST);
+			 $data=$_POST;
 			 $id = $this->common_model->get_last_id('course');
 			 if ($data['submit'] == 'publish') {
 				 $course = [
@@ -161,12 +161,12 @@ class Course extends CI_Controller {
 		 redirect($_SERVER['HTTP_REFERER'], 'refresh');
 	 }
 	}
-	public function Delete($id)
+	public function delete($id)
 	{
       $data1=['course_id'=> $id];
       $this->common_model->delete($data1,'course');
 			$this->session->set_flashdata(array('error' => 0, 'msg' => 'Data Deleted'));
-      redirect(base_url() . 'admin/Category', 'refresh');
+      redirect($_SERVER['HTTP_REFERER'], 'refresh');
   }
 
 

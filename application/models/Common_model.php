@@ -434,13 +434,18 @@ function getMaxUserId(){
       return $data;
     }
 
-    // public function getIndexCategorys($root){
-    //   $sql = 'SELECT indexing.port FROM indexing
-    //           INNER JOIN category ON indexing.port = category.id AND indexing.type = "category"
-    //           WHERE indexing.root = "'.$root.'"';
-    //   $result = $this->db->query($sql);
-    //   return $result->row();
-    // }
+    public function getIndexCategorysName($root){
+      $data = self::getIndexCategorys($root);
+      if (is_array($data)) {
+        $output = array();
+        foreach ($data as $value) {
+          $output[] = $this->db->get_where('category', array('id' => $value))->row()->name;
+        }
+        return $output;
+      }else{
+        return false;
+      }
+    }
     //
     // public function getIndexTags($root){
     //   $sql = 'SELECT indexing.port FROM indexing

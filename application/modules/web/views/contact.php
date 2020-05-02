@@ -12,64 +12,46 @@
                   <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid="">
                       <div class="uk-first-column">
                           <h6 class="uk-text-bold"> Number </h6>
-                              <p> +91 7005940201 </p>
+                              <p> +91-7400501501, </p>
+                              <p> +91-9111831119, </p>
+                              <p> 0755-4017928 </p>
                       </div>
-                      <div>
+
+                      <div class="uk-grid-margin">
                           <h6 class="uk-text-bold"> Street </h6>
-                              <p> Church Street </p>
+                              <p> 1 Ram Gopal Maheshwari Road, beside Central Bank, Zone-I, Maharana Pratap Nagar, </p>
+                      </div>
+                      <div class="uk-grid-margin uk-first-column">
+                          <h6 class="uk-text-bold"> Telegram </h6>
+                          <p> <i class="icon-brand-telegram-plane"></i> 0755-4017928 </p>
+                      </div>
+                      <div class="uk-grid-margin uk-first-column">
+                          <h6 class="uk-text-bold"> Postal Code </h6>
+                              <p> 462011 </p>
                       </div>
                       <div class="uk-grid-margin uk-first-column">
                           <h6 class="uk-text-bold"> City </h6>
-                              <p> Los Angeles </p>
-                      </div>
-                      <div class="uk-grid-margin">
-                          <h6 class="uk-text-bold"> Postal Code </h6>
-                              <p> 100065 </p>
+                              <p> Bhopal </p>
                       </div>
                       <div class="uk-grid-margin uk-first-column">
                           <h6 class="uk-text-bold"> State </h6>
-                              <p> CA </p>
+                              <p> Madhya Pradesh </p>
                       </div>
                       <div class="uk-grid-margin">
                           <h6 class="uk-text-bold"> Country </h6>
-                          <p> United States </p>
+                          <p> India </p>
+                      </div>
+                      <div class="uk-grid-margin uk-first-column">
+                          <h6 class="uk-text-bold"> YouTube Channel </h6>
+                              <p><a href="https://www.youtube.com/channel/UCar0_5Q8f-IPCLZ-2c2VyGQ"> <i class="icon-brand-youtube"></i> kalkaiaszone </a></p>
                       </div>
                   </div>
                 </div>
             </div>
             <div class="uk-width-expand@m">
-
-                <div class="uk-card-default rounded">
-                    <div class="p-3">
-                        <h5 class="mb-0"> Get In Touch </h5>
-                    </div>
-                    <hr class="m-0">
-                    <form class="uk-child-width-1-2@s uk-grid-small p-4" uk-grid>
-                        <div>
-                            <h5 class="uk-text-bold mb-2"> First Name </h5>
-                            <input type="text" class="uk-input" placeholder="Your name">
-                        </div>
-                        <div>
-                            <h5 class="uk-text-bold mb-2"> Your email address </h5>
-                            <input type="text" class="uk-input" placeholder="eliedaniels@gmail.com">
-                        </div>
-                        <div>
-                            <h5 class="uk-text-bold mb-2"> Phone </h5>
-                            <input type="text" class="uk-input" placeholder="+1 555 623 568 ">
-                        </div>
-                        <div>
-                            <h5 class="uk-text-bold mb-2"> Your Massege </h5>
-                            <textarea name="name"  class="uk-input" rows="8" cols="80" placeholder="Enter Your Massage here"></textarea>
-                        </div>
-
-                    </form>
-
-                    <div class="uk-flex uk-flex-right p-4">
-                        <button class="btn btn-link mr-2">Cancle</button>
-                        <button class="btn btn-default grey">Save Changes</button>
-                    </div>
-                </div>
-
+              <div class="embed-video">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.2338837947964!2d77.43203095803557!3d23.234574681047707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c4267b257df9f%3A0x14833dcf018981a4!2sKALKA%20IAS%20ACADEMY%2CBHOPAL!5e0!3m2!1sen!2sin!4v1588340242818!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+              </div>
             </div>
 
         </div>

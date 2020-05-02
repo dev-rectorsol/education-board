@@ -56,13 +56,15 @@ $route['login'] = 'authentication';
 $route['auth'] = 'authentication';
 $route['auth/logout'] = 'authentication/logout';
 $route['join'] = 'authentication/register';
+$route['subscribe'] = 'authentication/register/subscribe';
 $route['forget'] = 'authentication/resetView';
 
 // Website ROUTING
 
 $route['home'] = 'web/home/index';
 $route['paths'] = 'web/home/paths';
-$route['blogs'] = 'web/home/blogs';
+$route['blogs'] = 'web/blog/index';
+$route['blog/get_list'] = 'web/blog/get_list';
 $route['single/(:any)'] = 'web/home/blog_single_view/$1';
 $route['about'] = 'web/home/about';
 $route['contact'] = 'web/home/contact';
@@ -71,6 +73,10 @@ $route['courses/get_list'] = 'web/courses/get_list';
 $route['courses/get_single/(:any)'] = 'web/courses/get_single/$1';
 $route['courses/course_curriculum/(:any)'] = 'web/courses/course_curriculum/$1';
 $route['course/(:any)'] = 'web/courses/intro/$1';
+$route['resume/(:any)'] = 'web/courses/resume/$1';
+$route['demo/(:any)'] = 'web/courses/demo/$1';
+$route['trending/(:any)/(:any)'] = 'web/trending/index/$1/$2';
+$route['watch/(:any)'] = 'web/lecture/index/$1';
 $route['event'] = 'web/home/event';
 $route['faq'] = 'web/home/faq';
 $route['contact'] = 'web/home/contact';
@@ -85,4 +91,4 @@ $route['admin'] = 'admin/dashboard';
 
 // Board Routing vie User
 
-$route['app'] = 'web/dashboard';
+$route['app'] = 'web/home/index';
