@@ -79,13 +79,6 @@ function getMaxId(){
       }
 
       public function select_course_list(){
-        // $sql = 'SELECT course.*, thumbnail.image, GROUP_CONCAT(tag.port) AS tags, GROUP_CONCAT(category.port) AS category FROM course
-        //         LEFT JOIN indexing AS tag ON course.course_id = tag.root AND tag.type = "tag"
-        //         LEFT JOIN indexing AS category ON course.course_id = category.root AND category.type = "category"
-        //         LEFT JOIN thumbnail ON course.course_id = thumbnail.root
-        //         WHERE course.deleted = 0
-        //         GROUP BY course.course_id
-        //         ORDER BY course.id DESC';
         $sql = 'SELECT products.*, course.*, thumbnail.image, GROUP_CONCAT(tag.port) AS tags, GROUP_CONCAT(category.port) AS category FROM products
                 INNER JOIN product_meta ON products.product_id = product_meta.product_id
                 INNER JOIN course on product_meta.source = course.course_id

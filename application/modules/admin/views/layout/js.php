@@ -95,6 +95,7 @@
 
     <?php include("__media.php"); ?>
     <?php include("__notification.php"); ?>
+    <?php include("__address.php"); ?>
 
     <?php if(isset($script)):
         echo $script;

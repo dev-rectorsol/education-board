@@ -9,62 +9,37 @@
 
     <div class="uk-child-width-1-2@m uk-grid-match uk-grid-small" uk-grid>
       <?php foreach ($featured as $key => $value): ?>
-        <?php if ($key < 1): ?>
-          <div>
-            <a href="<?php echo base_url('single/').$value['postid']; ?>" class="uk-flex">
-              <div data-src="<?php echo base_url().$value['image']; ?>" class="uk-card-default uk-background-cover rounded uk-flex uk-flex-bottom" uk-img>
-                <div class="uk-light p-3 my-3">
-                  <h2><?php echo ucfirst($value['title']); ?></h2>
-                  <p>
-                    <?php echo $value['slug']; ?>
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <?php else: ?>
-        <?php endif; ?>
-      <?php endforeach; ?>
+      <?php if ($key < 1): ?>
       <div>
-        <div class="uk-child-width-1-2@m uk-grid-small uk-card-match" uk-grid>
-          <div> <a href="#">
-            <div class="uk-card-default rounded uk-overflow-hidden">
-              <img src="<?php echo base_url(); ?>/assets/images/blog/img-1.jpg" alt="">
-              <div class="p-3">
-                <h5 class="mb-0">10 amazing web demos and experiments for 2020 </h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div><a href="#">
-          <div class="uk-card-default rounded uk-overflow-hidden">
-            <img src="<?php echo base_url(); ?>/assets/images/blog/img-2.jpg" alt="" class="uk-width-1-1">
-            <div class="p-3">
-              <h5 class="mb-0">10 Awesome Web Dev Tools and Resources </h5>
+        <a href="<?php echo base_url('single/').$value['postid']; ?>" class="uk-flex">
+          <div data-src="<?php echo base_url().$value['image']; ?>" class="uk-card-default uk-background-cover rounded uk-flex uk-flex-bottom" uk-img>
+            <div class="uk-light p-3 my-3">
+              <h2><?php echo ucfirst($value['title']); ?></h2>
+              <p>
+                <?php echo $value['slug']; ?>
+              </p>
             </div>
           </div>
         </a>
       </div>
-      <div><a href="#">
-        <div class="uk-card-default rounded uk-overflow-hidden">
-          <img src="<?php echo base_url(); ?>/assets/images/blog/img-3.jpg" alt="">
-          <div class="p-3">
-            <h5 class="mb-0">10 Interesting JavaScript and CSS Libraries </h5>
+      <?php else: ?>
+      <div>
+        <div class="uk-child-width-1-2@m uk-grid-small uk-card-match" uk-grid>
+          <div>
+            <a href="#">
+              <div class="uk-card-default rounded uk-overflow-hidden">
+                <img src="<?php echo base_url(); ?>/assets/images/blog/img-4.jpg" alt="">
+                <div class="p-3">
+                  <h5 class="mb-0">10 Interesting JavaScript and CSS libraries for 2020 </h5>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
-      </a>
-    </div>
-    <div><a href="#">
-      <div class="uk-card-default rounded uk-overflow-hidden">
-        <img src="<?php echo base_url(); ?>/assets/images/blog/img-4.jpg" alt="">
-        <div class="p-3">
-          <h5 class="mb-0">10 Interesting JavaScript and CSS libraries for 2020 </h5>
-        </div>
       </div>
-    </a>
-  </div>
-</div>
-</div>
+      <?php endif; ?>
+      <?php endforeach; ?>
+
     </div>
 
     <h3 class="mt-5 mb-0"> Category </h3>
@@ -106,7 +81,7 @@
       <div class="uk-width-expand" ng-app="educationbourd" ng-controller="blogController">
 
         <!-- Blog Post -->
-        <a href="blog-single-1.html" class="blog-post" ng-repeat='blog in blogs'>
+        <a href="<?php echo base_url('single/') ?>{{blog.postid}}" class="blog-post" ng-repeat='blog in blogs'>
           <!-- Blog Post Thumbnail -->
           <div class="blog-post-thumbnail">
             <div class="blog-post-thumbnail-inner">
@@ -121,22 +96,16 @@
               <span class="blog-post-info-date">{{blog.created}}</span>
             </div>
             <h3>{{blog.title}}</h3>
-            <p>{{blog.content}}</p>
+            <p ng-bind-html="blog.content | renderHTMLCorrectly"></p>
           </div>
         </a>
 
-        <ul class="uk-pagination my-5 uk-flex-center" uk-margin>
-          <li class="uk-active"><span>1</span></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li class="uk-disabled"><span>...</span></li>
-          <li><a href="#"><span uk-pagination-next></span></a></li>
-        </ul>
+        <ul class="uk-pagination my-5 uk-flex-center" uk-margin id="pagination"></ul>
+
 
       </div>
       <?php get_sidebar('web/blogs/sidebar'); ?>
     </div>
-
 
     <!-- Footer  -->
     <?php
@@ -148,14 +117,14 @@
 </div>
 
 <script type="text/javascript">
-
-var app = angular.module('educationbourd', []);
-
-app.controller('blogController', function($scope, $http){
+  var url = '<?php echo base_url('blog/get_list/').$page; ?>';
+  var pagination = angular.element(document.querySelector('#pagination'));
+  app.controller('blogController', function($scope, $http) {
     $scope.blogs = [];
-      $http.get('<?php echo base_url('blog/get_list'); ?>')
-      .then(function($data){
-        $scope.blogs = $data.data;
+    $http.get(url)
+      .then(function($data) {
+        $scope.blogs = $data.data.blogs;
+        pagination.html($data.data.links);
       });
-});
+  });
 </script>

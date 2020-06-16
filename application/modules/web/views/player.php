@@ -4,31 +4,27 @@
     <title>afterglow player</title>
   </head>
   <body>
-    <button id="enable" onclick="displayNotification()">Enable notifications</button>
+    <input type="text" name="quntity[]" value="10">
+    <input type="text" name="quntity[]" value="10">
+    <input type="text" name="quntity[]" value="10">
+    <input type="text" name="quntity[]" value="10">
+
+    <script src="<?php echo base_url() ?>assets/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
-
-    if ('serviceWorker' in navigator) {
-  // Register a service worker hosted at the root of the
-  // site using the default scope.
-  navigator.serviceWorker.register('/sw.js').then(function(registration) {
-    console.log('Service worker registration succeeded:', registration);
-  }, /*catch*/ function(error) {
-    console.log('Service worker registration failed:', error);
-  });
-} else {
-  console.log('Service workers are not supported.');
-}
-
-    Notification.requestPermission(function(status) {
-      console.log('Notification permission status:', status);
-    });
-    function displayNotification() {
-      if (Notification.permission == 'granted') {
-        navigator.serviceWorker.getRegistration().then(function(reg) {
-          reg.showNotification('Hello world!');
+      $(document).ready(function(){
+        let total = 50;
+        $("input[name='quntity[]']").on('change', function(){
+          console.log(get_current_quntity());
         });
-      }
-    }
+        function get_current_quntity(){
+            var current = 0;
+            $("input[name='quntity[]']").each(function(){
+              current += Number($(this).val());
+            });
+            return Number(total - current);
+        }
+      });
     </script>
+
   </body>
 </html>

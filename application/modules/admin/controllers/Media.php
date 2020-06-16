@@ -27,20 +27,18 @@ class Media extends CI_Controller {
 	// 			$this->load->view('index', $data);
 	// }
 
-	public function index()
-	{
-			$fileData['file'] = readJSON();
-			$data['main_content'] = $this->load->view('media/lazy-loading', $fileData, TRUE);
-			$this->load->view('index', $data);
+	public function index() {
+      $fileData['file'] = readJSON();
+      $data['main_content'] = $this->load->view('media/lazy-loading', $fileData, TRUE);
+      $this->load->view('index', $data);
 	}
-	public function videos()
-	{
+	public function videos() {
 			$fileData['file'] = readJSON();
 			$data['main_content'] = $this->load->view('media/lazy-loading-video', $fileData, TRUE);
 			$this->load->view('index', $data);
 	}
 
- public function get_file_refrace(){
+ public function get_file_refrace() {
     $map = directory_map(UPLOAD_FILE, FALSE, TRUE);
     $files = self::Concatenate_Filepaths($map);
     $fileData = self::getFileWithInfo($files);

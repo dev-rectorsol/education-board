@@ -12,6 +12,10 @@
 										<input name="name" type="text" class="form-control" placeholder="Lesson Name">
 									</div>
 									<div class="form-group">
+										<label class="login2">Slug</label>
+										<input name="slug" type="text" class="form-control" placeholder="slug">
+									</div>
+									<div class="form-group">
 										<label class="login2">Lesson Description</label>
 										<textarea name="description" id="summernote1">Add a Description here</textarea>
 									</div>
@@ -19,10 +23,16 @@
 							</div>
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 								<div class="product-status-wrap drp-lst">
-									<div class="payment-adress">
-										<input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
-										<button type="submit" name='submit' value="save" class="btn btn-primary ">SAVE</button>
-										<button type="submit" name="submit" value="publish" class="btn btn-primary pull-right ">Publish</button>
+									<div class="form-group">
+										<span id="addfeaturepreview">
+										</span>
+										<button id="removepreview" type="button" class="btn btn-link hide">remove</button>
+										<button id="addfeatureimage" type="button" class="btn btn-link" name="button">Add feature image</button>
+										<hr>
+									</div>
+									<div class="form-group">
+										<label class="login2">YouTube Video (option)</label>
+										<textarea name="url" placeholder="YouTube iframe"></textarea>
 									</div>
 									<div class="form-group res-mg-t-15">
 										<label class="login2">Course Category</label>
@@ -41,10 +51,11 @@
 										</select>
 									</div>
 									<hr>
-									<span id="addfeaturepreview">
-									</span>
-									<button id="removepreview" type="button" class="btn btn-link hide">remove</button>
-									<button id="addfeatureimage" type="button" class="btn btn-link" name="button">Add feature image</button>
+									<div class="payment-adress">
+										<input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
+										<button type="submit" name='submit' value="save" class="btn btn-primary ">SAVE</button>
+										<button type="submit" name="submit" value="publish" class="btn btn-primary pull-right ">Publish</button>
+									</div>
 									<hr>
 									<span id="addlecturepreview"></span>
 									<button id="lectureremovepreview" type="button" class="btn btn-link hide">remove</button>

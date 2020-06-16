@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'home';
+$route['default_controller'] = 'web/home/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'authentication';
@@ -64,10 +64,12 @@ $route['forget'] = 'authentication/resetView';
 $route['home'] = 'web/home/index';
 $route['paths'] = 'web/home/paths';
 $route['blogs'] = 'web/blog/index';
-$route['blog/get_list'] = 'web/blog/get_list';
+$route['blogs/(:any)'] = 'web/blog/index/$1';
+$route['blog/get_list/(:any)'] = 'web/blog/get_list/$1';
 $route['single/(:any)'] = 'web/home/blog_single_view/$1';
 $route['about'] = 'web/home/about';
 $route['contact'] = 'web/home/contact';
+$route['payment'] = 'web/home/payment';
 $route['courses'] = 'web/courses';
 $route['courses/get_list'] = 'web/courses/get_list';
 $route['courses/get_single/(:any)'] = 'web/courses/get_single/$1';

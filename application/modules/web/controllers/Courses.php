@@ -68,6 +68,7 @@ class Courses extends CI_Controller {
 				array('url' => base_url('resume') . "/" .$id , 'name' => $output->name)
 			];
 			$data['course'] = $this->course_model->select_course_single($id);
+			$data['thumb'] = $this->common_model->getThumByRoot($id);
 			$data['main_content'] = $this->load->view('courses/resume-course-list', $data, true);
 			$this->load->view('index', $data);
 		} else {

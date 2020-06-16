@@ -15,6 +15,31 @@ public function __construct()
       ->get()->row()->id;
     }
 
+    public function check_email($data){
+      $result = $this->db->get_where('logme', array('email' => $data));
+      if ($result->num_rows() == 1) {
+        return $result->row();
+      } else {
+        return false;
+      }
+    }
+    public function check_phone($data){
+      $result = $this->db->get_where('logme', array('phone' => $data));
+      if ($result->num_rows() == 1) {
+        return $result->row();
+      } else {
+        return false;
+      }
+    }
+    public function checkIdExist($data, $table){
+      $result = $this->db->get_where($table, $data);
+      if ($result->num_rows() == 1) {
+        return $result->row();
+      } else {
+        return false;
+      }
+    }
+
     public function Login_check($data){
         $condition = "email =" . "'" . $data['email'] . "' AND " . "password =" . "'" . $data['password'] . "'AND role='".$data['role']."'" ;
             $this->db->select('*');
@@ -58,6 +83,7 @@ public function __construct()
               return false;
             }
         }
+
         public function get_otp($data){
 
             $this->db->select('*');
@@ -79,7 +105,7 @@ public function __construct()
         public function get_user_view_by_id($id)
         {
           $this->db->select('*');
-          $this->db->from('user_view');
+          $this->db->from('users');
           $this->db->where('logid', $id);
           $this->db->limit(1);
           $query = $this->db->get();
@@ -125,7 +151,6 @@ public function check_otp($data){
     function update($action,$field, $id, $table){
         $this->db->where($field,$id);
         $this->db->update($table,$action);
-
         return true;
     }
 
@@ -223,7 +248,6 @@ function getMaxUserId(){
 
                 //-- set upload path
                 $source             = UPLOAD_FILE . "/\images/" . $data['file_name'] ;
-                $destination_thumb  = UPLOAD_FILE . "/images/thumbnail/" ;
                 $destination_medium = UPLOAD_FILE . "/images/medium/" ;
                 $main_img = $data['file_name'];
                 // Permission Configuration
@@ -238,32 +262,15 @@ function getMaxUserId(){
 
                 /// Limit Width Resize
                 $limit_medium   = $max_size ;
-                $limit_thumb    = 200;
 
                 // Size Image Limit was using (LIMIT TOP)
                 $limit_use  = $data['image_width'] > $data['image_height'] ? $data['image_width'] : $data['image_height'] ;
 
                 // Percentase Resize
-                if ($limit_use > $limit_medium || $limit_use > $limit_thumb) {
+                if ($limit_use > $limit_medium) {
                     $percent_medium = $limit_medium/$limit_use ;
-                    $percent_thumb  = $limit_thumb/$limit_use ;
                 }
 
-                //// Making THUMBNAIL ///////
-                $img['width']  = $limit_use > $limit_thumb ?  $data['image_width'] * $percent_thumb : $data['image_width'] ;
-                $img['height'] = $limit_use > $limit_thumb ?  $data['image_height'] * $percent_thumb : $data['image_height'] ;
-
-                // Configuration Of Image Manipulation :: Dynamic
-                $img['thumb_marker'] = '_thumb-'.floor($img['width']).'x'.floor($img['height']) ;
-                $img['quality']      = ' 100%' ;
-                $img['source_image'] = $source ;
-                $img['new_image']    = $destination_thumb ;
-
-                $thumb_nail = $data['raw_name']. $img['thumb_marker'].$data['file_ext'];
-                // Do Resizing
-                $this->image_lib->initialize($img);
-                $this->image_lib->resize();
-                $this->image_lib->clear() ;
 
                 ////// Making MEDIUM /////////////
                 $img['width']   = $limit_use > $limit_medium ?  $data['image_width'] * $percent_medium : $data['image_width'] ;
@@ -283,16 +290,38 @@ function getMaxUserId(){
 
                 //-- set upload path
                 $images = UPLOAD_FILE . "/images/medium/" . $mid;
-                $thumb  = UPLOAD_FILE . "/images/thumbnail/" . $thumb_nail;
                 unlink($source);
 
                 return array(
                     'image' => $images,
-                    'thumb' => $thumb
                 );
             }
             else {
                 echo "Failed! to upload images" ;
+            }
+
+    }
+
+    function upload_Pdf($max_size){
+
+            //-- set upload path
+            $config['upload_path']  = UPLOAD_FILE . '/' . 'document';
+            $config['allowed_types']= 'pdf|doc|docx|ppt';
+            $config['max_size']     = $max_size;
+
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload("file")) {
+
+                $data = $this->upload->data();
+
+                //-- set upload path
+                $source = UPLOAD_FILE . "/\document/" . $data['file_name'] ;
+                return array(
+                    'doc' => $source,
+                );
+            }
+            else {
+                echo "Failed! to upload document" ;
             }
 
     }
@@ -518,5 +547,20 @@ function getMaxUserId(){
 
     public function get_username($id){
       return $this->db->get_where('user_details', array('user_id' => $id))->row()->name;
+    }
+
+    public function get_city_by_name($name){
+      $this->db->select('name AS id, name AS text');
+      $this->db->from('cities');
+      $this->db->where('name LIKE', $name.'%');
+      $result = $this->db->get();
+      return $result->result();
+    }
+    public function get_states_by_name($name){
+      $this->db->select('name AS id, name AS text');
+      $this->db->from('states');
+      $this->db->where('name LIKE', $name.'%');
+      $result = $this->db->get();
+      return $result->result();
     }
 }

@@ -72,7 +72,8 @@
 						<ul class="submenu-angle" aria-expanded="false">
 							<li><a title="All Courses" href="<?php echo base_url('admin/lesson/View')?>"><span class="mini-sub-pro">All Lesson List </span></a></li>
 							<li><a title="Add Courses" href="<?php echo base_url('admin/lesson')?>"><span class="mini-sub-pro">Add Lesson</span></a></li>
-
+							<li><a title="Add Courses" href="<?php echo base_url('admin/pdf/view')?>"><span class="mini-sub-pro">All PDF List</span></a></li>
+							<li><a title="Add Courses" href="<?php echo base_url('admin/pdf')?>"><span class="mini-sub-pro">Add PDF</span></a></li>
 						</ul>
 					</li>
 					<!-- Products -->
@@ -92,6 +93,12 @@
 						</ul>
 					</li>
 
+					<li>
+						<a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-settings icon-wrap"></span> <span class="mini-click-non">Settings</span></a>
+						<ul class="submenu-angle" aria-expanded="false">
+							<li><a title="View Mail" href="<?php echo base_url('admin/setting/slider')?>"><span class="mini-sub-pro">Add Slider</span></a></li>
+						</ul>
+					</li>
 					<li>
 						<a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-settings icon-wrap"></span> <span class="mini-click-non">Settings</span></a>
 						<ul class="submenu-angle" aria-expanded="false">

@@ -9,7 +9,7 @@
 
                 <div class="uk-width-1-2@m">
                     <div class="course-thumbnail m-lg-4 p-lg-3">
-                        <img src="../assets/images/course/1.png" alt="">
+                        <img src="<?php echo !empty(isset($thumb->image)) ? $thumb->image : base_url('assets/images/defult_banner.jpg'); ?>" alt="">
                         <a class="play-button-trigger show" href="#trailer-modal" uk-toggle> </a>
                     </div>
 

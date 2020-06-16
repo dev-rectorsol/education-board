@@ -16,7 +16,7 @@ class Home extends CI_Controller {
 	public function index(){
         $data = array();
 
-				$data['homeSlider'] = 1;
+				$data['homeSlider'] = 0;
 
 				$slider_value = !empty($this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value) ? $this->db->get_where('setting', array('setting_name' => 'home_slider'))->row()->setting_value : '';
 
@@ -90,6 +90,13 @@ class Home extends CI_Controller {
         $data = array();
 				$data['breadcrumbs'] = [array('url' => base_url('contact'), 'name' => 'Contact Us')];
 				$data['main_content'] = $this->load->view('contact', $data, true);
+        $this->load->view('index', $data);
+    }
+
+    public function payment() {
+        $data = array();
+				$data['breadcrumbs'] = [array('url' => base_url('payment'), 'name' => 'Payment Page')];
+				$data['main_content'] = $this->load->view('payment', $data, true);
         $this->load->view('index', $data);
     }
 

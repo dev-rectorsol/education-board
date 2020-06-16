@@ -48,3 +48,14 @@ Register   -Register
 					 My SQl Cahnges
 
 					SQL_mode =  ONLY_FULL_GROUP_BY,​STRICT_TRANS_TABLES,​NO_ZERO_IN_DATE,​NO_ZERO_DATE,​ERROR_FOR_DIVISION_BY_ZERO,​NO_AUTO_CREATE_USER,​NO_ENGINE_SUBSTITUTION
+
+
+					post_max_size=0
+
+
+
+php_value session.gc_maxlifetime 10800
+php_value max_input_time         10800
+php_value max_execution_time     10800
+php_value upload_max_filesize    110M
+php_value post_max_size          120M

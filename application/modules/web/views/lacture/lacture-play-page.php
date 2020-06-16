@@ -125,10 +125,8 @@
                             <li>
                                 <!-- to autoplay video uk-video="automute: true" -->
                                 <div id="player" class="video-responsive" >
-                                  <iframe src="https://www.youtube.com/embed/9gTw2EDkaDQ" frameborder="0"
-                                      uk-video="automute: true" allowfullscreen uk-responsive></iframe>
+                                  <iframe width="560" height="315" src="https://www.youtube.com/embed/YXZ9n6QiRZs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
-
                             </li>
                         </ul>
 

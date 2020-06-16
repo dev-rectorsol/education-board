@@ -17,7 +17,7 @@
                     </select>
                   </li>
                   <li>
-                    <button type="button" name="refresh" class="btn btn-default btn-md" title="Refrash"> <i class="fa fa-refresh" aria-hidden="true"></i> </button>
+                  <a href="<?php echo base_url('admin/media/get_file_refrace'); ?>">  <button type="button" name="refresh" class="btn btn-default btn-md" title="Refrash"> <i class="fa fa-refresh" aria-hidden="true"></i> </button></a>
                   </li>
                 </ul>
               </div>
@@ -123,14 +123,5 @@ function go_loop(counter) {
 
     }
    }
-}
-function get_refrace(){
-  $.ajax({
-     async: true,
-     url: refraceAPI,
-     success : function() {
-       window.location.reload();
-     }
-   });
 }
 </script>

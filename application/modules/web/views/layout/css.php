@@ -25,6 +25,7 @@
       <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/night-mode.css">
       <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/framework.css">
       <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap.css">
+      <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/main.css">
 
       <!-- icons
       ================================================== -->
@@ -45,7 +46,14 @@
 
       <script type="text/javascript">
 
-      var app = angular.module('educationbourd', []);
+      var app = angular.module('educationbourd', [])
+      .filter('renderHTMLCorrectly', function($sce)
+        {
+        	return function(stringToParse)
+        	{
+        		return $sce.trustAsHtml(stringToParse);
+        	}
+        });
 
 
       </script>

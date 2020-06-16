@@ -70,18 +70,30 @@ if(! function_exists("writeJSON")) {
 
    	   // converts json data into array
    	   $arr_data = json_decode($jsondata, true);
-   	   // Push user data to array
-   	   array_push($arr_data, $formdata);
 
-          //Convert updated array to JSON
-   	   $jsondata = json_encode($formdata, JSON_PRETTY_PRINT);
-   	   //write json data into file-data.json file
-   	   if(file_put_contents(FILE_JSON_INFO, $jsondata))
-   	        return true;
-   	   else
-   	        return false;
+       if (is_array($arr_data)) {
 
-      }else {
+         // Push user data to array
+         array_push($arr_data, $formdata);
+            //Convert updated array to JSON
+         $jsondata = json_encode($formdata, JSON_PRETTY_PRINT);
+
+         //write json data into file-data.json file
+         if(file_put_contents(FILE_JSON_INFO, $jsondata))
+              return true;
+         else
+              return false;
+       }else{
+         $jsondata = json_encode($formdata, JSON_PRETTY_PRINT);
+         //write json data into file-data.json file
+         if(file_put_contents(FILE_JSON_INFO, $jsondata))
+              return true;
+         else
+              return false;
+       }
+
+
+      } else {
         // If file Is Not Exist
         $jsondata = json_encode($formdata, JSON_PRETTY_PRINT);
         //write json data into file-data.json file

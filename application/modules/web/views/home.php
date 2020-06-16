@@ -1,32 +1,32 @@
  <div class="page-content">
 
    <?php if (is_array($slider)): ?>
-   <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="autoplay: true; autoplay-interval: 3000; pause-on-hover: true; animation: push">
-
-     <ul class="uk-slideshow-items" style="minHeight: 360px;">
+   <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="sets: true">
+     <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-2@m">
        <?php foreach ($slider as $value):?>
        <li>
-         <div class="uk-position-cover" uk-slideshow-parallax="scale: 1.2,1.2,1">
-           <img src="<?php echo base_url($value['source']); ?>" alt="" uk-cover>
-         </div>
-         <div class="uk-position-cover" uk-slideshow-parallax="opacity: 0,0,0.2; backgroundColor: #000,#000">
-         </div>
-         <div class="uk-position-center uk-position-medium uk-text-center">
-           <div class="page-content-inner uk-position-z-index" uk-slideshow-parallax="scale: 1,1,0.8">
-             <h1 uk-slideshow-parallax="x: 200,0,0"><?php echo $value['heading']; ?></h1>
-             <h4 uk-slideshow-parallax="x: 200,0,0" class="my-lg-4"> <?php echo $value['details']; ?> <br> </h4>
-             <?php if ($value['buttonUrl'] != ""): ?>
-             <a uk-slideshow-parallax="x: 400,0,0;" href="<?php echo $value['buttonUrl'];  ?>" class="btn btn-default"> Go More </a>
-             <?php endif; ?>
-           </div>
-         </div>
+         <?php if ($value['buttonUrl'] != ""): ?>
+           <a href="<?php echo $value['buttonUrl']; ?>">
+             <img src="<?php echo base_url($value['source']); ?>" alt="">
+             <div class="uk-position-center uk-panel">
+               <h1 uk-slideshow-parallax="x: 200,0,0"><?php echo $value['heading']; ?></h1>
+               <h4 uk-slideshow-parallax="x: 200,0,0" class="my-lg-4"> <?php echo $value['details']; ?> <br> </h4>
+             </div>
+           </a>
+          <?php else:?>
+            <img src="<?php echo base_url($value['source']); ?>" alt="">
+            <div class="uk-position-center uk-panel">
+              <h1 uk-slideshow-parallax="x: 200,0,0"><?php echo $value['heading']; ?></h1>
+              <h4 uk-slideshow-parallax="x: 200,0,0" class="my-lg-4"> <?php echo $value['details']; ?> <br> </h4>
+            </div>
+          <?php endif; ?>
+
        </li>
        <?php endforeach; ?>
      </ul>
-
-     <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-     <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
-
+     <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+     <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+       uk-slider-item="next"></a>
    </div>
    <?php else: ?>
    <div class="home-hero" data-src="<?php echo base_url()?>/assets/images/home-hero.png" uk-img>
@@ -59,9 +59,9 @@
            </div>
          </div>
 
-        <!-- Tranding Videos -->
+         <!-- Tranding Videos -->
 
-        <?php get_section('web/layout/get_trending'); ?>
+         <?php get_section('web/layout/get_trending'); ?>
 
        </div>
 
@@ -165,13 +165,12 @@
  </div>
 
  <script type="text/javascript">
-
-  app.controller('coursesController', function($scope, $http){
-       $scope.courses = [];
-         $http.get('<?php echo base_url('courses/get_list'); ?>')
-         .then(function($data){
-           $scope.courses = $data.data;
-         });
+   app.controller('coursesController', function($scope, $http) {
+     $scope.courses = [];
+     $http.get('<?php echo base_url('
+         courses / get_list '); ?>')
+       .then(function($data) {
+         $scope.courses = $data.data;
+       });
    });
-
  </script>

@@ -18,9 +18,8 @@ class Article extends CI_Controller {
 	public function index()
 	{
 		$data= array();
-        $data['page'] ='article';
-
-        $data['tag']=  $this->common_model->select('tags');
+    $data['page'] ='article';
+    $data['tag']=  $this->common_model->select('tags');
 		$data['category']=  $this->common_model->select('category');
 		$data['main_content']= $this->load->view('article/add',$data, true);
 		$this->load->view('index',$data);
@@ -56,7 +55,7 @@ class Article extends CI_Controller {
 				  $this->common_model->indexing($_POST, $article['postid']);
 					if ( isset($_POST['featureImage']) ) {
 						// if added feature images
-						$this->common_model->addThumb($_POST['featureImage'], $course['course_id']);
+						$this->common_model->addThumb($_POST['featureImage'], $article['postid']);
 					}
 				 	$this->session->set_flashdata(array('error' => 0, 'msg' => 'Course Create Done'));
 				 	redirect(base_url('admin/article/edit/').$article['postid'], 'refresh');

@@ -1,0 +1,12 @@
+img.blur-up.ls-is-cached.lazyloaded {
+    object-fit: fill;
+}
+
+img{
+  /* 1 */
+  max-width: 100%;
+  /* 2 */
+  min-height: 100%;
+  /* 3 */
+  box-sizing: border-box;
+}

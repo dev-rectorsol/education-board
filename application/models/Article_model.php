@@ -64,6 +64,19 @@ class Article_model extends CI_Model {
             return $query->result_array();
          }
 
+         public function __article($category = ''){
+             $sql = "SELECT * FROM article_view
+                      WHERE postid IN (
+                        SELECT indexing.root FROM indexing
+                        INNER JOIN category ON indexing.port = category.id AND indexing.type = 'category'
+                        WHERE category.name = '{$category}'
+                        ORDER BY indexing.id DESC
+                      )
+                      LIMIT 5";
+            $query = $this->db->query($sql);
+            return $query->result_array();
+         }
+
          public function article_single_view($id){
            $this->db->select('*');
            $this->db->from('article_view');
@@ -73,12 +86,18 @@ class Article_model extends CI_Model {
            return $query;
          }
 
-         public function select_blog_list(){
+         public function select_blog_list($limit, $start){
            $this->db->select('*');
            $this->db->from('article_view');
+           $this->db->limit($limit, $start);
            $query = $this->db->get();
            $query = $query->result_array();
            return $query;
          }
+
+         public function get_count() {
+          $result = $this->db->query('SELECT COUNT(*) AS count FROM article_view WHERE is_publish = 1 AND deleted = 0');
+          return !empty($result->row()) ? $result->row()->count : 0;
+        }
 
 }

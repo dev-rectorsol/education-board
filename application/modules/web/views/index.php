@@ -6,7 +6,7 @@
 >
 	<!-- Header Container
 				================================================== -->
-	<header class="header <?php echo isset($homeSlider) ? 'header-transparent uk-light' : 'uk-sticky'; ?>" uk-sticky="top:20 ; cls-active:header-sticky; <?php echo isset($homeSlider) ? 'cls-inactive: uk-light' : ''; ?>">
+  <header class="header uk-sticky" uk-sticky="top:20 ; cls-active:header-sticky;" style="">
 
 		<div class="container">
 			<nav uk-navbar>
@@ -225,6 +225,10 @@
 			<li>
 				<!-- book -->
 				<a href="<?php echo base_url('courses'); ?>"> <i class="uil-book-alt"></i> <span class="tooltips"> Courser </span> </a>
+			</li>
+			<li>
+				<!-- Payment -->
+				<a href="<?php echo base_url('payment'); ?>"> <i class="icon-brand-google-wallet"></i> <span class="tooltips"> Payment </span> </a>
 			</li>
 			<li>
 				<a href="#" uk-toggle="target: #searchbox; cls: is-active"><i class="uil-search-alt"></i></a>

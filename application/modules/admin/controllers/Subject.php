@@ -13,7 +13,7 @@ class Subject extends CI_Controller {
 	{
 		$data= array();
 		$data['page'] ='Subject';
-		$data['main_content']= $this->load->view('Subject/addSubject',$data, true);
+		$data['main_content']= $this->load->view('subject/addSubject',$data, true);
 		$this->load->view('index',$data);
 	}
 
@@ -29,7 +29,7 @@ class Subject extends CI_Controller {
 		$data= array();
 		$data['page'] ='Subject';
 		$data['subject']=  $this->subject_model->select();
-		$data['main_content']= $this->load->view('Subject/view',$data, true);
+		$data['main_content']= $this->load->view('subject/view',$data, true);
 		$this->load->view('index',$data);
 	}
 	public function addLesson($id)
@@ -40,7 +40,7 @@ class Subject extends CI_Controller {
 		$data['sub']=  $this->subject_model->select_Lesson_by_id($id);
 		$data['lesson']=  $this->subject_model->select_Lesson();
 
-		$data['main_content']= $this->load->view('Subject/addLesson',$data, true);
+		$data['main_content']= $this->load->view('subject/addLesson',$data, true);
 		$this->load->view('index',$data);
 	}
 	public function LessonAdd($id)
@@ -60,7 +60,7 @@ class Subject extends CI_Controller {
 		];
 		 $this->Common_model->insert($course,'subject_meta');
 		}
-		redirect(base_url() . 'admin/Subject/view', 'refresh');
+		redirect(base_url() . 'admin/subject/view', 'refresh');
 			}
 	}
 	 public function add()
@@ -104,7 +104,7 @@ class Subject extends CI_Controller {
 			$data= array();
 			$data['page'] ='Edit Subject';
 			$data['data']=  $this->subject_model->select_by_id($id);
-			$data['main_content']= $this->load->view('Subject/edit-view',$data, true);
+			$data['main_content']= $this->load->view('subject/edit-view',$data, true);
 			$this->load->view('index',$data);
 		}else {
 			$this->session->set_flashdata(array('error' => 1, 'msg' => 'Request not Allowed'));

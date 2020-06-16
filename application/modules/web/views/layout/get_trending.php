@@ -7,20 +7,7 @@
           <span class="play-button-trigger"></span>
         </div>
         <div class="course-card-body">
-          <div class="course-card-info">
-            <div ng-if="key !== 0" ng-repeat='(key, value) in video.category'>
-              <span class="catagroy">{{value}}</span>
-            </div>
-            <div>
-              <i class="icon-feather-bookmark icon-small"></i>
-            </div>
-          </div>
-          <h4>{{video.name}}</h4>
-           <p>{{video.slug}}</p>
-          <div class="course-card-footer">
-            <h5> <i class="icon-feather-film"></i> 12 Lectures </h5>
-            <h5> <i class="icon-feather-clock"></i> 64 Hours </h5>
-          </div>
+          <h5> <i class="icon-feather-film"></i> {{video.name}} </h5>
         </div>
 
       </div>

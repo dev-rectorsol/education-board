@@ -55,6 +55,8 @@ class Lesson extends CI_Controller {
 		 			 $lesson = [
 		 						'lesson_id' => getCustomId($id, 'lect'),
 		 						'name' => $data['name'],
+								'slug' => $data['slug'],
+ 							 	'url' => $data['url'],
 		 						'description' => $data['description'],
 		 						'is_publish' => 1,
 		 						'created_at' => current_datetime()
@@ -63,6 +65,8 @@ class Lesson extends CI_Controller {
 		 			$lesson = [
 		 					 'lesson_id' => getCustomId($id, 'sub'),
 		 					 'name' => $data['name'],
+							 'slug' => $data['slug'],
+							 'url' => $data['url'],
 		 					 'description' => $data['description'],
 		 					 'created_at' => current_datetime()
 		 			];
@@ -189,17 +193,23 @@ class Lesson extends CI_Controller {
 					 if ($data['submit'] == 'update') {
 						 $lesson = [
 		 					'name' => $data['name'],
+							'slug' => $data['slug'],
+							'url' => $data['url'],
 		 					'description' => $data['description'],
 		 				];
 					 }else if ($data['submit']) {
 					 	$lesson = [
 							'name' => $data['name'],
+							'slug' => $data['slug'],
+							'url' => $data['url'],
 							'description' => $data['description'],
 							'is_publish' => 1
 						];
 					 } else {
 						$lesson = [
 								 'name' => $data['name'],
+								 'slug' => $data['slug'],
+	 								'url' => $data['url'],
 								 'description' => $data['description'],
 								 'is_publish' => 0
 						];
@@ -210,7 +220,7 @@ class Lesson extends CI_Controller {
 
 						if ( isset($_POST['featureImage']) ) {
 							// if added feature image
-							$this->common_model->addThumb($_POST['featureImage'], $data['lesson_id']);
+							$this->common_model->updateThumb($_POST['featureImage'], $data['lesson_id']);
 						}
 						if ( isset($data['lactureVideo']) ) {
 								// if Added + new video lacture
@@ -261,7 +271,7 @@ class Lesson extends CI_Controller {
 
 						if ( isset($_POST['featureImage']) ) {
 							// if added feature image
-							$this->common_model->addThumb($_POST['featureImage'], $data['lesson_id']);
+							$this->common_model->updateThumb($_POST['featureImage'], $data['lesson_id']);
 						}
 						if ( isset($data['lactureVideo']) ) {
 								// if Added + new video lacture

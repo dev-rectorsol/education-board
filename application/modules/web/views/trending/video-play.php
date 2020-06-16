@@ -2,8 +2,8 @@
   <div class="container pt-4">
     <div uk-grid>
       <div class="uk-width-3-4@m">
-        <video id="video" controls preload="none" class="lazy" poster="<?php echo base_url($thumb->thumb) ?>">
-          <source data-src="<?php echo $views->url ?>" type="video/<?php echo $views->videotype ?>">
+        <video id="video" controls controlsList="nodownload" preload="none" class="lazy" poster="<?php echo base_url($thumb->thumb) ?>">
+          <source data-src="<?php  echo !empty(isset($views->url)) ? $views->url : ''; ?>" type="video/<?php echo $views->videotype ?>">
         </video>
         <div class="p-3">
           <h2 class="mt-lg-5 "> <?php echo $trending->name; ?> </h2>
@@ -14,10 +14,10 @@
             <div class="uk-width-expand">
               <nav class="responsive-tab">
                 <ul class="text-right">
-                  <li><a href="#"> <i class="uil-cloud-download"></i> <span class="uk-visible@s"> Download </span></a></li>
+                  <!-- <li><a href="#"> <i class="uil-cloud-download"></i> <span class="uk-visible@s"> Download </span></a></li> -->
                   <li><a href="#" uk-toggle="target: #code">
-                      <i class="icon-feather-code">
-                      </i> <span class="uk-visible@s"> Source code </span> </a></li>
+                      <i class="icon-feather-share">
+                      </i> <span class="uk-visible@s"> Share </span> </a></li>
                 </ul>
               </nav>
             </div>
@@ -26,10 +26,10 @@
           <div class="uk-card-default rounded px-3 pb-md-3" uk-toggle="cls: uk-flex uk-flex-between@m uk-flex-middle; mode: media; media: @m">
             <div class="user-details-card">
               <div class="user-details-card-avatar">
-                <img src="../assets/images/avatars/avatar-2.jpg" alt="">
+                <img src="<?php echo base_url('/assets/images/avatars/default.png'); ?>" alt="">
               </div>
               <div class="user-details-card-name">
-                Stella Johnson <span> Developer <span> 1 year ago </span> </span>
+                Kalka Ias <span> Team <span> <?php echo time_diff($trending->created_at); ?> ago </span> </span>
               </div>
             </div>
             <div>
@@ -65,14 +65,12 @@
               <div class="p-4 pb-0">
                 <button class="uk-offcanvas-close" type="button" uk-close></button>
 
-                <h3>Source code</h3>
+                <h3>Share Video</h3>
 
                 <div class="uk-flex uk-flex-between">
                   <nav class="mb-0">
                     <ul uk-switcher="connect : #code-snipt ; animation: uk-animation-fade" class="mb-0" uk-tab>
-                      <li class="uk-active"><a href="#">JavaScript</a></li>
-                      <li><a href="#">Html</a></li>
-                      <li><a href="#">Css </a></li>
+                      <li class="uk-active"><a href="#">Url</a></li>
                     </ul>
 
 
@@ -96,12 +94,8 @@
                 <!-- javascript-->
                 <li>
                   <pre class="brush: javascript" id="starter-page">
-                </li>
-                <li>
-                  <pre class="brush: html" id="starter-page"></pre>
-                </li>
-                <li>
-                  <pre class="brush: html" id="starter-page"></pre>
+                    <?php echo base_url('trending/video/'). $trending->lesson_id; ?>
+                  </pre>
                 </li>
               </ul>
             </div>

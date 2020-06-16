@@ -51,8 +51,8 @@
 																			<td><?php echo $value['name'] ?></td>
 																			<td><?php echo my_date_show($value['created_at']) ?></td>
 																			<td>
-																				<button type="button" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-																				<button type="button" onclick="delete_detail(<?php echo $value['postid'] ?>)" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+																				<a href="<?php echo base_url('admin/article/edit/').$value['postid']; ?>"> <button type="button" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> </a>
+																				<button type="button" onclick="delete_detail('<?php echo $value['postid'] ?>')" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
 																			</td>
 																		</tr>
 																	<?php endforeach; ?>

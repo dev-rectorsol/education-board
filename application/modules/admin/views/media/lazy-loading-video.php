@@ -145,12 +145,6 @@ function go_loop(counter) {
    }
 }
 function get_refrace(){
-  $.ajax({
-     async: true,
-     url: refraceAPI,
-     success : function() {
-       window.location.reload();
-     }
-   });
+       window.location = 'get_file_refrace';
 }
 </script>

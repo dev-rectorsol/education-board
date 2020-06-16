@@ -4,7 +4,7 @@
 
 
     <div class="blog-article-single" data-src="<?php echo empty($blog->image) ? base_url($blog->image) : base_url('assets/images/blog/img-8.jpg'); ?>" uk-img>
-        <span class="item-tag"> <i class="icon-feather-arrow-left"> </i> </span>
+        <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>"> <span class="item-tag"> <i class="icon-feather-arrow-left"> </i> </span> </a>
         <div class="container-small">
 
             <p class="blog-article-meta mb-3">
