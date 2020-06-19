@@ -9,32 +9,35 @@ class Media extends CI_Controller {
     parent::__construct();
 		if(check()){
 			if(!isAdmin($this->session->userdata('roles')))
-				redirect(base_url(), 'refresh');
+				{redirect(base_url(), 'refresh');}
 		}else{
 				redirect(base_url(), 'refresh');
 		}
-		$this->load->model('Common_model');
+		$this->load->model('common_model');
 		$this->load->helper('directory');
   }
 
-
-	// public function index()
-	// {
-	// 			$map = directory_map(UPLOAD_FILE, FALSE, TRUE);
-	// 			$files = self::Concatenate_Filepaths($map);
-	// 			$fileData = self::getFileWithExt($files);
-	// 			$data['main_content'] = $this->load->view('media/list-view', $fileData, TRUE);
-	// 			$this->load->view('index', $data);
-	// }
-
 	public function index() {
-      $fileData['file'] = readJSON();
+    $fileData = array('file');
+      $data = $this->common_model->gallerys(10, 0);
+      foreach ($data as $value) {
+        $fileData['file'][] = json_decode($value['details']);
+      }
       $data['main_content'] = $this->load->view('media/lazy-loading', $fileData, TRUE);
       $this->load->view('index', $data);
 	}
+
 	public function videos() {
-			$fileData['file'] = readJSON();
 			$data['main_content'] = $this->load->view('media/lazy-loading-video', $fileData, TRUE);
+			$this->load->view('index', $data);
+	}
+
+	public function others() {
+      $data = $this->common_model->others();
+      foreach ($data as $value) {
+        $fileData['file'][$value['id']] = json_decode($value['details']);
+      }
+			$data['main_content'] = $this->load->view('media/list-view', $fileData, TRUE);
 			$this->load->view('index', $data);
 	}
 
@@ -50,15 +53,32 @@ class Media extends CI_Controller {
       echo base_url('admin/media/get_file_refrace');
     }
  }
-	public function get_load()
+	public function get_gallery()
 	{
-			if ($_POST) {
-				$map = directory_map(UPLOAD_FILE, FALSE, TRUE);
-				$files = self::Concatenate_Filepaths($map);
-				$fileData = self::getFileWithExt($files);
-				pre($_POST);
-			}
+    $page = $_POST['id'];
+    $output = array('html'=>'');
+    // Set pagination
+    $total_rows = $this->common_model->get_count('gallery', IMAGE_EXT);
+    if ($total_rows > $page) {
+        // code...
+      $config = array();
+      $config['per_page'] = 5;
+      $postID = ($config['per_page'] + $page);
 
+
+      $data = $this->common_model->gallerys($config["per_page"], $page);
+
+      foreach ($data as $value) {
+            $value = json_decode($value['details']);
+            $output['html'] .= '<img data-sizes="auto" data-src="'.base_url($value->dirname.'/'.$value->basename).'" class="lazyload" alt="'. $value->filename .'">';
+
+      }
+      $output['loadmore'] = '<div lastID="'. $postID .'"name="image" id="loadmore"><img src="'. base_url('assets/images/preloder-0.2s-200px.svg') .'" width="60" height="40" alt=""></div>';
+      $output['is_end'] = 0;
+      echo json_encode($output);
+    } else {
+      echo json_encode(array('is_end' => 1));
+    }
 	}
 
 
@@ -67,6 +87,30 @@ class Media extends CI_Controller {
 		$this->load->view('index', $data);
 	}
 
+
+  	public function save() {
+  		if ($_POST) {
+  			// Get File Information
+  			$file = getFileInfo($_POST['file']);
+  			if ($file['status']) {
+  				// check file exist...
+  				$data = [
+  					'status' => $file['status'],
+  					'name' => $file['filename'],
+  					'filetype' => $file['extension'],
+  					'details' => json_encode($file)
+  				];
+  				$result = $this->common_model->insert($data, 'gallery');
+  				if ($result) {
+  					echo json_encode(array('error' => 0, 'msg' => 'Document saved'));
+  				}
+  			} else {
+  				echo json_encode(array('error' => 1, 'msg' =>  base_url($_POST['image']).' file path not found.'));
+  			}
+  		}else{
+  			echo json_encode(array('error' => 1, 'msg' => 'Request not allowed'));
+  		}
+  	}
 
 	public function get_model()
 	{
@@ -146,8 +190,7 @@ class Media extends CI_Controller {
 	{
 		$filedata = array();
 		foreach ($path as $value) {
-			if ( preg_match('/(\.m4v|\.mp4|\.avi|\.MP4|\.AVI)$/i', $value) )
-				$filedata['video'][] = $value;
+			if ( preg_match('/(\.m4v|\.mp4|\.avi|\.MP4|\.AVI)$/i', $value) ) {$filedata['video'][] = $value;}
 			}
 		return $filedata;
 	}

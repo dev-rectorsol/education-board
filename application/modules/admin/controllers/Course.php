@@ -223,4 +223,12 @@ class Course extends CI_Controller {
 		}
  }
 
+ public function get_courses() {
+		if ($_POST) {
+			$subject=$this->security->xss_clean($_POST);
+			$data = $this->course_model->get_courses_by_name($subject['search']);
+			echo json_encode($data);
+		}
+	}
+
 }

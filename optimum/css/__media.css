@@ -7,13 +7,21 @@ line-height: 0;
 -moz-column-count:    4;
 -moz-column-gap:      0px;
 column-count:         4;
-column-gap:           0px;
+column-gap:           18px;
 }
 
 .__file-media img {
 /* Just in case there are inline attributes */
 width: 100% !important;
 height: auto !important;
+border: 1px solid rgba(0,0,0,.5);
+margin-bottom: 20px;
+border-radius: 5px;
+}
+
+.__file-media img:hover{
+  cursor: pointer;
+  box-shadow: 5px 4px 18px 0px #a29191f7;
 }
 @media (max-width: 1200px) {
   .__file-media {

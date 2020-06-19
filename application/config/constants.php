@@ -92,3 +92,6 @@ defined('ROLE_STUDENT')      OR define('ROLE_STUDENT', 2); // student role id
 defined('UPLOAD_FILE')      OR define('UPLOAD_FILE', 'uploads'); // Upload folder path
 defined('HOST_UPLOAD_FILE')      OR define('HOST_UPLOAD_FILE', 'http://kalkaiaszone.live/uploads/'); // Upload folder path
 defined('FILE_JSON_INFO')      OR define('FILE_JSON_INFO', 'file-data.json'); // Upload folder path
+defined('IMAGE_EXT')      OR define('IMAGE_EXT', array('jpg', 'jpeg', 'png', 'gif', 'JPG', 'JPEG', 'PNG', 'GIF')); // Upload folder path
+defined('DOC_EXT')      OR define('DOC_EXT', array('pdf', 'doc', 'ppt', 'txt', 'PDF', 'DOC', 'PPT', 'TXT')); // Upload folder path
+defined('OPTIMUM')      OR define('OPTIMUM', 'optimum'); // Upload folder path

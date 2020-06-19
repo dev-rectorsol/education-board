@@ -237,7 +237,7 @@ function getMaxUserId(){
             //-- set upload path
             $config['upload_path']  = UPLOAD_FILE . '/' . 'images';
             $config['allowed_types']= 'gif|jpg|png|jpeg';
-            $config['max_size']     = '920000';
+            $config['max_size']     = $max_size;
             $config['max_width']    = '92000';
             $config['max_height']   = '92000';
 
@@ -247,7 +247,7 @@ function getMaxUserId(){
                 $data = $this->upload->data();
 
                 //-- set upload path
-                $source             = UPLOAD_FILE . "/\images/" . $data['file_name'] ;
+                $source             = UPLOAD_FILE . "/images/" . $data['file_name'] ;
                 $destination_medium = UPLOAD_FILE . "/images/medium/" ;
                 $main_img = $data['file_name'];
                 // Permission Configuration
@@ -293,21 +293,28 @@ function getMaxUserId(){
                 unlink($source);
 
                 return array(
-                    'image' => $images,
+                    'states' => 1,
+                    'file' => $images,
                 );
             }
             else {
-                echo "Failed! to upload images" ;
+              return array(
+                  'states' => 0,
+                  'error' => $this->upload->display_errors(),
+              );
             }
 
     }
 
-    function upload_Pdf($max_size){
+    function upload_Pdf($max_size) {
 
             //-- set upload path
-            $config['upload_path']  = UPLOAD_FILE . '/' . 'document';
-            $config['allowed_types']= 'pdf|doc|docx|ppt';
-            $config['max_size']     = $max_size;
+            $config = array(
+              'upload_path'  => UPLOAD_FILE . '/document',
+              'upload_url'   => base_url() . UPLOAD_FILE . '/document',
+              'allowed_types'=> '*',
+              'max_size'     => $max_size,
+            );
 
             $this->load->library('upload', $config);
             if ($this->upload->do_upload("file")) {
@@ -315,16 +322,19 @@ function getMaxUserId(){
                 $data = $this->upload->data();
 
                 //-- set upload path
-                $source = UPLOAD_FILE . "/\document/" . $data['file_name'] ;
+                $source = UPLOAD_FILE . "/document/" . $data['file_name'] ;
                 return array(
-                    'doc' => $source,
+                    'states' => 1,
+                    'file' => $source,
                 );
             }
             else {
-                echo "Failed! to upload document" ;
+              return array(
+                  'states' => 0,
+                  'error' => $this->upload->display_errors(),
+              );
             }
-
-    }
+          }
 
     public function indexing($data, $rootid) {
       if ( isset($data['tag']) ||  isset($data['category']) ) {
@@ -400,6 +410,19 @@ function getMaxUserId(){
     }
 
 
+    public function addPdf($data, $rootid){
+      $table = 'docfile';
+      foreach ($data as $value) {
+          $pdf = [
+            'docid' => getUniqidId('doc'),
+            'root' => $rootid,
+            'nodeid' => $value,
+            'type' => 'paid',
+          ];
+          $this->db->insert($table, $pdf);
+      }
+      return true;
+    }
     public function addThumb($data, $rootid){
       $table = 'thumbnail';
       $data = [
@@ -458,7 +481,7 @@ function getMaxUserId(){
       $query = $this->db->get();
       $query = $query->result_array();
       foreach ($query as $value) {
-        $data[] = $value['port'];;
+        $data[] = $value['port'];
       }
       return $data;
     }
@@ -563,4 +586,37 @@ function getMaxUserId(){
       $result = $this->db->get();
       return $result->result();
     }
+
+    public function get_count($table, $filetype) {
+      $this->db->select("COUNT(*) AS count")->from($table);
+      foreach ($filetype as  $value) {
+        $this->db->or_where('filetype', $value);
+      }
+      $this->db->where('deleted', 0);
+      $result = $this->db->get();
+     return !empty($result->row()) ? $result->row()->count : 0;
+   }
+
+   public function gallerys($limit, $start) {
+     $this->db->select('details');
+     $this->db->from('gallery');
+     foreach (IMAGE_EXT as  $value) {
+       $this->db->or_where('filetype', $value);
+     }
+     $this->db->order_by('id', 'DESC');
+     $this->db->limit($limit, $start);
+     $query = $this->db->get();
+    return $query->result_array();
+   }
+
+   public function others() {
+     $this->db->select('id ,details');
+     $this->db->from('gallery');
+     foreach (DOC_EXT as  $value) {
+       $this->db->or_where('filetype', $value);
+     }
+     $this->db->order_by('id', 'DESC');
+     $query = $this->db->get();
+     return $query->result_array();
+   }
 }

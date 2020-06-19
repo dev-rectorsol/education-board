@@ -49,5 +49,28 @@ $(document).ready(function(){
       }
     });
   });
+
+  // Add Gallery addfeatureimage
+
+  $('#file_upload').dropzone({
+    maxFilesize: 10, //MB
+    maxFiles: 10, //number of file
+    url: '<?php echo base_url('file_upload'); ?>',
+    success: function(file, response){
+      $.ajax({
+        url: '<?php echo base_url('admin/media/save'); ?>',
+        type: 'POST',
+        data: JSON.parse(response),
+        success: function(data) {
+          var result = JSON.parse(data);
+          if (!result.error) {
+            toastr.success('Success!', result.msg);
+          } else {
+            toastr.error('Faild!', result.msg);
+          }
+        },
+      })
+    }
+  });
 });
 </script>

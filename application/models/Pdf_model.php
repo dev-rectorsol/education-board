@@ -15,9 +15,10 @@ class Pdf_model extends CI_Model {
         return $query;
     }
 
-    function select_list(){
-      $sql = 'SELECT lesson.*, COUNT(videos.videoid) AS lacturcount FROM lesson
-              LEFT JOIN videos ON lesson.lesson_id = videos.nodeid
+    function select_list() {
+      $sql = 'SELECT lesson.*, COUNT(docfile.docid) AS docfile FROM lesson
+              LEFT JOIN docfile ON lesson.lesson_id = docfile.root
+              WHERE lesson.lesson_type = "pdf"
               GROUP BY lesson.lesson_id';
       $result = $this->db->query($sql);
       return $result->result_array();
@@ -26,20 +27,20 @@ class Pdf_model extends CI_Model {
       return $this->db->get_where('lesson', array('lesson_id' => $id))->row();
     }
 
-    public function get_lesson_by_name($name){
-      $this->db->select('lesson_id AS id, name AS text');
-      $this->db->from('lesson');
+    public function get_documents_by_name($name){
+      $this->db->select('id, name AS text');
+      $this->db->from('gallery');
       $this->db->where('name LIKE', $name.'%');
       $result = $this->db->get();
       return $result->result();
     }
 
 
-    public function get_lecture($node) {
-      $this->db->select('*');
-      $this->db->from('videos');
-      $this->db->where('nodeid', $node);
-      $result = $this->db->get();
-      return $result->result_array();
+    public function get_documents($node) {
+      $sql = "SELECT docfile.docid, gallery.name, gallery.details, docfile.download FROM docfile
+              INNER JOIN gallery ON docfile.nodeid = gallery.id
+              WHERE docfile.root = '{$node}'";
+              $result = $this->db->query($sql);
+              return $result->result_array();
     }
 }

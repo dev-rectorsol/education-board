@@ -3,38 +3,26 @@
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <div class="row">
-        <form action="<?php echo base_url('admin/lesson/update')?>" method="POST">
+        <form action="<?php echo base_url('admin/pdf/update')?>" method="POST">
           <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
             <div class="product-status-wrap drp-lst">
-              <h4>Edit Lesson</h4>
+              <h4>Edit Pdf</h4>
               <div class="form-group">
-                <label class="login2">Lesson Name</label>
-                <input name="name" type="text" class="form-control" placeholder="Subject Name" value="<?php echo $data->name; ?>">
+                <label class="login2">PDF Name</label>
+                <input name="name" type="text" class="form-control" placeholder="PDF Lesson Name" value="<?php echo $data->name; ?>">
               </div>
               <div class="form-group">
                 <label class="login2">Slug</label>
                 <input name="slug" type="text" class="form-control" placeholder="slug" value="<?php echo $data->slug; ?>">
               </div>
               <div class="form-group">
-                <label class="login2">Lesson Description</label>
+                <label class="login2">Document Description</label>
                 <textarea name="description" id="summernote1"><?php echo $data->description; ?></textarea>
               </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <div class="product-status-wrap drp-lst">
-              <?php if (!empty($image)): ?>
-                <span id="addfeaturepreview">
-                  <img src="<?php echo base_url().$image->thumb; ?>" alt="">
-                  <input type="hidden" name="featureImage" value="<?php echo $image->thumb; ?>">
-                </span>
-                <?php else: ?>
-                  <span id="addfeaturepreview">
-									</span>
-              <?php endif; ?>
-              <button id="removepreview" type="button" class="btn btn-link">remove</button>
-              <button id="addfeatureimage" type="button" class="btn btn-link" name="button">change feature image</button>
-
               <div class="form-group">
                 <label class="login2">Create Date:</label>
                 <span><?php echo my_date_show_time($data->created_at); ?></span>
@@ -58,64 +46,31 @@
                 <button type="submit" name="submit" value="update" class="btn btn-primary">Update</button>
               </div>
               <hr>
-              <div class="form-group">
-                <label class="login2">YouTube Video (option)</label>
-                <textarea name="url" placeholder="YouTube iframe"><?php echo $data->url; ?></textarea>
-              </div>
-              <div class="form-group">
-                <label class="login2">Course Category</label>
-                <select class="select2_demo_2 form-control" name='category[]' data-placeholder="Choose a Category..." multiple="multiple">
-                  <?php foreach($category as $row){ ?>
-                    <?php if(in_array($row['id'], $indexcategory)): ?>
-                      <option selected value="<?php echo $row['id'] ?>"> <?php echo $row['name'] ?> </option>
-                    <?php else: ?>
-                      <option value="<?php echo $row['id'] ?>"> <?php echo $row['name'] ?> </option>
-                    <?php endif; ?>
-                  <?php } ?>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="login2">Course Tag</label>
-                <select class="select2_demo_2 form-control" name='tag[]' data-placeholder="Choose a Tags..." multiple="multiple">
-                  <?php foreach($tag as $row){ ?>
-                    <?php if(in_array($row['id'], $indextags)): ?>
-                      <option selected value="<?php echo $row['id'] ?>"> <?php echo $row['title'] ?> </option>
-                    <?php else: ?>
-                      <option value="<?php echo $row['id'] ?>"> <?php echo $row['title'] ?> </option>
-                    <?php endif; ?>
-                  <?php } ?>
-                </select>
-              </div>
-              <div class="form-group">
-                <span id="addlecturepreview"></span>
-                <button id="lectureremovepreview" type="button" class="btn btn-link hide">remove</button>
-                <button id="addlectureimage" type="button" class="btn btn-link" name="button">Add Video file</button>
+              <div class="form-group res-mg-t-15">
+                <label class="login2">Add PDF File</label>
+                <select class="select2_demo_2 form-control" id="getDocFile" name='pdf[]' data-placeholder="Choose pdf a files..." multiple="multiple"></select>
               </div>
             </div>
             <div class="product-status-wrap drp-lst">
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="review-content-section">
+                    <h4>List of Added PDF</h4>
                     <div class="row">
-                    <?php foreach ($video as  $value): ?>
                       <div class="col-lg-12">
-                        <div class="hpanel widget-int-shape responsive-mg-b-30">
+                        <div class="hpanel">
                           <div class="panel-body">
                             <div class="text-left content-box">
-                                <div class="m icon-box">
-                                  <video class="afterglow" width="250" height="180">
-                                    <source type="video/<?php echo $value['videotype']; ?>" src="<?php echo base_url($value['url']) ?>" />
-                                  </video>
-                                </div>
+                              <?php foreach ($pdf as $key => $value): $file =  json_decode($value['details']);?>
                                 <p class="small mg-t-box">
-                                  <b class="m-b-xs"><?php echo $value['name'] ?></b>
-                                  <button type="button" class="btn btn-default pull-right" name="button" onclick="lactureRemove('<?php echo $value['videoid']; ?>')"><i class="fa fa-trash"></i></button>
+                                  <a target="_blank" class="media" href="<?php echo base_url($file->dirname.'/'.$file->basename) ?>"><b class="m-b-xs"><?php echo $value['name'] ?></b></a>
+                                  <button type="button" class="btn btn-default pull-right" name="button" onclick="pdfRemove('<?php echo $value['docid']; ?>')"><i class="fa fa-trash"></i></button>
                                 </p>
+                              <?php endforeach; ?>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <?php endforeach; ?>
                     </div>
                   </div>
                 </div>
@@ -130,12 +85,12 @@
 
 <script type="text/javascript">
 
-  function lactureRemove(id){
+  function pdfRemove(id){
     var del = confirm("Do you want to Remove");
     if (del == true) {
       var sureDel = confirm("Are you sure want to Remove");
       if (sureDel == true) {
-        window.location = "<?php echo base_url()?>admin/lesson/lactureRemove/" + id;
+        window.location = "<?php echo base_url()?>admin/pdf/pdfRemove/" + id;
       }
 
     }

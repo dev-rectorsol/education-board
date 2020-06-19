@@ -14,9 +14,8 @@ class Pdf extends CI_Controller {
 	{
 		$data= array();
 		$data['page'] ='Add PDF';
-		$data['tag']=  $this->common_model->select('tags');
-		$data['category']=  $this->common_model->select('category');
-		$data['main_content']= $this->load->view('pdf/add',$data, true);
+		$data['main_content']= $this->load->view('pdf/add-view',$data, true);
+		$data['script']= $this->load->view('pdf/script',$data, true);
 		$this->load->view('index',$data);
 	}
 
@@ -24,8 +23,8 @@ class Pdf extends CI_Controller {
 	{
 		$data= array();
 		$data['page'] ='Lesson';
-		$data['lesson']=  $this->lesson_model->select_list();
-		$data['main_content']= $this->load->view('lesson/view',$data, true);
+		$data['pdf']=  $this->pdf_model->select_list();
+		$data['main_content']= $this->load->view('pdf/list-view',$data, true);
 		$this->load->view('index',$data);
 	}
 
@@ -38,38 +37,32 @@ class Pdf extends CI_Controller {
 		 						'lesson_id' => getCustomId($id, 'lect'),
 		 						'name' => $data['name'],
 								'slug' => $data['slug'],
- 							 	'url' => $data['url'],
 		 						'description' => $data['description'],
 		 						'is_publish' => 1,
+								'lesson_type' => 'pdf',
 		 						'created_at' => current_datetime()
 		 			 ];
 		 		}else{
 		 			$lesson = [
-		 					 'lesson_id' => getCustomId($id, 'sub'),
+		 					 'lesson_id' => getCustomId($id, 'lect'),
 		 					 'name' => $data['name'],
 							 'slug' => $data['slug'],
-							 'url' => $data['url'],
+							 'lesson_type' => 'pdf',
 		 					 'description' => $data['description'],
 		 					 'created_at' => current_datetime()
 		 			];
 		 		}
 		 		if ($this->common_model->insert($lesson, 'lesson')) {
 
-					$this->common_model->indexing($_POST, $lesson['lesson_id']);
-
-					if ( isset($_POST['featureImage']) ) {
+					if ( isset($_POST['pdf']) ) {
 						// if added feature image
-						$this->common_model->addThumb($_POST['featureImage'], $lesson['lesson_id']);
+						$this->common_model->addPdf($_POST['pdf'], $lesson['lesson_id']);
 					}
 
-					if ( isset($data['lactureVideo']) ) {
-						// if Added video lacture
-						$this->common_model->addLacture($data['lactureVideo'], $lesson['lesson_id']);
-					}
-		 			$this->session->set_flashdata(array('error' => 0, 'msg' => 'Lesson Create Done'));
-		 			redirect(base_url('admin/lesson/edit/').$lesson['lesson_id'], 'refresh');
+		 			$this->session->set_flashdata(array('error' => 0, 'msg' => 'Pdf Lesson Create Done'));
+		 			redirect(base_url('admin/pdf/edit/').$lesson['lesson_id'], 'refresh');
 		 	 }  else {
-		 		 $this->session->set_flashdata(array('error' => 1, 'msg' => 'Lesson Creation Failed'));
+		 		 $this->session->set_flashdata(array('error' => 1, 'msg' => 'Pdf Lesson Creation Failed'));
 		 		 redirect($_SERVER['HTTP_REFERER'], 'refresh');
 		 	 }
 		  } else {
@@ -82,14 +75,10 @@ class Pdf extends CI_Controller {
 			if ($id != '') {
 				$data= array();
 				$data['page'] ='Edit Lesson';
-				$data['tag']=  $this->common_model->select('tags');
-				$data['category']=  $this->common_model->select('category');
+				$data['pdf']=  $this->pdf_model->get_documents($id);
 				$data['data']=  $this->lesson_model->select_by_id($id);
-				$data['video']=  $this->common_model->getVideoByRoot($id);
-				$data['image'] = $this->common_model->getThumByRoot($id);
-				$data['indexcategory'] = $this->common_model->getIndexCategorys($id);
-				$data['indextags'] = $this->common_model->getIndexTags($id);
-				$data['main_content']= $this->load->view('lesson/edit-view',$data, true);
+				$data['main_content']= $this->load->view('pdf/edit-view',$data, true);
+				$data['script']= $this->load->view('pdf/script',$data, true);
 				$this->load->view('index',$data);
 			}else {
 				$this->session->set_flashdata(array('error' => 1, 'msg' => 'Request not Allowed'));
@@ -104,14 +93,12 @@ class Pdf extends CI_Controller {
 						 $lesson = [
 		 					'name' => $data['name'],
 							'slug' => $data['slug'],
-							'url' => $data['url'],
 		 					'description' => $data['description'],
 		 				];
 					 }else if ($data['submit']) {
 					 	$lesson = [
 							'name' => $data['name'],
 							'slug' => $data['slug'],
-							'url' => $data['url'],
 							'description' => $data['description'],
 							'is_publish' => 1
 						];
@@ -119,25 +106,19 @@ class Pdf extends CI_Controller {
 						$lesson = [
 								 'name' => $data['name'],
 								 'slug' => $data['slug'],
-	 								'url' => $data['url'],
 								 'description' => $data['description'],
 								 'is_publish' => 0
 						];
 					}
 					if ( $this->common_model->update($lesson, 'lesson_id', $data['lesson_id'], 'lesson') ) {
 
-						$this->common_model->indexing($_POST, $data['lesson_id']);
-
-						if ( isset($_POST['featureImage']) ) {
+						if ( isset($_POST['pdf']) ) {
 							// if added feature image
-							$this->common_model->updateThumb($_POST['featureImage'], $data['lesson_id']);
+							$this->common_model->addPdf($_POST['pdf'], $data['lesson_id']);
 						}
-						if ( isset($data['lactureVideo']) ) {
-								// if Added + new video lacture
-							$this->common_model->addLacture($data['lactureVideo'], $data['lesson_id']);
-						}
-			 			$this->session->set_flashdata(array('error' => 0, 'msg' => 'Lesson Update Done'));
-			 			redirect(base_url('admin/lesson/edit/').$data['lesson_id'], 'refresh');
+
+			 			$this->session->set_flashdata(array('error' => 0, 'msg' => 'PDF Lesson Update Done'));
+			 			redirect(base_url('admin/pdf/edit/').$data['lesson_id'], 'refresh');
 					 }  else {
 						 $this->session->set_flashdata(array('error' => 1, 'msg' => 'Action Failed'));
 						 redirect($_SERVER['HTTP_REFERER'], 'refresh');
@@ -158,15 +139,15 @@ class Pdf extends CI_Controller {
 
 
 		function pdfRemove($id){
-			$data1 = [ 'videoid'=> $id ];
-			$this->common_model->delete($data1,'videos');
+			$data1 = [ 'docid'=> $id ];
+			$this->common_model->delete($data1,'docfile');
 			redirect($_SERVER['HTTP_REFERER'], 'refresh');
 		}
 
-		public function get_lesson(){
+		public function get_documents(){
 			if ($_POST) {
 				$subject=$this->security->xss_clean($_POST);
-				$data = $this->lesson_model->get_lesson_by_name($subject['search']);
+				$data = $this->pdf_model->get_documents_by_name($subject['search']);
 				echo json_encode($data);
 			}
 		}

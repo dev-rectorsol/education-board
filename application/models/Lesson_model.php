@@ -18,6 +18,7 @@ class Lesson_model extends CI_Model {
     function select_list(){
       $sql = 'SELECT lesson.*, COUNT(videos.videoid) AS lacturcount FROM lesson
               LEFT JOIN videos ON lesson.lesson_id = videos.nodeid
+              WHERE lesson.lesson_type = "video"
               GROUP BY lesson.lesson_id';
       $result = $this->db->query($sql);
       return $result->result_array();

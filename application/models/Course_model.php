@@ -102,4 +102,12 @@ function getMaxId(){
         $query = $this->db->query($sql);
         return $query->row();
       }
+
+      public function get_courses_by_name($name){
+        $this->db->select('course_id AS id, name AS text');
+        $this->db->from('course');
+        $this->db->where('name LIKE', $name.'%');
+        $result = $this->db->get();
+        return $result->result();
+      }
   }

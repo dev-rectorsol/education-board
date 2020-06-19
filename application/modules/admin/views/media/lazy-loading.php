@@ -13,11 +13,10 @@
                     <select class="form-control" name="mediatype">
                       <option selected value="image">Images</option>
                       <option value="video">Videos</option>
-                      <option value="other">Other</option>
                     </select>
                   </li>
                   <li>
-                  <a href="<?php echo base_url('admin/media/get_file_refrace'); ?>">  <button type="button" name="refresh" class="btn btn-default btn-md" title="Refrash"> <i class="fa fa-refresh" aria-hidden="true"></i> </button></a>
+                  <a href="<?php echo base_url('admin/media/others'); ?>">  <button type="button" name="refresh" class="btn btn-default btn-md" title="Refrash"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF Document </button></a>
                   </li>
                 </ul>
               </div>
@@ -31,8 +30,19 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="review-content-section text-center">
                     <div class="image-grid-row">
-                      <section id="load" class="__file-media"></section>
-                      <button type="button" name="image" class="btn btn-outline-info" id="loadmore"><i class="fa fa-refresh" aria-hidden="true"></i> Load More</button>
+                      <?php if (isset($file)): ?>
+                        <section id="load" class="__file-media">
+                          <?php foreach ($file as $key => $value): ?>
+                            <img data-sizes="auto" data-src="<?php echo base_url($value->dirname.'/'.$value->basename); ?>" class="lazyload" alt="<?php echo $value->filename ?>">
+
+                            <?php $postID = $key+1; endforeach; ?>
+                          </section>
+                          <div lastID="<?php echo $postID; ?>" name="image" id="loadmore" style="display: none;">
+                            <img src="<?php echo base_url('assets/images/preloder-0.2s-200px.svg') ?>" width="60" height="40" alt="">
+                          </div>
+                          <?php else: ?>
+                            <p class="text-center">File not Found.</p>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </div>
@@ -55,73 +65,43 @@
 </style>
 <script src="<?php echo base_url('optimum/js/google.lazy.load/lazysizes.min.js') ?>" charset="utf-8"></script>
 <script type="text/javascript">
-var load = $("#load");
-var refresh = $('button[name=refresh]');
-var counter = 0;
-var flickerAPI = "<?php echo base_url(FILE_JSON_INFO) ?>";
-var refraceAPI = "<?php echo base_url('admin/media/get_file_refrace') ?>";
-var image = ['png', 'jpg', 'jpeg'];
-var file = (function(){
-    var result = null;
-    function load(){
-           $.ajax({
-              async: false,
-              url: flickerAPI,
-              dataType: "json",
-              success : function(data) { result = data; }
+
+$(document).ready(function(){
+  var load = $("#load");
+  var flickerAPI = "<?php echo base_url(FILE_JSON_INFO) ?>";
+  var refraceAPI = "<?php echo base_url('admin/media/get_gallery') ?>";
+  var image = ['png', 'jpg', 'jpeg'];
+
+
+    $(window).scroll(function(){
+        var lastID = $('#loadmore').attr('lastID');
+        if(($(window).scrollTop() == $(document).height() - $(window).height()) && (lastID != 0)) {
+            $.ajax({
+                type:'POST',
+                url:refraceAPI,
+                data:'id='+lastID,
+                beforeSend:function(){
+                    $('#loadmore').show();
+                },
+                success:function(data){
+                  var data = JSON.parse(data);
+                    if (!data.is_end) {
+                      $(load).append(data.html);
+                      $(load).parent().append(data.loadmore);
+                      $('#loadmore').remove();
+                    }else {
+                      $('#loadmore').remove();
+                    }
+                }
             });
-    }
-    return {
-        load : function() {
-            if(result) return;
-            load();
-        },
-        getHtml: function(){
-             if(!result) load();
-             return result;
         }
-    }
-})();
-   // file.getHtml();
-(function(){
-  go_loop(0);
-  $('#loadmore').on('click', function(){
-    go_loop(counter + 10);
-    counter = counter + 10;
-  })
-  refresh.on('click', function(){
-    $(this).attr('disabled', 'true');
-    get_refrace();
-  });
-  $("select[name=mediatype]").on('change', function(){
-    var type = $(this).val();
-    if(type === 'image'){
+    });
 
-    }else if (type === 'video'){
-      window.location = "<?php echo base_url('admin/media/videos') ?>"
-    }
-  });
-})();
-function go_loop(counter) {
-  var data = file.getHtml();
-  for(i = counter; i < data.length; i++) {
-      if(jQuery.inArray(data[i].extension, image) != -1) {
-        if (i <= (counter + 10)) {
-        var url = "<?php echo base_url() ?>" + data[i].dirname + '/' + data[i].basename;
-          $( "<img>" )
-          .attr({
-            "data-sizes": "auto",
-            "data-src": url,
-            // "data-srcset":  url + " 30w," + url + " 600w, " + url + " 900w",
-            "class": "lazyload blur-up",
-          })
-          .appendTo( load );
-      } else {
-          break;
+    $("select[name=mediatype]").on('change', function(){
+      var type = $(this).val();
+      if (type === 'video') {
+        window.location = "<?php echo base_url('admin/media/videos') ?>"
       }
-    }else{
-
-    }
-   }
-}
+    });
+});
 </script>

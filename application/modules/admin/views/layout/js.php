@@ -1,97 +1,98 @@
 
 <!-- bootstrap JS
 ============================================ -->
-<script src="<?php echo base_url('optimum')?>/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/bootstrap.min.js"></script>
 <!-- wow JS
 ============================================ -->
-<script src="<?php echo base_url('optimum')?>/js/wow.min.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/wow.min.js"></script>
 <!-- price-slider JS
 ============================================ -->
-<script src="<?php echo base_url('optimum')?>/js/jquery-price-slider.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/jquery-price-slider.js"></script>
 <!-- meanmenu JS
 ============================================ -->
-<script src="<?php echo base_url('optimum')?>/js/jquery.meanmenu.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/jquery.meanmenu.js"></script>
 <!-- owl.carousel JS
 ============================================ -->
-<script src="<?php echo base_url('optimum')?>/js/owl.carousel.min.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/owl.carousel.min.js"></script>
 <!-- sticky JS
 ============================================ -->
-<script src="<?php echo base_url('optimum')?>/js/jquery.sticky.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/jquery.sticky.js"></script>
 <!-- scrollUp JS
 ============================================ -->
-<script src="<?php echo base_url('optimum')?>/js/jquery.scrollUp.min.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/jquery.scrollUp.min.js"></script>
 <!-- counterup JS
 ============================================ -->
-<script src="<?php echo base_url('optimum')?>/js/counterup/jquery.counterup.min.js"></script>
-<script src="<?php echo base_url('optimum')?>/js/counterup/waypoints.min.js"></script>
-<script src="<?php echo base_url('optimum')?>/js/counterup/counterup-active.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/counterup/jquery.counterup.min.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/counterup/waypoints.min.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/counterup/counterup-active.js"></script>
 <!-- mCustomScrollbar JS
 ============================================ -->
-<script src="<?php echo base_url('optimum')?>/js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="<?php echo base_url('optimum')?>/js/scrollbar/mCustomScrollbar-active.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/scrollbar/mCustomScrollbar-active.js"></script>
 <!-- metisMenu JS
 ============================================ -->
-<script src="<?php echo base_url('optimum')?>/js/metisMenu/metisMenu.min.js"></script>
-<script src="<?php echo base_url('optimum')?>/js/metisMenu/metisMenu-active.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/metisMenu/metisMenu.min.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/metisMenu/metisMenu-active.js"></script>
 <!-- morrisjs JS
 ============================================ -->
-<script src="<?php echo base_url('optimum')?>/js/morrisjs/raphael-min.js"></script>
-<script src="<?php echo base_url('optimum')?>/js/morrisjs/morris.js"></script>
-<script src="<?php echo base_url('optimum')?>/js/morrisjs/morris-active.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/morrisjs/raphael-min.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/morrisjs/morris.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/morrisjs/morris-active.js"></script>
 <!-- morrisjs JS
 ============================================ -->
-<script src="<?php echo base_url('optimum')?>/js/sparkline/jquery.sparkline.min.js"></script>
-<script src="<?php echo base_url('optimum')?>/js/sparkline/jquery.charts-sparkline.js"></script>
-<script src="<?php echo base_url('optimum')?>/js/sparkline/sparkline-active.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/sparkline/jquery.sparkline.min.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/sparkline/jquery.charts-sparkline.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/sparkline/sparkline-active.js"></script>
 <!-- calendar JS
 ============================================ -->
-<script src="<?php echo base_url('optimum')?>/js/calendar/moment.min.js"></script>
-<script src="<?php echo base_url('optimum')?>/js/calendar/fullcalendar.min.js"></script>
-<script src="<?php echo base_url('optimum')?>/js/calendar/fullcalendar-active.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/calendar/moment.min.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/calendar/fullcalendar.min.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/calendar/fullcalendar-active.js"></script>
 
   <!-- after glow video player  -->
-  <script src="<?php echo base_url('optimum')?>/afterglow/afterglow.min.js"></script>
+  <script src="<?php echo base_url(OPTIMUM)?>/js/jquery.fancybox.min.js"></script>
 
 <!-- plugins JS
 ============================================ -->
-<script src="<?php echo base_url('optimum')?>/js/plugins.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/plugins.js"></script>
 <!-- main JS
 ============================================ -->
-<script src="<?php echo base_url('optimum')?>/js/main.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/main.js"></script>
 <!-- tawk chat JS
 ============================================ -->
-<!-- <script src="<?php //echo base_url('optimum')?>/js/tawk-chat.js"></script> -->
+<!-- <script src="<?php //echo base_url(OPTIMUM)?>/js/tawk-chat.js"></script> -->
 <!-- Dropzone
 ============================================ -->
-<script src="<?php echo base_url('optimum')?>/js/dropzone/dropzone.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/dropzone/dropzone.js"></script>
 
 <!-- notification JS
 ============================================ -->
-<script src="<?php echo base_url('optimum')?>/js/notifications/Lobibox.js"></script>
-<script src="<?php echo base_url('optimum')?>/js/notifications/notification-active.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/notifications/Lobibox.js"></script>
+<script src="<?php echo base_url(OPTIMUM)?>/js/notifications/notification-active.js"></script>
 
 
-<script src="<?php echo base_url('optimum') ?>/js/toastr/build/toastr.min.js"></script>
+<script src="<?php echo base_url(OPTIMUM) ?>/js/toastr/build/toastr.min.js"></script>
   <!-- select2 JS
 		============================================ -->
-    <script src="<?php echo base_url('optimum')?>/js/select2/select2.full.min.js"></script>
-    <script src="<?php echo base_url('optimum')?>/js/select2/select2-active.js"></script>
+    <script src="<?php echo base_url(OPTIMUM)?>/js/select2/select2.full.min.js"></script>
+    <script src="<?php echo base_url(OPTIMUM)?>/js/select2/select2-active.js"></script>
      <!-- summernote JS
 		============================================ -->
-    <script src="<?php echo base_url('optimum')?>/js/summernote/summernote.min.js"></script>
-    <script src="<?php echo base_url('optimum')?>/js/summernote/summernote-active.js"></script>
+    <script src="<?php echo base_url(OPTIMUM)?>/js/summernote/summernote.min.js"></script>
+    <script src="<?php echo base_url(OPTIMUM)?>/js/summernote/summernote-active.js"></script>
+
 <!-- data table JS
 		============================================ -->
-    <script src="<?php echo base_url('optimum')?>/js/data-table/bootstrap-table.js"></script>
-    <script src="<?php echo base_url('optimum')?>/js/data-table/tableExport.js"></script>
-    <script src="<?php echo base_url('optimum')?>/js/data-table/data-table-active.js"></script>
-    <script src="<?php echo base_url('optimum')?>/js/data-table/bootstrap-table-editable.js"></script>
-    <script src="<?php echo base_url('optimum')?>/js/data-table/bootstrap-editable.js"></script>
-    <script src="<?php echo base_url('optimum')?>/js/data-table/bootstrap-table-resizable.js"></script>
-    <script src="<?php echo base_url('optimum')?>/js/data-table/colResizable-1.5.source.js"></script>
-    <script src="<?php echo base_url('optimum')?>/js/data-table/bootstrap-table-export.js"></script>
+    <script src="<?php echo base_url(OPTIMUM)?>/js/data-table/bootstrap-table.js"></script>
+    <script src="<?php echo base_url(OPTIMUM)?>/js/data-table/tableExport.js"></script>
+    <script src="<?php echo base_url(OPTIMUM)?>/js/data-table/data-table-active.js"></script>
+    <script src="<?php echo base_url(OPTIMUM)?>/js/data-table/bootstrap-table-editable.js"></script>
+    <script src="<?php echo base_url(OPTIMUM)?>/js/data-table/bootstrap-editable.js"></script>
+    <script src="<?php echo base_url(OPTIMUM)?>/js/data-table/bootstrap-table-resizable.js"></script>
+    <script src="<?php echo base_url(OPTIMUM)?>/js/data-table/colResizable-1.5.source.js"></script>
+    <script src="<?php echo base_url(OPTIMUM)?>/js/data-table/bootstrap-table-export.js"></script>
 
-    <script src="<?php echo base_url('optimum')?>/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="<?php echo base_url(OPTIMUM)?>/js/vendor/modernizr-2.8.3.min.js"></script>
 
     <?php include("__media.php"); ?>
     <?php include("__notification.php"); ?>

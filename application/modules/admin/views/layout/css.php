@@ -21,82 +21,83 @@
 
     <!-- Bootstrap CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/bootstrap.min.css">
     <!-- Bootstrap CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/font-awesome.min.css">
     <!-- owl.carousel CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/owl.carousel.css">
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/owl.theme.css">
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/owl.transitions.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/owl.carousel.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/owl.theme.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/owl.transitions.css">
     <!-- animate CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/animate.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/animate.css">
     <!-- normalize CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/normalize.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/normalize.css">
     <!-- meanmenu icon CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/meanmenu.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/meanmenu.min.css">
     <!-- main CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/main.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/main.css">
     <!-- educate icon CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/educate-custon-icon.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/educate-custon-icon.css">
     <!-- morrisjs CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/morrisjs/morris.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/morrisjs/morris.css">
     <!-- mCustomScrollbar CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/scrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/scrollbar/jquery.mCustomScrollbar.min.css">
     <!-- metisMenu CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/metisMenu/metisMenu.min.css">
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/metisMenu/metisMenu-vertical.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/metisMenu/metisMenu.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/metisMenu/metisMenu-vertical.css">
     <!-- calendar CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/calendar/fullcalendar.min.css">
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/calendar/fullcalendar.print.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/calendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/calendar/fullcalendar.print.min.css">
     <!-- style CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/style.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/style.css">
     <!-- responsive CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/responsive.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/responsive.css">
       <!-- dropzone CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/dropzone/dropzone.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/dropzone/dropzone.css">
      <!-- modals CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/modals.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/modals.css">
 
     <!-- notifications CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/notifications/Lobibox.min.css">
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/notifications/notifications.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/notifications/Lobibox.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/notifications/notifications.css">
 
-    <link href="<?php echo base_url('optimum') ?>/js/toastr/build/toastr.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(OPTIMUM) ?>/js/toastr/build/toastr.min.css" rel="stylesheet">
 
     <!-- select2 CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/select2/select2.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/select2/select2.min.css">
     <!-- normalize CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/data-table/bootstrap-table.css">
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/data-table/bootstrap-editable.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/data-table/bootstrap-table.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/data-table/bootstrap-editable.css">
     <!-- modernizr JS
 		============================================ -->
      <!-- summernote CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/summernote/summernote.css">
-    <link rel="stylesheet" href="<?php echo base_url('optimum')?>/css/__media.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/summernote/summernote.css">
+    <link rel="stylesheet" href="<?php echo base_url(OPTIMUM)?>/css/__media.css">
+
     <link rel="stylesheet" href="<?php echo base_url('assets')?>/css/icons.css">
 
     <!-- jquery
     ============================================ -->
-    <script src="<?php echo base_url('optimum')?>/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="<?php echo base_url(OPTIMUM)?>/js/vendor/jquery-1.12.4.min.js"></script>
 </head>
 
 <body>

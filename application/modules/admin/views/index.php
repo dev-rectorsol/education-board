@@ -49,6 +49,14 @@
 							<li><a title="All Courses" href="<?php echo base_url('admin/student/')?>"><span class="mini-sub-pro">Add New</span></a></li>
 						</ul>
 					</li>
+					<!-- Assign course -->
+					<li>
+						<a class="has-arrow" aria-expanded="false"><span class="educate-icon educate-miscellanous icon-wrap"></span> <span class="mini-click-non">ClassRoom</span></a>
+						<ul class="submenu-angle" aria-expanded="false">
+							<li><a title="All Courses" href="<?php echo base_url('admin/classroom/')?>"><span class="mini-sub-pro">All ClassRoom</span></a></li>
+							<li><a title="All Courses" href="<?php echo base_url('admin/classroom/new')?>"><span class="mini-sub-pro">New ClassRoom</span></a></li>
+						</ul>
+					</li>
 					<!-- Courses -->
 					<li>
 						<a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Courses</span></a>
@@ -76,6 +84,16 @@
 							<li><a title="Add Courses" href="<?php echo base_url('admin/pdf')?>"><span class="mini-sub-pro">Add PDF</span></a></li>
 						</ul>
 					</li>
+					<!-- Test serise -->
+					<li>
+						<a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Test Serise</span></a>
+						<ul class="submenu-angle" aria-expanded="false">
+							<li><a title="All Courses" href="<?php echo base_url('admin/test/')?>"><span class="mini-sub-pro">All Test List </span></a></li>
+							<li><a title="Add Courses" href="<?php echo base_url('admin/lesson')?>"><span class="mini-sub-pro">Add Lesson</span></a></li>
+							<li><a title="Add Courses" href="<?php echo base_url('admin/pdf/view')?>"><span class="mini-sub-pro">All PDF List</span></a></li>
+							<li><a title="Add Courses" href="<?php echo base_url('admin/pdf')?>"><span class="mini-sub-pro">Add PDF</span></a></li>
+						</ul>
+					</li>
 					<!-- Products -->
 					<li>
 						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-menu icon-wrap"></span> <span class="mini-click-non">Products</span></a>
@@ -93,12 +111,6 @@
 						</ul>
 					</li>
 
-					<li>
-						<a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-settings icon-wrap"></span> <span class="mini-click-non">Settings</span></a>
-						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="View Mail" href="<?php echo base_url('admin/setting/slider')?>"><span class="mini-sub-pro">Add Slider</span></a></li>
-						</ul>
-					</li>
 					<li>
 						<a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-settings icon-wrap"></span> <span class="mini-click-non">Settings</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
@@ -157,6 +169,8 @@
 													<li><a href="<?php echo base_url('admin/profile') ?>"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
 													</li>
 													<li><a href="<?php echo base_url('admin/setting') ?>"><span class="edu-icon edu-settings author-log-ic"></span>Settings</a>
+													</li>
+													<li><a href="<?php echo base_url('home')?>"><span class="edu-icon edu-locked author-log-ic"></span>Go to Site</a>
 													</li>
 													<li><a href="<?php echo base_url('auth/logout')?>"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
 													</li>

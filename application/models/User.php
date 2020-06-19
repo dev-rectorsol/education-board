@@ -196,4 +196,13 @@ class User extends CI_Model
     {
         return $this->db->get_where("roles", array("id" => $id, "deleted" => null))->row(0);
     }
+
+    public function get_users_by_name($name){
+      $this->db->select('logid AS id, CONCAT(name," (",email,")") AS text');
+      $this->db->from('users');
+      $this->db->where('name LIKE', $name.'%');
+      $this->db->or_where('email LIKE', $name.'%');
+      $result = $this->db->get();
+      return $result->result();
+    }
 }

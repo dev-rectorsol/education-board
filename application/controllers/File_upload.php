@@ -19,6 +19,7 @@ class File_upload extends CI_Controller {
             echo json_encode($path);
           }
         } else if(in_array($extension, $allowPdf)) {
+
           $path = $this->common_model->upload_Pdf($_FILES['file']['size']);
           if(!empty($path)) {
             echo json_encode($path);

@@ -179,4 +179,12 @@ class Student extends CI_Controller {
 		}
 	}
 
+	public function get_students() {
+		 if ($_POST) {
+			 $subject=$this->security->xss_clean($_POST);
+			 $data = $this->user->get_users_by_name($subject['search']);
+			 echo json_encode($data);
+		 }
+	 }
+
 }

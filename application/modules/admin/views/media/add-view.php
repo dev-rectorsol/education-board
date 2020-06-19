@@ -4,8 +4,8 @@
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="dropzone-pro">
-                    <div id="dropzone" class="multi-uploader-cs">
-                        <form action="<?php echo base_url('file_upload') ?>" class="dropzone dropzone-custom needsclick" id="demo-upload" enctype="multipart/form-data">
+                    <div class="multi-uploader-cs">
+                        <form  id="file_upload"  class="dropzone dropzone-custom needsclick" enctype="multipart/form-data">
                             <div class="dz-message needsclick download-custom">
                                 <i class="fa fa-cloud-download" aria-hidden="true"></i>
                                 <h2>Drop files here or click to upload.</h2>
