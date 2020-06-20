@@ -8,6 +8,7 @@ class Test extends CI_Controller {
 			parent::__construct();
 			$this->load->model('common_model');
 			$this->load->model('test_model');
+			$this->load->model('question_model');
 	}
 	public function index()
 	{
@@ -46,6 +47,7 @@ class Test extends CI_Controller {
 								'slug' => $data['slug'],
  							 	'duration' => $data['duration'],
 		 						'description' => $data['description'],
+								'curriculum' => array(),
 		 						'is_publish' => 1,
 		 						'created' => current_datetime()
 		 			 ];
@@ -55,6 +57,7 @@ class Test extends CI_Controller {
 						'title' => $data['title'],
 						'slug' => $data['slug'],
 						'duration' => $data['duration'],
+						'curriculum' => array(),
 						'description' => $data['description'],
 						'created' => current_datetime()
 		 			];
@@ -191,25 +194,56 @@ class Test extends CI_Controller {
 					 redirect($_SERVER['HTTP_REFERER'], 'refresh');
 				 }
     	}
- public function delete($id)
-	{
-            $data1=['lesson_id'=> $id];
-            $this->common_model->delete($data1,'lesson');
-            redirect($_SERVER['HTTP_REFERER'], 'refresh');
-    }
+ 		public function delete($id)
+		{
+	            $data1=['lesson_id'=> $id];
+	            $this->common_model->delete($data1,'lesson');
+	            redirect($_SERVER['HTTP_REFERER'], 'refresh');
+	    }
 
 
-		function lactureRemove($id){
-			$data1 = [ 'videoid'=> $id ];
-			$this->common_model->delete($data1,'videos');
-			redirect($_SERVER['HTTP_REFERER'], 'refresh');
-		}
-
-		public function get_lesson(){
-			if ($_POST) {
-				$subject=$this->security->xss_clean($_POST);
-				$data = $this->lesson_model->get_lesson_by_name($subject['search']);
-				echo json_encode($data);
+			public function qusnbank($id) {
+				$data = array();
+				$data['page'] = 'Edit Question Bank';
+				$data['test'] = $this->test_model->select_by_id($id);
+				$data['qusnbank'] = $this->test_model->select_by_id($id);
+				$data['image'] = $this->common_model->getThumByRoot($id);
+				$data['main_content'] = $this->load->view('test/add-qusnbank',$data, true);
+				$data['script'] = $this->load->view('test/script', $data, true);
+				$this->load->view('index',$data);
 			}
-		}
+
+			public function add_qusnbank(){
+				if ($_POST) {
+					$data = $_POST;
+					$question = array();
+					$totalmark = 0;
+					$numberofq = 0;
+					if (isset($data['questions'])) {
+						// code...
+						foreach ($data['questions'] as $key => $value) {
+							$qusdata = $this->question_model->select_qus_info($value);
+							$totalmark += $qusdata->values;
+							$numberofq = (int)($key + 1);
+							$question[] = $qusdata;
+						}
+					}
+					$insert = [
+						'curriculum' => json_encode($question),
+						'nofqus' => $numberofq,
+						'totalno' => $totalmark,
+					];
+					if ( $this->common_model->update($insert, 'testid', $data['testid'], 'tests') ) {
+
+
+
+						$this->session->set_flashdata(array('error' => 0, 'msg' => 'Question Serise Saved'));
+				 			redirect(base_url('admin/test/qusnbank/').$data['testid'], 'refresh');
+
+					 }  else {
+						 $this->session->set_flashdata(array('error' => 1, 'msg' => 'Action Failed'));
+						 redirect($_SERVER['HTTP_REFERER'], 'refresh');
+					 }
+				}
+			}
 }

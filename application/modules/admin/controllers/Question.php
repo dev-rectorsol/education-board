@@ -24,6 +24,7 @@ class Question extends CI_Controller {
 		$data= array();
 		$data['page'] ='Add New Question';
 		$data['main_content']= $this->load->view('question/add-view',$data, true);
+		$data['script']= $this->load->view('question/script',$data, true);
 		$this->load->view('index',$data);
 	}
 
@@ -143,4 +144,13 @@ class Question extends CI_Controller {
             $this->common_model->delete($data1,'lesson');
             redirect($_SERVER['HTTP_REFERER'], 'refresh');
     	}
+
+
+			public function get_qusnbank(){
+				if ($_POST) {
+					$question = $this->security->xss_clean($_POST);
+					$data = $this->question_model->get_question_by_name($question['search']);
+					echo json_encode($data);
+				}
+			}
 }

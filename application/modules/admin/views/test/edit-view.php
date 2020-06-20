@@ -56,6 +56,7 @@
                   <button type="submit" name='submit' value="publish" class="btn btn-primary pull-left ">Publish</button>
                 <?php endif; ?>
                 <button type="submit" name="submit" value="update" class="btn btn-primary">Update</button>
+                <a href="<?php echo base_url('admin/test/qusnbank/').$data->testid; ?>" class="btn btn-secondary"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Questions</a>
               </div>
               <hr>
               <div class="form-group">

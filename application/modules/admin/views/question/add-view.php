@@ -39,31 +39,31 @@
 										</select>
 									</div>
 									<table class="type multiple-choice" style="display: none;">
-												<thead>
-													<tr>
-														<th width="5%">#</th>
-														<th width="10%">Is Currect</th>
-														<th width="80%">Multiple Choice</th>
-														<th width="5%" ><span class="input-group-btn"><button type="button" class="btn btn-xs btn-success extra-fields"><i class="fa fa-plus" aria-hidden="true"></i></button></span></th>
-													</tr>
-												</thead>
-												<tbody class="option_dynamic">
-													<tr class="ques_r">
-														<td class="count">1</td>
-														<td>
-															<div class="form-group">
-																	<input name="currect" class="form-control" type="radio" value="1">
-															</div>
-														</td>
-														<td>
-															<div class="form-group">
-																	<input name="option[]" class="form-control" type="text" placeholder="Enter option here...">
-															</div>
-														</td>
-														<td><button type="button" class="btn-sm btn-danger remove-field"><i class="fa fa-times" aria-hidden="true"></i></button></td>
-													</tr>
-												</tbody>
-											</table>
+										<thead>
+											<tr>
+												<th width="5%">#</th>
+												<th width="10%">Is Currect</th>
+												<th width="80%">Multiple Choice</th>
+												<th width="5%" ><span class="input-group-btn"><button type="button" class="btn btn-xs btn-success extra-fields"><i class="fa fa-plus" aria-hidden="true"></i></button></span></th>
+											</tr>
+										</thead>
+										<tbody class="option_dynamic">
+											<tr class="ques_r">
+												<td class="count">1</td>
+												<td>
+													<div class="form-group">
+															<input name="currect" class="form-control" type="radio" value="1">
+													</div>
+												</td>
+												<td>
+													<div class="form-group">
+															<input name="option[]" class="form-control" type="text" placeholder="Enter option here...">
+													</div>
+												</td>
+												<td><button type="button" class="btn-sm btn-danger remove-field"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
 							</div>
 						</form>

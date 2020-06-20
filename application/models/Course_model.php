@@ -61,13 +61,16 @@ function getMaxId(){
       }
 
       public function select_course_curriculum_by_id($id){
-        $this->db->select('course_meta.*, subject.name');
-        $this->db->from('course_meta');
-        $this->db->join('subject', 'course_meta.subid = subject.subject_id', 'INNER');
-        $this->db->where('course_meta.course_id',$id);
-        $this->db->order_by('course_meta.serial', 'ASC');
-        $query = $this->db->get();
-        return $query->result_array();
+        $sql = "SELECT course_meta.*, subject.name as name FROM course_meta
+                INNER JOIN subject ON course_meta.subid = subject.subject_id
+                WHERE course_meta.course_id = '{$id}'
+                UNION
+                SELECT course_meta.*, tests.title as name FROM course_meta
+                INNER JOIN tests ON course_meta.subid = tests.testid
+                WHERE course_meta.course_id = '$id'
+                ";
+                $result = $this->db->query($sql);
+                return $result->result_array();
       }
 
       public function check_curriculum($id){

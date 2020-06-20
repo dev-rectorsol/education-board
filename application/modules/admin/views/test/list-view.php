@@ -54,6 +54,9 @@
 												<td>
 													<a href="<?php echo base_url('admin/test/edit/').$value['testid']; ?>"> <button type="button" class="btn btn-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> </a>
 													<button type="button" onclick="delete_detail('<?php echo $value['testid']; ?>')" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+													<a href="<?php echo base_url('admin/test/qusnbank/').$value['testid']; ?>">
+														<button type="button" class="btn btn-default" name="button">Qusn Bank</button>
+													</a>
 												</td>
 											</tr>
 											<?php endforeach; ?>

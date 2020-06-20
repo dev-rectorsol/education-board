@@ -49,11 +49,15 @@ public function __construct()
     }
 
     public function get_sujcect_by_name($name){
-      $this->db->select('subject_id AS id, name AS text');
-      $this->db->from('subject');
-      $this->db->where('name LIKE', $name.'%');
-      $result = $this->db->get();
-      return $result->result();
+      $sql = "SELECT subject_id AS id, name AS text FROM subject
+              WHERE name LIKE '{$name}%'
+              UNION
+              SELECT testid AS id, CONCAT(title, ' - (test serise)') AS text FROM tests
+              WHERE title LIKE '{$name}%'
+              ";
+
+              $result = $this->db->query($sql);
+              return $result->result();
     }
 
     public function select_subject_curriculum_by_id($id){
