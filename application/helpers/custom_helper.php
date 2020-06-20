@@ -251,3 +251,24 @@ if(!function_exists('clear_path_cache')) {
 	    closedir($handle);
 	}
 }
+
+ if(!function_exists('convertToHoursMins')) {
+	 function convertToHoursMins($time, $format = '%d:%s') {
+    	settype($time, 'integer');
+		    if ($time < 0 || $time >= 1440) {
+		        return;
+		    }
+		    $hours = floor($time/60);
+		    $minutes = $time%60;
+		    if ($minutes < 10) {
+		        $minutes = '0' . $minutes;
+		    }
+		    return sprintf($format, $hours, $minutes);
+		}
+}
+
+ if(!function_exists('removeChar')) {
+	 function removeHyphen($str) {
+    		return ucwords(preg_replace('/[-]/', ' ', $str));
+		}
+}

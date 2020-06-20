@@ -21,40 +21,40 @@
 						<ul class="submenu-angle" aria-expanded="false">
 							<li><a title="Aim" href="<?php echo base_url('admin/aim')?>"><span class="mini-sub-pro">Add Aim</span></a></li>
 							<li><a title="Category" href="<?php echo base_url('admin/category')?>"><span class="mini-sub-pro">Add Categorys</span></a></li>
-							<li><a title="Category" href="<?php echo base_url('admin/tag')?>"><span class="mini-sub-pro">Add tags</span></a></li>
-							<li><a title="Category" href="<?php echo base_url('admin/lesson/trending_view')?>"><span class="mini-sub-pro">Add Trending</span></a></li>
+							<li><a title="Tag" href="<?php echo base_url('admin/tag')?>"><span class="mini-sub-pro">Add tags</span></a></li>
+							<li><a title="Trending" href="<?php echo base_url('admin/lesson/trending_view')?>"><span class="mini-sub-pro">Add Trending</span></a></li>
 						</ul>
 					</li>
 					<!-- Media -->
 					<li>
 						<a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Media</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Courses" href="<?php echo base_url('admin/media/add')?>"><span class="mini-sub-pro">Add New</span></a></li>
-							<li><a title="All Courses" href="<?php echo base_url('admin/media/')?>"><span class="mini-sub-pro">All Media</span></a></li>
+							<li><a title="Add New Media" href="<?php echo base_url('admin/media/add')?>"><span class="mini-sub-pro">Add New</span></a></li>
+							<li><a title="All Media" href="<?php echo base_url('admin/media/')?>"><span class="mini-sub-pro">All Media</span></a></li>
 						</ul>
 					</li>
 					<!-- Article -->
 					<li>
 						<a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-star icon-wrap"></span> <span class="mini-click-non">Article</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Courses" href="<?php echo base_url('admin/article/view')?>"><span class="mini-sub-pro">All List</span></a></li>
-							<li><a title="All Courses" href="<?php echo base_url('admin/article/')?>"><span class="mini-sub-pro">Add New</span></a></li>
+							<li><a title="All Article" href="<?php echo base_url('admin/article/view')?>"><span class="mini-sub-pro">All List</span></a></li>
+							<li><a title="Add Article " href="<?php echo base_url('admin/article/')?>"><span class="mini-sub-pro">Add New</span></a></li>
 						</ul>
 					</li>
 					<!-- Users -->
 					<li>
 						<a class="has-arrow" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Students</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Courses" href="<?php echo base_url('admin/student/view')?>"><span class="mini-sub-pro">All Student</span></a></li>
-							<li><a title="All Courses" href="<?php echo base_url('admin/student/')?>"><span class="mini-sub-pro">Add New</span></a></li>
+							<li><a title="All Students" href="<?php echo base_url('admin/student/view')?>"><span class="mini-sub-pro">All Student</span></a></li>
+							<li><a title="Add Student " href="<?php echo base_url('admin/student/')?>"><span class="mini-sub-pro">Add New</span></a></li>
 						</ul>
 					</li>
 					<!-- Assign course -->
 					<li>
 						<a class="has-arrow" aria-expanded="false"><span class="educate-icon educate-miscellanous icon-wrap"></span> <span class="mini-click-non">ClassRoom</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Courses" href="<?php echo base_url('admin/classroom/')?>"><span class="mini-sub-pro">All ClassRoom</span></a></li>
-							<li><a title="All Courses" href="<?php echo base_url('admin/classroom/new')?>"><span class="mini-sub-pro">New ClassRoom</span></a></li>
+							<li><a title="All Class Room" href="<?php echo base_url('admin/classroom/')?>"><span class="mini-sub-pro">All ClassRoom</span></a></li>
+							<li><a title="Add New Class Room" href="<?php echo base_url('admin/classroom/new')?>"><span class="mini-sub-pro">New ClassRoom</span></a></li>
 						</ul>
 					</li>
 					<!-- Courses -->
@@ -69,8 +69,8 @@
 					<li>
 						<a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Subject</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Courses" href="<?php echo base_url('admin/subject/View')?>"><span class="mini-sub-pro">All Subject List </span></a></li>
-							<li><a title="Add Courses" href="<?php echo base_url('admin/subject')?>"><span class="mini-sub-pro">Add Subject</span></a></li>
+							<li><a title="All Subject" href="<?php echo base_url('admin/subject/View')?>"><span class="mini-sub-pro">All Subject List </span></a></li>
+							<li><a title="Add Subject" href="<?php echo base_url('admin/subject')?>"><span class="mini-sub-pro">Add Subject</span></a></li>
 
 						</ul>
 					</li>
@@ -78,20 +78,20 @@
 					<li>
 						<a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Lesson</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Courses" href="<?php echo base_url('admin/lesson/View')?>"><span class="mini-sub-pro">All Lesson List </span></a></li>
-							<li><a title="Add Courses" href="<?php echo base_url('admin/lesson')?>"><span class="mini-sub-pro">Add Lesson</span></a></li>
-							<li><a title="Add Courses" href="<?php echo base_url('admin/pdf/view')?>"><span class="mini-sub-pro">All PDF List</span></a></li>
-							<li><a title="Add Courses" href="<?php echo base_url('admin/pdf')?>"><span class="mini-sub-pro">Add PDF</span></a></li>
+							<li><a title="All Lesson" href="<?php echo base_url('admin/lesson/View')?>"><span class="mini-sub-pro">All Lesson List </span></a></li>
+							<li><a title="Add Lesson" href="<?php echo base_url('admin/lesson')?>"><span class="mini-sub-pro">Add Lesson</span></a></li>
+							<li><a title="Add PDF Lesson" href="<?php echo base_url('admin/pdf/view')?>"><span class="mini-sub-pro">All PDF List</span></a></li>
+							<li><a title="Add PDF Lesson" href="<?php echo base_url('admin/pdf')?>"><span class="mini-sub-pro">Add PDF</span></a></li>
 						</ul>
 					</li>
 					<!-- Test serise -->
 					<li>
 						<a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Test Serise</span></a>
 						<ul class="submenu-angle" aria-expanded="false">
-							<li><a title="All Courses" href="<?php echo base_url('admin/test/')?>"><span class="mini-sub-pro">All Test List </span></a></li>
-							<li><a title="Add Courses" href="<?php echo base_url('admin/lesson')?>"><span class="mini-sub-pro">Add Lesson</span></a></li>
-							<li><a title="Add Courses" href="<?php echo base_url('admin/pdf/view')?>"><span class="mini-sub-pro">All PDF List</span></a></li>
-							<li><a title="Add Courses" href="<?php echo base_url('admin/pdf')?>"><span class="mini-sub-pro">Add PDF</span></a></li>
+							<li><a title="All Test" href="<?php echo base_url('admin/test/')?>"><span class="mini-sub-pro">All Test List </span></a></li>
+							<li><a title="Add Test" href="<?php echo base_url('admin/test/add')?>"><span class="mini-sub-pro">Add Test</span></a></li>
+							<li><a title="All Question" href="<?php echo base_url('admin/question')?>"><span class="mini-sub-pro">All Question List</span></a></li>
+							<li><a title="Add Question" href="<?php echo base_url('admin/question/add')?>"><span class="mini-sub-pro">Add Questions</span></a></li>
 						</ul>
 					</li>
 					<!-- Products -->
