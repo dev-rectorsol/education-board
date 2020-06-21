@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 20, 2020 at 02:05 PM
+-- Generation Time: Jun 21, 2020 at 08:28 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.2.24
 
@@ -6765,6 +6765,21 @@ INSERT INTO `roles_users` (`user_id`, `role_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `searches`
+-- (See below for the actual view)
+--
+CREATE TABLE `searches` (
+`id` char(32)
+,`name` mediumtext
+,`slug` mediumtext
+,`created` datetime
+,`is_publish` tinyint(4)
+,`isthat` varchar(7)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `setting`
 --
 
@@ -7220,6 +7235,15 @@ INSERT INTO `videos` (`videoid`, `nodeid`, `type`, `name`, `url`, `size`, `video
 DROP TABLE IF EXISTS `article_view`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `article_view`  AS  select `article`.`id` AS `id`,`article`.`postid` AS `postid`,`article`.`title` AS `title`,`article`.`slug` AS `slug`,`article`.`created_by` AS `created_by`,`article`.`content` AS `content`,`article`.`public_at` AS `public_at`,`article`.`is_publish` AS `is_publish`,`article`.`deleted` AS `deleted`,`article`.`created_at` AS `created_at`,`user_details`.`user_id` AS `user_id`,`user_details`.`name` AS `name`,`thumbnail`.`thumb` AS `thumb`,`thumbnail`.`image` AS `image` from ((`article` left join `user_details` on(`article`.`created_by` = `user_details`.`user_id`)) left join `thumbnail` on(`article`.`postid` = convert(`thumbnail`.`root` using utf8))) group by `article`.`postid` order by `article`.`created_at` desc ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `searches`
+--
+DROP TABLE IF EXISTS `searches`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `searches`  AS  select `article`.`postid` AS `id`,`article`.`title` AS `name`,`article`.`slug` AS `slug`,`article`.`created_at` AS `created`,`article`.`is_publish` AS `is_publish`,concat('article') AS `isthat` from `article` union select `course`.`course_id` AS `id`,`course`.`name` AS `name`,`course`.`slug` AS `slug`,`course`.`created` AS `created`,`course`.`is_publish` AS `is_publish`,concat('course') AS `isthat` from `course` union select `tests`.`testid` AS `id`,`tests`.`title` AS `name`,`tests`.`slug` AS `slug`,`tests`.`created` AS `created`,`tests`.`is_publish` AS `is_publish`,concat('tests') AS `isthat` from `tests` ;
 
 -- --------------------------------------------------------
 
