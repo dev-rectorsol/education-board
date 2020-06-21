@@ -597,6 +597,12 @@ function getMaxUserId(){
      return !empty($result->row()) ? $result->row()->count : 0;
    }
 
+    public function get_table_count($table) {
+      $this->db->select("COUNT(*) AS count")->from($table);
+      $result = $this->db->get();
+     return !empty($result->row()) ? $result->row()->count : 0;
+   }
+
    public function gallerys($limit, $start) {
      $this->db->select('details');
      $this->db->from('gallery');

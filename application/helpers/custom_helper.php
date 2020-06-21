@@ -272,3 +272,28 @@ if(!function_exists('clear_path_cache')) {
     		return ucwords(preg_replace('/[-]/', ' ', $str));
 		}
 }
+
+ if(!function_exists('convert')) {
+	 function convert($size)	{
+		    $unit=array('b','kb','mb','gb','tb','pb');
+		    return @round($size/pow(1024,($i=floor(log($size,1024)))),2).' '.$unit[$i];
+		}
+}
+
+ if(!function_exists('array_flatten')) {
+	 function array_flatten($array) {
+				if (!is_array($array)) {
+		    	return FALSE;
+			  }
+			  $result = array();
+			  foreach ($array as $value) {
+			    if (is_array($value)) {
+			      $result = array_merge($result, array_flatten($value));
+			    }
+			    else {
+			      $result[] = $value;
+			    }
+			  }
+			  return $result;
+		}
+}

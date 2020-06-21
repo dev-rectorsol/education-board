@@ -62,6 +62,8 @@ $route['forget'] = 'authentication/resetView';
 // Website ROUTING
 
 $route['home'] = 'web/home/index';
+$route['category/(:any)'] = 'web/home/category/$1';
+$route['cpage/(:any)/(:any)'] = 'web/home/cpage/$1/$2';
 $route['paths'] = 'web/home/paths';
 $route['blogs'] = 'web/blog/index';
 $route['blogs/(:any)'] = 'web/blog/index/$1';

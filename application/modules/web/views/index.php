@@ -207,7 +207,7 @@
 
 															?>
 							<li>
-								<a href="<?php echo base_url('courses'); ?>"> <i class="<?php echo !empty($value['icon']) ? $value['icon'] : 'uil-brush-alt' ?>" style="font-size: larger"></i> <?php echo ucfirst($value['name']); ?> </a>
+								<a href="<?php echo base_url('category/').str_replace(" ", "", $value['name']); ?>"> <i class="<?php echo !empty($value['icon']) ? $value['icon'] : 'uil-brush-alt' ?>" style="font-size: larger"></i> <?php echo ucfirst($value['name']); ?> </a>
 							</li>
 							<?php endforeach; ?>
 					</div>
