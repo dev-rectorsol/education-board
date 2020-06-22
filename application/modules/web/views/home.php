@@ -167,8 +167,7 @@
  <script type="text/javascript">
    app.controller('coursesController', function($scope, $http) {
      $scope.courses = [];
-     $http.get('<?php echo base_url('
-         courses / get_list '); ?>')
+     $http.get('<?php echo base_url('courses/get_list '); ?>')
        .then(function($data) {
          $scope.courses = $data.data;
        });

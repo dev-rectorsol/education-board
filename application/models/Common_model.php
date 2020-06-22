@@ -604,7 +604,7 @@ function getMaxUserId(){
    }
 
    public function gallerys($limit, $start) {
-     $this->db->select('details');
+     $this->db->select('id, details');
      $this->db->from('gallery');
      foreach (IMAGE_EXT as  $value) {
        $this->db->or_where('filetype', $value);

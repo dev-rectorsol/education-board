@@ -33,7 +33,7 @@
                       <?php if (isset($file)): ?>
                         <section id="load" class="__file-media">
                           <?php foreach ($file as $key => $value): ?>
-                            <img data-sizes="auto" data-src="<?php echo base_url($value->dirname.'/'.$value->basename); ?>" class="lazyload" alt="<?php echo $value->filename ?>">
+                            <img data-sizes="auto" data-src="<?php echo base_url($value['dirname'].'/'.$value['basename']); ?>" data-id="<?php echo $value['id'] ?>" class="lazyload info" alt="<?php echo $value['filename'] ?>">
 
                             <?php $postID = $key+1; endforeach; ?>
                           </section>
@@ -51,6 +51,29 @@
     </div>
   </div>
 </div>
+
+
+<div id="information" class="modal modal-edu-general fullwidth-popup-InformationproModal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-close-area modal-close-df">
+                <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
+            </div>
+            <div class="modal-body">
+              <div class="courses-inner">
+                <div class="courses-title preview">
+                </div>
+            </div>
+            </div>
+            <div class="modal-footer info-md">
+                <a data-dismiss="modal" href="#">Cancel</a>
+                <a class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <style media="screen">
 .blur-up {
   -webkit-filter: blur(5px);
@@ -68,7 +91,6 @@
 
 $(document).ready(function(){
   var load = $("#load");
-  var flickerAPI = "<?php echo base_url(FILE_JSON_INFO) ?>";
   var refraceAPI = "<?php echo base_url('admin/media/get_gallery') ?>";
   var image = ['png', 'jpg', 'jpeg'];
 
@@ -103,5 +125,33 @@ $(document).ready(function(){
         window.location = "<?php echo base_url('admin/media/videos') ?>"
       }
     });
+
+    $(".info").on('click', function(){
+      var model = $('#information');
+      var url = $(this).attr('data-src');
+      var name = $(this).attr('alt');
+      var id = $(this).attr('id');
+      var src = $( "<img>" )
+      .attr({
+        "data-sizes": "auto",
+        "data-src": url,
+        // "data-srcset":  url + " 30w," + url + " 600w, " + url + " 900w",
+        "class": "lazyload blur-up",
+      })
+      model.find('.preview').html( src ).append('<h3>'+name+'</h3><p>'+url+'</p>');
+      model.find('.delete').attr('onclick', 'delete('+id+')');
+      model.modal('show');
+    });
 });
+
+function delete(id) {
+  var del = confirm("Do you want to Delete");
+  if (del == true) {
+    var sureDel = confirm("Are you sure want to Delete");
+    if (sureDel == true) {
+      window.location = "<?php echo base_url()?>admin/media/delete/" + id;
+    }
+
+  }
+}
 </script>

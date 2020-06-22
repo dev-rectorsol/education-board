@@ -31,6 +31,7 @@ class Pdf_model extends CI_Model {
       $this->db->select('id, name AS text');
       $this->db->from('gallery');
       $this->db->where('name LIKE', $name.'%');
+      $this->db->where_in('filetype', DOC_EXT);
       $result = $this->db->get();
       return $result->result();
     }

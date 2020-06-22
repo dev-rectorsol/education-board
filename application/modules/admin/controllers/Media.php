@@ -20,8 +20,9 @@ class Media extends CI_Controller {
 	public function index() {
     $fileData = array('file');
       $data = $this->common_model->gallerys(10, 0);
-      foreach ($data as $value) {
-        $fileData['file'][] = json_decode($value['details']);
+      foreach ($data as $key => $value) {
+        $fileData['file'][$key] = (array)json_decode($value['details']);
+        $fileData['file'][$key]['id'] = $value['id'];
       }
       $data['main_content'] = $this->load->view('media/lazy-loading', $fileData, TRUE);
       $this->load->view('index', $data);
@@ -33,11 +34,11 @@ class Media extends CI_Controller {
 	}
 
 	public function others() {
-      $data = $this->common_model->others();
-      foreach ($data as $value) {
-        $fileData['file'][$value['id']] = json_decode($value['details']);
+      $result = $this->common_model->others();
+      foreach ($result as $value) {
+        $data['file'][$value['id']] = json_decode($value['details']);
       }
-			$data['main_content'] = $this->load->view('media/list-view', $fileData, TRUE);
+			$data['main_content'] = $this->load->view('media/list-view', $data, TRUE);
 			$this->load->view('index', $data);
 	}
 
@@ -69,8 +70,9 @@ class Media extends CI_Controller {
       $data = $this->common_model->gallerys($config["per_page"], $page);
 
       foreach ($data as $value) {
+            $id = $value['id'];
             $value = json_decode($value['details']);
-            $output['html'] .= '<img data-sizes="auto" data-src="'.base_url($value->dirname.'/'.$value->basename).'" class="lazyload" alt="'. $value->filename .'">';
+            $output['html'] .= '<img data-sizes="auto" data-src="'.base_url($value->dirname.'/'.$value->basename).'" data-id="'.$id.'" class="lazyload info" alt="'. $value->filename .'">';
 
       }
       $output['loadmore'] = '<div lastID="'. $postID .'"name="image" id="loadmore"><img src="'. base_url('assets/images/preloder-0.2s-200px.svg') .'" width="60" height="40" alt=""></div>';
@@ -196,6 +198,8 @@ class Media extends CI_Controller {
 	}
 
 
+public function delete($id){
 
+}
 
 }

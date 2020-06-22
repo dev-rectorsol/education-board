@@ -11,7 +11,8 @@
       <div class="col-md-10 col-md-10 col-sm-10 col-xs-12">
           <div class="hpanel">
             <div class="panel-body">
-              <div class="table-responsive ib-tb">
+              <?php if (is_array($file)): ?>
+                <div class="table-responsive ib-tb">
                 <div class="datatable-dashv1-list custom-datatable-overright">
                 <div id="toolbar">
                     <select class="form-control dt-tb">
@@ -60,6 +61,9 @@
                   </tbody>
                 </table>
               </div>
+                <?php else: ?>
+                  <h3> Document not found </h3>
+              <?php endif; ?>
               </div>
             </div>
           </div>
