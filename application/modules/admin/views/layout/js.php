@@ -49,9 +49,6 @@
 <script src="<?php echo base_url(OPTIMUM)?>/js/calendar/fullcalendar.min.js"></script>
 <script src="<?php echo base_url(OPTIMUM)?>/js/calendar/fullcalendar-active.js"></script>
 
-  <!-- after glow video player  -->
-  <script src="<?php echo base_url(OPTIMUM)?>/js/jquery.fancybox.min.js"></script>
-
 <!-- plugins JS
 ============================================ -->
 <script src="<?php echo base_url(OPTIMUM)?>/js/plugins.js"></script>

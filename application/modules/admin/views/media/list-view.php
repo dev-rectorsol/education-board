@@ -54,7 +54,7 @@
                       <td><?php echo convertToReadableSize($value->size); ?></td>
                       <td><?php echo my_date_show($value->last_modified); ?></td>
                       <td>
-                        <button type="button" onclick="delete_detail('')" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                        <button type="button" onclick="delete_detail('<?php echo $id; ?>')" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                       </td>
                     </tr>
                     <?php endforeach; ?>
@@ -71,3 +71,16 @@
     </div>
   </div>
 </div>
+
+<script>
+	function delete_detail(id) {
+		var del = confirm("Do you want to Delete");
+		if (del == true) {
+			var sureDel = confirm("Are you sure want to delete");
+			if (sureDel == true) {
+				window.location = "<?php echo base_url()?>admin/media/delete/" + id;
+			}
+
+		}
+	}
+</script>

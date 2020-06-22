@@ -200,6 +200,28 @@ class Media extends CI_Controller {
 
 public function delete($id){
 
+  $result = $this->common_model->get_gallery($id, 'gallery');
+  if (!empty($result)) {
+    // code...
+    $file = json_decode($result->details);
+    try {
+      if (unlink($file->dirname.'/'.$file->basename)) {
+        $this->common_model->delete(['id' => $id], 'gallery');
+        $this->session->set_flashdata(array('error' => 0, 'msg' => 'File Deleted Success'));
+        redirect($_SERVER['HTTP_REFERER'], 'refresh');
+
+      }else{
+        $this->session->set_flashdata(array('error' => 1, 'msg' => 'File Deleted Failds'));
+        redirect($_SERVER['HTTP_REFERER'], 'refresh');
+      }
+    } catch (\Exception $e) {
+      $this->session->set_flashdata(array('error' => 1, 'msg' => $e->getMessage()));
+      redirect($_SERVER['HTTP_REFERER'], 'refresh');
+    }
+  }else{
+    $this->session->set_flashdata(array('error' => 1, 'msg' => 'File Not Found'));
+    redirect($_SERVER['HTTP_REFERER'], 'refresh');
+  }
 }
 
 }

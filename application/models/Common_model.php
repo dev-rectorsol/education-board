@@ -176,6 +176,14 @@ public function check_otp($data){
         return $query;
     }
 
+    function get_gallery($id){
+      $this->db->select('details');
+      $this->db->from('gallery');
+      $this->db->where(array('id' => $id));
+      $query = $this->db->get();
+      return $query->row();
+    }
+
     //-- user role delete function
       function delete_user_role($id,$table){
         $this->db->delete($table, array('user_id' => $id));

@@ -67,7 +67,7 @@
             </div>
             <div class="modal-footer info-md">
                 <a data-dismiss="modal" href="#">Cancel</a>
-                <a class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <a class="delete" ><i class="fa fa-trash" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -130,7 +130,8 @@ $(document).ready(function(){
       var model = $('#information');
       var url = $(this).attr('data-src');
       var name = $(this).attr('alt');
-      var id = $(this).attr('id');
+      var id = $(this).attr('data-id');
+      console.log(id);
       var src = $( "<img>" )
       .attr({
         "data-sizes": "auto",
@@ -139,19 +140,11 @@ $(document).ready(function(){
         "class": "lazyload blur-up",
       })
       model.find('.preview').html( src ).append('<h3>'+name+'</h3><p>'+url+'</p>');
-      model.find('.delete').attr('onclick', 'delete('+id+')');
+      model.find('.delete').attr('href', "<?php echo base_url()?>admin/media/delete/" + id);
       model.modal('show');
     });
+
 });
 
-function delete(id) {
-  var del = confirm("Do you want to Delete");
-  if (del == true) {
-    var sureDel = confirm("Are you sure want to Delete");
-    if (sureDel == true) {
-      window.location = "<?php echo base_url()?>admin/media/delete/" + id;
-    }
 
-  }
-}
 </script>

@@ -142,15 +142,15 @@ class Article extends CI_Controller {
 
 
      public function viewDraft()
-	{
-	 $data['page'] ='article';
+		{
+		 $data['page'] ='article';
 
-        $data['article']=  $this->article_model->select_draft();
-        $data['main_content']= $this->load->view('article/ViewDraft',$data, true);
-		$this->load->view('index',$data);
-    }
-     public function viewDeleted()
-	{
+	        $data['article']=  $this->article_model->select_draft();
+	        $data['main_content']= $this->load->view('article/ViewDraft',$data, true);
+			$this->load->view('index',$data);
+	    }
+	     public function viewDeleted()
+		{
 	 $data['page'] ='article';
 
         $data['article']=  $this->article_model->select_deleted();
