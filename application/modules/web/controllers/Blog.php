@@ -17,6 +17,11 @@ class Blog extends CI_Controller {
   function index($page = 1){
 		$data['breadcrumbs'] = [array('url' => base_url('blogs'), 'name' => 'Blogs')];
 		$data['featured'] = $this->article_model->featured_article();
+
+		$data['category'] = $this->common_model->home_category();
+		$param = $this->security->xss_clean($this->uri->segment(2));
+		$data['param'] = $param;
+		// pre($data['featured']);exit;
 		$data['page'] = $page;
 		$data['main_content'] = $this->load->view('blogs/blogs', $data, true);
 		$this->load->view('index', $data);
@@ -46,7 +51,7 @@ class Blog extends CI_Controller {
 					'thumb' => base_url($value['thumb']),
 					'image' => base_url($value['image']),
 					'tags' => $this->common_model->getIndexTags($value['postid']),
-					'category' => $this->common_model->getIndexCategorys($value['postid'])
+					'category' => $this->common_model->getIndexCategorysName($value['postid'])
 				];
 			}
 

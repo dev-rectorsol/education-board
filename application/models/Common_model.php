@@ -499,9 +499,9 @@ function getMaxUserId(){
       if (is_array($data)) {
         $output = array();
         foreach ($data as $value) {
-          $output[] = $this->db->get_where('category', array('id' => $value))->row()->name;
+          $output[] = $this->db->select('name')->get_where('category', array('id' => $value))->result_array();
         }
-        return $output;
+        return array_flatten($output);
       }else{
         return false;
       }

@@ -3,9 +3,10 @@
 
   <div class="container">
 
-    <h1> Blogs </h1>
+    <h1> Current Affairs </h1>
 
-    <h4> Featured Posts </h4>
+    <h4> Featured </h4>
+
 
     <div class="uk-child-width-1-2@m uk-grid-match uk-grid-small" uk-grid>
       <?php foreach ($featured as $key => $value): ?>
@@ -22,37 +23,44 @@
           </div>
         </a>
       </div>
-      <?php else: ?>
       <div>
         <div class="uk-child-width-1-2@m uk-grid-small uk-card-match" uk-grid>
+      <?php else: ?>
           <div>
-            <a href="#">
-              <div class="uk-card-default rounded uk-overflow-hidden">
-                <img src="<?php echo base_url(); ?>/assets/images/blog/img-4.jpg" alt="">
+            <a href="<?php echo base_url('single/').$value['postid']; ?>">
+              <div  class="uk-card-default rounded uk-overflow-hidden">
+                <img src="<?php echo base_url().$value['image']; ?>" alt="">
                 <div class="p-3">
-                  <h5 class="mb-0">10 Interesting JavaScript and CSS libraries for 2020 </h5>
+                  <h5 class="mb-0"><?php echo ucfirst($value['title']); ?></h5>
                 </div>
               </div>
             </a>
           </div>
-        </div>
-      </div>
       <?php endif; ?>
       <?php endforeach; ?>
+    </div>
+  </div>
 
     </div>
 
-    <h3 class="mt-5 mb-0"> Category </h3>
+    <h3 class="mt-5 mb-0"> Trending </h3>
     <div class="section-header mb-lg-3">
       <div class="section-header-left">
 
         <nav class="responsive-tab style-2">
           <ul>
-            <li class="uk-active"><a href="#">JavaScript</a></li>
-            <li><a href="#">CSS</a></li>
-            <li><a href="#">HTML</a></li>
-            <li><a href="#">Freebie</a></li>
-            <li><a href="#">Resources</a></li>
+            <?php if ($param == ''): ?>
+              <li class="uk-active"><a href="<?php echo base_url('category/').str_replace(" ", "", $param) ?>"><?php echo ucfirst('All'); ?></a></li>
+              <?php else: ?>
+                <li><a href="<?php echo base_url('category/all') ?>">All</a></li>
+            <?php endif; ?>
+            <?php foreach ($category as $key => $value): ?>
+              <?php if ($value['name'] == $param): ?>
+                <li class="uk-active"><a href="<?php echo base_url('category/').str_replace(" ", "", $value['name']) ?>"><?php echo ucfirst($value['name']); ?></a></li>
+                <?php else: ?>
+                  <li><a href="<?php echo base_url('category/').str_replace(" ", "", $value['name']) ?>"><?php echo ucfirst($value['name']); ?></a></li>
+              <?php endif; ?>
+            <?php endforeach; ?>
           </ul>
         </nav>
 
@@ -60,16 +68,13 @@
       <div class="section-header-right">
 
         <div class="display-as">
-          <a href="blog-card.html"><i class="icon-feather-grid"></i></a>
-          <a href="blog-2.html"><i class="icon-feather-square"></i></a>
-          <a href="blog-1.html" class="active"><i class="icon-feather-list"></i></a>
+          <a href="<?php echo base_url('blogs') ?>"><i class="icon-feather-grid"></i></a>
+          <a href="<?php echo base_url('blogs') ?>" class="active"><i class="icon-feather-list"></i></a>
         </div>
 
         <select class="selectpicker ml-3">
           <option value=""> Newest </option>
           <option value="1">Popular</option>
-          <option value="2">Free</option>
-          <option value="3">Premium</option>
         </select>
 
         <!-- Custom select structure -->
@@ -92,7 +97,9 @@
           <!-- Blog Post Content -->
           <div class="blog-post-content">
             <div class="blog-post-content-info">
-              <span class="blog-post-info-tag btn btn-soft-danger"> {{blog.title}} </span>
+              <div>
+                <span class="blog-post-info-tag btn btn-soft-secondary" ng-repeat="category in blog.category"> {{category}} </span>
+              </div>
               <span class="blog-post-info-date">{{blog.created}}</span>
             </div>
             <h3>{{blog.title}}</h3>

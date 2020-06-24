@@ -19,11 +19,16 @@
 
                       <div class="uk-grid-margin">
                           <h6 class="uk-text-bold"> Street </h6>
-                              <p> 1 Ram Gopal Maheshwari Road, beside Central Bank, Zone-I, Maharana Pratap Nagar, </p>
+                              <p> <b>KALKA IAS ZONE,</b> PLOT NO. 1, Beside Central Bank, Maharana Pratap Nagar, Zone-I, </p>
                       </div>
                       <div class="uk-grid-margin uk-first-column">
                           <h6 class="uk-text-bold"> Telegram </h6>
-                          <p> <i class="icon-brand-telegram-plane"></i> 0755-4017928 </p>
+                          <p> <i class="icon-brand-telegram-plane"></i> +91-9111831119 </p>
+                      </div>
+                      <div class="uk-grid-margin uk-first-column">
+                          <h6 class="uk-text-bold"> WhatsApp </h6>
+                          <p> <i class="icon-brand-whatsapp"></i> +91-9111831119 </p>
+                          <p> <i class="icon-brand-whatsapp"></i> +91-7400501501 </p>
                       </div>
                       <div class="uk-grid-margin uk-first-column">
                           <h6 class="uk-text-bold"> Postal Code </h6>

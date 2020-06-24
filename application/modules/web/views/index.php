@@ -214,17 +214,16 @@
 				</div>
 			</li>
 			<li>
-				<!-- Paths-->
-				<a href="<?php echo base_url('paths'); ?>"> <i class="uil-rss-interface"></i> <span class="tooltips">
-						Paths</span></a>
-			</li>
-			<li>
 				<!-- Blog-->
-				<a href="<?php echo base_url('blogs'); ?>"> <i class="uil-file-alt"></i> <span class="tooltips"> Blogs </span></a>
+				<a href="<?php echo base_url('blogs'); ?>"> <i class="uil-file-alt"></i> <span class="tooltips"> Current Affairs </span></a>
 			</li>
 			<li>
 				<!-- book -->
 				<a href="<?php echo base_url('courses'); ?>"> <i class="uil-book-alt"></i> <span class="tooltips"> Courser </span> </a>
+			</li>
+			<li>
+				<!-- book -->
+				<a href="<?php echo base_url('tests'); ?>"> <i class="uil-tumblr-alt"></i> <span class="tooltips"> Test Series </span> </a>
 			</li>
 			<li>
 				<!-- Payment -->

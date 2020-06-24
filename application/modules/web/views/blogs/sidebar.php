@@ -6,8 +6,8 @@
       <h4 class="uk-text-bold"> Subsicribe </h4>
       <p> Get the Latest Posts and Article for us On Your Email</p>
 
-      <form class="mt-3">
-        <input type="text" class="uk-input uk-form-small" placeholder="Enter your email address">
+      <form class="mt-3" action="<?php echo base_url('subscribe'); ?>" method="post">
+        <input type="text" class="uk-input uk-form-small" name="email" required placeholder="Enter your email address">
         <input type="submit" value="Subscirbe" class="btn btn-default btn-block mt-3">
       </form>
 
