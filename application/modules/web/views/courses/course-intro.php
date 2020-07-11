@@ -1,6 +1,6 @@
 
     <!-- content -->
-    <div class="page-content" ng-app="educationbourd">
+    <div class="page-content">
 
       <div class="course-details-wrapper topic-1 uk-light pt-5">
 
@@ -574,8 +574,7 @@
     <script type="text/javascript">
 
 
-    var app = angular.module('educationbourd', [])
-    .directive('repeatDone', function() {
+    app.directive('repeatDone', function() {
         return function() {
             $('.course-curriculum li:first').addClass('uk-open');
         }
@@ -583,21 +582,14 @@
 
     app.controller('curriculumController', function($scope, $http){
         $scope.curriculums = [];
-          $http.get('<?php echo base_url('courses/course_curriculum/').$course->course_id; ?>')
-          .then(function($data){
+          $http.get('<?php echo base_url('course/course_curriculum/').$course->course_id; ?>')
+          .then(function($data) {
             $scope.curriculums = $data.data;
-          });
-    });
-    app.controller('courseController', function($scope, $http){
-        $scope.courses = [];
-          $http.get('<?php echo base_url('courses/get_single/').$course->course_id; ?>')
-          .then(function($data){
-            $scope.courses = $data.data;
           });
     });
     app.controller('productController', function($scope, $http){
         $scope.courses = [];
-          $http.get('<?php echo base_url('courses/get_single/').$course->course_id; ?>')
+          $http.get('<?php echo base_url('products/get_single/').$course->course_id; ?>')
           .then(function($data){
             $scope.courses = $data.data;
           });

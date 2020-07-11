@@ -1,6 +1,6 @@
-<ul class="uk-slider-items uk-child-width-1-4@m uk-child-width-1-3@s uk-grid" ng-app="educationbourd" ng-controller="trendingController">
+<ul class="uk-slider-items uk-child-width-1-4@m uk-child-width-1-3@s uk-grid" ng-controller="trendingController">
   <li ng-repeat='video in trending'>
-    <a href="{{video.url}}">
+    <a href="<?php echo base_url('trending/video/') ?>{{video.trending_id}}">
       <div class="course-card">
         <div class="course-card-thumbnail ">
           <img class="lazyload blur-up" src="{{video.image}}">
@@ -18,8 +18,6 @@
 
 
 <script type="text/javascript">
-
-  var app = angular.module('educationbourd', []);
 
   app.controller('trendingController', function($scope, $http){
       $scope.trending = [];

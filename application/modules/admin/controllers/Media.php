@@ -116,9 +116,12 @@ class Media extends CI_Controller {
 
 	public function get_model()
 	{
-			$map = directory_map(UPLOAD_FILE, FALSE, TRUE);
-			$files = self::Concatenate_Filepaths($map);
-			$fileData = self::getImageonly($files);
+      $fileData = array('file');
+      $data = $this->common_model->gallerys(10, 0);
+      foreach ($data as $key => $value) {
+        $fileData['file'][$key] = (array)json_decode($value['details']);
+        $fileData['file'][$key]['id'] = $value['id'];
+      }
 			echo $this->load->view('media/model-box', $fileData, TRUE);
 	}
 

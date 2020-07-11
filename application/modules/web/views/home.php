@@ -1,4 +1,4 @@
- <div class="page-content">
+ <div class="page-content-inner">
 
    <?php if (is_array($slider)): ?>
    <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="sets: true">
@@ -131,14 +131,6 @@
                    <span class="play-button-trigger"></span>
                  </div>
                  <div class="course-card-body">
-                   <div class="course-card-info">
-                     <div>
-                       <span class="catagroy">Angular</span>
-                     </div>
-                     <div>
-                       <i class="icon-feather-bookmark icon-small"></i>
-                     </div>
-                   </div>
                    <h4> {{course.name}} </h4>
                    <p> {{course.slug}} </p>
                    <div class="course-card-footer">
@@ -167,9 +159,10 @@
  <script type="text/javascript">
    app.controller('coursesController', function($scope, $http) {
      $scope.courses = [];
-     $http.get('<?php echo base_url('courses/get_list '); ?>')
+     $http.get('<?php echo base_url('courses/get_list/all/1'); ?>')
        .then(function($data) {
-         $scope.courses = $data.data;
+         console.log($data);
+         $scope.courses = $data.data.products;
        });
    });
  </script>

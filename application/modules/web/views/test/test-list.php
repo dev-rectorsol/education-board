@@ -2,24 +2,24 @@
 
   <div class="container">
 
-    <h1> Courses </h1>
+    <h1> Test Series </h1>
 
-    <h4> Browse Kalka Ias Zone <a href="#" class="text-muted">Courses</a> </h4>
+    <h4> Kalka Ias Zone <a href="#" class="text-muted">Online Test</a> </h4>
 
     <div class="section-header mb-4">
       <div class="section-header-left">
         <nav class="responsive-tab style-4">
           <ul>
             <?php if ($param == 'all' || $param == ''): ?>
-              <li class="uk-active"><a href="<?php echo base_url('courses/').strtolower(str_replace(" ", "", $param)) ?>"><?php echo ucfirst('All'); ?></a></li>
+              <li class="uk-active"><a href="<?php echo base_url('test/').strtolower(str_replace(" ", "", $param)) ?>"><?php echo ucfirst('All'); ?></a></li>
               <?php else: ?>
-                <li><a href="<?php echo base_url('courses/') ?>">All</a></li>
+                <li><a href="<?php echo base_url('test/') ?>">All</a></li>
             <?php endif; ?>
             <?php foreach ($levels as $value): ?>
               <?php if (strtolower($value['name']) == $param): ?>
-                <li class="uk-active"><a href="<?php echo base_url('courses/').strtolower(str_replace(" ", "", $value['name'])) ?>"><?php echo ucfirst($value['name']); ?></a></li>
+                <li class="uk-active"><a href="<?php echo base_url('test/').strtolower(str_replace(" ", "", $value['name'])) ?>"><?php echo ucfirst($value['name']); ?></a></li>
                 <?php else: ?>
-                  <li><a href="<?php echo base_url('courses/').strtolower(str_replace(" ", "", $value['name'])) ?>"><?php echo ucfirst($value['name']); ?></a></li>
+                  <li><a href="<?php echo base_url('test/').strtolower(str_replace(" ", "", $value['name'])) ?>"><?php echo ucfirst($value['name']); ?></a></li>
               <?php endif; ?>
             <?php endforeach; ?>
           </ul>
@@ -43,22 +43,21 @@
     </div>
 
     <div class="uk-grid-large" uk-grid>
-      <div class="uk-width-3-4@m" ng-app="educationbourd" ng-controller="coursesController">
+      <div class="uk-width-3-4@m" ng-app="educationbourd" ng-controller="testController">
 
-          <div class="course-card course-card-list" ng-repeat='course in courses'>
+          <div class="course-card course-card-list" ng-repeat='test in tests'>
             <div class="course-card-thumbnail">
-              <img src="{{course.image}}">
-              <a href="<?php echo base_url('courses/').'{{course.course_id}}' ?>" class="play-button-trigger"></a>
+              <img src="{{test.image}}">
             </div>
             <div class="course-card-body">
-              <a href="<?php echo base_url('course/').'{{course.course_id}}' ?>">
-                <h4>{{course.name}}</h4>
+              <a href="<?php echo base_url('test/show/').'{{test.testid}}' ?>">
+                <h4>{{test.title}}</h4>
               </a>
-              <p>{{course.slug}}</p>
+              <p>{{test.slug}}</p>
               <div class="course-details-info">
                 <ul>
-                  <li> <i class="icon-feather-sliders"></i> {{course.course_type}} level </li>
-                  <li> By <a href=""> {{course.created_by}} </a> </li>
+                  <li> <i class="icon-feather-sliders"></i> {{test.level}} level </li>
+                  <li> <a href=""> {{test.created}} </a> </li>
                   <li>
                     <div class="star-rating"><span class="avg"> 4.8 </span> <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
                     </div>
@@ -90,11 +89,11 @@
 
 var url = '<?php echo $url; ?>';
 var pagination = angular.element(document.querySelector('#pagination'));
-app.controller('coursesController', function($scope, $http){
-    $scope.courses = [];
+app.controller('testController', function($scope, $http){
+    $scope.tests = [];
       $http.get(url)
       .then(function($data){
-        $scope.courses = $data.data.products;
+        $scope.tests = $data.data.products;
         pagination.html($data.data.links);
 
       });

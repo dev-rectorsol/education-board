@@ -47,7 +47,7 @@ class Test extends CI_Controller {
 								'slug' => $data['slug'],
  							 	'duration' => $data['duration'],
 		 						'description' => $data['description'],
-								'curriculum' => array(),
+								'curriculum' => json_encode(array()),
 		 						'is_publish' => 1,
 		 						'created' => current_datetime()
 		 			 ];
@@ -57,7 +57,7 @@ class Test extends CI_Controller {
 						'title' => $data['title'],
 						'slug' => $data['slug'],
 						'duration' => $data['duration'],
-						'curriculum' => array(),
+						'curriculum' => json_encode(array()),
 						'description' => $data['description'],
 						'created' => current_datetime()
 		 			];

@@ -61,7 +61,7 @@ public function __construct()
     }
 
     public function select_subject_curriculum_by_id($id){
-      $this->db->select('subject_meta.*, lesson.name');
+      $this->db->select('subject_meta.*, lesson.name, lesson.lesson_type');
       $this->db->from('subject_meta');
       $this->db->join('lesson', 'subject_meta.lesson_id = lesson.lesson_id', 'INNER');
       $this->db->where('subject_meta.subject_id', $id);

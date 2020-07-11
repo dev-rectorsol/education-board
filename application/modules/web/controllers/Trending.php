@@ -22,19 +22,7 @@ class Trending extends CI_Controller {
 					array('url' => base_url('trending'), 'name' => 'Trending'),
 					array('url' => base_url('video') . "/" .$id , 'name' => $output->name)
 				];
-				$data['trending'] = $output;
 				$data['thumb'] = $this->common_model->getThumByRoot($output->lesson_id);
-				$temp = $this->common_model->getVideoByRoot($output->lesson_id);
-				foreach ($temp as $value) {
-					$data['views'] = (object)[
-						'view_id' => $value['videoid'],
-						'name' => $value['name'],
-						'videotype' => $value['videotype'],
-						'url' => base_url($value['url']),
-						'size' => convertToReadableSize($value['size']),
-					];
-				}
-
 				$data['trending'] = $output;
 				$data['main_content'] = $this->load->view('trending/video-play', $data, true);
 				$this->load->view('index', $data);

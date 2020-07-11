@@ -1,12 +1,13 @@
 
 <div class="container-fluid">
+
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <div class="row">
         <form action="<?php echo base_url('admin/lesson/update_trending')?>" method="POST">
           <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
             <div class="product-status-wrap drp-lst">
-              <h4>Edit Trending</h4>
+              <h4>Edit Trending || <a href="<?php echo $ViewUrl; ?>"> <small><?php echo $ViewUrl; ?></small></a> </h4>
               <div class="form-group">
                 <label class="login2">Video Name</label>
                 <input name="name" type="text" class="form-control" placeholder="Video Name" value="<?php echo $data->name; ?>">
@@ -36,8 +37,8 @@
               <button id="addfeatureimage" type="button" class="btn btn-link" name="button">change feature image</button>
               <hr>
               <div class="form-group">
-                <label class="login2">YouTube Video URL</label>
-                <input name="url" type="text" class="form-control" placeholder="YouTube URL" value="<?php echo $data->url; ?>">
+                <label class="login2">YouTube Video (option)</label>
+                <textarea name="youtube_iframe" placeholder="YouTube iframe"><?php echo $data->url ?></textarea>
               </div>
 
               <div class="form-group">

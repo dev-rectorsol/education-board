@@ -105,7 +105,7 @@ class Lesson extends CI_Controller {
 		 						'lesson_id' => getCustomId($id, 'lect'),
 		 						'name' => $data['name'],
 		 						'slug' => $data['slug'],
-		 						'url' => $data['url'],
+		 						'url' => $data['youtube_iframe'],
 		 						'description' => $data['description'],
 		 						'is_publish' => 1,
 		 						'created_at' => current_datetime()
@@ -115,7 +115,7 @@ class Lesson extends CI_Controller {
 		 					 'lesson_id' => getCustomId($id, 'sub'),
 		 					 'name' => $data['name'],
 							 'slug' => $data['slug'],
-							 'url' => $data['url'],
+							 'url' => $data['youtube_iframe'],
 		 					 'description' => $data['description'],
 		 					 'created_at' => current_datetime()
 		 			];
@@ -168,13 +168,20 @@ class Lesson extends CI_Controller {
 			if ($id != '') {
 				$data= array();
 				$data['page'] ='Edit Lesson';
+				$data['ViewUrl'] = base_url('trending');
 				$data['tag']=  $this->common_model->select('tags');
 				$data['category']=  $this->common_model->select('category');
-				$data['data']=  $this->lesson_model->select_by_id($id);
+				$result =  $this->lesson_model->select_by_id($id);
 				$data['video']=  $this->common_model->getVideoByRoot($id);
 				$data['image'] = $this->common_model->getThumByRoot($id);
 				$data['indexcategory'] = $this->common_model->getIndexCategorys($id);
 				$data['indextags'] = $this->common_model->getIndexTags($id);
+				$data['data'] = $result;
+				if ($result->lesson_type == 'video') {
+					$data['ViewUrl'] = base_url('trending/video/').$result->lesson_id;
+				}else{
+					$data['ViewUrl'] = base_url('watch/').$result->lesson_id;
+				}
 				$data['main_content']= $this->load->view('lesson/edit-view-trending',$data, true);
 				$this->load->view('index',$data);
 			}else {
@@ -245,14 +252,14 @@ class Lesson extends CI_Controller {
 						 $lesson = [
 		 					'name' => $data['name'],
 							'slug' => $data['slug'],
-							'url' => $data['url'],
+							'url' => $data['youtube_iframe'],
 		 					'description' => $data['description'],
 		 				];
 					 }else if ($data['submit']) {
 					 	$lesson = [
 							'name' => $data['name'],
 							'slug' => $data['slug'],
-							'url' => $data['url'],
+							'url' => $data['youtube_iframe'],
 							'description' => $data['description'],
 							'is_publish' => 1
 						];
@@ -260,7 +267,7 @@ class Lesson extends CI_Controller {
 						$lesson = [
 								 'name' => $data['name'],
 								 'slug' => $data['slug'],
-								 'url' => $data['url'],
+								 'url' => $data['youtube_iframe'],
 								 'description' => $data['description'],
 								 'is_publish' => 0
 						];

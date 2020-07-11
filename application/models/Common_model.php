@@ -345,10 +345,10 @@ function getMaxUserId(){
           }
 
     public function indexing($data, $rootid) {
-      if ( isset($data['tag']) ||  isset($data['category']) ) {
+      if ( isset($data['tag']) || isset($data['category']) ) {
         $temp = array();
         $table = 'indexing';
-        if (is_array($data['tag'])) {
+        if (!empty($data['tag'])) {
           foreach ($data['tag'] as $value) {
             $temp['root'] = $rootid;
             $temp['port'] = $value;
@@ -356,7 +356,7 @@ function getMaxUserId(){
             $this->db->insert($table, $temp);
           }
         }
-        if (is_array($data['category'])) {
+        if (!empty($data['category'])) {
           foreach ($data['category'] as $value) {
             $temp['root'] = $rootid;
             $temp['port'] = $value;
@@ -365,7 +365,7 @@ function getMaxUserId(){
           }
         }
         return;
-      }else {
+      } else {
         return;
       }
     }
@@ -374,7 +374,7 @@ function getMaxUserId(){
         $temp = array();
         $table = 'indexing';
         $this->db->delete($table, array('root' => $rootid));
-        if ( is_array($data['tag']) ) {
+        if ( !empty($data['tag']) ) {
           foreach ($data['tag'] as $value) {
             $temp['root'] = $rootid;
             $temp['port'] = $value;
@@ -382,7 +382,7 @@ function getMaxUserId(){
             $this->db->insert($table, $temp);
           }
         }
-        if ( is_array($data['category']) ) {
+        if ( !empty($data['category']) ) {
           foreach ($data['category'] as $value) {
             $temp['root'] = $rootid;
             $temp['port'] = $value;
@@ -454,6 +454,17 @@ function getMaxUserId(){
     public function getThumByRoot($id){
       $this->db->select('thumb', 'image');
       return $this->db->get_where("thumbnail", array('root' => $id))->row();
+    }
+    public function getImageByRoot($id){
+      $this->db->select('image');
+
+      $result = $this->db->get_where("thumbnail", array('root' => $id));
+
+      if(!empty($result->row())) {
+        return $result->row()->image;
+      } else {
+        return false;
+      }
     }
 
     public function getVideoByRoot($id){

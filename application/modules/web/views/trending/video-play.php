@@ -2,9 +2,13 @@
   <div class="container pt-4">
     <div uk-grid>
       <div class="uk-width-3-4@m">
-        <video id="video" controls controlsList="nodownload" preload="none" class="lazy" poster="<?php echo base_url($thumb->thumb) ?>">
-          <source data-src="<?php  echo !empty(isset($views->url)) ? $views->url : ''; ?>" type="video/<?php echo $views->videotype ?>">
-        </video>
+        <?php if(!empty($trending->url)):  ?>
+          <?php echo $trending->url; ?>
+        <?php else: ?>
+          <div class="p-3">
+            <img width="420" height="240" src="<?php echo base_url('assets/images/play-error.svg'); ?>" alt="">
+          </div>
+        <?php endif; ?>
         <div class="p-3">
           <h2 class="mt-lg-5 "> <?php echo $trending->name; ?> </h2>
           <div class="uk-grid-small uk-flex-middle" uk-grid>

@@ -127,6 +127,7 @@
                                 <div id="player" class="video-responsive" >
                                   <iframe width="560" height="315" src="https://www.youtube.com/embed/YXZ9n6QiRZs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
+                                <div id="reader" class="video-responsive"></div>
                             </li>
                         </ul>
 
@@ -151,7 +152,7 @@
                                 <div class="uk-accordion-content">
                                     <!-- course-video-list -->
                                     <ul class="course-video-list highlight-watched" ng-repeat='subculum in curriculum.subject_curriculum'>
-                                        <li ng-click="loadLactureComponent($event)" data-src="{{subculum.lesson_id}}"><a> {{subculum.lesson_name}} <span> 2 min </span> </a> </li>
+                                        <li ng-click="loadLactureComponent($event)" data-type="{{subculum.lesson_type}}" data-src="{{subculum.lesson_id}}"><a> {{subculum.lesson_name}} <span> 2 min </span> </a> </li>
                                     </ul>
                                 </div>
                             </li>
@@ -171,6 +172,7 @@
         <script type="text/javascript">
 
           var player = angular.element(document.querySelector("#player"));
+          var player = angular.element(document.querySelector("#reader"));
 
           app.directive('repeatDone', function() {
           return function() {
@@ -180,21 +182,31 @@
 
           app.controller('curriculumController', function($scope, $http){
           $scope.curriculums = [];
-            $http.get('<?php echo base_url('courses/course_curriculum/').$course->course_id; ?>')
+            $http.get('<?php echo base_url('course/course_curriculum/').$course->course_id; ?>')
             .then(function($data){
               $scope.curriculums = $data.data;
             });
 
-            $scope.loadLactureComponent = function(event){
+            $scope.loadLactureComponent = function(event) {
               var data = event.currentTarget.getAttribute("data-src");
-              var url = '<?php echo base_url('watch/') ?>' + data;
-              $scope.lacture = [];
-              $http.get(url).then(function($data) {
-                $scope.lacture = $data.data;
-                player.html($scope.lacture);
+              var dataType = event.currentTarget.getAttribute("data-type");
+              if (dataType == 'pdf') {
+                var url = '<?php echo base_url('read/') ?>' + data;
+                $scope.reader = [];
+                $http.get(url).then(function($data) {
+                  $scope.lacture = $data.data;
+                  player.html($scope.lacture);
 
-              });
+                });
+              } else {
+                var url = '<?php echo base_url('watch/') ?>' + data;
+                $scope.lacture = [];
+                $http.get(url).then(function($data) {
+                  $scope.lacture = $data.data;
+                  player.html($scope.lacture);
 
+                });
+              }
             }
           });
 
@@ -274,6 +286,7 @@
     <script src="<?php echo base_url() ?>/assets/js/simplebar.js"></script>
     <script src="<?php echo base_url() ?>/assets/js/main.js"></script>
     <script src="<?php echo base_url() ?>/assets/js/bootstrap-select.min.js"></script>
+
 
     <script>
       var video = document.getElementById('video');

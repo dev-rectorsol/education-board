@@ -81,16 +81,31 @@ function getMaxId(){
         return;
       }
 
-      public function select_course_list(){
-        $sql = 'SELECT products.*, course.*, thumbnail.image, GROUP_CONCAT(tag.port) AS tags, GROUP_CONCAT(category.port) AS category FROM products
+      public function select_course_list($limit, $start) {
+        $sql = "SELECT products.*, course.*, thumbnail.image, GROUP_CONCAT(tag.port) AS tags, GROUP_CONCAT(category.port) AS category FROM products
                 INNER JOIN product_meta ON products.product_id = product_meta.product_id
                 INNER JOIN course on product_meta.source = course.course_id
-                LEFT JOIN indexing AS tag ON course.course_id = tag.root AND tag.type = "tag"
-                LEFT JOIN indexing AS category ON course.course_id = category.root AND category.type = "category"
+                LEFT JOIN indexing AS tag ON course.course_id = tag.root AND tag.type = 'tag'
+                LEFT JOIN indexing AS category ON course.course_id = category.root AND category.type = 'category'
                 LEFT JOIN thumbnail ON course.course_id = thumbnail.root
                 WHERE products.deleted = 0
                 GROUP BY products.product_id
-                ORDER BY products.id DESC';
+                ORDER BY products.id DESC
+                LIMIT {$start}, {$limit}";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+      }
+      public function select_course_list_level($level, $limit, $start) {
+        $sql = "SELECT products.*, course.*, thumbnail.image, GROUP_CONCAT(tag.port) AS tags, GROUP_CONCAT(category.port) AS category FROM products
+                INNER JOIN product_meta ON products.product_id = product_meta.product_id
+                INNER JOIN course on product_meta.source = course.course_id
+                LEFT JOIN indexing AS tag ON course.course_id = tag.root AND tag.type = 'tag'
+                LEFT JOIN indexing AS category ON course.course_id = category.root AND category.type = 'category'
+                LEFT JOIN thumbnail ON course.course_id = thumbnail.root
+                WHERE products.deleted = 0 AND course.course_type = '{$level}'
+                GROUP BY products.product_id
+                ORDER BY products.id DESC
+                LIMIT {$start}, {$limit}";
         $query = $this->db->query($sql);
         return $query->result_array();
       }
@@ -112,5 +127,13 @@ function getMaxId(){
         $this->db->where('name LIKE', $name.'%');
         $result = $this->db->get();
         return $result->result();
+      }
+
+      public function get_count($table, $level) {
+        if ($level == 'all') {
+          return $this->db->where( 'is_publish', 1 )->where( 'deleted',  0 )->count_all_results($table);
+        }else{
+          return $this->db->where( 'is_publish', 1 )->where( 'deleted',  0 )->where('course_type' , $level)->count_all_results($table);
+        }
       }
   }

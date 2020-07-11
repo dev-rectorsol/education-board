@@ -182,6 +182,13 @@ if(!function_exists('objectToArray')){
 				return $var;
 	    }
 	}
+	if(!function_exists('pagenotfound')) {
+	    function pagenotfound(){
+				$ci = get_instance();
+				$var = $ci->load->view('web/404');
+				return $var;
+	    }
+	}
 
 	if(!function_exists('get_related')) {
 	    function get_related($type = '', $node = '', $path = '') {

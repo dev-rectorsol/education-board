@@ -14,7 +14,7 @@
       <title><?php echo $application_title." || ".$application_name; ?></title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="Courseplus - Professional Learning Management HTML Template">
+      <meta name="description" content="<?php echo $application_title ?> - <?php echo $application_name; ?>">
 
       <!-- Favicon -->
       <link href="<?php echo base_url() ?>/assets/images/favicon.png" rel="icon" type="image/png">

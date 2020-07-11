@@ -44,4 +44,14 @@ class Pdf_model extends CI_Model {
               $result = $this->db->query($sql);
               return $result->result_array();
     }
+
+    public function get_pdf_lecture($node){
+      return $this->db->select("lesson_id, name, slug, description, updated_at")->get_where('lesson', ['lesson_id' => $node, 'deleted' => 0])->row();
+    }
+    public function get_pdf_list($node){
+      return $this->db->select("nodeid")->get_where('docfile', ['root' => $node])->result();
+    }
+    public function get_pdf_File($node){
+      return $this->db->select("details")->get_where('gallery', ['id' => $node, 'status' => 1])->row();
+    }
 }

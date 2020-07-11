@@ -34,7 +34,7 @@ class Blog extends CI_Controller {
 		if ($total_rows > 0) {
 				// code...
 			$config = array();
-			$config['per_page'] = 4;
+			$config['per_page'] = 5;
 			$page = ($config['per_page'] * $page) - $config['per_page'];
 
 
