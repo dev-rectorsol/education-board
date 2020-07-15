@@ -14,6 +14,25 @@ public function __construct()
         $query = $query->result_array();
         return $query;
     }
+  
+  function get_doc_by_id($id)
+  {
+    $sql = 'SELECT details FROM gallery
+               JOIN docfile ON gallery.id = docfile.nodeid
+              WHERE docfile.docid ="'.$id.'"
+            ';
+    $result = $this->db->query($sql);
+    return $result->result_array();
+  }
+  function select_list()
+  {
+    $sql = 'SELECT lesson.name, docfile.docid  FROM lesson
+              LEFT JOIN docfile ON lesson.lesson_id = docfile.root
+              WHERE lesson.lesson_type = "pdf"
+            ';
+    $result = $this->db->query($sql);
+    return $result->result_array();
+  }
      function select_subject() {
         $this->db->select();
         $this->db->from('subject');
