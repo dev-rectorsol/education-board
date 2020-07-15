@@ -11,7 +11,7 @@ class Courses extends CI_Controller {
 		$this->load->model('course_model');
 		$this->load->model('subject_model');
 		$this->load->library("pagination");
-
+		$this->load->helper('download');
 	}
 
   function index($level = 'all', $page = 1) {
@@ -164,6 +164,20 @@ class Courses extends CI_Controller {
 // $str2 = "Hell";
 // echo strcmp($str1, $str2);
 	}
+		public function download($id){
+
+		$doc = $this->course_model->get_doc_by_id($id);
+	
+		$details= json_decode($doc[0]['details']);
+	
+			$link= $details->dirname.'/'. $details->basename;
+		// print_r(base_url($link));
+		// exit;
+		$data = file_get_contents($link); // Read the file's contents
+		$name = $details->basename;
+
+		force_download($name, $data);
+			}
 
 	public function course_curriculum($id){
 		$data = array();

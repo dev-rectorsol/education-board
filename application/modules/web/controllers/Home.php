@@ -11,7 +11,9 @@ class Home extends CI_Controller {
 		$this->load->model('indexing_model');
 		$this->load->model('search_model');
 		$this->load->library("pagination");
+		$this->load->model('pdf_model');
 
+		
 	}
 
 	public function player(){
@@ -30,7 +32,8 @@ class Home extends CI_Controller {
 				$data['category'] = $this->common_model->home_category();
 
 				$data['trending'] = $this->common_model->home_trending();
-
+				$data['test'] = $this->common_model->select('tests');
+				$data['article'] = $this->common_model->select('article');
 				$data['main_content'] = $this->load->view('home', $data, true);
 
 				$this->load->view('index', $data);
@@ -179,7 +182,7 @@ class Home extends CI_Controller {
 			$data['main_content'] = $this->load->view('blogs/blogs', $data, true);
 			$this->load->view('index', $data);
 		}
-
+	
 		public function blog_single_view($id){
 			$data = array();
 			$blog = $this->article_model->article_single_view($id);
@@ -242,8 +245,29 @@ class Home extends CI_Controller {
         $data['main_content'] = $this->load->view('event', $data, true);
         $this->load->view('index', $data);
     }
-
-
+	public function pdf()
+	{
+		$data = array();
+		$data['page'] = 'PDF';
+		$data['pdf'] =  $this->common_model->select_list();
+		//echo "<pre>";print_r($data['pdf']);exit;
+		$data['main_content'] = $this->load->view('pdf', $data, true);
+		$this->load->view('index', $data);
+	}
+	public function counselling()
+	{
+		$data = array();
+		$data['page'] = 'faq';
+		$data['main_content'] = $this->load->view('counselling', $data, true);
+		$this->load->view('index', $data);
+	}
+	public function feedback()
+	{
+		$data = array();
+		$data['page'] = 'faq';
+		$data['main_content'] = $this->load->view('feedback', $data, true);
+		$this->load->view('index', $data);
+	}
     public function faq(){
         $data = array();
         $data['page'] = 'faq';

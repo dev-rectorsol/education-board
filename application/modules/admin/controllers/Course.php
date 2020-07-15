@@ -8,6 +8,7 @@ class Course extends CI_Controller {
 			parent::__construct();
 			$this->load->model('common_model');
 			$this->load->model('course_model');
+		
 	}
 	public function index()
 	{
@@ -15,6 +16,8 @@ class Course extends CI_Controller {
 		$data['page'] ='Add Course';
 		$data['tag']=  $this->common_model->select('tags');
 		$data['category']=  $this->common_model->select('category');
+		$data['pdf'] =  $this->course_model->select_list();
+		
 		$data['main_content']= $this->load->view('course/addCourse',$data, true);
 		$this->load->view('index',$data);
 	}
@@ -65,7 +68,9 @@ class Course extends CI_Controller {
             'name' => $data['coursename'],
             'slug' => $data['slug'],
             'description' => $data['description'],
-            'course_type' => $data['course_type'],
+			'course_type' => $data['course_type'],
+			'docid'=> $data['pdf'],
+			'plan_description' => $data['plan_description'],
             'is_publish' => 1,
             'created_by' => $this->session->userdata('userID'),
             'created' => current_datetime()
@@ -75,7 +80,9 @@ class Course extends CI_Controller {
            'course_id' => getCustomId($id, 'kalka'),
            'name' => $data['coursename'],
 					 'slug' => $data['slug'],
-           'description' => $data['description'],
+		   'description' => $data['description'],
+					'docid' => $data['pdf'],
+					'plan_description' => $data['plan_description'],
 					 'course_type' => $data['course_type'],
 					 'created_by' => $this->session->userdata('userID'),
 					 'created' => current_datetime()

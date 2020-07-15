@@ -573,7 +573,7 @@ function getMaxUserId(){
       $result = $this->db->query($sql);
       return $result->result_array();
     }
-
+ 
     public function home_trending(){
       $sql = 'SELECT lesson.*, thumbnail.thumb AS thumb, thumbnail.image AS image FROM lesson
               INNER JOIN thumbnail ON thumbnail.root = lesson.lesson_id
@@ -634,6 +634,15 @@ function getMaxUserId(){
     return $query->result_array();
    }
 
+  function select_list()
+  {
+    $sql = 'SELECT lesson.lesson_id,lesson.name,lesson.description, docfile.docid FROM lesson
+              LEFT JOIN docfile ON lesson.lesson_id = docfile.root
+              WHERE lesson.lesson_type = "pdf"
+              GROUP BY lesson.lesson_id';
+    $result = $this->db->query($sql);
+    return $result->result_array();
+  }
    public function others() {
      $this->db->select('id ,details');
      $this->db->from('gallery');

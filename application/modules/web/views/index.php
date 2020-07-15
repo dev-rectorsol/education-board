@@ -1,5 +1,5 @@
 <?php include 'layout/css.php'; ?>
-<div id="wrapper" <?php if(!check()): ?> uk-toggle="target: #modal-sections" <?php endif; ?>>
+<div id="wrapper" <?php if (!check()) : ?> uk-toggle="target: #modal-sections" <?php endif; ?>>
 
   <!-- overlay seach on mobile-->
   <div class="nav-overlay uk-navbar-left uk-position-relative uk-flex-1 bg-grey uk-light p-2" hidden style="z-index: 10000;">
@@ -11,7 +11,7 @@
     <a class="uk-navbar-toggle" uk-close uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
   </div>
 
-  <!-- search overlay-->
+  <!-- search overlay
   <div id="searchbox">
 
     <div class="search-overlay"></div>
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-  </div>
+  </div> -->
 
 
   <!-- menu -->
@@ -44,13 +44,23 @@
     </div>
     <div class="page-menu-inner" data-simplebar>
       <ul data-submenu-title="Browse Course">
-        <li><a href="<?php echo base_url('blogs'); ?>"><i class="uil-file-alt"></i> <span>  Current Affairs </span></a> </li>
-        <li><a href="<?php echo base_url('courses'); ?>"><i class="uil-rss-interface"></i> <span> Courser </span></a> </li>
+        <li><a href="<?php echo base_url('blogs'); ?>"><i class="uil-file-alt"></i> <span> Current Affairs </span></a> </li>
+        <li><a href="<?php echo base_url('courses'); ?>"><i class="uil-rss-interface"></i> <span> Courses </span></a> </li>
         <li><a href="<?php echo base_url('test'); ?>"><i class="uil-youtube-alt"></i> <span> Test Series </span></a> </li>
         <li><a href="<?php echo base_url('payment'); ?>"><i class="uil-book-alt"></i> <span> Payment </span></a> </li>
         <li><a href="#"><i class="uil-play"></i> <span> Join Live </span></a> </li>
-      </ul>
+        <li><a href="<?php echo base_url('pdf'); ?>"><i class="uil-book-alt"></i> <span> FREE PDF </span></a> </li>
 
+
+      </ul>
+      <hr>
+      <ul data-submenu-title="More">
+        <li><a href=""><i class=" icon-brand-google-play"></i><span> Use Our App </span></a></li>
+        <li><a href="<?php echo base_url('counselling'); ?>"><i class="uil-file-alt"></i> <span> Counselling </span></a> </li>
+        <li><a href="<?php echo base_url('feedback'); ?>"><i class="uil-rss-interface"></i> <span> Feedback </span></a> </li>
+        <li><a href="<?php echo base_url('faq'); ?>"><i class="uil-book-alt"></i> <span> FAQ </span></a> </li>
+
+      </ul>
     </div>
   </div>
 
@@ -73,23 +83,23 @@
 
             <!-- logo -->
             <a href="<?php echo base_url(); ?>" class="logo">
-              <img src="<?php echo base_url()?>/assets/images/logo-dark.svg" alt="">
-              <span> Courseplus</span>
+              <img src="<?php echo base_url() ?>/assets/images/logo-dark.svg" alt="">
+              <span>KALKA IAS ZONE</span>
             </a>
 
             <!-- breadcrumbs -->
             <nav id="breadcrumbs">
               <ul>
                 <li><a href="<?php echo base_url(); ?>"> Dashboard </a></li>
-                <?php if(isset($breadcrumbs)):
-  																	?>
-                <?php foreach ($breadcrumbs as $key => $value):?>
-                <?php if (count($breadcrumbs) == ($key + 1)): ?>
-                <li><?php echo substr($value['name'], 0, 40); ?></li>
-                <?php else: ?>
-                <li><a href="<?php echo $value['url']; ?>"> <?php echo $value['name']; ?> </a></li>
-                <?php endif; ?>
-                <?php endforeach; ?>
+                <?php if (isset($breadcrumbs)) :
+                ?>
+                  <?php foreach ($breadcrumbs as $key => $value) : ?>
+                    <?php if (count($breadcrumbs) == ($key + 1)) : ?>
+                      <li><?php echo substr($value['name'], 0, 40); ?></li>
+                    <?php else : ?>
+                      <li><a href="<?php echo $value['url']; ?>"> <?php echo $value['name']; ?> </a></li>
+                    <?php endif; ?>
+                  <?php endforeach; ?>
                 <?php endif; ?>
               </ul>
             </nav>
@@ -107,75 +117,76 @@
               <!-- User icons close mobile-->
               <span class="icon-feather-x icon-small uk-hidden@s" uk-toggle="target: .header-widget ; cls: is-active"> </span>
               <!-- profile-icon-->
-
+              <div class='btn btn-success'> <a href="https://www.eduqfix.com/PayDirect/#/student/pay/Y1IxwfQr9fhSbuNHnHVIvHsQbbI3H5EL3ZyACUnk196gy+09NPaHl3Zgzy3Mjfeh/4057" class='text-white'>Pay Now</a>
+              </div>
               <a href="#" class="header-widget-icon profile-icon">
-                <?php if(check()): ?>
-                <?php if ($this->session->userdata('thumb') != ""): ?>
-                <img src="<?php echo base_url() . $this->session->userdata('thumb'); ?>" alt="" class="header-profile-icon">
-                <?php else: ?>
-                <img src="<?php echo base_url()?>assets/images/avatars/default.png" alt="" class="header-profile-icon">
-                <?php endif; ?>
-                <?php else: ?>
-                <img src="<?php echo base_url()?>assets/images/avatars/default.png" alt="" class="header-profile-icon">
+                <?php if (check()) : ?>
+                  <?php if ($this->session->userdata('thumb') != "") : ?>
+                    <img src="<?php echo base_url() . $this->session->userdata('thumb'); ?>" alt="" class="header-profile-icon">
+                  <?php else : ?>
+                    <img src="<?php echo base_url() ?>assets/images/avatars/default.png" alt="" class="header-profile-icon">
+                  <?php endif; ?>
+                <?php else : ?>
+                  <img src="<?php echo base_url() ?>assets/images/avatars/default.png" alt="" class="header-profile-icon">
                 <?php endif; ?>
               </a>
 
               <div uk-dropdown="pos: top-right ;mode:click" class="dropdown-notifications small">
-                <?php if(check()): ?>
+                <?php if (check()) : ?>
 
-                <!-- User Name / Avatar -->
-                <a href="<?php echo base_url() ?>">
+                  <!-- User Name / Avatar -->
+                  <a href="<?php echo base_url() ?>">
 
-                  <div class="dropdown-user-details">
-                    <div class="dropdown-user-avatar">
-                      <?php if ($this->session->userdata('thumb') != ""): ?>
-                      <img src="<?php echo base_url() . $this->session->userdata('thumb'); ?>" alt="">
-                      <?php else: ?>
-                      <img src="<?php echo base_url()?>assets/images/avatars/default.png" alt="">
-                      <?php endif; ?>
+                    <div class="dropdown-user-details">
+                      <div class="dropdown-user-avatar">
+                        <?php if ($this->session->userdata('thumb') != "") : ?>
+                          <img src="<?php echo base_url() . $this->session->userdata('thumb'); ?>" alt="">
+                        <?php else : ?>
+                          <img src="<?php echo base_url() ?>assets/images/avatars/default.png" alt="">
+                        <?php endif; ?>
+                      </div>
+                      <div class="dropdown-user-name">
+                        <?php echo $this->session->userdata('username'); ?> <span>Students</span>
+                      </div>
                     </div>
-                    <div class="dropdown-user-name">
-                      <?php echo $this->session->userdata('username'); ?> <span>Students</span>
+
+                  </a>
+
+                  <!-- User menu -->
+
+                  <ul class="dropdown-user-menu">
+                    <li><a href="<?php echo base_url('authentication/logout') ?>">
+                        <i class="icon-feather-log-out"></i> Sign Out</a>
+                    </li>
+                  </ul>
+
+                <?php else : ?>
+                  <!-- User Name / Avatar -->
+                  <a href="#">
+
+                    <div class="dropdown-user-details">
+                      <div class="dropdown-user-avatar">
+                        <img src="<?php echo base_url() ?>assets/images/avatars/default.png" alt="">
+                      </div>
+                      <div class="dropdown-user-name">
+                        Guest <span>Students</span>
+                      </div>
                     </div>
-                  </div>
 
-                </a>
+                  </a>
 
-                <!-- User menu -->
+                  <!-- User menu -->
 
-                <ul class="dropdown-user-menu">
-                  <li><a href="<?php echo base_url('authentication/logout') ?>">
-                      <i class="icon-feather-log-out"></i> Sing Out</a>
-                  </li>
-                </ul>
-
-                <?php else: ?>
-                <!-- User Name / Avatar -->
-                <a href="#">
-
-                  <div class="dropdown-user-details">
-                    <div class="dropdown-user-avatar">
-                      <img src="<?php echo base_url()?>assets/images/avatars/default.png" alt="">
-                    </div>
-                    <div class="dropdown-user-name">
-                      Guest <span>Students</span>
-                    </div>
-                  </div>
-
-                </a>
-
-                <!-- User menu -->
-
-                <ul class="dropdown-user-menu">
-                  <li>
-                    <a href="#">
-                      <i class="icon-feather-help-circle"></i> Help
-                    </a>
-                  </li>
-                  <li><a href="<?php echo base_url('authentication') ?>">
-                      <i class="icon-feather-log-in"></i> Sing In</a>
-                  </li>
-                </ul>
+                  <ul class="dropdown-user-menu">
+                    <li>
+                      <a href="#">
+                        <i class="icon-feather-help-circle"></i> Help
+                      </a>
+                    </li>
+                    <li><a href="<?php echo base_url('authentication') ?>">
+                        <i class="icon-feather-log-in"></i> Sign In</a>
+                    </li>
+                  </ul>
 
                 <?php endif; ?>
 
@@ -187,6 +198,11 @@
 
 
             <!-- icon search-->
+
+            <a class="uk-navbar-toggle uk-hidden@s" uk-toggle="animation: uk-animation-fade" href="https://www.kalkaiaszone.com/">
+              KALKA IAS ZONE
+            </a>
+
             <a class="uk-navbar-toggle uk-hidden@s" uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#">
               <i class="uil-search icon-small"></i>
             </a>
@@ -247,4 +263,4 @@
 
 
 
-<?php include 'layout/footer.php';?>
+<?php include 'layout/footer.php'; ?>
